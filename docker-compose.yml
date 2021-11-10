@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  backend:
+    build: infra/django/
+    volumes:
+      - ./server:/project/server
+    ports:
+      - 8000:8000
+  
+  frontend:
+    build: infra/node/
+    volumes:
+      - ./client:/project/client
+    ports:
+      - 3000:3000
