@@ -1,18 +1,33 @@
 version: '3'
 
 services:
-  backend:
-    build: infra/django/
-    volumes:
-      - ./server:/project/server
-    ports:
-      - 8000:8000
-  
   frontend:
+    container_name: frontend
     build: infra/node/
+    image: frontend-image
     volumes:
       - ./client:/project/client
     ports:
       - 3000:3000
     environment:
       - CHOKIDAR_USEPOLLING=true
+
+  database:
+    container_name: database
+    build: infra/mysql/
+    image: database-image
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  backend:
+    container_name: backend
+    build: infra/django/
+    image: backend-image
+    volumes:
+      - ./server:/project/server
+    ports:
+      - 8000:8000
+    restart: always
+
