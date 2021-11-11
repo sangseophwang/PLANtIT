@@ -14,7 +14,7 @@ services:
 
   database:
     container_name: database
-    build: infra/mysql/
+    build: infra/db/
     image: database-image
     volumes:
       - ./mysql:/var/lib/mysql
