@@ -1,0 +1,26 @@
+@import "../../Common/scss/mixins";
+.Third__Container {
+  @include Container__Form();
+  .Third__Contents {
+    display: flex;
+    width: 60%;
+    height: 40vh;
+    > img {
+      width: 20vw;
+      height: fit-content;
+    }
+    .Third__Text {
+      margin-left: 30px;
+      > h1 {
+        font-weight: 700;
+        font-size: 6vw;
+      }
+      > p {
+        margin-top: 30px;
+        color: gray;
+        font-weight: 500;
+        line-height: 2;
+      }
+    }
+  }
+}

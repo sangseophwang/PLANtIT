@@ -1,0 +1,5 @@
+@import "../../Common/scss/mixins";
+.Fifth__Container {
+  @include Container__Form();
+  background-color: peru;
+}

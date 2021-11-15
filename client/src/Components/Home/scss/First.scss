@@ -1,0 +1,49 @@
+@import "../../Common/scss/mixins";
+.First__Container {
+  @include Container__Form();
+  font-size: 8vw;
+  font-weight: 800;
+  position: relative;
+  .First__Wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    height: 100vh;
+    right: 0;
+    position: absolute;
+    .First__Logo-Mobile {
+      display: none;
+      width: 30vw;
+      @include responsive("tablet") {
+        position: absolute;
+        left: 25%;
+        top: 20px;
+        display: block;
+      }
+    }
+    .First__SNS {
+      position: absolute;
+      right: 20px;
+      bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      font-size: 25px;
+      height: 70px;
+      justify-content: space-around;
+      color: gray;
+      transition: 1s;
+      > svg {
+        &:hover {
+          color: #659e38;
+          cursor: pointer;
+          transition: 1s;
+        }
+      }
+    }
+    > span {
+      margin-left: 15px;
+      display: block;
+    }
+  }
+}

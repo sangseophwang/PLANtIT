@@ -1,0 +1,5 @@
+@import "../../Common/scss/mixins";
+.Sixth__Container {
+  @include Container__Form();
+  background-color: tomato;
+}
