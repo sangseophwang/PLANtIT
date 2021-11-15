@@ -1,4 +1,4 @@
-# shortFLIX - Frontend 파트 소개 🚀
+# PLANtIT - Frontend 파트 소개 🚀
 
 ## 💻 기술 스택
 
