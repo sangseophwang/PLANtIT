@@ -1,0 +1,19 @@
+.Dict__Text-Container {
+    margin-top: 8rem;
+    margin-left: 2rem;
+
+    @media screen and (max-width: 768px) {
+        margin-top: 2rem;
+    }
+
+    .Dict__Text {
+        font-size: 4rem;
+        font-weight: 700;
+
+        @media screen and (max-width: 768px) {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+    }
+}
