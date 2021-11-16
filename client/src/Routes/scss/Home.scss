@@ -19,11 +19,18 @@
     font-weight: 700;
     background: transparent;
     padding-top: 17px;
-    font-size: 16px;
+    font-size: 15px;
     width: 100%;
     @include responsive('tablet') {
       font-size: 12px;
       padding-top: 10px;
+    }
+  }
+  .swiper-pagination-bullet-active {
+    color: #00b564;
+    font-size: 18px;
+    @include responsive('tablet') {
+      font-size: 14px;
     }
   }
 }

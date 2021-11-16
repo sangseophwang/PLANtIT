@@ -3,7 +3,7 @@ import Video from '../../Assets/Home_Fourth.mp4';
 import { Link } from 'react-router-dom';
 export default function Fourth(): JSX.Element {
   return (
-    <div className="Fourth__Container">
+    <section className="Fourth__Container">
       <video className="Fourth__Video-Mobile" autoPlay muted loop playsInline>
         <source src={Video} type="video/mp4" />
       </video>
@@ -13,6 +13,6 @@ export default function Fourth(): JSX.Element {
           <source src={Video} type="video/mp4" />
         </video>
       </Link>
-    </div>
+    </section>
   );
 }
