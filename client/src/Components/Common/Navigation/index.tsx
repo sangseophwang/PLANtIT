@@ -2,17 +2,18 @@ import { Link } from 'react-router-dom';
 import '../scss/Navigation.scss';
 import NavItem from './NavItem';
 import Logo from '../../../Assets/logo.png';
-import { faHome, faLeaf, faBook, faComment, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faLeaf, faBook, faComment, faUser, faVial } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-library.add(faHome, faLeaf, faBook, faComment, faUser);
+library.add(faHome, faLeaf, faBook, faComment, faUser, faVial);
 
 export default function Navigation(): JSX.Element {
   const category = [
     { name: '홈', address: '/', icon: faHome },
     { name: '소개', address: '/Introduction', icon: faLeaf },
-    { name: '식물도감', address: '/Dictionary', icon: faBook },
+    { name: '질병도감', address: '/Dictionary', icon: faBook },
+    { name: '검사하기', address: '/Analysis', icon: faVial },
     { name: '커뮤니티', address: '/Community', icon: faComment },
   ];
   return (

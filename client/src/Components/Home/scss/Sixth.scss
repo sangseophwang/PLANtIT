@@ -1,5 +1,56 @@
-@import "../../Common/scss/mixins";
+@import '../../Common/scss/mixins';
 .Sixth__Container {
   @include Container__Form();
-  background-color: tomato;
+  .Sixth__Contents {
+    margin-top: -200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #72a949;
+    @include responsive('mobile') {
+      padding-top: 50px;
+    }
+    @include responsive('mobile') {
+      margin-left: 25px;
+    }
+    .Sixth__Logo {
+      display: none;
+      @include responsive('tablet') {
+        display: block;
+        position: absolute;
+        top: 20px;
+        width: 150px;
+      }
+      @include responsive('mobile') {
+        top: 20px;
+        width: 100px;
+      }
+    }
+    .Sixth__Title {
+      font-weight: 700;
+      font-size: 6vw;
+      margin-bottom: 50px;
+      @include responsive('tablet') {
+        font-size: 8vw;
+        margin-bottom: 30px;
+      }
+    }
+    .Sixth__Subtitle {
+      font-weight: 500;
+      font-size: 1.5vw;
+      margin-bottom: 70px;
+      @include responsive('tablet') {
+        font-size: 2vw;
+        margin-bottom: 40px;
+      }
+    }
+    > p {
+      margin-bottom: 20px;
+      font-size: 1vw;
+      @include responsive('tablet') {
+        font-size: 2vw;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }
