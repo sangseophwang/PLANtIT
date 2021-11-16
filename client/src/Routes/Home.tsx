@@ -14,7 +14,7 @@ import 'swiper/components/pagination/pagination.scss';
 
 SwiperCore.use([Mousewheel, Pagination]);
 
-const bullet = ['- 소개', '- 안녕', '- 테스트', '- 헬로', '- 안녕하세요', '- 우와'];
+const bullet = ['- 소개', '- 영상', '- 비전', '- 인공지능', '- 커뮤니티', '- 메세지'];
 
 export default function Home(): JSX.Element {
   return (

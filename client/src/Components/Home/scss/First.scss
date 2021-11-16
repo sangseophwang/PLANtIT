@@ -45,6 +45,9 @@
           cursor: pointer;
           transition: 1s;
         }
+        &:last-child {
+          margin-left: 1px;
+        }
       }
       @include responsive('tablet') {
         bottom: 140px;

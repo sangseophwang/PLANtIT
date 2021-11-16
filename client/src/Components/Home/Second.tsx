@@ -1,5 +1,5 @@
 import './scss/Second.scss';
-import Video from '../../Assets/video.mp4';
+import Video from '../../Assets/Home_Second.mp4';
 export default function Second(): JSX.Element {
   return (
     <section className="Second__Container">
