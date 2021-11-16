@@ -7,6 +7,7 @@ import Analysis from '../Routes/Analysis';
 import Community from '../Routes/Community';
 import Introduction from '../Routes/Introduction';
 import Login from '../Routes/Login';
+import Result from '../Routes/Result';
 import Contact from '../Routes/Contact';
 
 export default function AppRouter(): JSX.Element {
@@ -21,6 +22,7 @@ export default function AppRouter(): JSX.Element {
         <Route path="/analysis" element={<Analysis />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/result" element={<Result />} />
       </Routes>
     </BrowserRouter>
   );

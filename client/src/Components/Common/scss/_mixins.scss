@@ -1,9 +1,9 @@
 @mixin responsive($device) {
-  @if $device == "mobile" {
+  @if $device == 'mobile' {
     @media screen and (max-width: 767px) {
       @content;
     }
-  } @else if $device == "tablet" {
+  } @else if $device == 'tablet' {
     @media screen and (max-width: 1024px) {
       @content;
     }
@@ -15,4 +15,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin Swiper__Pagination() {
+  .swiper-pagination {
+    text-align: left;
+    width: 120px;
+    left: 60px;
+    @include responsive('tablet') {
+      left: 30px;
+    }
+    @include responsive('mobile') {
+      left: 10px;
+    }
+  }
+  .swiper-pagination-bullet {
+    color: #292929;
+    font-weight: 700;
+    background: transparent;
+    padding-top: 17px;
+    font-size: 15px;
+    width: 100%;
+    @include responsive('tablet') {
+      font-size: 12px;
+      padding-top: 10px;
+    }
+  }
+  .swiper-pagination-bullet-active {
+    color: #00b564;
+    font-size: 18px;
+    @include responsive('tablet') {
+      font-size: 14px;
+    }
+  }
 }
