@@ -1,4 +1,4 @@
-@import "../../Common/scss/mixins";
+@import '../../Common/scss/mixins';
 .First__Container {
   @include Container__Form();
   font-size: 8vw;
@@ -12,10 +12,16 @@
     height: 100vh;
     right: 0;
     position: absolute;
+    > span {
+      padding-left: 70px;
+      @include responsive('tablet') {
+        padding-left: 30px;
+      }
+    }
     .First__Logo-Mobile {
       display: none;
       width: 30vw;
-      @include responsive("tablet") {
+      @include responsive('tablet') {
         position: absolute;
         left: 25%;
         top: 20px;
@@ -39,6 +45,13 @@
           cursor: pointer;
           transition: 1s;
         }
+      }
+      @include responsive('tablet') {
+        bottom: 140px;
+      }
+      @include responsive('mobile') {
+        bottom: 80px;
+        font-size: 18px;
       }
     }
     > span {
