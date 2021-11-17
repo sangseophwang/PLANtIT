@@ -14,6 +14,8 @@ import 'swiper/components/pagination/pagination.scss';
 
 SwiperCore.use([Mousewheel, Pagination]);
 
+const bullet = ['- 소개', '- 영상', '- 비전', '- 인공지능', '- 커뮤니티', '- 메세지'];
+
 export default function Home(): JSX.Element {
   return (
     <div className="Home__Container">
@@ -27,6 +29,9 @@ export default function Home(): JSX.Element {
         speed={1000}
         pagination={{
           clickable: true,
+          renderBullet: function (index, className) {
+            return '<div class="' + className + '"><span>' + bullet[index] + '</span></div>';
+          },
         }}
         className="mySwiper"
       >

@@ -1,10 +1,10 @@
-@import "../../Common/scss/mixins";
+@import '../../Common/scss/mixins';
 .Second__Container {
   @include Container__Form();
   > h1 {
     color: white;
-    font-size: 3rem;
-    font-weight: 800;
+    font-size: 7vw;
+    font-weight: 900;
   }
   > video {
     position: absolute;

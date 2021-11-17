@@ -1,0 +1,7 @@
+@import '../../Components/Common/scss/mixins';
+.Result__Container {
+  width: 100%;
+  height: 400vh;
+  position: relative;
+  @include Swiper__Pagination();
+}
