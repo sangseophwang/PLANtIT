@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'disease',
     'pesticide',
-    
+    'user.apps.UserConfig',
+    'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
