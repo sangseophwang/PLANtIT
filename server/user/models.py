@@ -6,8 +6,8 @@ class User(models.Model):
     password = models.CharField(max_length=256)
     nickname = models.CharField(max_length=50)
     user_type = models.IntegerField()
-    description = models.CharField(max_length=256)
-    image = models.CharField(max_length=100) # image url
+    description = models.CharField(max_length=256, null=True)
+    image = models.CharField(max_length=100, null=True) # image url
     
     def __str__(self):
         return self.email + "#" + str(self.user_type)
