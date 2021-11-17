@@ -11,3 +11,6 @@ class User(models.Model):
     
     def __str__(self):
         return self.email + "#" + str(self.user_type)
+    
+    class Meta:
+        db_table = "User"
