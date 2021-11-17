@@ -4,7 +4,8 @@ import './scss/CropsList.scss';
 
 const CropsList = (props: any) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalData, setModalData] = useState([]);
+  const [modalData, setModalData] = useState('');
+
   return (
     <>
       <div className="Search__Result">
@@ -23,8 +24,8 @@ const CropsList = (props: any) => {
               <button
                 className="CropsList__Button"
                 onClick={() => {
+                  setModalData(value.prevention);
                   setModalOpen(true);
-                  setModalData(value.name);
                 }}
               >
                 정보확인
