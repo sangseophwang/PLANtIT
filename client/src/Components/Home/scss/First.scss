@@ -19,14 +19,7 @@
       }
     }
     .First__Logo-Mobile {
-      display: none;
-      width: 30vw;
-      @include responsive('tablet') {
-        position: absolute;
-        left: 25%;
-        top: 20px;
-        display: block;
-      }
+      @include Logo__Mobile();
     }
     .First__SNS {
       position: absolute;

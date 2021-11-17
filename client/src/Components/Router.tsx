@@ -5,6 +5,7 @@ import Home from '../Routes/Home';
 import Dictionary from '../Routes/Dictionary';
 import Analysis from '../Routes/Analysis';
 import Community from '../Routes/Community';
+import Write from '../Routes/Write';
 import Introduction from '../Routes/Introduction';
 import Login from '../Routes/Login';
 import Result from '../Routes/Result';
@@ -18,6 +19,7 @@ export default function AppRouter(): JSX.Element {
         <Route path="/member" element={<Member />} />
         <Route path="/introduction" element={<Introduction />} />
         <Route path="/community" element={<Community />} />
+        <Route path="/community/write" element={<Write />} />
         <Route path="/dictionary" element={<Dictionary />} />
         <Route path="/analysis" element={<Analysis />} />
         <Route path="/login" element={<Login />} />
