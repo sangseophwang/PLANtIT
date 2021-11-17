@@ -4,11 +4,11 @@ from django.db import models
 
 class Pesticide(models.Model):
     name = models.CharField(max_length=50)
+    image = models.CharField(max_length=100, default='a')
     description = models.TextField()
     component = models.CharField(max_length=50)
     packing_unit = models.CharField(max_length=50)
     kind = models.CharField(max_length=50)
-    symptom = models.TextField()
     attribute = models.JSONField()
     information = models.JSONField()
 
