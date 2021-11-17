@@ -19,7 +19,7 @@ const MemberList = () => {
               <div className="Member__Role">{option.role}</div>
               <div className="Member__Name">{option.name}</div>
 
-              <div className="Member__Introduction">{option.content}</div>
+              <article className="Member__Introduction">{option.content}</article>
               <div className="Member__Tag-Container ">
                 <button className="Member__Tag">
                   <span>{option.tag1}</span>

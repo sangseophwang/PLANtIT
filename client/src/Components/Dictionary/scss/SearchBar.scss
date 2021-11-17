@@ -1,14 +1,13 @@
 // 검색창
 .Search__Container {
-    border: 4px solid #bdbdbd;
-    border-radius: 10px;
-    width: 70%;
+    border-bottom: 4px solid #bdbdbd;
+    width: 80%;
     margin-top: 1rem;
-    margin-left: 2rem;
+    margin-left: auto;
+    margin-right: auto;
 
     @media screen and (max-width: 1024px) {
-        width: 92%;
-        margin-left: 0.5rem;
+        width: 93%;
     }
 }
 

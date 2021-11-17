@@ -5,8 +5,8 @@ const DictTopSection = () => {
   return (
     <div className="Dict__Text-Container">
       <div className="Dict__Text">
-        어떤 종류의 <br />
-        작물이 궁금하신가요?
+        어떤 작물의 <br />
+        질병이 궁금하신가요?
       </div>
     </div>
   );

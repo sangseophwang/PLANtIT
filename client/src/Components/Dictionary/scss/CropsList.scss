@@ -1,19 +1,25 @@
 .Search__Result {
+    width: 80%;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
 
     @media screen and (max-width: 1280px) {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        width: 95%;
+        margin-bottom: 5rem;
+    }
+
     @media screen and (max-width: 768px) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
-        margin: 0.5rem;
         margin-bottom: 6rem;
     }
 }
@@ -63,23 +69,18 @@
     }
 
     .CropsList__Name {
-        font-size: 2.7rem;
+        font-size: 2.1rem;
         font-weight: 700;
         margin-bottom: 1rem;
 
         @media screen and (max-width: 768px) {
-            font-size: 2rem;
             margin-bottom: 0.5rem;
         }
     }
 
     .CropsList__Content {
-        font-size: 1rem;
+        font-size: 0.8rem;
         font-weight: 400;
-
-        @media screen and (max-width: 768px) {
-            font-size: 0.8rem;
-        }
     }
 
     .CropsList__Click {

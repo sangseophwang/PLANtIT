@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import Modal from '../Common/Modal';
 import './scss/CropsList.scss';
 
 const CropsList = (props: any) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState([]);
   return (
     <>
       <div className="Search__Result">
@@ -17,11 +20,20 @@ const CropsList = (props: any) => {
             <div className="CropsList__Content">{value.name}에 대해 알아보세요</div>
 
             <div className="CropsList__Click">
-              <button className="CropsList__Button">정보확인</button>
+              <button
+                className="CropsList__Button"
+                onClick={() => {
+                  setModalOpen(true);
+                  setModalData(value.name);
+                }}
+              >
+                정보확인
+              </button>
             </div>
           </div>
         ))}
       </div>
+      {modalOpen && <Modal setOpenModal={setModalOpen} data={modalData} />}
     </>
   );
 };
