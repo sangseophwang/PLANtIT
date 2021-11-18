@@ -1,3 +1,4 @@
+// Modal__Background = Modal창의 외부 배경화면
 .Modal__Background {
     width: 100%;
     height: 100vh;
@@ -14,23 +15,31 @@
         top: 0px;
     }
 
+    // Modal__Container  = Modal창 그 자체
     .Modal__Container {
         width: 70%;
         max-width: 1200px;
-        height: 53%;
-        min-height: 450px;
+        min-height: 400px;
+        max-height: 700px;
         border-radius: 12px;
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         display: flex;
         flex-direction: column;
-        padding: 25px;
+        padding: 2rem;
 
         @media screen and (max-width: 1280px) {
             width: 80%;
             overflow-y: scroll;
         }
 
+        // mobile환경 임의로 500으로 설정했습니다.
+        @media screen and (max-width: 500px) {
+            padding: 0.5rem;
+            max-height: 600px;
+        }
+
+        // Modal__Content = Modal의 내용 (이미지, 글)이 들어가는 공간
         .Modal__Content {
             display: flex;
             flex-direction: row;
@@ -41,7 +50,7 @@
 
             .Modal__Image {
                 width: 40%;
-                height: 100%;
+
                 border-radius: 12px;
 
                 @media screen and (max-width: 1024px) {
@@ -55,8 +64,8 @@
                 }
             }
 
+            // text가 들어가는 공간
             .Modal__Body {
-                margin-left: 1rem;
                 padding: 1rem;
                 flex: 50%;
                 display: flex;
@@ -65,6 +74,7 @@
                 align-items: center;
                 font-size: 0.8rem;
 
+                // 한글명
                 .Pathology__Title {
                     font-size: 2rem;
                     font-weight: 700;
@@ -74,8 +84,15 @@
                     @media screen and (max-width: 768px) {
                         margin-top: 0px;
                     }
+
+                    // mobile
+                    @media screen and (max-width: 500px) {
+                        padding: 0.5rem;
+                        font-size: 1.5rem;
+                    }
                 }
 
+                // 영문명
                 .Pathology__Subtitle {
                     font-size: 1rem;
                     font-weight: 700;
@@ -86,21 +103,36 @@
                     @media screen and (max-width: 768px) {
                         margin-top: 0px;
                     }
+
+                    // mobile
+                    @media screen and (max-width: 500px) {
+                        font-size: 0.8rem;
+                    }
                 }
 
+                // 병 증상
                 .Pathology__Explain {
                     font-size: 1rem;
                     line-height: 1.3;
                     font-weight: 700;
                     margin-top: 1rem;
                     margin-bottom: 0.5rem;
+
+                    @media screen and (max-width: 500px) {
+                        font-size: 0.8rem;
+                    }
                 }
 
+                // 발생환경, 방제방법
                 .Pathology__Subexplain {
                     width: 100%;
                     font-size: 0.9rem;
                     line-height: 1.5;
                     margin: 0.5rem 0;
+
+                    @media screen and (max-width: 500px) {
+                        font-size: 0.8rem;
+                    }
                 }
             }
         }
@@ -111,10 +143,13 @@
     display: flex;
     justify-content: flex-end;
 
-    .Modal__CloseBtn .button {
-        background-color: transparent;
-        border: none;
-        font-size: 25px;
+    .Modal__Icon {
+        background: #000;
+        border-radius: 5px;
+        opacity: 0.8;
         cursor: pointer;
+        :hover {
+            opacity: 1;
+        }
     }
 }

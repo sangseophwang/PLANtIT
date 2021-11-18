@@ -1,8 +1,24 @@
 import React from 'react';
 import '../scss/Modal.scss';
+import CloseIcon from '../../../Assets/CloseIcon.svg';
 
-function Modal({ setOpenModal }: any, props: any) {
-  console.log(props);
+function Modal({ setOpenModal, data }: any) {
+  console.log(data);
+
+  // 방제방법 렌더링 함수
+  const rendering = () => {
+    const result = [];
+    for (let i = 0; i < data[4].length; i++) {
+      result.push(
+        <span key={i}>
+          - {data[4][i]}
+          <br />
+        </span>,
+      );
+    }
+    return result;
+  };
+
   return (
     <div
       className="Modal__Background"
@@ -12,13 +28,14 @@ function Modal({ setOpenModal }: any, props: any) {
     >
       <div className="Modal__Container">
         <div className="Modal__CloseBtn">
-          <button
+          <img
+            className="Modal__Icon"
+            src={CloseIcon}
+            alt="CloseIcon"
             onClick={() => {
               setOpenModal(false);
             }}
-          >
-            X
-          </button>
+          />
         </div>
 
         <div className="Modal__Content">
@@ -28,26 +45,17 @@ function Modal({ setOpenModal }: any, props: any) {
             alt="crops"
           />
           <div className="Modal__Body">
-            <div className="Pathology__Title">Modal Test</div>
-            <div className="Pathology__Subtitle">Modal Test</div>
+            <div className="Pathology__Title">{data[0]}</div>
+            <div className="Pathology__Subtitle">{data[1]}</div>
             <div className="Pathology__Explain">
-              {props.data} <br />
+              {data[2]} <br />
             </div>
-            <div className="Pathology__Subtitle">증상</div>
+            <div className="Pathology__Subtitle">발생환경</div>
             <hr style={{ width: '100px' }} />
-            <div className="Pathology__Subexplain ">동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세</div>
+            <div className="Pathology__Subexplain ">{data[3]} </div>
             <div className="Pathology__Subtitle">방제방법</div>
             <hr style={{ width: '100px' }} />
-            <div className="Pathology__Subexplain ">
-              - 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
-              <br />
-              - 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
-              <br />
-              - 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
-              <br />
-              - 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
-              <br />
-            </div>
+            <div className="Pathology__Subexplain ">{rendering()}</div>
           </div>
         </div>
       </div>
