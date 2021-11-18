@@ -20,12 +20,7 @@ function Modal({ setOpenModal, data }: any) {
   };
 
   return (
-    <div
-      className="Modal__Background"
-      onClick={() => {
-        setOpenModal(false);
-      }}
-    >
+    <div className="Modal__Background">
       <div className="Modal__Container">
         <div className="Modal__CloseBtn">
           <img
