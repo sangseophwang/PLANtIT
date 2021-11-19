@@ -1,7 +1,7 @@
 import React from 'react';
 import './scss/Community.scss';
 import Navigation from '../Components/Common/Navigation';
-import Title from '../Components/Community/Community_Title';
+import Title from '../Components/Community/Main';
 import Footer from '../Components/Common/Footer';
 
 export default function Community(): JSX.Element {

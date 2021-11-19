@@ -1,4 +1,5 @@
-@import '../scss/mixins';
+@import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
 .Footer__Container {
   width: 100%;
   height: 24vh;
@@ -41,7 +42,7 @@
         margin-bottom: 10px;
         transition: 0.5s;
         &:hover {
-          color: #659e38;
+          color: $Green;
           transition: 0.5s;
         }
       }

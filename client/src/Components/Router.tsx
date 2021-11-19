@@ -5,7 +5,7 @@ import Home from '../Routes/Home';
 import Dictionary from '../Routes/Dictionary';
 import Analysis from '../Routes/Analysis';
 import Community from '../Routes/Community';
-import Post from './Community/Post_Contents';
+import Post from './Community/Post';
 import Introduction from '../Routes/Introduction';
 import Login from '../Routes/Login';
 import Result from '../Routes/Result';

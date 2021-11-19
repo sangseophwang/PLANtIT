@@ -1,0 +1,58 @@
+@import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
+.Post__Container {
+  @include Container__Form();
+  flex-direction: column;
+  justify-content: flex-start;
+  .Post__Back-Button {
+    border: none;
+    background: transparent;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: gray;
+    &:hover {
+      color: $LightGreen;
+    }
+    @include responsive('tablet') {
+      font-size: 15px;
+    }
+    @include responsive('mobile') {
+      font-size: 12px;
+      left: 30px;
+    }
+  }
+  .Post__Title-Box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    width: 100%;
+    .Post__Title {
+      width: 70%;
+      border: none;
+      outline: none;
+      text-align: center;
+      font-size: 2vw;
+      font-weight: 700;
+      @include responsive('tablet') {
+        font-size: 4vw;
+        margin-top: 30px;
+      }
+      @include responsive('mobile') {
+        font-size: 5vw;
+      }
+      &::placeholder {
+        transition: 0.5s;
+        color: lightgray;
+      }
+      &:focus::placeholder {
+        color: transparent;
+        transition: 0.3s;
+      }
+    }
+  }
+}

@@ -1,7 +1,8 @@
+@import './variables';
 #map {
-    width: 60%;
-    height: 60%;
-    border-radius: 12px;
-    border: 2px solid #8c9d3d;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 60%;
+  height: 60%;
+  border-radius: 12px;
+  border: 2px solid $LightGreen;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

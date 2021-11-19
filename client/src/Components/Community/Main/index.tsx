@@ -1,5 +1,5 @@
-import './scss/Community_Title.scss';
-import Logo from '../../Assets/logo.png';
+import '../scss/Main.scss';
+import Logo from '../../../Assets/logo.png';
 import { useNavigate } from 'react-router';
 export default function Title(): JSX.Element {
   const navigate = useNavigate();
