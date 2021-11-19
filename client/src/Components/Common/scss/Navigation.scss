@@ -23,6 +23,7 @@
     margin-left: 100px;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     @include responsive('tablet') {
       display: none;
     }

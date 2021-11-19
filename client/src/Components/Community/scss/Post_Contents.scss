@@ -1,0 +1,6 @@
+@import '../../Common/scss/mixins';
+.Post__Container {
+  @include Container__Form();
+  flex-direction: column;
+  justify-content: flex-start;
+}

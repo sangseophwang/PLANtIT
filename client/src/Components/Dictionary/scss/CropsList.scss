@@ -1,0 +1,107 @@
+.Search__Result {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (max-width: 1280px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        width: 95%;
+        margin-bottom: 5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-bottom: 6rem;
+    }
+}
+
+.CropsList__Container-Box {
+    background-color: #f6f6f6;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin-top: 1rem;
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem;
+    }
+
+    .CropsList__Image {
+        width: 100%;
+        height: 15rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+
+        @media screen and (max-width: 768px) {
+            height: 10rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .CropsList__Classification {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .Classification__Name {
+            letter-spacing: 0.1em;
+            color: #659238;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 0.5rem;
+
+            @media screen and (max-width: 768px) {
+                font-size: 0.8rem;
+                padding: 0.3rem;
+            }
+        }
+    }
+
+    .CropsList__Name {
+        font-size: 2.1rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+
+        @media screen and (max-width: 768px) {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .CropsList__Content {
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+
+    .CropsList__Click {
+        display: flex;
+        flex-direction: row;
+        margin-top: 1rem;
+
+        .CropsList__Button {
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 0.5rem;
+            background-color: #90bb65;
+            color: #fff;
+            border-radius: 0.5rem;
+            margin: 0 auto;
+            cursor: pointer;
+
+            @media screen and (max-width: 768px) {
+                font-size: 0.8rem;
+                padding: 0.5rem;
+            }
+        }
+    }
+}
