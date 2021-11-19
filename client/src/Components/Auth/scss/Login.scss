@@ -1,0 +1,149 @@
+@import '../../Common/scss/mixins';
+
+.login-container {
+  @include Container__Form();
+  .login-content {
+    width: 500px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include responsive('mobile') {
+      width: 80%;
+      height: 70%;
+    }
+
+    .login__logo {
+      width: 70%;
+      margin-bottom: 25px;
+    }
+
+    .login-form {
+      margin: 25px 0 25px 0;
+      width: 70%;
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      > div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        @include responsive('mobile') {
+          margin: 10px;
+        }
+
+        > label {
+          line-height: 1.9;
+          margin-right: 20px;
+          color: #88bb61;
+        }
+        > input {
+          line-height: 2.5;
+          width: 100%;
+          color: #88bb61;
+          text-align: center;
+          outline: none;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 0.3px solid #88bb61;
+          &::placeholder {
+            color: gray;
+          }
+          &:focus {
+            border-bottom: 0.3px solid #88bb61;
+            transition: ease-in-out 0.5s;
+          }
+          &:focus::placeholder {
+            color: gray;
+            transition: ease-in-out 0.3s;
+          }
+        }
+      }
+
+      // 로그인 버튼
+      > button {
+        margin-top: 0px;
+        width: 60%;
+        height: 50px;
+        background-color: #88bb61;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 700;
+        color: white;
+
+        @include responsive('mobile') {
+          margin: 30px;
+          width: 50%;
+          height: 30px;
+        }
+      }
+    }
+
+    .login-form__register {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include responsive('mobile') {
+        margin-top: 30px;
+        font-size: 10px;
+      }
+
+      > span {
+        font-size: 14px;
+        margin-left: 20px;
+        @include responsive('mobile') {
+          font-size: 10px;
+          margin-left: 5px;
+        }
+      }
+
+      // 회원가입 버튼
+      > button {
+        margin-right: 20px;
+        width: 30%;
+        height: 200%;
+        background-color: #88bb61;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 700;
+        color: white;
+
+        @include responsive('mobile') {
+          margin-right: 5px;
+          width: 40%;
+          height: 30px;
+          font-size: 10px;
+        }
+      }
+    }
+
+    .login-social {
+      display: flex;
+      margin-top: 50px;
+
+      .login-social__google--img {
+        width: 50px;
+        cursor: pointer;
+        margin-right: 25px;
+        margin-left: 25px;
+      }
+
+      .login-social__naver--img {
+        width: 50px;
+        cursor: pointer;
+        margin-right: 25px;
+        margin-left: 25px;
+      }
+    }
+  }
+}

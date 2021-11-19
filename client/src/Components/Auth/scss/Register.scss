@@ -1,0 +1,82 @@
+@import '../../Common/scss/mixins';
+
+.register__container {
+  @include Container__Form();
+  .register__contents {
+    width: 500px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include responsive('mobile') {
+      width: 80%;
+      height: 70%;
+    }
+
+    .register__logo {
+      width: 70%;
+      margin-bottom: 20px;
+    }
+
+    .register-form {
+      margin: 30px 0 -30px 0;
+      width: 70%;
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      > div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        > label {
+          line-height: 1.9;
+          margin-right: 20px;
+          color: #88bb61;
+        }
+        > input {
+          line-height: 2.5;
+          width: 100%;
+          color: #88bb61;
+          text-align: center;
+          outline: none;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          border-bottom: 0.3px solid #88bb61;
+          &::placeholder {
+            color: gray;
+
+            @include responsive('mobile') {
+              font-size: 10px;
+            }
+          }
+          &:focus {
+            border-bottom: 0.3px solid #88bb61;
+            transition: ease-in-out 0.5s;
+          }
+          &:focus::placeholder {
+            color: gray;
+            transition: ease-in-out 0.3s;
+          }
+        }
+      }
+
+      > button {
+        margin-top: 0px;
+        width: 50%;
+        height: 10%;
+        background-color: #88bb61;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        font-weight: 700;
+        color: white;
+      }
+    }
+  }
+}
