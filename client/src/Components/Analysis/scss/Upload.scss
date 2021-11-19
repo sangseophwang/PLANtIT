@@ -22,14 +22,15 @@
 }
 
 .Upload__Text-Container {
+    width: 60%;
     margin-top: 1rem;
-    padding-right: 2rem;
 
     @media screen and (max-width: 1280px) {
+        width: 80%;
         padding-right: 1rem;
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 500px) {
         padding-right: 0;
     }
 
@@ -41,11 +42,17 @@
         @media screen and (max-width: 1280px) {
             font-size: 2.3rem;
         }
+
+        @media screen and (max-width: 500px) {
+            font-size: 1.8rem;
+        }
     }
 
     .Sub__Text {
         margin-top: 2rem;
         font-weight: 400;
+        line-height: 1.5;
+        word-break: break-word;
 
         @media screen and (max-width: 768px) {
             font-size: 1rem;
@@ -54,11 +61,45 @@
 
     .Crops__Text {
         margin-top: 4rem;
-        font-weight: 400;
+        font-weight: 700;
+        color: #bdbdbd;
 
         @media screen and (max-width: 1024px) {
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;
+        }
+    }
+
+    .Button-Continer {
+        max-width: 450px;
+        margin: 5rem auto;
+
+        .Upload__Button {
+            text-align: center;
+            width: 100%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 1rem 0;
+            background-color: #90bb65;
+            color: #fff;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .Upload__Button:hover {
+            background-color: darken($color: #90bb65, $amount: 10%);
+        }
+
+        .Fail__Button {
+            text-align: center;
+            width: 100%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 1rem 0;
+            background-color: #8c8c8c;
+            color: #fff;
+            border-radius: 0.5rem;
         }
     }
 }
@@ -123,7 +164,7 @@
     #uploaded-image {
         height: 350px;
         width: 350px;
-        object-fit: cover;
+        object-fit: fill;
         border-radius: 12px;
     }
     .close-icon {
@@ -139,4 +180,10 @@
             opacity: 1;
         }
     }
+}
+
+.Upload-Information {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import CloseIcon from '../../Assets/CloseIcon.svg';
 import FolderIcon from '../../Assets/folder_icon_transparent.png';
 import './scss/Upload.scss';
@@ -31,7 +32,19 @@ const Upload = () => {
           (후렴)무궁화 삼천리 화려강산 대한사람 대한으로 길이보전하세
         </div>
 
-        <div className="Crops__Text">가능 작물: 고추, 무, 배추, 애호박, 양배추, 오이, 콩, 토마토 , 파 , 호박</div>
+        <div className="Crops__Text">가능 작물: 고추, 무, 배추, 애호박, 양배추, 오이, 콩, 토마토, 파, 호박</div>
+
+        <div className="Button-Continer">
+          {isUploaded ? (
+            <div className="Upload__Button">
+              <Link style={{ textDecoration: 'none', color: 'white' }} to="/result">
+                검사시작
+              </Link>
+            </div>
+          ) : (
+            <div className="Fail__Button">검사시작</div>
+          )}
+        </div>
       </div>
       <div className="Upload__Container">
         <div className="Upload__Box">
@@ -62,9 +75,9 @@ const Upload = () => {
           </div>
         </div>
 
-        {isUploaded ? <h2>{typeFile}파일 입니다.</h2> : null}
+        {/* {isUploaded ? <div className="Upload-Information">{typeFile}파일 입니다.</div> : null} */}
 
-        <h3>가능한 확장자: .jpg / .jpeg / .png</h3>
+        <div className="Upload-Information">가능한 확장자: .jpg / .jpeg / .png</div>
       </div>
     </div>
   );

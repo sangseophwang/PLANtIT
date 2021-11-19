@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../scss/Modal.scss';
 import CloseIcon from '../../../Assets/CloseIcon.svg';
 
@@ -18,6 +18,8 @@ function Modal({ setOpenModal, data }: any) {
     }
     return result;
   };
+
+  // 모달 창 외부 감지 테스트 코드
 
   return (
     <div className="Modal__Background">
