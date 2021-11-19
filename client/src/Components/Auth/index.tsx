@@ -9,8 +9,8 @@ import axios from 'axios';
 //   });
 // }
 
-const naverClientId = 'ioHK_g45Ha9ZWdoNfune';
-const googleClientId = '981453120514-lh9cf035sa3pbhan5qa8fjr9eg85idot.apps.googleusercontent.com';
+const naverClientId = '';
+const googleClientId = '';
 
 const requestDjango = axios.create({
   baseURL: 'http://localhost:8000/api',
