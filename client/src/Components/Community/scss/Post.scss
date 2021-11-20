@@ -4,46 +4,67 @@
   @include Container__Form();
   flex-direction: column;
   justify-content: flex-start;
-  .Post__Back-Button {
-    border: none;
-    background: transparent;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    color: gray;
-    &:hover {
-      color: $LightGreen;
-    }
+  .Post__Back-Button-Box {
+    width: 60%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    margin-bottom: -30px;
     @include responsive('tablet') {
-      font-size: 15px;
+      margin-bottom: -80px;
+      height: 8vh;
+      width: 80%;
     }
     @include responsive('mobile') {
-      font-size: 12px;
-      left: 30px;
+      margin-bottom: -60px;
+      padding-left: 20px;
+      width: 100%;
+    }
+    .Post__Back-Button {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      color: gray;
+      transition: 0.4s;
+      &:hover {
+        color: $LightGreen;
+        transition: 0.4s;
+      }
+      @include responsive('tablet') {
+        font-size: 15px;
+      }
+      @include responsive('mobile') {
+        font-size: 12px;
+        left: 30px;
+      }
     }
   }
   .Post__Title-Box {
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 20vh;
-    width: 100%;
+    width: 60%;
+    @include responsive('tablet') {
+      width: 80%;
+    }
+    @include responsive('mobile') {
+      width: 100%;
+      padding-left: 20px;
+    }
     .Post__Title {
       width: 70%;
       border: none;
       outline: none;
-      text-align: center;
       font-size: 2vw;
       font-weight: 700;
       @include responsive('tablet') {
-        font-size: 4vw;
+        font-size: 5vw;
         margin-top: 30px;
       }
       @include responsive('mobile') {
-        font-size: 5vw;
+        font-size: 6vw;
       }
       &::placeholder {
         transition: 0.5s;
@@ -55,4 +76,17 @@
       }
     }
   }
+}
+.Editor {
+  width: 60%;
+  height: 55vh;
+  @include responsive('tablet') {
+    width: 80%;
+  }
+  @include responsive('mobile') {
+    width: 100%;
+  }
+}
+.ql-editor strong {
+  font-weight: bold;
 }

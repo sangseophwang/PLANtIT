@@ -1,4 +1,5 @@
 @import '/src/Components/Common/scss/variables';
+@import '/src/Components//Common/scss/mixins';
 .Submit__Container {
   width: 100%;
   height: 10vh;
@@ -6,18 +7,42 @@
   bottom: 0;
   border-top: 1px solid lightgray;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  .Submit__Buttons {
-    width: 20%;
-    > button {
-      border: none;
-      background-color: $LightGreen;
-      color: white;
-      width: 100px;
-      height: 30px;
-      border-radius: 5px;
-      margin-right: 10px;
+  justify-content: center;
+  .Submit__Wrapper {
+    width: 60%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include responsive('tablet') {
+      height: 7vh;
+      width: 80%;
+    }
+    @include responsive('mobile') {
+      width: 100%;
+      height: 10vh;
+      padding: 0 10px;
+    }
+    .Submit__Time {
+      color: gray;
+    }
+    .Submit__Buttons {
+      > button {
+        border: none;
+        background-color: $LightGreen;
+        color: white;
+        width: 110px;
+        height: 50px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 9px;
+        margin-left: 10px;
+        @include responsive('mobile') {
+          width: 80px;
+          height: 38px;
+          font-size: 14px;
+        }
+      }
     }
   }
 }

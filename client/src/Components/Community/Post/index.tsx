@@ -11,11 +11,13 @@ export default function Post(): JSX.Element {
   console.log(title);
   return (
     <section className="Post__Container">
-      <button className="Post__Back-Button" onClick={() => navigate('/community')}>
-        {`< 뒤로가기`}
-      </button>
+      <div className="Post__Back-Button-Box">
+        <button className="Post__Back-Button" onClick={() => navigate('/community')}>
+          {`< 뒤로가기`}
+        </button>
+      </div>
       <div className="Post__Title-Box">
-        <input className="Post__Title" type="text" placeholder="| 제목" onChange={event => setTitle(event.target.value)} />
+        <input className="Post__Title" type="text" placeholder="+ 제목" onChange={event => setTitle(event.target.value)} />
       </div>
       <Editor />
       <Submit />
