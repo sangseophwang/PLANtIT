@@ -22,7 +22,7 @@
     }
     .Post__Back-Button {
       border: none;
-      background: transparent;
+      background: white;
       cursor: pointer;
       font-size: 16px;
       font-weight: 600;
@@ -69,6 +69,10 @@
       &::placeholder {
         transition: 0.5s;
         color: lightgray;
+      }
+      &:hover::placeholder {
+        color: $LightGreen;
+        transition: 0.5s;
       }
       &:focus::placeholder {
         color: transparent;

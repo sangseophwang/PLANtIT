@@ -37,6 +37,12 @@
         font-weight: 700;
         border-radius: 9px;
         margin-left: 10px;
+        cursor: pointer;
+        transition: 0.5s;
+        &:hover {
+          background-color: $Green;
+          transition: 0.8s;
+        }
         @include responsive('mobile') {
           width: 80px;
           height: 38px;

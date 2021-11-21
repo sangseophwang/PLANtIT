@@ -23,6 +23,7 @@
   > h3 {
     font-size: 1.5vw;
     margin-bottom: 10px;
+    font-weight: 300;
     color: lightgray;
     @include responsive('tablet') {
       font-size: 2vw;
@@ -30,10 +31,10 @@
   }
   > button {
     border: none;
-    width: 11vw;
-    height: 4vw;
+    width: 9vw;
+    height: 3.6vw;
     border-radius: 10px;
-    font-size: 1.5vw;
+    font-size: 1.3vw;
     font-weight: 600;
     color: white;
     background-color: #bcdea1;

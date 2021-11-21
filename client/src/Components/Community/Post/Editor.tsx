@@ -6,12 +6,10 @@ import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 export default function Editor(): JSX.Element {
+  Quill.register('modules/imageResize', ImageResize);
   const QuillRef = useRef<ReactQuill>(null);
   const [contents, setContents] = useState('');
-  const Block = Quill.import('blots/block');
-  Block.tagName = 'SPAN';
-  Quill.register(Block, true);
-  Quill.register('modules/imageResize', ImageResize);
+
   const modules = useMemo(
     () => ({
       toolbar: {
