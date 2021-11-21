@@ -14,7 +14,7 @@ def disease_all(request):
     try:
         diseases = Disease.objects.all()
         diseases = list(diseases.values())
-        result = {"code" : 200, "message" : "success", "data" : diseases}
+        result = {"data" : diseases}
         return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
     except:
         return Response('잘못된 형식')
@@ -38,7 +38,7 @@ def disease_each(request, id):
             pesticides += find_each_pesticide
 
         disease[0]['pesticides'] = pesticides
-        result = {"code" : 200, "message" : "success", "data" : disease[0]}
+        result = {"data" : disease[0]}
 
         return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
 

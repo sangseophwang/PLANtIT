@@ -15,7 +15,7 @@ def pesticide_each(request, name):
 
         pesticide = Pesticide.objects.filter(name = name)
         pesticide = pesticide.values()
-        result = {"code" : 200, "message" : "success", "data" : pesticide[0]}
+        result = {"data" : pesticide[0]}
 
         return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
         
