@@ -42,9 +42,12 @@
         z-index: 99;
 
         @media screen and (max-width: 1280px) {
-            overflow-y: scroll;
             margin: 0 auto;
             max-height: 600px;
+        }
+
+        @media screen and (max-width: 768px) {
+            overflow-y: scroll;
         }
 
         // mobile환경 임의로 500으로 설정했습니다.
