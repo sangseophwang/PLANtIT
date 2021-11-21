@@ -12,9 +12,12 @@ def pesticide_each(request, name):
     농약 각각의 정보
     '''
     try:
+
         pesticide = Pesticide.objects.filter(name = name)
-        pesticide = list(pesticide.values())
-        return JsonResponse(pesticide, json_dumps_params={'ensure_ascii': False}, safe=False)
+        pesticide = pesticide.values()
+        result = {"code" : 200, "message" : "success", "data" : pesticide[0]}
+
+        return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
         
     except:
         return Response('잘못된 형식')
