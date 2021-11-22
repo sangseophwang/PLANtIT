@@ -4,43 +4,6 @@
   @include Container__Form();
   flex-direction: column;
   justify-content: flex-start;
-  .Post__Back-Button-Box {
-    width: 60%;
-    height: 5vh;
-    display: flex;
-    align-items: center;
-    margin-bottom: -30px;
-    @include responsive('tablet') {
-      margin-bottom: -80px;
-      height: 8vh;
-      width: 80%;
-    }
-    @include responsive('mobile') {
-      margin-bottom: -60px;
-      padding-left: 20px;
-      width: 100%;
-    }
-    .Post__Back-Button {
-      border: none;
-      background: white;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-      color: gray;
-      transition: 0.4s;
-      &:hover {
-        color: $LightGreen;
-        transition: 0.4s;
-      }
-      @include responsive('tablet') {
-        font-size: 15px;
-      }
-      @include responsive('mobile') {
-        font-size: 12px;
-        left: 30px;
-      }
-    }
-  }
   .Post__Title-Box {
     display: flex;
     align-items: center;
@@ -48,6 +11,7 @@
     width: 60%;
     @include responsive('tablet') {
       width: 80%;
+      height: 15vh;
     }
     @include responsive('mobile') {
       width: 100%;
@@ -57,11 +21,10 @@
       width: 70%;
       border: none;
       outline: none;
-      font-size: 2vw;
+      font-size: 2.5vw;
       font-weight: 700;
       @include responsive('tablet') {
         font-size: 5vw;
-        margin-top: 30px;
       }
       @include responsive('mobile') {
         font-size: 6vw;
@@ -85,6 +48,7 @@
   width: 60%;
   height: 55vh;
   @include responsive('tablet') {
+    height: 62vh;
     width: 80%;
   }
   @include responsive('mobile') {

@@ -25,6 +25,9 @@
     }
     .Submit__Time {
       color: gray;
+      @include responsive('mobile') {
+        font-size: 12px;
+      }
     }
     .Submit__Buttons {
       > button {
@@ -44,7 +47,7 @@
           transition: 0.8s;
         }
         @include responsive('mobile') {
-          width: 80px;
+          width: 76px;
           height: 38px;
           font-size: 14px;
         }

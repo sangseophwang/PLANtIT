@@ -4275,6 +4275,11 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
+disqus-react@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/disqus-react/-/disqus-react-1.1.2.tgz#97fd00630f9fe53db2673c0bd9155f52e1e0f97c"
+  integrity sha512-CrG7FUxI4MFfAQ5sNTOxpxAHMZmqzQEDgGvc7+DW7v8jfrt/RMLmwuhOSpAMTyVGQowCV6NxUQ5ShALEy2uJMg==
+
 dns-equal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/dns-equal/-/dns-equal-1.0.0.tgz#b39e7f1da6eb0a75ba9c17324b34753c47e0654d"
@@ -9437,6 +9442,11 @@ quill-delta@^3.6.2:
     deep-equal "^1.0.1"
     extend "^3.0.2"
     fast-diff "1.1.2"
+
+quill-image-drop-and-paste@^1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/quill-image-drop-and-paste/-/quill-image-drop-and-paste-1.2.9.tgz#900c606cb7f682a328a2c9c75e3c1c2b96d89f72"
+  integrity sha512-NZ3hWRL8IL8/qg2wpMm1NPmA3S0vwQEJj8NVvTbKMHJ2j2rpDXbxhVYVWmyaD6ERgw1U8kKqWmQfUhzVpE13lA==
 
 quill-image-resize-module-react@^3.0.0:
   version "3.0.0"
