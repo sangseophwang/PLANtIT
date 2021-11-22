@@ -9,8 +9,8 @@ export default function Contact(): JSX.Element {
       <Navigation />
 
       <div className="Contact__Container">
-        <h1>도움이 필요하신가요?</h1>
         <img src={Image} alt="" className="Contact__Image" />
+        <div className="Banner__text">도움이 필요하신가요?</div>
       </div>
       <div className="Contact__Box">
         <h1>

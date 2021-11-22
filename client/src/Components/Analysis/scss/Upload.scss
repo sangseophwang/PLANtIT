@@ -1,3 +1,5 @@
+@import "/src/Components/Common/scss/mixins";
+
 .Upload__Layout {
     margin-top: 8rem;
     height: 100%;
@@ -11,11 +13,11 @@
     align-items: center;
     justify-content: space-between;
 
-    @media screen and (max-width: 1280px) {
+    @include responsive("tablet__large") {
         width: 90%;
     }
 
-    @media screen and (max-width: 1024px) {
+    @include responsive("tablet") {
         flex-direction: column;
         margin-top: 1rem;
     }
@@ -25,12 +27,12 @@
     width: 60%;
     margin-top: 1rem;
 
-    @media screen and (max-width: 1280px) {
+    @include responsive("tablet__large") {
         width: 80%;
         padding-right: 1rem;
     }
 
-    @media screen and (max-width: 500px) {
+    @include responsive("mobile__small") {
         padding-right: 0;
     }
 
@@ -39,11 +41,11 @@
         font-weight: 700;
         text-align: center;
 
-        @media screen and (max-width: 1280px) {
+        @include responsive("tablet__large") {
             font-size: 2.3rem;
         }
 
-        @media screen and (max-width: 500px) {
+        @include responsive("mobile__small") {
             font-size: 1.8rem;
         }
     }
@@ -54,7 +56,7 @@
         line-height: 1.5;
         word-break: break-word;
 
-        @media screen and (max-width: 768px) {
+        @include responsive("mobile") {
             font-size: 1rem;
         }
     }
@@ -64,7 +66,7 @@
         font-weight: 700;
         color: #bdbdbd;
 
-        @media screen and (max-width: 1024px) {
+        @include responsive("tablet") {
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;
         }
@@ -114,14 +116,16 @@
     margin-top: 1rem;
     margin-left: 10rem;
 
-    @media screen and (max-width: 1024px) {
+    @include responsive("tablet") {
         margin-bottom: 1rem;
         margin-left: 0;
         padding: 1.5rem;
     }
 
-    @media screen and (max-width: 768px) {
+    @include responsive("mobile") {
         margin-top: 0;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
 
     text-align: center;
@@ -136,7 +140,6 @@
     margin-top: 1rem;
     place-items: center;
     border: 1px dashed #799cd9;
-    /* padding: 36px 48px; */
     position: relative;
     height: 350px;
     width: 350px;

@@ -1,12 +1,14 @@
+@import "/src/Components/Common/scss/mixins";
+
 .IntroContent__Container {
     width: 60%;
     margin: 5rem auto 5rem auto;
 
-    @media screen and (max-width: 1280px) {
+    @include responsive("tablet__large") {
         width: 80%;
     }
 
-    @media screen and (max-width: 1024px) {
+    @include responsive("tablet") {
         margin: 2rem auto 7rem auto;
     }
 
@@ -15,7 +17,7 @@
         font-size: 3rem;
         font-weight: 700;
 
-        @media screen and (max-width: 768px) {
+        @include responsive("mobile") {
             font-size: 2.5rem;
         }
     }
@@ -27,7 +29,7 @@
         font-weight: 700;
         color: #bdbdbd;
 
-        @media screen and (max-width: 768px) {
+        @include responsive("mobile") {
             font-size: 1rem;
         }
     }
@@ -38,13 +40,8 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-top: 5rem;
 
-    @media screen and (max-width: 1024px) {
+    @include responsive("tablet") {
         margin-top: 3.5rem;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-
-    @media screen and (max-width: 1024px) {
-        margin-top: 2rem;
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 
@@ -59,7 +56,7 @@
     font-size: 1.5rem;
     font-weight: 700;
 
-    @media screen and (max-width: 768px) {
+    @include responsive("mobile") {
         font-size: 1rem;
         margin-bottom: 1rem;
     }

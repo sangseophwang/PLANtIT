@@ -1,3 +1,5 @@
+@import "/src/Components/Common/scss/mixins";
+
 .Search__Result {
     width: 80%;
     display: grid;
@@ -7,17 +9,17 @@
     margin-left: auto;
     margin-right: auto;
 
-    @media screen and (max-width: 1280px) {
+    @include responsive("tablet__large") {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    @media screen and (max-width: 1024px) {
+    @include responsive("tablet") {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         width: 95%;
         margin-bottom: 5rem;
     }
 
-    @media screen and (max-width: 768px) {
+    @include responsive("mobile") {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
         margin-bottom: 6rem;
@@ -31,7 +33,7 @@
     text-align: center;
     margin-top: 1rem;
 
-    @media screen and (max-width: 768px) {
+    @include responsive("mobile") {
         padding: 1rem;
     }
 
@@ -43,7 +45,7 @@
         border-radius: 0.5rem;
         margin-bottom: 1rem;
 
-        @media screen and (max-width: 768px) {
+        @include responsive("mobile") {
             height: 10rem;
             margin-bottom: 0.5rem;
         }
@@ -61,7 +63,7 @@
             font-weight: 700;
             padding: 0.5rem;
 
-            @media screen and (max-width: 768px) {
+            @include responsive("mobile") {
                 font-size: 0.8rem;
                 padding: 0.3rem;
             }
@@ -74,6 +76,7 @@
         margin-bottom: 1rem;
 
         @media screen and (max-width: 768px) {
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
     }
@@ -81,6 +84,10 @@
     .CropsList__Content {
         font-size: 0.8rem;
         font-weight: 400;
+
+        @media screen and (max-width: 768px) {
+            font-size: 0.5rem;
+        }
     }
 
     .CropsList__Click {
