@@ -24,6 +24,10 @@
         gap: 1rem;
         margin-bottom: 6rem;
     }
+
+    @include responsive("mobile__small") {
+        gap: 0.5rem;
+    }
 }
 
 .CropsList__Container-Box {
@@ -32,9 +36,15 @@
     border-radius: 0.5rem;
     text-align: center;
     margin-top: 1rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 
     @include responsive("mobile") {
         padding: 1rem;
+    }
+
+    @include responsive("mobile__small") {
+        padding: 0.5rem;
+        margin-top: 0rem;
     }
 
     .CropsList__Image {
@@ -75,8 +85,13 @@
         font-weight: 700;
         margin-bottom: 1rem;
 
-        @media screen and (max-width: 768px) {
+        @include responsive("mobile") {
             font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @include responsive("mobile__small") {
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
         }
     }
@@ -85,7 +100,7 @@
         font-size: 0.8rem;
         font-weight: 400;
 
-        @media screen and (max-width: 768px) {
+        @include responsive("mobile") {
             font-size: 0.5rem;
         }
     }
@@ -99,13 +114,15 @@
             font-size: 1rem;
             font-weight: 700;
             padding: 0.5rem;
+            border: 0;
             background-color: #90bb65;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
             color: #fff;
             border-radius: 0.5rem;
             margin: 0 auto;
             cursor: pointer;
 
-            @media screen and (max-width: 768px) {
+            @include responsive("mobile") {
                 font-size: 0.8rem;
                 padding: 0.5rem;
             }

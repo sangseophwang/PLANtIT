@@ -1,14 +1,14 @@
 import React from 'react';
 import Navigation from '../Components/Common/Navigation';
 import './scss/Result.scss';
-import SwiperCore, { Pagination } from 'swiper';
+import SwiperCore, { Mousewheel, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
 import Test from '../Components/Result/test';
 import Last from '../Components/Result/Last';
 
-SwiperCore.use([Pagination]);
+SwiperCore.use([Mousewheel, Pagination]);
 
 const bullet = ['- 질병명', '- 피해정도', '- 예방 및 치료법', '- 가까운 치료소'];
 
@@ -22,6 +22,13 @@ export default function Result(): JSX.Element {
         slidesPerView={1}
         spaceBetween={30}
         speed={1000}
+        mousewheel={true}
+        onReachEnd={swiper => {
+          swiper.mousewheel.disable();
+        }}
+        onSlideChangeTransitionStart={swiper => {
+          swiper.mousewheel.enable();
+        }}
         pagination={{
           clickable: true,
           renderBullet: function (index, className) {

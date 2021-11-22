@@ -1,3 +1,4 @@
+import Intro4 from '../Intro4.png';
 const IntroDummy = [
   {
     src: 'https://images.unsplash.com/photo-1591754060004-f91c95f5cf05?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
@@ -12,7 +13,7 @@ const IntroDummy = [
   },
 
   {
-    src: 'https://images.unsplash.com/photo-1530970279610-8234f88384c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80',
+    src: Intro4,
   },
 
   {

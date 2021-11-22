@@ -14,7 +14,7 @@ const IntroContent = () => {
         ))}
       </div>
 
-      <div className="Introduction__Content">플래닛은 지속가능한 농업을 위한 아이디어를 생각합니다.</div>
+      <div className="Introduction__Content">플래닛은 지속가능한 농업을 위해 노력합니다.</div>
     </div>
   );
 };

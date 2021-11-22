@@ -1,15 +1,17 @@
 @import "/src/Components/Common/scss/mixins";
 
 .Banner__Container {
+    position: relative;
+    width: 100%;
     .Banner__Image {
         width: 100%;
+        position: relative;
     }
 
     .Banner__text {
-        display: inline;
         width: 100%;
         position: absolute;
-        top: 45%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 5rem;
@@ -18,17 +20,10 @@
         text-align: center;
 
         @include responsive("tablet__large") {
-            transform: translate(-50%, -100%);
             font-size: 4rem;
         }
 
-        @include responsive("tablet") {
-            top: 150px;
-        }
-
         @include responsive("mobile") {
-            transform: translate(-50%, -50%);
-            top: 100px;
             font-size: 3rem;
         }
 
