@@ -4,7 +4,7 @@ import Member from '../Routes/Member';
 import Home from '../Routes/Home';
 import Dictionary from '../Routes/Dictionary';
 import Analysis from '../Routes/Analysis';
-import Community from '../Routes/Community';
+import Community from './Community/Main';
 import Post from './Community/Post';
 import Board from './Community/Board';
 import Introduction from '../Routes/Introduction';

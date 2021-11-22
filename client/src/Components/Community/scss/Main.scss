@@ -1,60 +1,84 @@
 @import '/src/Components/Common/scss/mixins';
-.Title__Container {
-  @include Container__Form();
-  flex-direction: column;
-  .Title__Logo-Mobile {
-    @include Logo__Mobile();
-    @include responsive('tablet') {
-      left: 35%;
+.Main__Container {
+  .Main__Title {
+    @include Container__Form();
+    flex-direction: column;
+    .Main__Logo-Mobile {
+      @include Logo__Mobile();
+      @include responsive('tablet') {
+        left: 35%;
+      }
     }
-  }
-  > h1 {
-    font-weight: 800;
-    font-size: 5.5vw;
-    margin: 80px 0 60px 0;
-    @include responsive('tablet') {
-      font-size: 7.5vw;
-      margin-bottom: 50px;
+    > h1 {
+      font-weight: 800;
+      font-size: 5.5vw;
+      margin: 80px 0 60px 0;
+      @include responsive('tablet') {
+        font-size: 7.5vw;
+        margin-bottom: 50px;
+      }
+      @include responsive('mobile') {
+        margin-bottom: 30px;
+      }
     }
-    @include responsive('mobile') {
-      margin-bottom: 30px;
+    > h3 {
+      font-size: 1.5vw;
+      margin-bottom: 10px;
+      font-weight: 300;
+      color: lightgray;
+      @include responsive('tablet') {
+        font-size: 2vw;
+      }
     }
-  }
-  > h3 {
-    font-size: 1.5vw;
-    margin-bottom: 10px;
-    font-weight: 300;
-    color: lightgray;
-    @include responsive('tablet') {
-      font-size: 2vw;
-    }
-  }
-  > button {
-    border: none;
-    width: 9vw;
-    height: 3.6vw;
-    border-radius: 10px;
-    font-size: 1.3vw;
-    font-weight: 600;
-    color: white;
-    background-color: #bcdea1;
-    margin-top: 80px;
-    cursor: pointer;
-    transition: 0.5s;
-    &:hover {
-      background-color: #92cd7b;
+    > button {
+      border: none;
+      width: 9vw;
+      height: 3.6vw;
+      border-radius: 10px;
+      font-size: 1.3vw;
+      font-weight: 600;
+      color: white;
+      background-color: #bcdea1;
+      margin-top: 80px;
+      cursor: pointer;
       transition: 0.5s;
+      &:hover {
+        background-color: #92cd7b;
+        transition: 0.5s;
+      }
+      @include responsive('tablet') {
+        width: 22vw;
+        height: 8vw;
+        font-size: 3vw;
+        letter-spacing: 2px;
+        border-radius: 15px;
+      }
+      @include responsive('mobile') {
+        margin-top: 30px;
+        border-radius: 6px;
+      }
     }
-    @include responsive('tablet') {
-      width: 22vw;
-      height: 8vw;
-      font-size: 3vw;
-      letter-spacing: 2px;
-      border-radius: 15px;
+  }
+  .Main__Contents-Wrapper {
+    display: grid;
+    gap: 3px;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(3, 50vh);
+    .one {
+      background-color: teal;
+      grid-column: span 2;
     }
-    @include responsive('mobile') {
-      margin-top: 30px;
-      border-radius: 6px;
+    .two {
+      background-color: tomato;
+      grid-column: span 1;
+    }
+    .three {
+      background-color: purple;
+      grid-column: span 1;
+    }
+    .four {
+      background-color: orange;
+      grid-column: span 2;
     }
   }
 }
