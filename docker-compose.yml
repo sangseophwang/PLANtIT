@@ -9,6 +9,8 @@ services:
       - ./mysql:/var/lib/mysql
     ports:
       - 3306:3306
+    env_file:
+      - docker.env
 
   backend:
     container_name: backend
