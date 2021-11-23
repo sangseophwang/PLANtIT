@@ -55,7 +55,7 @@ function RegisterPage(): JSX.Element {
       })
       .then(response => {
         console.log('성공', response.data.message);
-        response.data.message === 'register success' ? navigate('/login') : alert('fail register');
+        // response.data.message === 'register success' ? navigate('/login') : alert('fail register');
       })
       .catch(error => {
         console.log('실패', error);
