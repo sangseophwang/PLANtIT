@@ -1,1 +1,1 @@
-FROM jhj967878/backend:mysql
+FROM mysql

@@ -1,12 +1,14 @@
+@import "/src/Components/Common/scss/mixins";
+
 // 검색창
 .Search__Container {
-    border-bottom: 4px solid #bdbdbd;
+    border-bottom: 3px solid #bdbdbd;
     width: 80%;
     margin-top: 1rem;
     margin-left: auto;
     margin-right: auto;
 
-    @media screen and (max-width: 1024px) {
+    @include responsive("tablet") {
         width: 93%;
     }
 }
@@ -55,7 +57,7 @@
         text-align: center;
         margin: 2rem 0;
 
-        @media screen and (max-width: 1024px) {
+        @include responsive("tablet") {
             width: 100%;
             margin: 1.5rem 0;
         }

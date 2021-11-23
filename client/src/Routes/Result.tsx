@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from '../Components/Common/Navigation';
 import './scss/Result.scss';
-import SwiperCore, { Pagination, Mousewheel } from 'swiper';
+import SwiperCore, { Mousewheel, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
@@ -21,8 +21,14 @@ export default function Result(): JSX.Element {
         direction={'vertical'}
         slidesPerView={1}
         spaceBetween={30}
-        mousewheel={true}
         speed={1000}
+        mousewheel={true}
+        onReachEnd={swiper => {
+          swiper.mousewheel.disable();
+        }}
+        onSlideChangeTransitionStart={swiper => {
+          swiper.mousewheel.enable();
+        }}
         pagination={{
           clickable: true,
           renderBullet: function (index, className) {
