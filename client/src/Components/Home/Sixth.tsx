@@ -1,6 +1,6 @@
-import './scss/Sixth.scss';
-import Footer from '../Common/Footer';
-import Logo from '../../Assets/logo.png';
+import 'Components/Home/scss/Sixth.scss';
+import Footer from 'Components/Common/Footer';
+import Logo from 'Assets/logo.png';
 export default function Sixth(): JSX.Element {
   return (
     <div className="Sixth__Container">

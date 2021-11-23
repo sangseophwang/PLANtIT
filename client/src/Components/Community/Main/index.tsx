@@ -1,6 +1,5 @@
-import '../scss/Main.scss';
-import Logo from '../../../Assets/logo.png';
-import Test from '../../../Assets/test.jpeg';
+import 'Components/Community/scss/Main.scss';
+import Logo from 'Assets/logo.png';
 import { useNavigate } from 'react-router';
 
 export default function Community(): JSX.Element {

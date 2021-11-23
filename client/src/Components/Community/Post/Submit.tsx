@@ -1,4 +1,4 @@
-import '../scss/Submit.scss';
+import 'Components/Community/scss/Submit.scss';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import moment from 'moment';

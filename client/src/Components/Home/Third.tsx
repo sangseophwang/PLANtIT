@@ -1,5 +1,5 @@
-import './scss/Third.scss';
-import Test from '../../Assets/test.jpeg';
+import 'Components/Home/scss/Third.scss';
+import Test from 'Assets/test.jpeg';
 export default function Third(): JSX.Element {
   return (
     <section className="Third__Container">

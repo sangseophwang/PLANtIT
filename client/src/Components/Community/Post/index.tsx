@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import '../scss/Post.scss';
-import Editor from './Editor';
-import Submit from './Submit';
+import 'Components/Community/scss/Post.scss';
+import Editor from 'Components/Community/Post/Editor';
+import Submit from 'Components/Community/Post/Submit';
 
 export default function Post(): JSX.Element {
   const [title, setTitle] = useState<string>('');

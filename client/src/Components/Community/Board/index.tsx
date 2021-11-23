@@ -1,6 +1,6 @@
-import '../scss/Board.scss';
+import 'Components/Community/scss/Board.scss';
 import Disqus from 'disqus-react';
-import Navigation from '../../Common/Navigation';
+import Navigation from 'Components/Common/Navigation';
 import { useNavigate } from 'react-router';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
