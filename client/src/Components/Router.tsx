@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Member from './Member';
+import Member from 'Components/Member/index';
 import Home from '../Routes/Home';
-import Dictionary from './Dictionary';
-import Analysis from './Analysis';
+import Dictionary from 'Components/Dictionary/index';
+import Analysis from 'Components/Analysis/index';
 import Community from '../Routes/Community';
-import Introduction from './Introduction';
+import Introduction from 'Components/Introduction/index';
 import Login from '../Routes/Login';
 import Result from '../Routes/Result';
-import Contact from './Contact';
+import Contact from 'Components/Contact/index';
 
 export default function AppRouter(): JSX.Element {
   return (

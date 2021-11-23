@@ -1,6 +1,6 @@
 import React from 'react';
-import Member from '../../Assets/Dummy/Member';
-import '../Member/scss/MemberList.scss';
+import Member from 'Assets/Dummy/Member';
+import 'Components/Member/scss/MemberList.scss';
 
 const MemberList = () => {
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import '../scss/Modal.scss';
-import CloseIcon from '../../../Assets/CloseIcon.svg';
+import 'Components/Common/scss/Modal.scss';
+import CloseIcon from 'Assets/CloseIcon.svg';
 
 function Modal({ setOpenModal, data }: any) {
   console.log(data);

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Pathology from '../../Assets/Dummy/Pathology';
+import Pathology from 'Assets/Dummy/Pathology';
 
-import CropsList from './CropsList';
-import './scss/SearchBar.scss';
+import CropsList from 'Components/Dictionary/CropsList';
+import 'Components/Dictionary/scss/SearchBar.scss';
 
 const SearchBar = (props: any) => {
   const [filterData, setFilterData] = useState([]);

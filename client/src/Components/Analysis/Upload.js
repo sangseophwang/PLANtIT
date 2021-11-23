@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import CloseIcon from '../../Assets/CloseIcon.svg';
-import FolderIcon from '../../Assets/folder_icon_transparent.png';
-import './scss/Upload.scss';
+import CloseIcon from 'Assets/CloseIcon.svg';
+import FolderIcon from 'Assets/folder_icon_transparent.png';
+import 'Components/Analysis/scss/Upload.scss';
 
 const Upload = () => {
   const [image, setImage] = useState('');
