@@ -1,6 +1,6 @@
 import React from 'react';
-import IntroDummy from '../../Assets/Dummy/IntroDummy';
-import './scss/IntroContent.scss';
+import IntroDummy from 'Assets/Dummy/IntroDummy';
+import 'Components/Introduction/scss/IntroContent.scss';
 
 const IntroContent = () => {
   return (

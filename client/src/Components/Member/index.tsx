@@ -1,6 +1,6 @@
 import React from 'react';
-import MemberList from './MemberList';
-import Team from './Team';
+import MemberList from 'Components/Member/MemberList';
+import Team from 'Components/Member/Team';
 
 export default function Member(): JSX.Element {
   return (

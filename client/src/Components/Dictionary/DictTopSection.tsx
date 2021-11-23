@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/DictTopSection.scss';
+import 'Components/Dictionary/scss/DictTopSection.scss';
 
 const DictTopSection = () => {
   return (

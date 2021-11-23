@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Modal from '../Common/Modal';
-import './scss/CropsList.scss';
+import Modal from 'Components/Common/Modal';
+import 'Components/Dictionary/scss/CropsList.scss';
 
 const CropsList = (props: any) => {
   const [modalOpen, setModalOpen] = useState(false);

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './scss/Contact.scss';
-import Image from '../../Assets/ContactImage.jpg';
-import Navigation from '../Common/Navigation';
+import 'Components/Contact/scss/Contact.scss';
+import Image from 'Assets/ContactImage.jpg';
+import Navigation from 'Components/Common/Navigation';
 
 export default function Contact(): JSX.Element {
   return (

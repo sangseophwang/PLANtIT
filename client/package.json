@@ -16,12 +16,9 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "axios": "^0.24.0",
-<<<<<<< HEAD
     "disqus-react": "^1.1.2",
     "moment": "^2.29.1",
-=======
     "dotenv": "^10.0.0",
->>>>>>> 3337563f4a456010442d88a519dbc3619f9972ff
     "node": "^17.0.1",
     "node-sass": "^6.0.1",
     "prettier": "^2.4.1",
