@@ -8,7 +8,7 @@ class Pesticide(models.Model):
     description = models.TextField()
     component = models.CharField(max_length=50)
     packing_unit = models.CharField(max_length=50)
-    kind = models.CharField(max_length=50)
+    kind = models.CharField(max_length=100)
     attribute = models.JSONField()
     information = models.JSONField()
 
