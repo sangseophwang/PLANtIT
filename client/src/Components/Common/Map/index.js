@@ -1,6 +1,6 @@
 /* global kakao */
 import React, { useEffect } from 'react';
-import '../scss/Map.scss';
+import 'Components/Common/scss/Map.scss';
 
 // 전체지도 생성
 export default function CenterMap(props) {

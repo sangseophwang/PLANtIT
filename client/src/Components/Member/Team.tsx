@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Member/scss/Team.scss';
+import 'Components/Member/scss/Team.scss';
 
 const Team = () => {
   return (
