@@ -1,7 +1,7 @@
 import React from 'react';
-import Example from '../Components/Analysis/Example';
-import Upload from '../Components/Analysis/Upload';
-import Navigation from '../Components/Common/Navigation';
+import Navigation from '../Common/Navigation';
+import Example from './Example';
+import Upload from './Upload';
 
 export default function Analysis(): JSX.Element {
   return (
