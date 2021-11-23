@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import GoMain from './GoMain';
-import { authApi } from '.';
+import GoMain from 'Components/Auth/GoMain';
+import { authApi } from 'API/AuthApi/index';
 
-import './scss/Register.scss';
-import Logo from '../../Assets/logo.png';
+import 'Components/Auth/scss/Register.scss';
+import Logo from 'Assets/logo.png';
 import { faUserAlt, faKey } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

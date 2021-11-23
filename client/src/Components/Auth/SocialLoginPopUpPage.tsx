@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { authApi } from '.';
+import { authApi } from 'API/AuthApi/index';
 
 export default function SocialLoginPopUpPage(): JSX.Element {
   // const token = window.location.href.split('=');

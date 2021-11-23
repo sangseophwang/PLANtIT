@@ -1,45 +1,28 @@
-import axios from 'axios';
+import React from 'react';
+import RegisterPage from 'Components/Auth/RegisterPage';
+import LoginPage from 'Components/Auth/LoginPage';
+import SocialLoginPopUpPage from 'Components/Auth/SocialLoginPopUpPage';
 
-// export function requestData({ method, endpoint, data }: { method: any; endpoint: any; data: any }) {
-//   return axios({
-//     method: method,
-//     url: endpoint,
-//     data: data,
-//     headers: { 'Content-Type': 'application/json' },
-//   });
-// }
-
-const naverClientId = 'ioHK_g45Ha9ZWdoNfune';
-const googleClientId = '981453120514-lh9cf035sa3pbhan5qa8fjr9eg85idot.apps.googleusercontent.com';
-
-const requestDjango = axios.create({
-  baseURL: 'http://localhost:5000/api/',
-  headers: { 'Content-Type': 'application/json' },
-});
-
-function isValidateForm(callBackList: ((arg0: any) => boolean)[], maskBooleanList: boolean[], ...formData: any[]): boolean[] {
-  return formData.map((data, index) => {
-    return callBackList[index](data) === maskBooleanList[index] ? true : false;
-  });
+export function Register(): JSX.Element {
+  return (
+    <div>
+      <RegisterPage />
+    </div>
+  );
 }
 
-function parsingUrl(url: string[]): any[] {
-  const [access_token, state, token_type, expires_in] = url.map((data: any) => {
-    return data.split('=')[1];
-  });
-
-  console.log('access_token : ', access_token);
-  console.log('state : ', state);
-  console.log('token_type : ', token_type);
-  console.log('expires_in : ', expires_in);
-
-  return [access_token, token_type];
+export function Login(): JSX.Element {
+  return (
+    <div>
+      <LoginPage />
+    </div>
+  );
 }
 
-export const authApi = {
-  requestDjango,
-  isValidateForm,
-  parsingUrl,
-  naverClientId,
-  googleClientId,
-};
+export function SocialLoginPopUp(): JSX.Element {
+  return (
+    <div>
+      <SocialLoginPopUpPage />
+    </div>
+  );
+}
