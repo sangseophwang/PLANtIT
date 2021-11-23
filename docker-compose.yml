@@ -21,3 +21,14 @@ services:
     ports:
       - 8000:8000
     restart: always
+
+  database-m1:
+    container_name: database
+    build: infra/dbm1/
+    image: database-image
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+    env_file:
+      - docker.env
