@@ -40,12 +40,12 @@ export default function LoginPage(): JSX.Element {
     console.log('password : ', password);
     authApi.requestDjango
       .post('/user/login', {
-        id: id,
-        password: id,
+        email: id,
+        password: password,
       })
       .then(response => {
-        console.log('성공', response);
-        navigate('/');
+        console.log('성공', response.data);
+        response.data.message === 'login success' ? navigate('/') : alert('response error');
       })
       .catch(error => {
         console.log('error : ', error);
@@ -55,16 +55,18 @@ export default function LoginPage(): JSX.Element {
 
   function onSucessGoogleHandler(res: any) {
     console.log(res);
-    // authApi.requestDjango
-    //   .post('/user/google_login', {
-    //     code: res.tokenObj.id_token,
-    //   })
-    //   .then(response => {
-    //     navigate('/');
-    //   })
-    //   .catch(error => {
-    //     alert('error');
-    //   });
+    authApi.requestDjango
+      .post('/user/google_login', {
+        id_token: res.tokenObj.id_token,
+      })
+      .then(response => {
+        console.log(response.data);
+        navigate('/');
+      })
+      .catch(error => {
+        console.log(error);
+        alert('error');
+      });
   }
 
   function onFailureGoogleHandler(error: any) {

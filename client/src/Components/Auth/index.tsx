@@ -9,11 +9,11 @@ import axios from 'axios';
 //   });
 // }
 
-const naverClientId = '';
-const googleClientId = '';
+const naverClientId = 'ioHK_g45Ha9ZWdoNfune';
+const googleClientId = '981453120514-lh9cf035sa3pbhan5qa8fjr9eg85idot.apps.googleusercontent.com';
 
 const requestDjango = axios.create({
-  baseURL: 'http://localhost:8000/api',
+  baseURL: 'http://localhost:5000/api/',
   headers: { 'Content-Type': 'application/json' },
 });
 

@@ -48,13 +48,14 @@ function RegisterPage(): JSX.Element {
     // isValidateForm() ? :
     authApi.requestDjango
       .post('/user/register', {
-        id: id,
+        email: id,
+        password1: password,
+        password2: repeatPassword,
         nickname: name,
-        password: password,
       })
       .then(response => {
-        console.log('성공', response);
-        navigate('/login');
+        console.log('성공', response.data.message);
+        response.data.message === 'register success' ? navigate('/login') : alert('fail register');
       })
       .catch(error => {
         console.log('실패', error);

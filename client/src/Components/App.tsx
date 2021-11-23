@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.scss';
 import './Common/scss/_reset.scss';
 import AppRouter from './Router';
