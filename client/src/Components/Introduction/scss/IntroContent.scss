@@ -1,0 +1,79 @@
+@import "/src/Components/Common/scss/mixins";
+
+.IntroContent__Container {
+    width: 60%;
+    margin: 5rem auto 5rem auto;
+
+    @include responsive("tablet__large") {
+        width: 80%;
+    }
+
+    @include responsive("tablet") {
+        margin: 2rem auto 7rem auto;
+    }
+
+    .Introduction__Title {
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 700;
+
+        @include responsive("mobile") {
+            font-size: 2.5rem;
+        }
+
+        @include responsive("mobile__small") {
+            font-size: 2rem;
+        }
+    }
+
+    .Introduction__SubTitle {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #bdbdbd;
+
+        @include responsive("mobile") {
+            font-size: 1rem;
+        }
+
+        @include responsive("mobile__small") {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+.IntroContent__Image-Container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 5rem;
+
+    @include responsive("tablet") {
+        margin-top: 3.5rem;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    @include responsive("mobile__small") {
+        margin-top: 2rem;
+    }
+
+    .IntroContent__Image {
+        width: 100%;
+    }
+}
+
+.Introduction__Content {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    @include responsive("mobile") {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    @include responsive("mobile__small") {
+        font-size: 0.8rem;
+    }
+}

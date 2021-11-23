@@ -1,3 +1,5 @@
+@import "/src/Components/Common/scss/mixins";
+
 // Modal__Background = Modal창의 외부 배경화면
 .Modal__Background {
     width: 100%;
@@ -6,19 +8,31 @@
     display: flex;
     position: fixed;
     top: 70px;
+
+    @include responsive("tablet") {
+        top: 0px;
+    }
+}
+
+.Modal__Container-Test {
+    position: fixed;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 200px;
+    width: 100%;
+    max-width: 1200px;
     justify-content: center;
     align-items: center;
 
-    @media screen and (max-width: 1024px) {
-        left: 0px;
-        height: 100%;
-        top: 0px;
+    @include responsive("tablet") {
+        width: 90%;
+        top: 10px;
+        margin-left: 0 auto;
     }
 
     // Modal__Container  = Modal창 그 자체
     .Modal__Container {
-        width: 70%;
-        max-width: 1200px;
         min-height: 400px;
         max-height: 700px;
         border-radius: 12px;
@@ -27,14 +41,18 @@
         display: flex;
         flex-direction: column;
         padding: 2rem;
+        z-index: 99;
 
-        @media screen and (max-width: 1280px) {
-            width: 80%;
+        @include responsive("tablet__large") {
+            margin: 0 auto;
+            max-height: 600px;
+        }
+
+        @include responsive("mobile") {
             overflow-y: scroll;
         }
 
-        // mobile환경 임의로 500으로 설정했습니다.
-        @media screen and (max-width: 500px) {
+        @include responsive("mobile__small") {
             padding: 0.5rem;
             max-height: 600px;
         }
@@ -44,7 +62,7 @@
             display: flex;
             flex-direction: row;
 
-            @media screen and (max-width: 768px) {
+            @include responsive("mobile") {
                 flex-direction: column;
             }
 
@@ -53,12 +71,12 @@
 
                 border-radius: 12px;
 
-                @media screen and (max-width: 1024px) {
+                @include responsive("tablet") {
                     width: 45%;
                     height: 80%;
                 }
 
-                @media screen and (max-width: 768px) {
+                @include responsive("mobile") {
                     width: 90%;
                     margin: 0.5rem auto;
                 }
@@ -81,12 +99,12 @@
                     display: inline-block;
                     text-align: center;
 
-                    @media screen and (max-width: 768px) {
+                    @include responsive("mobile") {
                         margin-top: 0px;
                     }
 
                     // mobile
-                    @media screen and (max-width: 500px) {
+                    @include responsive("mobile__small") {
                         padding: 0.5rem;
                         font-size: 1.5rem;
                     }
@@ -100,12 +118,12 @@
                     text-align: center;
                     margin-top: 0.5rem;
 
-                    @media screen and (max-width: 768px) {
+                    @include responsive("mobile") {
                         margin-top: 0px;
                     }
 
                     // mobile
-                    @media screen and (max-width: 500px) {
+                    @include responsive("mobile__small") {
                         font-size: 0.8rem;
                     }
                 }
@@ -118,7 +136,7 @@
                     margin-top: 1rem;
                     margin-bottom: 0.5rem;
 
-                    @media screen and (max-width: 500px) {
+                    @include responsive("mobile__small") {
                         font-size: 0.8rem;
                     }
                 }
@@ -130,7 +148,7 @@
                     line-height: 1.5;
                     margin: 0.5rem 0;
 
-                    @media screen and (max-width: 500px) {
+                    @include responsive("mobile__small") {
                         font-size: 0.8rem;
                     }
                 }
