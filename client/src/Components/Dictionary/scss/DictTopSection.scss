@@ -1,10 +1,12 @@
+@import "/src/Components/Common/scss/mixins";
+
 .Dict__Text-Container {
     width: 80%;
     margin-top: 8rem;
     margin-left: auto;
     margin-right: auto;
 
-    @media screen and (max-width: 1024px) {
+    @include responsive("tablet") {
         margin-top: 2rem;
         width: 95%;
     }
@@ -14,8 +16,8 @@
         font-weight: 700;
         line-height: 1.2;
 
-        @media screen and (max-width: 768px) {
-            font-size: 2.5rem;
+        @include responsive("mobile") {
+            font-size: 2.4rem;
             font-weight: 700;
         }
     }

@@ -1,3 +1,5 @@
+@import "/src/Components/Common/scss/mixins";
+
 .Search__Result {
     width: 80%;
     display: grid;
@@ -7,20 +9,24 @@
     margin-left: auto;
     margin-right: auto;
 
-    @media screen and (max-width: 1280px) {
+    @include responsive("tablet__large") {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    @media screen and (max-width: 1024px) {
+    @include responsive("tablet") {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         width: 95%;
         margin-bottom: 5rem;
     }
 
-    @media screen and (max-width: 768px) {
+    @include responsive("mobile") {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
         margin-bottom: 6rem;
+    }
+
+    @include responsive("mobile__small") {
+        gap: 0.5rem;
     }
 }
 
@@ -30,9 +36,15 @@
     border-radius: 0.5rem;
     text-align: center;
     margin-top: 1rem;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 
-    @media screen and (max-width: 768px) {
+    @include responsive("mobile") {
         padding: 1rem;
+    }
+
+    @include responsive("mobile__small") {
+        padding: 0.5rem;
+        margin-top: 0rem;
     }
 
     .CropsList__Image {
@@ -43,7 +55,7 @@
         border-radius: 0.5rem;
         margin-bottom: 1rem;
 
-        @media screen and (max-width: 768px) {
+        @include responsive("mobile") {
             height: 10rem;
             margin-bottom: 0.5rem;
         }
@@ -61,7 +73,7 @@
             font-weight: 700;
             padding: 0.5rem;
 
-            @media screen and (max-width: 768px) {
+            @include responsive("mobile") {
                 font-size: 0.8rem;
                 padding: 0.3rem;
             }
@@ -73,7 +85,13 @@
         font-weight: 700;
         margin-bottom: 1rem;
 
-        @media screen and (max-width: 768px) {
+        @include responsive("mobile") {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        @include responsive("mobile__small") {
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
         }
     }
@@ -81,6 +99,10 @@
     .CropsList__Content {
         font-size: 0.8rem;
         font-weight: 400;
+
+        @include responsive("mobile") {
+            font-size: 0.5rem;
+        }
     }
 
     .CropsList__Click {
@@ -92,13 +114,15 @@
             font-size: 1rem;
             font-weight: 700;
             padding: 0.5rem;
+            border: 0;
             background-color: #90bb65;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
             color: #fff;
             border-radius: 0.5rem;
             margin: 0 auto;
             cursor: pointer;
 
-            @media screen and (max-width: 768px) {
+            @include responsive("mobile") {
                 font-size: 0.8rem;
                 padding: 0.5rem;
             }
