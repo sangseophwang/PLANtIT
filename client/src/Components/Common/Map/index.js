@@ -64,7 +64,7 @@ export default function CenterMap(props) {
 
   return (
     <>
-      <div id="map" />
+      <div id="map" className="JK" />
     </>
   );
 }
