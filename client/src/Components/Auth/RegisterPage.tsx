@@ -47,14 +47,14 @@ function RegisterPage(): JSX.Element {
     console.log('repeat password : ', repeatPassword);
     // isValidateForm() ? :
     authApi.requestDjango
-      .post('/user/register', {
+      .post('/user/register/', {
         email: id,
         password1: password,
         password2: repeatPassword,
         nickname: name,
       })
       .then(response => {
-        console.log('성공', response.data.message);
+        console.log('성공', response);
         // response.data.message === 'register success' ? navigate('/login') : alert('fail register');
       })
       .catch(error => {

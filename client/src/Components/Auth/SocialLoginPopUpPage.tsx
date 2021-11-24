@@ -13,7 +13,7 @@ export default function SocialLoginPopUpPage(): JSX.Element {
         token_type: token_type,
       })
       .then(response => {
-        console.log(response.data);
+        console.log(response);
         // window.close();
       })
       .catch(error => {
