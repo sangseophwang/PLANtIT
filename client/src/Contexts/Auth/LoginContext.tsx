@@ -9,7 +9,7 @@
 //   nickname: string;
 // };
 
-// type ActionType = 'LOGIN_SUCCESS' | 'LOGIN_FAILURE' | 'ADD_NICKNAME' | 'LOGOUT';
+// type ActionType = 'LOGIN_REQUEST' | 'LOGIN_SUCCESS' | 'LOGIN_FAILURE' | 'ADD_NICKNAME' | 'LOGOUT';
 
 // type Action = { type: ActionType; payload: State };
 

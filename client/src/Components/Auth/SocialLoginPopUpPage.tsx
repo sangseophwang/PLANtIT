@@ -8,7 +8,7 @@ export default function SocialLoginPopUpPage(): JSX.Element {
     const responseUrl = window.location.href.split('&');
     const [access_token, token_type] = authApi.parsingUrl(responseUrl);
     authApi.requestDjango
-      .post('/user/naver_login', {
+      .post('/user/naver_login/', {
         access_token: access_token,
         token_type: token_type,
       })
@@ -23,5 +23,7 @@ export default function SocialLoginPopUpPage(): JSX.Element {
       });
   }, []);
 
-  return <div className="LoginProcess">네이버에 요청한 토큰을 처리중입니다..</div>;
+  return (
+    <div className="LoginProcess">네이버에 요청한 토큰을 처리중입니다..</div>
+  );
 }

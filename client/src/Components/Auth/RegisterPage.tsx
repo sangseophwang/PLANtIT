@@ -20,7 +20,9 @@ function RegisterPage(): JSX.Element {
 
   const navigate = useNavigate();
 
-  function onChangeInputHandler(event: { target: { name: any; value: string } }): void {
+  function onChangeInputHandler(event: {
+    target: { name: any; value: string };
+  }): void {
     const [name, value] = [event.target.name, event.target.value];
     switch (name) {
       case 'id':
@@ -34,7 +36,9 @@ function RegisterPage(): JSX.Element {
         break;
       case 'repeatPassword':
         setRepeatPassword(value);
-        password !== value ? setMsg('비밀번호가 일치하지 않습니다') : setMsg('');
+        password !== value
+          ? setMsg('비밀번호가 일치하지 않습니다')
+          : setMsg('');
     }
   }
 
@@ -55,7 +59,10 @@ function RegisterPage(): JSX.Element {
       })
       .then(response => {
         console.log('성공', response);
-        // response.data.message === 'register success' ? navigate('/login') : alert('fail register');
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        response.data === 'Register Success'
+          ? (navigate('/login'), alert('회원가입 성공!'))
+          : alert('fail register');
       })
       .catch(error => {
         console.log('실패', error);
@@ -74,28 +81,56 @@ function RegisterPage(): JSX.Element {
             <label htmlFor="id">
               <FontAwesomeIcon icon={faUserAlt} />
             </label>
-            <input type="email" name="id" placeholder="아이디를 입력해주세요." value={id} onChange={onChangeInputHandler} required></input>
+            <input
+              type="email"
+              name="id"
+              placeholder="아이디를 입력해주세요."
+              value={id}
+              onChange={onChangeInputHandler}
+              required
+            ></input>
           </div>
 
           <div>
             <label htmlFor="name">
               <FontAwesomeIcon icon={faUserAlt} />
             </label>
-            <input type="text" name="name" placeholder="닉네임을 입력해주세요." value={name} onChange={onChangeInputHandler} required></input>
+            <input
+              type="text"
+              name="name"
+              placeholder="닉네임을 입력해주세요."
+              value={name}
+              onChange={onChangeInputHandler}
+              required
+            ></input>
           </div>
 
           <div>
             <label htmlFor="password">
               <FontAwesomeIcon icon={faKey} />
             </label>
-            <input type="password" name="password" placeholder="비밀번호를 입력해주세요." value={password} onChange={onChangeInputHandler} required></input>
+            <input
+              type="password"
+              name="password"
+              placeholder="비밀번호를 입력해주세요."
+              value={password}
+              onChange={onChangeInputHandler}
+              required
+            ></input>
           </div>
 
           <div>
             <label htmlFor="repeatPassword">
               <FontAwesomeIcon icon={faKey} />
             </label>
-            <input type="password" name="repeatPassword" placeholder="비밀번호를 한번 더 입력해주세요." value={repeatPassword} onChange={onChangeInputHandler} required></input>
+            <input
+              type="password"
+              name="repeatPassword"
+              placeholder="비밀번호를 한번 더 입력해주세요."
+              value={repeatPassword}
+              onChange={onChangeInputHandler}
+              required
+            ></input>
           </div>
 
           <span>{msg}</span>
