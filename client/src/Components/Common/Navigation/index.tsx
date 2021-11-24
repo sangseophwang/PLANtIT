@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import '../scss/Navigation.scss';
+import 'Components/Common/scss/Navigation.scss';
 import NavItem from './NavItem';
-import Logo from '../../../Assets/logo.png';
+import Logo from 'Assets/logo.png';
 import { faHome, faLeaf, faBook, faComment, faUser, faVial } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

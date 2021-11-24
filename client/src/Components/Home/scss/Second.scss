@@ -1,4 +1,4 @@
-@import '../../Common/scss/mixins';
+@import '/src/Components/Common/scss/mixins';
 .Second__Container {
   @include Container__Form();
   > h1 {

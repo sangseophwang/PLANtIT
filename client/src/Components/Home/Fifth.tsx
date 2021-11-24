@@ -1,5 +1,5 @@
-import './scss/Fifth.scss';
-import TestImage from '../../Assets/test.jpeg';
+import 'Components/Home/scss/Fifth.scss';
+import TestImage from 'Assets/test.jpeg';
 import { Link } from 'react-router-dom';
 
 export default function Fifth(): JSX.Element {

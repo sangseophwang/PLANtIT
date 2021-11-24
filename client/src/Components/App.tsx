@@ -1,6 +1,7 @@
-import './App.scss';
-import './Common/scss/_reset.scss';
-import AppRouter from './Router';
+import React from 'react';
+import 'Components/App.scss';
+import 'Components/Common/scss/_reset.scss';
+import AppRouter from 'Components/Router';
 
 function App() {
   return (

@@ -8,12 +8,11 @@ const SearchBar = (props: any) => {
 
   const CropsListData = props.data.data;
 
-  // 한글이 되시는 분은 16번째 줄의 english_name을 crops_id로 바꿔주세요 - 김진경 -
   const FilterOnChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchWord = e.target.value;
     setClearWord(searchWord);
     const newFilter = props.data.data.filter((value: any) => {
-      return value.english_name.includes(searchWord);
+      return value.crops_id.includes(searchWord);
     });
     setFilterData(newFilter);
   };
