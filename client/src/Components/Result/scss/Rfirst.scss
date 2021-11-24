@@ -1,0 +1,63 @@
+@import "/src/Components/Common/scss/mixins";
+.Rfirst__Container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @include responsive("tablet") {
+        position: relative;
+        flex-direction: column;
+    }
+}
+
+.Rfirst__Image-continer {
+    width: 50%;
+    display: flex;
+    margin-left: 15rem;
+
+    @include responsive("tablet") {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .Rfirst__Image {
+        width: 100%;
+        border-radius: 12px;
+        border-radius: 12px;
+        border: 2px solid #8c9d3d;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+}
+
+.Rfirst__Text-continer {
+    width: 50%;
+    padding: 3rem;
+
+    @include responsive("tablet") {
+        width: 60%;
+        margin: 0 auto;
+        padding-left: 2rem;
+    }
+
+    .Crops__class {
+        font-size: 2rem;
+        color: #659e38;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .Disease__Title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+    }
+
+    .Disease__Content {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+}

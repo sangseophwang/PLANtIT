@@ -1,6 +1,6 @@
 @import "/src/Components/Common/scss/mixins";
 .Example__container {
-    width: 80%;
+    width: 75%;
     margin-top: 2rem;
     margin: 0 auto 4rem auto;
     display: flex;
@@ -11,10 +11,11 @@
     }
 
     .Example__Title {
-        font-size: 2rem;
+        font-size: 3rem;
         font-weight: 700;
         margin-top: 3rem;
-        margin-bottom: 2rem;
+        margin-bottom: 4rem;
+        color: #659e38;
 
         @include responsive("tablet") {
             text-align: center;
@@ -59,8 +60,20 @@
         }
     }
 
+    .Example__Subtitle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: 700;
+        background-color: #f6f6f6;
+        border-radius: 12px;
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    }
+
     .Example__Text {
-        text-align: center;
-        padding: 1rem;
+        font-size: 1.3rem;
+        line-height: 1.5;
+        margin-bottom: 4rem;
     }
 }

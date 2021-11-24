@@ -7,10 +7,16 @@ import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
 import Test from './test';
 import Last from './Last';
+import Rfirst from 'Components/Result/Rfirst';
 
 SwiperCore.use([Mousewheel, Pagination]);
 
-const bullet = ['- 질병명', '- 피해정도', '- 예방 및 치료법', '- 가까운 치료소'];
+const bullet = [
+  '- 질병명',
+  '- 피해정도',
+  '- 예방 및 치료법',
+  '- 가까운 치료소',
+];
 
 export default function Result(): JSX.Element {
   return (
@@ -32,13 +38,19 @@ export default function Result(): JSX.Element {
         pagination={{
           clickable: true,
           renderBullet: function (index, className) {
-            return '<div class="' + className + '"><span>' + bullet[index] + '</span></div>';
+            return (
+              '<div class="' +
+              className +
+              '"><span>' +
+              bullet[index] +
+              '</span></div>'
+            );
           },
         }}
         className="mySwiper"
       >
         <SwiperSlide>
-          <Test />
+          <Rfirst />
         </SwiperSlide>
         <SwiperSlide>
           <Test />
