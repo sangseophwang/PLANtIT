@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
-from .models import Disease
+from .models import Disease, Crop
 from pesticide.models import Pesticide
 
 # Create your views here.
@@ -14,6 +14,13 @@ def disease_all(request):
     try:
         diseases = Disease.objects.all()
         diseases = list(diseases.values())
+
+        for crop in diseases:
+            crop_id = crop['crops_id']
+            crop_name = Crop.objects.filter(id=crop_id)
+            crop_name = list(crop_name.values())
+            crop['crops_id'] = crop_name[0]['name']
+            
         result = {"data" : diseases}
         return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
     except:
