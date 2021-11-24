@@ -61,7 +61,6 @@ def login(request):
         'token': access_token,
         'message': 'login success'
     }
-    response_data = json.dumps(response_data)
     return Response(data=response_data, status=200)
 
 
@@ -91,7 +90,6 @@ def naver_login(request):
         'token': access_token,
         'message': 'naver login success'
     }
-    response_data = json.dumps(response_data)
     return Response(data=response_data, status=200)
     
     
@@ -120,7 +118,6 @@ def google_login(request):
         'token': access_token,
         'message': 'google login success'
     }
-    response_data = json.dumps(response_data)
     return Response(data=response_data, status=200)
     
 
@@ -164,7 +161,6 @@ def update(request):
         'description' : description,
         'image' : uploaded_image
     }
-    response_data = json.dumps(response_data)
     return Response(data=response_data, status=200)
 
 @api_view(['GET'])
@@ -184,5 +180,4 @@ def mypage(request):
         'description' : target_user.description,
         'image' : target_user.image
     }
-    response_data = json.dumps(response_data)
     return Response(data=response_data, status=200)
