@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Navigation from 'Components/Common/Navigation';
 import DictTopSection from 'Components/Dictionary/DictTopSection';
 import SearchBar from 'Components/Dictionary/SearchBar';
+import 'Components/Dictionary/scss/index.scss';
+import { Link } from 'react-router-dom';
 
 export default function Dictionary(): JSX.Element {
   const [pathology, setPathology] = useState([] as any);
@@ -31,14 +33,16 @@ export default function Dictionary(): JSX.Element {
     GetDictionaryAPI();
   }, []);
 
-  if (loading)
+  if (loading) return <div className="Notice__Container">잠시만 기다려 주세요</div>;
+  if (error)
     return (
-      <div className="Notice__Container">
-        <div className="loader" />
-        <div className="Notice__Content">잠시만 기다려 주세요!</div>
-      </div>
+      <>
+        <div className="Notice__Container">API 에러가 발생했습니다</div>
+        <Link to="/" className="Button__Home">
+          홈으로
+        </Link>
+      </>
     );
-  if (error) return <div className="Notice__error">에러가 발생했습니다</div>;
   if (!pathology) return null as any;
 
   return (
