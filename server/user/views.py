@@ -71,10 +71,10 @@ def naver_login(request):
     access_token = request_body['access_token']
     token_type = request_body['token_type']
     user_info = requests.get("https://openapi.naver.com/v1/nid/me", headers={'Authorization': f"{token_type} {access_token}"})
-    user_info = user_info.json()
     
-    nickname = user_info['nickname']
-    email = user_info['email']
+    user_info = user_info.json()
+    nickname = user_info['response']['nickname']
+    email = user_info['response']['email']
     user_type = 1
     
     user = find_user_by_email_usertype(email, user_type)
@@ -92,7 +92,7 @@ def naver_login(request):
         'message': 'naver login success'
     }
     response_data = json.dumps(response_data)
-    return Response(data=access_token, status=200)
+    return Response(data=response_data, status=200)
     
     
 @api_view(['POST'])
@@ -121,7 +121,7 @@ def google_login(request):
         'message': 'google login success'
     }
     response_data = json.dumps(response_data)
-    return Response(data=access_token, status=200)
+    return Response(data=response_data, status=200)
     
 
 @api_view(['POST'])
