@@ -7,7 +7,8 @@ class Blog(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
     thumbnail = models.CharField(max_length=100) # image url
-    view = models.IntegerField()
+    view = models.IntegerField(default=0)
+    upload_date = models.CharField(max_length=100)
     
     def __str__(self):
         return self.title
