@@ -7,7 +7,7 @@ from .models import Blog
 from .queryset import find_blog_by_id, create_blog, update_blog_content, update_blog
 from user.queryset import find_user_by_id
 from common.token import validate_token
-from common.s3 import upload_blog_image
+from common.s3 import get_thumbnail_url, upload_blog_image
 import json
 # Create your views here.
 
@@ -48,7 +48,16 @@ def post_blog(request):
     request_body = json.loads(request.body)
     title = request_body['title']
     content = request_body['content']
+    # thumbnail = get_thumbnail_url(content)
+    # create_blog(user=user, title=title, content=content, thumbnail=thumbnail)
     
-    create_blog(user=user, title=title, content='-', thumbnail='-')
+    return Response(data=content, status=200)
+    # return Response(data='Post Success', status=200)
+
+@api_view(['POST'])
+def upload_image(request):
+    image = request.FILES['image']
+    filename = image.name
     
-    return Response(data='Post Success', status=200)
+    image_url = upload_blog_image(image, filename)
+    return Response(data=image_url, status=200)
