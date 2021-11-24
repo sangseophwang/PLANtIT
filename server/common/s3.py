@@ -23,18 +23,18 @@ def upload_blog_image(image, filename):
     image_url = AWS_DOMAIN + 'blog/' + upload_time + filename
     return image_url
 
-def get_thumbnail_url(html_code, blog_id):
-    opentag = '<img src="'
-    closetag = '">'
+def get_thumbnail_url(html_code):
+    opentag = '<img src='
+    closetag = '>'
 
-    opentag_idx = html_code.find(opentag)
+    opentag_idx = html_code.find(opentag) + 1
     if opentag_idx == -1:
         return False
 
     html_copy = html_code[opentag_idx:]
-    closetag_idx = html_copy.find(closetag)
+    closetag_idx = html_copy.find(closetag) - 1
 
-    result = html_code[opentag_idx+len(opentag) : opentag_idx+closetag_idx]
+    result = html_code[opentag_idx + len(opentag) : opentag_idx + closetag_idx]
     return result
 
 def upload_user_image(image, user_id):
