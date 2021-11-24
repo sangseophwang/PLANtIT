@@ -1,5 +1,4 @@
 import React from 'react';
-
 import 'Components/Contact/scss/Contact.scss';
 import Image from 'Assets/ContactImage.jpg';
 import Navigation from 'Components/Common/Navigation';

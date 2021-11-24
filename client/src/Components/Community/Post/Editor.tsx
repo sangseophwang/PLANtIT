@@ -1,6 +1,6 @@
 //@ts-ignore
 import ImageResize from '@looop/quill-image-resize-module-react';
-import { useMemo, useState, useEffect, useRef } from 'react';
+import { useMemo, useEffect, useRef } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import QuillImageDropAndPaste from 'quill-image-drop-and-paste';
 import 'react-quill/dist/quill.snow.css';

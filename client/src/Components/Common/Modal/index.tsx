@@ -1,17 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import 'Components/Common/scss/Modal.scss';
 import CloseIcon from 'Assets/CloseIcon.svg';
 
 function Modal({ setOpenModal, data }: any) {
-  console.log(data);
-
   // 방제방법 렌더링 함수
   const rendering = () => {
     const result = [];
-    for (let i = 0; i < data[4].length; i++) {
+    for (let i = 0; i < data.prevention.length; i++) {
       result.push(
         <span key={i}>
-          - {data[4][i]}
+          - {data.prevention[i]}
           <br />
         </span>,
       );
@@ -47,14 +45,14 @@ function Modal({ setOpenModal, data }: any) {
               alt="crops"
             />
             <div className="Modal__Body">
-              <div className="Pathology__Title">{data[0]}</div>
-              <div className="Pathology__Subtitle">{data[1]}</div>
+              <div className="Pathology__Title">{data.name}</div>
+              <div className="Pathology__Subtitle">{data.english_name}</div>
               <div className="Pathology__Explain">
-                {data[2]} <br />
+                {data.symptom} <br />
               </div>
               <div className="Pathology__Subtitle">발생환경</div>
               <hr style={{ width: '100px' }} />
-              <div className="Pathology__Subexplain ">{data[3]} </div>
+              <div className="Pathology__Subexplain ">{data.cause} </div>
               <div className="Pathology__Subtitle">방제방법</div>
               <hr style={{ width: '100px' }} />
               <div className="Pathology__Subexplain ">{rendering()}</div>
