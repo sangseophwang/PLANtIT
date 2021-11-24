@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Pathology from 'Assets/Dummy/Pathology';
-
 import CropsList from 'Components/Dictionary/CropsList';
 import 'Components/Dictionary/scss/SearchBar.scss';
 
@@ -8,11 +6,14 @@ const SearchBar = (props: any) => {
   const [filterData, setFilterData] = useState([]);
   const [clearWord, setClearWord] = useState('');
 
+  const CropsListData = props.data.data;
+
+  // 한글이 되시는 분은 16번째 줄의 english_name을 crops_id로 바꿔주세요 - 김진경 -
   const FilterOnChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchWord = e.target.value;
     setClearWord(searchWord);
-    const newFilter = props.data.filter((value: any) => {
-      return value.class.includes(searchWord);
+    const newFilter = props.data.data.filter((value: any) => {
+      return value.english_name.includes(searchWord);
     });
     setFilterData(newFilter);
   };
@@ -45,8 +46,7 @@ const SearchBar = (props: any) => {
           <CropsList data={filterData} />
         ) : (
           <>
-            {/* <div className="CropsList__Error">해당 작물이 존재하지 않습니다.</div> */}
-            <CropsList data={Pathology} />
+            <CropsList data={CropsListData} />
           </>
         )}
       </section>
