@@ -1,0 +1,60 @@
+@import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
+.Post__Container {
+  @include Container__Form();
+  flex-direction: column;
+  justify-content: flex-start;
+  .Post__Title-Box {
+    display: flex;
+    align-items: center;
+    height: 20vh;
+    width: 60%;
+    @include responsive('tablet') {
+      width: 80%;
+      height: 15vh;
+    }
+    @include responsive('mobile') {
+      width: 100%;
+      padding-left: 20px;
+    }
+    .Post__Title {
+      width: 70%;
+      border: none;
+      outline: none;
+      font-size: 2.5vw;
+      font-weight: 700;
+      @include responsive('tablet') {
+        font-size: 5vw;
+      }
+      @include responsive('mobile') {
+        font-size: 6vw;
+      }
+      &::placeholder {
+        transition: 0.5s;
+        color: lightgray;
+      }
+      &:hover::placeholder {
+        color: $LightGreen;
+        transition: 0.5s;
+      }
+      &:focus::placeholder {
+        color: transparent;
+        transition: 0.3s;
+      }
+    }
+  }
+}
+.Editor {
+  width: 60%;
+  height: 55vh;
+  @include responsive('tablet') {
+    height: 62vh;
+    width: 80%;
+  }
+  @include responsive('mobile') {
+    width: 100%;
+  }
+}
+.ql-editor strong {
+  font-weight: bold;
+}

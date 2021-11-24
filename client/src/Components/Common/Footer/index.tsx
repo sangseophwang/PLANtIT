@@ -1,6 +1,6 @@
-import Logo from '../../../Assets/logo.png';
+import Logo from 'Assets/logo.png';
 import { Link } from 'react-router-dom';
-import '../scss/Footer.scss';
+import 'Components/Common/scss/Footer.scss';
 
 export default function Footer(): JSX.Element {
   return (

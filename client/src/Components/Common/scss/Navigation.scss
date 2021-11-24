@@ -1,4 +1,5 @@
-@import '_mixins';
+@import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
 .Navigation__Container {
   width: 90%;
   height: 9vh;
@@ -23,6 +24,7 @@
     margin-left: 100px;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     @include responsive('tablet') {
       display: none;
     }
@@ -60,7 +62,7 @@
         transition: 0.5s;
         color: gray;
         &:hover {
-          color: #88bb61;
+          color: $LightGreen;
           transition: 0.5s;
         }
         display: flex;

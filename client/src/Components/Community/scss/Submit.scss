@@ -1,0 +1,57 @@
+@import '/src/Components/Common/scss/variables';
+@import '/src/Components//Common/scss/mixins';
+.Submit__Container {
+  width: 100%;
+  height: 10vh;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid lightgray;
+  display: flex;
+  justify-content: center;
+  .Submit__Wrapper {
+    width: 60%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include responsive('tablet') {
+      height: 7vh;
+      width: 80%;
+    }
+    @include responsive('mobile') {
+      width: 100%;
+      height: 10vh;
+      padding: 0 10px;
+    }
+    .Submit__Time {
+      color: gray;
+      @include responsive('mobile') {
+        font-size: 12px;
+      }
+    }
+    .Submit__Buttons {
+      > button {
+        border: none;
+        background-color: $LightGreen;
+        color: white;
+        width: 110px;
+        height: 50px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 9px;
+        margin-left: 10px;
+        cursor: pointer;
+        transition: 0.5s;
+        &:hover {
+          background-color: $Green;
+          transition: 0.8s;
+        }
+        @include responsive('mobile') {
+          width: 76px;
+          height: 38px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

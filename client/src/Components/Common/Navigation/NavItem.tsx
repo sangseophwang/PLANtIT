@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../scss/Navigation.scss';
+import 'Components/Common/scss/Navigation.scss';
 
 interface NavProps {
   data: {

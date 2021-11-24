@@ -1,4 +1,4 @@
-@import '../../Common/scss/mixins';
+@import '/src/Components/Common/scss/mixins';
 .Third__Container {
   @include Container__Form();
   margin-top: -50px;
