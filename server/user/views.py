@@ -20,6 +20,12 @@ def register(request):
     password2 = request_body['password2']
     nickname = request_body['nickname']
     
+    if email == None or password1 == None or password2 == None or nickname == None:
+        return Response(data='Register Fail', status=400)
+    
+    if email == '' or password1 == '' or password2 == '' or nickname == '':
+        return Response(data='Register Fail', status=400)
+    
     if not password1 == password2:
         return Response(data='Password Not Same', status=400)
 
@@ -33,7 +39,7 @@ def register(request):
     
     new_user = create_user(email=email, password=decoded_pw_hash, nickname=nickname, user_type=0)
     if not new_user:
-        return Response(data='Register Fail', status=200)
+        return Response(data='Register Fail', status=400)
     
     return Response(data='Register Success', status=200)
 
@@ -80,7 +86,7 @@ def naver_login(request):
     if not user:
         user = create_user(email=email, password="naver-user", nickname=nickname, user_type=user_type)
         if not user:
-            return Response(data='Register Fail', status=200)
+            return Response(data='Register Fail', status=400)
         return Response(data='Register Success', status=200)
     
     user_id = user.id
@@ -108,7 +114,7 @@ def google_login(request):
     if not user:
         user = create_user(email=email, password="google-user", nickname=nickname, user_type=user_type)
         if not user:
-            return Response(data='Register Fail', status=200)
+            return Response(data='Register Fail', status=400)
         return Response(data='Register Success', status=200)
     
     user_id = user.id
