@@ -26,4 +26,4 @@ class Blog(models.Model):
         return response_data
     
     class Meta:
-        db_table = "Blog"
+        db_table = "blog"
