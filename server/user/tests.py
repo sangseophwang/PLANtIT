@@ -3,6 +3,7 @@ import bcrypt
 from django.test import TestCase, Client
 from .models import User
 from common.token import validate_token, create_token
+from .queryset import find_user_by_id
 
 # Create your tests here.
 class UserTest(TestCase):
@@ -12,18 +13,17 @@ class UserTest(TestCase):
         self.client = Client()
         
         self.email = "test@plantit.com"
-        self.password1 = "test1234"
-        self.password2 = "test1234"
+        self.password = "test1234"
         self.nickname = "plant-user"
         
-        password = self.password1.encode("utf-8")
+        password = self.password.encode("utf-8")
         pw_salt = bcrypt.gensalt()
         pw_hash = bcrypt.hashpw(password, pw_salt)
         decoded_pw_hash = pw_hash.decode()
         self.test_user = User.objects.create(email=self.email, password=decoded_pw_hash, nickname=self.nickname, user_type=0)
         self.access_token = create_token(email=self.email, user_type=0, user_id=self.test_user.id)
     
-    def test_register_user(self):
+    def test_회원가입하기(self):
         email = "test-register@plantit.com"
         password1 = "test1234"
         password2 = "test1234"
@@ -46,7 +46,7 @@ class UserTest(TestCase):
         self.assertEqual(0, user.user_type)
         self.assertEqual(True, checkpw)
         
-    def test_plantit_login(self):
+    def test_플래닛_로그인하기(self):
         email = "test@plantit.com"
         password = "test1234"
         
@@ -57,11 +57,11 @@ class UserTest(TestCase):
         res = self.client.post("/api/user/login", data=request_data, content_type="application/json")
         
         token = res.data["token"]
-        token_validation = validate_token(token).status_code
+        token_validation = validate_token(token)
         self.assertEqual(res.status_code, 200)
-        self.assertEqual(token_validation, 200)
+        self.assertEqual(token_validation.status_code, 200)
     
-    def test_update_user_nickname_description(self):
+    def test_닉네임_한줄소개_수정하기(self):
         nickname = "updated-nickname"
         description = "updated-description"
         
@@ -75,6 +75,27 @@ class UserTest(TestCase):
                                 content_type="application/json",
                                 **header)
         
+        user = find_user_by_id(self.test_user.id)
         self.assertEqual(res.status_code, 200)
-        self.assertEqual(self.test_user.nickname, nickname)
-        self.assertEqual(self.test_user.description, description)
+        self.assertEqual(user.nickname, nickname)
+        self.assertEqual(user.description, description)
+        
+    def test_회원탈퇴하기(self):
+        header = {"HTTP_AUTHORIZATION": self.access_token}
+        res = self.client.post("/api/user/deregister",
+                                content_type="application/json",
+                                **header)
+        
+        user_counts = len(list(User.objects.all()))
+    
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(user_counts, 0)
+        
+    def test_마이페이지_불러오기(self):
+        header = {"HTTP_AUTHORIZATION": self.access_token}
+        res = self.client.get("/api/user/mypage",
+                                content_type="application/json",
+                                **header)
+        
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data['nickname'], 'plant-user')
