@@ -62,7 +62,7 @@ export default function LoginPage(): JSX.Element {
 
     console.log('로그인 전 세션스토리지: ', tokenState);
     authApi.requestDjango
-      .post('/user/login/', {
+      .post('/user/login', {
         email: id,
         password: password,
       })
@@ -93,21 +93,29 @@ export default function LoginPage(): JSX.Element {
   function onSucessGoogleHandler(res: any) {
     console.log(res);
     authApi.requestDjango
-      .post('/user/google_login/', {
+      .post('/user/google_login', {
         id_token: res.tokenObj.id_token,
       })
       .then(response => {
-        console.log(response.data);
-        sessionStorage.setItem('access_token', response.data);
-        alert('로그인 성공!');
-        console.log(
-          '로그인 후 세션스토리지: ',
-          sessionStorage.getItem('access_token'),
-        );
-        navigate('/');
+        console.log('성공', response);
+        const [accessToken, message] = [
+          response.data.token,
+          response.data.message,
+        ];
+
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        message === 'google login success'
+          ? (sessionStorage.setItem('access_token', accessToken),
+            alert('로그인 성공!'),
+            console.log(
+              '로그인 후 세션스토리지: ',
+              sessionStorage.getItem('access_token'),
+            ),
+            navigate('/'))
+          : alert('error');
       })
       .catch(error => {
-        console.log(error);
+        console.log('error : ', error);
         alert('error');
       });
   }

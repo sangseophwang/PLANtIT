@@ -7,7 +7,7 @@ export default function SocialLoginPopUpPage(): JSX.Element {
     const responseUrl = window.location.href.split('&');
     const [access_token, token_type] = authApi.parsingUrl(responseUrl);
     authApi.requestDjango
-      .post('/user/naver_login/', {
+      .post('/user/naver_login', {
         access_token: access_token,
         token_type: token_type,
       })
@@ -16,22 +16,31 @@ export default function SocialLoginPopUpPage(): JSX.Element {
         console.log('naver login token: ', response.data);
         sessionStorage.setItem('access_token', response.data);
         console.log(sessionStorage.getItem('access_token'));
-        // eslint-disable-next-line no-restricted-globals
-        opener.location.replace(`http://localhost:3000/login/${response.data}`);
-        window.close();
 
+        const [accessToken, message] = [
+          response.data.token,
+          response.data.message,
+        ];
+
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        message === 'naver login success'
+          ? // eslint-disable-next-line no-restricted-globals
+            (opener.location.replace(
+              `http://localhost:3000/login/${accessToken}`,
+            ),
+            window.close())
+          : alert('fail naver login');
+
+        window.close();
       })
       .catch(error => {
         console.log(error);
-        alert('error');
+        alert('fail naver login');
         // window.close();
       });
   }, []);
 
   return (
-    <div className="LoginProcess">
-      네이버에 요청한 토큰을 처리중입니다..
-      {sessionStorage.getItem('access_token')}
-    </div>
+    <div className="LoginProcess">네이버에 요청한 토큰을 처리중입니다..</div>
   );
 }
