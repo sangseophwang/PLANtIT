@@ -26,6 +26,7 @@ export default function AppRouter(): JSX.Element {
         <Route path="/dictionary" element={<Dictionary />} />
         <Route path="/analysis" element={<Analysis />} />
         <Route path="/login" element={<Auth.Login />} />
+        <Route path="/login/:tokenParam" element={<Auth.Login />} />
         <Route path="/register" element={<Auth.Register />} />
         <Route path="/socialloginpopup" element={<Auth.SocialLoginPopUp />} />
         <Route path="/mypage" element={<Mypage />} />

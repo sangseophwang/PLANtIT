@@ -51,7 +51,7 @@ function RegisterPage(): JSX.Element {
     console.log('repeat password : ', repeatPassword);
     // isValidateForm() ? :
     authApi.requestDjango
-      .post('/user/register/', {
+      .post('/user/register', {
         email: id,
         password1: password,
         password2: repeatPassword,
