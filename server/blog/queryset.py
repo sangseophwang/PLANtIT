@@ -29,3 +29,20 @@ def update_blog(blog_id, title, content, thumbnail):
         return False
     else:
         return True
+    
+def remove_blog(blog_id):
+    target_blog = find_blog_by_id(blog_id)
+    try:
+        target_blog.delete()
+    except:
+        return False
+    else:
+        return True
+    
+def get_all_blog_by_view():
+    blogs = Blog.objects.all().order_by('-view')
+    return blogs
+
+def get_all_blog_by_date():
+    blogs = Blog.objects.all().order_by('-id')
+    return blogs

@@ -14,5 +14,16 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
     
+    def as_dict(self):
+        response_data = {
+            'blog_id': self.id,
+            'author': self.user.nickname,
+            'title': self.title,
+            'content': self.content,
+            'upload_date': self.upload_date,
+            'view': self.view,
+        }
+        return response_data
+    
     class Meta:
         db_table = "Blog"
