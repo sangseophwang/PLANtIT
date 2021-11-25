@@ -1,12 +1,11 @@
 @import "/src/Components/Common/scss/mixins";
 .Rfirst__Container {
-    width: 100%;
+    width: 75%;
+    margin-top: 15rem;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: row;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
     @include responsive("tablet") {
         position: relative;
@@ -17,7 +16,6 @@
 .Rfirst__Image-continer {
     width: 50%;
     display: flex;
-    margin-left: 15rem;
 
     @include responsive("tablet") {
         width: 60%;
@@ -40,7 +38,6 @@
     @include responsive("tablet") {
         width: 60%;
         margin: 0 auto;
-        padding-left: 2rem;
     }
 
     .Crops__class {
@@ -48,12 +45,20 @@
         color: #659e38;
         margin-bottom: 1rem;
         font-weight: 700;
+
+        @include responsive("mobile") {
+            text-align: center;
+        }
     }
 
     .Disease__Title {
         font-size: 3rem;
         font-weight: 700;
         margin-bottom: 3rem;
+
+        @include responsive("mobile") {
+            text-align: center;
+        }
     }
 
     .Disease__Content {

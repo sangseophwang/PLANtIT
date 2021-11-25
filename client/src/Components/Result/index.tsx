@@ -1,25 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Navigation from 'Components/Common/Navigation';
 import 'Components/Result/scss/Result.scss';
-import SwiperCore, { Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper.scss';
-import 'swiper/components/pagination/pagination.scss';
-import Last from './Last';
 import Rfirst from 'Components/Result/Rfirst';
 import Rsecond from 'Components/Result/Rsecond';
 import Rthird from 'Components/Result/Rthird';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
-SwiperCore.use([Pagination]);
-
-const bullet = [
-  '- 질병명',
-  '- 피해정도',
-  '- 예방 및 치료법',
-  '- 가까운 치료소',
-];
+import Rlast from './Rlast';
 
 export default function Result(): JSX.Element {
   // API로 부터 질병 진단 정보를 받아오는 Axios GET 코드.
@@ -66,45 +53,10 @@ export default function Result(): JSX.Element {
   return (
     <div className="Result__Container">
       <Navigation />
-      <Swiper
-        style={{ height: '100vh' }}
-        direction={'vertical'}
-        slidesPerView={1}
-        spaceBetween={30}
-        speed={1000}
-        // onReachEnd={swiper => {
-        //   swiper.mousewheel.disable();
-        // }}
-        // onSlideChangeTransitionStart={swiper => {
-        //   swiper.mousewheel.enable();
-        // }}
-        pagination={{
-          clickable: true,
-          renderBullet: function (index, className) {
-            return (
-              '<div class="' +
-              className +
-              '"><span>' +
-              bullet[index] +
-              '</span></div>'
-            );
-          },
-        }}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <Rfirst />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Rsecond />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Rthird />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Last />
-        </SwiperSlide>
-      </Swiper>
+      <Rfirst />
+      <Rsecond />
+      <Rthird />
+      <Rlast />
     </div>
   );
 }
