@@ -37,17 +37,32 @@ def disease_each(request, id):
         disease = Disease.objects.filter(id = id)
         disease = list(disease.values())
         
-        pesticides = []
+        _pesticides = []
 
         for item in disease[0]['pesticides']:
             find_each_pesticide = Pesticide.objects.filter(name=item)
             find_each_pesticide = find_each_pesticide.values()
-            pesticides += find_each_pesticide
+            _pesticides += find_each_pesticide
 
-        disease[0]['pesticides'] = pesticides
+        disease[0]['pesticides'] = _pesticides
         result = {"data" : disease[0]}
 
         return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
 
+    except:
+        return Response('잘못된 형식')
+
+
+@api_view(['GET'])
+def crop_all(request):
+    '''
+    작물 전체
+    '''
+    try:
+        crop = Crop.objects.all()
+        crop = list(crop.values())
+
+        result = {"data" : crop}
+        return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
     except:
         return Response('잘못된 형식')
