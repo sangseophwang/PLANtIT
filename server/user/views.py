@@ -8,7 +8,7 @@ from rest_framework.decorators import api_view
 
 from common.token import validate_token, create_token
 from common.s3 import upload_user_image
-from .queryset import find_user_by_email_usertype, find_user_by_id, create_user, update_user
+from .queryset import find_user_by_email_usertype, find_user_by_id, create_user, update_user, update_user_profile_image
 
 # Create your views here.
 
@@ -147,11 +147,9 @@ def update(request):
     request_body = json.loads(request.body)
     nickname = request_body['nickname']
     description = request_body['description']
-    image = request_body['image']
     user_id = token_validation.data['user_id']
-    uploaded_image = upload_user_image(image, user_id)
     
-    update_result = update_user(user_id=user_id, nickname=nickname, description=description, image=uploaded_image)
+    update_result = update_user(user_id=user_id, nickname=nickname, description=description)
     if not update_result:
         return Response(data='Update Fail', status=400)
     
@@ -159,9 +157,24 @@ def update(request):
         'message' : "success",
         'nickname' : nickname,
         'description' : description,
-        'image' : uploaded_image
     }
     return Response(data=response_data, status=200)
+
+@api_view(['POST'])
+def update_profile_image(request):
+    access_token = request.META['HTTP_AUTHORIZATION']
+    
+    token_validation = validate_token(access_token)
+    if not token_validation.status_code == 200:
+        return token_validation
+    
+    user_id = token_validation.data['user_id']
+    image = request.FILES['image']
+    image_url = upload_user_image(image=image, user_id=user_id)
+    
+    if not update_user_profile_image(user_id=user_id, image=image_url):
+        return Response(data='Update Fail', status=400)
+    return Response(data=image_url, status=200)
 
 @api_view(['GET'])
 def mypage(request):

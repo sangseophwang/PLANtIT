@@ -9,4 +9,5 @@ urlpatterns = [
     path('deregister', views.deregister, name='user-deregister'),
     path('update', views.update, name='user-update'),
     path('mypage', views.mypage, name='user-mypage'),
+    path('image', views.update_profile_image, name='user-profile-image'),
 ]
