@@ -2,8 +2,16 @@
 
 .Rthird__Container {
     width: 75%;
+    margin: 20rem auto;
 
-    margin: 7rem auto;
+    @include responsive("tablet") {
+        width: 80%;
+        margin: 15rem auto;
+    }
+
+    @include responsive("mobile__small") {
+        width: 90%;
+    }
 }
 
 .Rthird__Text-Container {
@@ -15,12 +23,28 @@
         font-size: 3.5rem;
         font-weight: 700;
         margin-bottom: 3rem;
+
+        @include responsive("tablet") {
+            font-size: 3rem;
+        }
+
+        @include responsive("mobile__small") {
+            font-size: 2.5rem;
+        }
     }
 
     .Rthird__Content {
         font-size: 1.2rem;
-        line-height: 1.5;
+        line-height: 1.3;
         margin-bottom: 2rem;
+
+        @include responsive("tablet") {
+            font-size: 1rem;
+        }
+
+        @include responsive("mobile__small") {
+            font-size: 0.8rem;
+        }
     }
 }
 
@@ -31,7 +55,6 @@
     object-fit: cover;
 
     @include responsive("tablet") {
-        width: 100%;
         height: 15rem;
         margin-left: auto;
         margin-right: auto;

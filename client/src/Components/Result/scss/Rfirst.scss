@@ -1,7 +1,7 @@
 @import "/src/Components/Common/scss/mixins";
 .Rfirst__Container {
     width: 75%;
-    margin-top: 15rem;
+    margin-top: 20rem;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -10,6 +10,14 @@
     @include responsive("tablet") {
         position: relative;
         flex-direction: column;
+        width: 80%;
+        margin-top: 5rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @include responsive("mobile__small") {
+        width: 90%;
     }
 }
 
@@ -18,8 +26,12 @@
     display: flex;
 
     @include responsive("tablet") {
-        width: 60%;
+        width: 90%;
         margin: 0 auto;
+    }
+
+    @include responsive("mobile__small") {
+        width: 100%;
     }
 
     .Rfirst__Image {
@@ -36,7 +48,8 @@
     padding: 3rem;
 
     @include responsive("tablet") {
-        width: 60%;
+        width: 100%;
+        padding: 0rem;
         margin: 0 auto;
     }
 
@@ -46,8 +59,13 @@
         margin-bottom: 1rem;
         font-weight: 700;
 
-        @include responsive("mobile") {
+        @include responsive("tablet") {
             text-align: center;
+            margin-top: 2rem;
+        }
+
+        @include responsive("mobile__small") {
+            font-size: 1.5rem;
         }
     }
 
@@ -56,13 +74,21 @@
         font-weight: 700;
         margin-bottom: 3rem;
 
-        @include responsive("mobile") {
+        @include responsive("tablet") {
             text-align: center;
+        }
+
+        @include responsive("mobile__small") {
+            font-size: 2.5rem;
         }
     }
 
     .Disease__Content {
         font-size: 1rem;
         line-height: 1.3;
+
+        @include responsive("mobile__small") {
+            font-size: 0.8rem;
+        }
     }
 }

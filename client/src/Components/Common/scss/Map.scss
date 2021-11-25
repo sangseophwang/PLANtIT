@@ -2,10 +2,14 @@
 
 #map {
   width: 75%;
-  margin: 7rem auto;
-
-  height: 500px;
+  margin: 0 auto 15rem auto;
+  height: 60vh;
   border-radius: 12px;
   border: 2px solid #8c9d3d;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  @include responsive("tablet") {
+    width: 80%;
+    margin: 0 auto 10rem auto;
+  }
 }
