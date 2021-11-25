@@ -207,7 +207,7 @@ export default function LoginPage(): JSX.Element {
                 /*  
                   네이버 로그인의 응답은 onSuccess, onFailure의 핸들링으로 처리하지 않으며
                   콜백 url 팝업창에서 랜더링하는 SocialLoginPopUp 엘리먼트에서 응답 url을 파싱하여
-                  access_token, token_type 값을 가져와서 Django로 보내준다.
+                  access_token, token_type 값을 가져와서 Django로 보내주면 plantit access token을 돌려준다.
                 */
               }
               onFailure={() => {}}
