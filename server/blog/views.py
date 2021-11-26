@@ -1,4 +1,5 @@
 import json
+import random
 
 from django.shortcuts import render
 from django.conf import settings
@@ -51,6 +52,10 @@ def post_blog(request):
     title = request_body['title']
     content = request_body['content']
     thumbnail = get_thumbnail_url(content)
+    if not thumbnail:
+        random_number = random.randint(1, 12)
+        thumbnail = 'Assets/Thumbnail/' + str(random_number) + '.jpg'
+        
     if not create_blog(user=user, title=title, content=content, thumbnail=thumbnail):
         return Response(data='Post Fail', status=400)
     return Response(data='Post Success', status=200)
@@ -72,6 +77,9 @@ def patch_blog(request, blog_id):
     title = request_body['title']
     content = request_body['content']
     thumbnail = get_thumbnail_url(content)
+    if not thumbnail:
+        random_number = random.randint(1, 12)
+        thumbnail = 'Assets/Thumbnail/' + str(random_number) + '.jpg'
     
     if not update_blog(blog_id=blog_id, title=title, content=content, thumbnail=thumbnail):
         return Response(data='Update Fail', status=400)
