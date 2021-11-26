@@ -1,34 +1,32 @@
 import React from 'react';
-import Navigation from '../Components/Common/Navigation';
-import './scss/Result.scss';
-import SwiperCore, { Mousewheel, Pagination } from 'swiper';
+import Navigation from 'Components/Common/Navigation';
+import First from 'Components/Home/First';
+import Second from 'Components/Home/Second';
+import Third from 'Components/Home/Third';
+import Fourth from 'Components/Home/Fourth';
+import Fifth from 'Components/Home/Fifth';
+import Sixth from 'Components/Home/Sixth';
+import SwiperCore, { Pagination, Mousewheel } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
+import 'Components/Home/scss/Home.scss';
 import 'swiper/components/pagination/pagination.scss';
-import Test from '../Components/Result/test';
-import Last from '../Components/Result/Last';
 
 SwiperCore.use([Mousewheel, Pagination]);
 
-const bullet = ['- 질병명', '- 피해정도', '- 예방 및 치료법', '- 가까운 치료소'];
+const bullet = ['- 소개', '- 영상', '- 비전', '- 인공지능', '- 커뮤니티', '- 메세지'];
 
-export default function Result(): JSX.Element {
+export default function Home(): JSX.Element {
   return (
-    <div className="Result__Container">
+    <div className="Home__Container">
       <Navigation />
       <Swiper
         style={{ height: '100vh' }}
         direction={'vertical'}
         slidesPerView={1}
         spaceBetween={30}
-        speed={1000}
         mousewheel={true}
-        onReachEnd={swiper => {
-          swiper.mousewheel.disable();
-        }}
-        onSlideChangeTransitionStart={swiper => {
-          swiper.mousewheel.enable();
-        }}
+        speed={1000}
         pagination={{
           clickable: true,
           renderBullet: function (index, className) {
@@ -38,16 +36,22 @@ export default function Result(): JSX.Element {
         className="mySwiper"
       >
         <SwiperSlide>
-          <Test />
+          <First />
         </SwiperSlide>
         <SwiperSlide>
-          <Test />
+          <Second />
         </SwiperSlide>
         <SwiperSlide>
-          <Test />
+          <Third />
         </SwiperSlide>
         <SwiperSlide>
-          <Last />
+          <Fourth />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Fifth />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Sixth />
         </SwiperSlide>
       </Swiper>
     </div>

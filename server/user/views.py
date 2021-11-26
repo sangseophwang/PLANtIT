@@ -8,7 +8,7 @@ from rest_framework.decorators import api_view
 
 from common.token import validate_token, create_token
 from common.s3 import upload_user_image
-from .queryset import find_user_by_email_usertype, find_user_by_id, create_user, update_user
+from .queryset import find_user_by_email_usertype, find_user_by_id, create_user, update_user, update_user_profile_image
 
 # Create your views here.
 
@@ -19,6 +19,12 @@ def register(request):
     password1 = request_body['password1']
     password2 = request_body['password2']
     nickname = request_body['nickname']
+    
+    if email == None or password1 == None or password2 == None or nickname == None:
+        return Response(data='Register Fail', status=400)
+    
+    if email == '' or password1 == '' or password2 == '' or nickname == '':
+        return Response(data='Register Fail', status=400)
     
     if not password1 == password2:
         return Response(data='Password Not Same', status=400)
@@ -33,7 +39,7 @@ def register(request):
     
     new_user = create_user(email=email, password=decoded_pw_hash, nickname=nickname, user_type=0)
     if not new_user:
-        return Response(data='Register Fail', status=200)
+        return Response(data='Register Fail', status=400)
     
     return Response(data='Register Success', status=200)
 
@@ -61,7 +67,6 @@ def login(request):
         'token': access_token,
         'message': 'login success'
     }
-    response_data = json.dumps(response_data)
     return Response(data=response_data, status=200)
 
 
@@ -71,17 +76,17 @@ def naver_login(request):
     access_token = request_body['access_token']
     token_type = request_body['token_type']
     user_info = requests.get("https://openapi.naver.com/v1/nid/me", headers={'Authorization': f"{token_type} {access_token}"})
-    user_info = user_info.json()
     
-    nickname = user_info['nickname']
-    email = user_info['email']
+    user_info = user_info.json()
+    nickname = user_info['response']['nickname']
+    email = user_info['response']['email']
     user_type = 1
     
     user = find_user_by_email_usertype(email, user_type)
     if not user:
         user = create_user(email=email, password="naver-user", nickname=nickname, user_type=user_type)
         if not user:
-            return Response(data='Register Fail', status=200)
+            return Response(data='Register Fail', status=400)
         return Response(data='Register Success', status=200)
     
     user_id = user.id
@@ -91,8 +96,7 @@ def naver_login(request):
         'token': access_token,
         'message': 'naver login success'
     }
-    response_data = json.dumps(response_data)
-    return Response(data=access_token, status=200)
+    return Response(data=response_data, status=200)
     
     
 @api_view(['POST'])
@@ -110,7 +114,7 @@ def google_login(request):
     if not user:
         user = create_user(email=email, password="google-user", nickname=nickname, user_type=user_type)
         if not user:
-            return Response(data='Register Fail', status=200)
+            return Response(data='Register Fail', status=400)
         return Response(data='Register Success', status=200)
     
     user_id = user.id
@@ -120,8 +124,7 @@ def google_login(request):
         'token': access_token,
         'message': 'google login success'
     }
-    response_data = json.dumps(response_data)
-    return Response(data=access_token, status=200)
+    return Response(data=response_data, status=200)
     
 
 @api_view(['POST'])
@@ -150,11 +153,9 @@ def update(request):
     request_body = json.loads(request.body)
     nickname = request_body['nickname']
     description = request_body['description']
-    image = request_body['image']
     user_id = token_validation.data['user_id']
-    uploaded_image = upload_user_image(image, user_id)
     
-    update_result = update_user(user_id=user_id, nickname=nickname, description=description, image=uploaded_image)
+    update_result = update_user(user_id=user_id, nickname=nickname, description=description)
     if not update_result:
         return Response(data='Update Fail', status=400)
     
@@ -162,10 +163,24 @@ def update(request):
         'message' : "success",
         'nickname' : nickname,
         'description' : description,
-        'image' : uploaded_image
     }
-    response_data = json.dumps(response_data)
     return Response(data=response_data, status=200)
+
+@api_view(['POST'])
+def update_profile_image(request):
+    access_token = request.META['HTTP_AUTHORIZATION']
+    
+    token_validation = validate_token(access_token)
+    if not token_validation.status_code == 200:
+        return token_validation
+    
+    user_id = token_validation.data['user_id']
+    image = request.FILES['image']
+    image_url = upload_user_image(image=image, user_id=user_id)
+    
+    if not update_user_profile_image(user_id=user_id, image=image_url):
+        return Response(data='Update Fail', status=400)
+    return Response(data=image_url, status=200)
 
 @api_view(['GET'])
 def mypage(request):
@@ -184,5 +199,4 @@ def mypage(request):
         'description' : target_user.description,
         'image' : target_user.image
     }
-    response_data = json.dumps(response_data)
     return Response(data=response_data, status=200)

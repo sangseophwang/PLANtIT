@@ -1,5 +1,6 @@
 from django.db import models
 from user.models import User
+import datetime
 # Create your models here.
 
 class Blog(models.Model):
@@ -7,10 +8,22 @@ class Blog(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
     thumbnail = models.CharField(max_length=100) # image url
-    view = models.IntegerField()
+    view = models.IntegerField(default=0)
+    upload_date = models.CharField(max_length=100, default=datetime.datetime.now().strftime('%Y-%m-%d'))
     
     def __str__(self):
         return self.title
     
+    def as_dict(self):
+        response_data = {
+            'blog_id': self.id,
+            'author': self.user.nickname,
+            'title': self.title,
+            'content': self.content,
+            'upload_date': self.upload_date,
+            'view': self.view,
+        }
+        return response_data
+    
     class Meta:
-        db_table = "Blog"
+        db_table = "blog"

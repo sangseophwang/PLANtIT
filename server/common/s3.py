@@ -1,7 +1,10 @@
 import boto3
 import io
+import datetime
+
 from base64 import b64decode
 from django.conf import settings
+
 
 AWS_STORAGE_BUCKET_NAME = settings.AWS_STORAGE_BUCKET_NAME
 AWS_ACCESS_KEY_ID = settings.AWS_ACCESS_KEY_ID
@@ -14,53 +17,29 @@ s3 = boto3.client(
     aws_access_key_id = AWS_ACCESS_KEY_ID,
     aws_secret_access_key = AWS_SECRET_ACCESS_KEY)
 
-def upload_blog_image(html_code, blog_id):
-    html_copy = html_code
-    opentag = '<img src="data:image/png;base64,'
-    closetag = '">'
-    result = []
-    image_index = []
-    cursor = 0
+def upload_blog_image(image, filename):
+    upload_time = datetime.datetime.now().strftime('%y%m%d-%H%M%S')
+    s3.upload_fileobj(image, AWS_STORAGE_BUCKET_NAME, 'blog/' + upload_time + filename)
+    image_url = AWS_DOMAIN + 'blog/' + upload_time + filename
+    return image_url
 
-    while True:
-        opentag_idx = html_copy.find(opentag)
-        if opentag_idx == -1:
-            break
-        
-        cursor += opentag_idx
-        html_copy = html_copy[opentag_idx:]
-        
-        closetag_idx = html_copy.find(closetag)    
+def get_thumbnail_url(html_code):
+    opentag = '<img src='
+    closetag = '>'
 
-        result.append(html_code[cursor + len(opentag):cursor + closetag_idx])
-        image_index.append((cursor + len(opentag), cursor + closetag_idx))
-        cursor = cursor + closetag_idx + len(closetag)
-        html_copy = html_copy[closetag_idx + len(closetag):]
+    opentag_idx = html_code.find(opentag) + 1
+    if opentag_idx == -1:
+        return False
 
-    image_path = []
-    path_prefix = 'blog/'
-    for idx, res in enumerate(result):
-        filename = str(blog_id) + '-' + str(idx) + '.png'
-        image = b64decode(res)
-        
-        img = io.BytesIO(image)
-        s3.upload_fileobj(img, AWS_STORAGE_BUCKET_NAME, path_prefix + filename)
-        
-        image_path.append(AWS_DOMAIN + path_prefix + filename)
+    html_copy = html_code[opentag_idx:]
+    closetag_idx = html_copy.find(closetag) - 1
 
-    for i in range(len(result)):
-        result[i] = 'data:image/png;base64,' + result[i]
-
-    for before, after in zip(result, image_path):
-        html_code = html_code.replace(before, after)
-
-    return html_code
+    result = html_code[opentag_idx + len(opentag) : opentag_idx + closetag_idx]
+    return result
 
 def upload_user_image(image, user_id):
     path_prefix = 'profile/'
-    image = b64decode(image)
-    img = io.BytesIO(image)
-    filename = str(user_id) + '-profile.png'
-    s3.upload_fileobj(img, AWS_STORAGE_BUCKET_NAME, path_prefix +filename)
-    image_path = AWS_DOMAIN + path_prefix + filename
-    return image_path
+    upload_filename = path_prefix + str(user_id) + '-profile.png'
+    s3.upload_fileobj(image, AWS_STORAGE_BUCKET_NAME, upload_filename)
+    image_url = AWS_DOMAIN + upload_filename
+    return image_url

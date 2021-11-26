@@ -13,4 +13,4 @@ class User(models.Model):
         return self.email + "#" + str(self.user_type)
     
     class Meta:
-        db_table = "User"
+        db_table = "user"

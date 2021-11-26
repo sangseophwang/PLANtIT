@@ -58,3 +58,14 @@
     }
   }
 }
+
+@mixin Logo__Mobile() {
+  display: none;
+  width: 30vw;
+  @include responsive('tablet') {
+    position: absolute;
+    left: 28%;
+    top: 20px;
+    display: block;
+  }
+}

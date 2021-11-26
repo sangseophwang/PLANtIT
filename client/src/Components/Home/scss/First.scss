@@ -1,4 +1,5 @@
-@import '../../Common/scss/mixins';
+@import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
 .First__Container {
   @include Container__Form();
   font-size: 8vw;
@@ -19,14 +20,7 @@
       }
     }
     .First__Logo-Mobile {
-      display: none;
-      width: 30vw;
-      @include responsive('tablet') {
-        position: absolute;
-        left: 25%;
-        top: 20px;
-        display: block;
-      }
+      @include Logo__Mobile();
     }
     .First__SNS {
       position: absolute;
@@ -41,7 +35,7 @@
       transition: 1s;
       > svg {
         &:hover {
-          color: #659e38;
+          color: $Green;
           cursor: pointer;
           transition: 1s;
         }
