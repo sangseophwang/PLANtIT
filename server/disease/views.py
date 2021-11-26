@@ -3,6 +3,9 @@ from rest_framework.response import Response
 from django.http import JsonResponse
 from .models import Disease, Crop
 from pesticide.models import Pesticide
+from server.time_log import logging_time
+
+
 
 # Create your views here.
 # 질병 도감에 사용
@@ -29,6 +32,7 @@ def disease_all(request):
 
 # 결과페이지에 사용, 농약 value 수정 필요
 @api_view(['GET'])
+@logging_time
 def disease_each(request, id):
     '''
     질병 각각
@@ -37,17 +41,32 @@ def disease_each(request, id):
         disease = Disease.objects.filter(id = id)
         disease = list(disease.values())
         
-        pesticides = []
+        _pesticides = []
 
         for item in disease[0]['pesticides']:
             find_each_pesticide = Pesticide.objects.filter(name=item)
             find_each_pesticide = find_each_pesticide.values()
-            pesticides += find_each_pesticide
+            _pesticides += find_each_pesticide
 
-        disease[0]['pesticides'] = pesticides
+        disease[0]['pesticides'] = _pesticides
         result = {"data" : disease[0]}
 
         return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
 
+    except:
+        return Response('잘못된 형식')
+
+
+@api_view(['GET'])
+def crop_all(request):
+    '''
+    작물 전체
+    '''
+    try:
+        crop = Crop.objects.all()
+        crop = list(crop.values())
+
+        result = {"data" : crop}
+        return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
     except:
         return Response('잘못된 형식')
