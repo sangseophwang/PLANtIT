@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom';
 import CloseIcon from 'Assets/CloseIcon.svg';
 import FolderIcon from 'Assets/folder_icon_transparent.png';
 import 'Components/Analysis/scss/Upload.scss';
+import axios from 'axios';
 
 const Upload = () => {
   const [image, setImage] = useState('');
   const [isUploaded, setIsUploaded] = useState(false);
-  const [typeFile, setTypeFile] = useState('');
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
+  // const [result, setResult] = useState('');
 
+  // 이미지 업로드 코드
   function ImageChangehandler(e) {
     if (e.target.files && e.target.files[0]) {
-      setTypeFile(e.target.files[0].type);
       let reader = new FileReader();
 
       reader.onload = function (e) {
@@ -22,6 +25,47 @@ const Upload = () => {
       reader.readAsDataURL(e.target.files[0]);
     }
   }
+
+  const scrollToServiceSection = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  // 서버로 이미지 Post 전송하는 코드
+
+  // const PostAnalysisAPI = async e => {
+  //   setError(null);
+  //   setLoading(true);
+
+  //   const img = new FormData();
+  //   img.append('file', e.target.files[0]);
+
+  //   const AnalysisResponse = await axios
+  //     .post(`http://localhost:8000/analysis`, img)
+  //     .then(response => {
+  //       setResult(response.data);
+  //     })
+  //     .catch(e => {
+  //       setError(e);
+  //     });
+  //   setLoading(false);
+  //   console.log('result', result);
+  //   return AnalysisResponse;
+  // };
+
+  // if (loading)
+  //   return <div className="Notice__Container">잠시만 기다려 주세요</div>;
+  // if (error)
+  //   return (
+  //     <>
+  //       <div className="Notice__Container">API 에러가 발생했습니다</div>
+  //       <Link to="/" className="Button__Home">
+  //         홈으로
+  //       </Link>
+  //     </>
+  //   );
 
   return (
     <div className="Upload__Layout">
@@ -44,6 +88,7 @@ const Upload = () => {
               <Link
                 style={{ textDecoration: 'none', color: 'white' }}
                 to="/result"
+                onClick={scrollToServiceSection}
               >
                 검사시작
               </Link>

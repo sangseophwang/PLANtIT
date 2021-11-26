@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'Components/Result/scss/Rthird.scss';
 import ReactElasticCarousel from 'react-elastic-carousel';
+import Rmodal from 'Components/Common/Rmodal';
 
 const breakPoints = [
   { width: 500, itemsToShow: 1 },
@@ -11,6 +12,9 @@ const breakPoints = [
 ];
 
 export default function Rthird() {
+  const [modalOpen, setModalOpen] = useState(false);
+  // const [modalData, setModalData] = useState('');
+
   return (
     <section className="Rthird__Container">
       <div className="Rthird__Text-Container">
@@ -23,32 +27,77 @@ export default function Rthird() {
       </div>
 
       <ReactElasticCarousel breakPoints={breakPoints}>
-        <img
-          src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
-          alt=""
-          className="pesticides__Image"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
-          alt=""
-          className="pesticides__Image"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
-          alt=""
-          className="pesticides__Image"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
-          alt=""
-          className="pesticides__Image"
-        />
-        <img
-          src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
-          alt=""
-          className="pesticides__Image"
-        />
+        <button
+          className="pesticides__Button"
+          onClick={() => {
+            setModalOpen(true);
+            document.body.style.overflow = 'hidden';
+          }}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
+            alt=""
+            className="pesticides__Image"
+          />
+        </button>
+
+        <button
+          className="pesticides__Button"
+          onClick={() => {
+            setModalOpen(true);
+            document.body.style.overflow = 'hidden';
+          }}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
+            alt=""
+            className="pesticides__Image"
+          />
+        </button>
+
+        <button
+          className="pesticides__Button"
+          onClick={() => {
+            setModalOpen(true);
+            document.body.style.overflow = 'hidden';
+          }}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
+            alt=""
+            className="pesticides__Image"
+          />
+        </button>
+
+        <button
+          className="pesticides__Button"
+          onClick={() => {
+            setModalOpen(true);
+            document.body.style.overflow = 'hidden';
+          }}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
+            alt=""
+            className="pesticides__Image"
+          />
+        </button>
+
+        <button
+          className="pesticides__Button"
+          onClick={() => {
+            setModalOpen(true);
+            document.body.style.overflow = 'hidden';
+          }}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
+            alt=""
+            className="pesticides__Image"
+          />
+        </button>
       </ReactElasticCarousel>
+      {modalOpen && <Rmodal setOpenModal={setModalOpen} />}
     </section>
   );
 }

@@ -1,21 +1,18 @@
 @import "/src/Components/Common/scss/mixins";
 
 .Rthird__Container {
-    width: 75%;
+    width: 100%;
     margin: 20rem auto;
 
     @include responsive("tablet") {
-        width: 80%;
         margin: 15rem auto;
-    }
-
-    @include responsive("mobile__small") {
-        width: 90%;
     }
 }
 
 .Rthird__Text-Container {
-    width: 100%;
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
 
     margin-bottom: 5rem;
 
@@ -48,8 +45,17 @@
     }
 }
 
-.pesticides__Image {
+.pesticides__Button {
     width: 90%;
+    background-color: white;
+    border: none;
+    height: 20rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+}
+
+.pesticides__Image {
+    width: 100%;
     height: 20rem;
     border-radius: 1.5rem;
     object-fit: cover;
@@ -63,16 +69,8 @@
 
 // carousel 디자인
 
-#root
-    > div
-    > div
-    > div
-    > div.swiper-wrapper
-    > div.swiper-slide.swiper-slide-active
-    > section
-    > div
-    > div.sc-eCImPb.jMNKZk.rec.rec-carousel {
-    width: 70%;
+#root > div > div > section.Rthird__Container > div.rec.rec-carousel-wrapper {
+    width: 75%;
     margin: 0 auto;
 }
 
