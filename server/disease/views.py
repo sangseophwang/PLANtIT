@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from django.http import JsonResponse
 from .models import Disease, Crop
 from pesticide.models import Pesticide
-from server.time_log import logging_time
+from time_log import logging_time
 
 
 
