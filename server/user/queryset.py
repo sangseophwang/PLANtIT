@@ -26,13 +26,21 @@ def create_user(email, password, nickname, user_type):
     else:
         return new_user
 
-def update_user(user_id, nickname, description, image):
+def update_user(user_id, nickname, description):
     target_user = find_user_by_id(user_id)
     try:
         target_user.nickname = nickname
         target_user.description = description
-        target_user.image = image
         target_user.save()
+    except:
+        return False
+    else:
+        return True
+    
+def update_user_profile_image(user_id, image):
+    target_user = find_user_by_id(user_id)
+    try:
+        target_user.image = image
     except:
         return False
     else:

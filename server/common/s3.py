@@ -39,9 +39,7 @@ def get_thumbnail_url(html_code):
 
 def upload_user_image(image, user_id):
     path_prefix = 'profile/'
-    image = b64decode(image)
-    img = io.BytesIO(image)
-    filename = str(user_id) + '-profile.png'
-    s3.upload_fileobj(img, AWS_STORAGE_BUCKET_NAME, path_prefix +filename)
-    image_path = AWS_DOMAIN + path_prefix + filename
-    return image_path
+    upload_filename = path_prefix + str(user_id) + '-profile.png'
+    s3.upload_fileobj(image, AWS_STORAGE_BUCKET_NAME, upload_filename)
+    image_url = AWS_DOMAIN + upload_filename
+    return image_url
