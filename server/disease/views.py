@@ -3,6 +3,9 @@ from rest_framework.response import Response
 from django.http import JsonResponse
 from .models import Disease, Crop
 from pesticide.models import Pesticide
+from server.time_log import logging_time
+
+
 
 # Create your views here.
 # 질병 도감에 사용
@@ -29,6 +32,7 @@ def disease_all(request):
 
 # 결과페이지에 사용, 농약 value 수정 필요
 @api_view(['GET'])
+@logging_time
 def disease_each(request, id):
     '''
     질병 각각
