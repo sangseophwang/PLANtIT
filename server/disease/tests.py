@@ -4,7 +4,6 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework import status
 from disease import views
-from pesticide.models import Pesticide
 
 # Create your tests here.
 
@@ -69,7 +68,7 @@ class DiseaseEachApiTest(TestCase):
 
         test_data = res.json()['data']['pesticides']=[ "캡틴에이 입상수화제", "새론 수화제", "발라 액제", "델란 입상수화제", "영일베스트 유현탁제", "차세대 수화제", "아리메타실엠지 수화제", "아리베노밀 수화제"]
         test_data = res.json()['data']
-     
+ 
         # get 요청 확인 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
 
