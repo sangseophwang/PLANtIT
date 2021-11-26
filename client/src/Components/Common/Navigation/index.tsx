@@ -2,7 +2,14 @@ import { Link } from 'react-router-dom';
 import 'Components/Common/scss/Navigation.scss';
 import NavItem from './NavItem';
 import Logo from 'Assets/logo.png';
-import { faHome, faLeaf, faBook, faComment, faUser, faVial } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHome,
+  faLeaf,
+  faBook,
+  faComment,
+  faUser,
+  faVial,
+} from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -25,8 +32,17 @@ export default function Navigation(): JSX.Element {
             <NavItem data={data} key={data.address} />
           ))}
         </div>
-        <Link className="Navigation__Item-Web" to={sessionStorage.getItem('access_token') === null ? '/login': '/mypage'}>
-          {sessionStorage.getItem('access_token') === null ? '로그인': '마이페이지'}
+        <Link
+          className="Navigation__Item-Web"
+          to={
+            sessionStorage.getItem('access_token') === null
+              ? '/login'
+              : '/mypage'
+          }
+        >
+          {sessionStorage.getItem('access_token') === null
+            ? '로그인'
+            : '마이페이지'}
         </Link>
       </div>
       <div className="Navigation__Category-Mobile">
@@ -36,9 +52,20 @@ export default function Navigation(): JSX.Element {
             <span>{item.name}</span>
           </Link>
         ))}
-        <Link className="Navigation__Item-Mobile" to={sessionStorage.getItem('access_token') === null ? '/login': '/mypage'}>
+        <Link
+          className="Navigation__Item-Mobile"
+          to={
+            sessionStorage.getItem('access_token') === null
+              ? '/login'
+              : '/mypage'
+          }
+        >
           <FontAwesomeIcon icon={faUser} />
-          <span>{sessionStorage.getItem('access_token') === null ? '로그인': '마이페이지'}</span>
+          <span>
+            {sessionStorage.getItem('access_token') === null
+              ? '로그인'
+              : '마이페이지'}
+          </span>
         </Link>
       </div>
     </nav>
