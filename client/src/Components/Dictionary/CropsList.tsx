@@ -23,7 +23,9 @@ const CropsList = (props: any) => {
 
               <div className="CropsList__Name">{value.name}</div>
 
-              <div className="CropsList__Content">{value.name}에 대해 알아보세요</div>
+              <div className="CropsList__Content">
+                {value.name}에 대해 알아보세요
+              </div>
 
               <div className="CropsList__Click">
                 <button
@@ -31,6 +33,7 @@ const CropsList = (props: any) => {
                   onClick={() => {
                     setModalData(value);
                     setModalOpen(true);
+                    document.body.style.overflow = 'hidden';
                   }}
                 >
                   정보확인

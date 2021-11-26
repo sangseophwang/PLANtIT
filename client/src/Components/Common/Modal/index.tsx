@@ -23,6 +23,7 @@ function Modal({ setOpenModal, data }: any) {
         className="Modal__Background"
         onClick={() => {
           setOpenModal(false);
+          document.body.style.overflow = 'scroll';
         }}
       />
       <div className="Modal__Container-Test">
@@ -34,6 +35,7 @@ function Modal({ setOpenModal, data }: any) {
               alt="CloseIcon"
               onClick={() => {
                 setOpenModal(false);
+                document.body.style.overflow = 'scroll';
               }}
             />
           </div>

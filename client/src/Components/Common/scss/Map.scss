@@ -1,20 +1,15 @@
-@import '/src/Components/Common/scss/mixins';
+@import "/src/Components/Common/scss/mixins";
 
 #map {
-  position: absolute;
-  width: 60%;
-  height: 50%;
-  top: 8rem;
+  width: 75%;
+  margin: 0 auto 15rem auto;
+  height: 60vh;
   border-radius: 12px;
   border: 2px solid #8c9d3d;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-  @include responsive('tablet') {
-    top: 2rem;
-    height: 60%;
-  }
-
-  @include responsive('mobile') {
-    left: 8rem;
+  @include responsive("tablet") {
+    width: 80%;
+    margin: 0 auto 10rem auto;
   }
 }

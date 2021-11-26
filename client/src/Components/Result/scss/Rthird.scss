@@ -1,0 +1,110 @@
+@import "/src/Components/Common/scss/mixins";
+
+.Rthird__Container {
+    width: 100%;
+    margin: 20rem auto;
+
+    @include responsive("tablet") {
+        margin: 15rem auto;
+    }
+}
+
+.Rthird__Text-Container {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+
+    margin-bottom: 5rem;
+
+    .Rthird__Title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+
+        @include responsive("tablet") {
+            font-size: 3rem;
+        }
+
+        @include responsive("mobile__small") {
+            font-size: 2.5rem;
+        }
+    }
+
+    .Rthird__Content {
+        font-size: 1.2rem;
+        line-height: 1.3;
+        margin-bottom: 2rem;
+
+        @include responsive("tablet") {
+            font-size: 1rem;
+        }
+
+        @include responsive("mobile__small") {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+.pesticides__Button {
+    width: 90%;
+    background-color: white;
+    border: none;
+    height: 20rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+}
+
+.pesticides__Image {
+    width: 100%;
+    height: 20rem;
+    border-radius: 1.5rem;
+    object-fit: cover;
+
+    @include responsive("tablet") {
+        height: 15rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+// carousel 디자인
+
+#root > div > div > section.Rthird__Container > div.rec.rec-carousel-wrapper {
+    width: 75%;
+    margin: 0 auto;
+}
+
+// 좌우버튼
+
+#root > div > div > section.Rthird__Container > div.rec-carousel-wrapper > div.rec.rec-carousel > button {
+    background-color: white;
+    color: #5d5d5d;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#root > div > div > section.Rthird__Container > div.rec-carousel-wrapper > div.rec.rec-carousel > button:hover {
+    background-color: darken($color: white, $amount: 10%);
+}
+
+// carousel dot button: 밑에 동그라미
+
+#root
+    > div
+    > div
+    > section.Rthird__Container
+    > div.rec.rec-carousel-wrapper
+    > div.rec.rec-pagination
+    > button.rec.rec-dot.rec.rec-dot_active {
+    background-color: #5d5d5d;
+    box-shadow: 0 0 1px 3px #5d5d5d;
+}
+
+#root
+    > div
+    > div
+    > section.Rthird__Container
+    > div.rec.rec-carousel-wrapper
+    > div.rec.rec-pagination
+    > button.rec.rec-dot {
+    box-shadow: 0 0 1px 3px #5d5d5d;
+}

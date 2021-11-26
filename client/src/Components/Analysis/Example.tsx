@@ -1,9 +1,9 @@
 import React from 'react';
 import 'Components/Analysis/scss/Example.scss';
-import Good1 from 'Assets/Example/Good/good1.jpg';
+import Good1 from 'Assets/Example/Good/good1.jpeg';
 import Good2 from 'Assets/Example/Good/good2.jpg';
 import Good3 from 'Assets/Example/Good/good3.jpg';
-import Bad1 from 'Assets/Example/Bad/bad1.jpg';
+import Bad1 from 'Assets/Example/Bad/bad1.jpeg';
 import Bad2 from 'Assets/Example/Bad/bad2.jpg';
 import Bad3 from 'Assets/Example/Bad/bad3.jpg';
 
@@ -11,41 +11,30 @@ const Example = () => {
   return (
     <div className="Example__container">
       <div className="SubExample__Container">
-        <div className="Example__Title">좋은 예</div>
+        <div className="Example__Title">촬영 가이드라인</div>
+        <div className="Example__Text">
+          - 작물의 촬영 부위는 '열매, 잎, 가지, 줄기, 뿌리'에 한정되어 있습니다.
+          <br />- 촬영 부위가 잘려서는 안됩니다.
+          <br />- 가급적 사진에 꽉 채우도록 찍어주세요.
+          <br />- 그림자, 손 등 외부요인에 의해 일부가 가려져선 안됩니다.
+          <br />- 잎의 경우, 되도록 접히거나 말림이 없어야 합니다.
+        </div>
         <div className="Example__Content">
+          <div className="Example__Subtitle">좋은 예</div>
           <img src={Good1} alt="" className="Example__Image" />
           <img src={Good2} alt="" className="Example__Image" />
           <img src={Good3} alt="" className="Example__Image" />
-
-          <div className="Example__Text">
-            좋은 예시 문구가 들어갈 공간압니다.
-            <br />
-            - 작물의 종류를 판별할 수 있도록 너무 확대하지 말아주세요.
-            <br />
-            - 인식에 방해가 되지 않도록, 작물 주변을 말끔히 정리해주세요.
-            <br />
-            - 작 식별될 수 있도록, A4용지나 손을 이용해 크로마키를 만들어주시면 더욱 좋습니다.
-            <br />
-          </div>
         </div>
       </div>
       <div className="SubExample__Container">
-        <div className="Example__Title">나쁜 예</div>
         <div className="Example__Content">
+          <div className="Example__Subtitle">
+            나쁜 예
+            <br />
+          </div>
           <img src={Bad1} alt="" className="Example__Image" />
           <img src={Bad2} alt="" className="Example__Image" />
           <img src={Bad3} alt="" className="Example__Image" />
-
-          <div className="Example__Text">
-            나쁜 예시 문구가 들어갈 공간압니다.
-            <br />
-            - 작물의 종류를 판별할 수 있도록 너무 확대하지 말아주세요.
-            <br />
-            - 인식에 방해가 되지 않도록, 작물 주변을 말끔히 정리해주세요.
-            <br />
-            - 작 식별될 수 있도록, A4용지나 손을 이용해 크로마키를 만들어주시면 더욱 좋습니다.
-            <br />
-          </div>
         </div>
       </div>
     </div>
