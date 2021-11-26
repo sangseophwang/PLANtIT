@@ -4,8 +4,8 @@ from disease import views
 
 urlpatterns = [
     path('disease', views.disease_all),
-    path('disease/<int:id>',views.disease_each)
-    # url(r'^(?P<pk>[0-9]+)/$', views.bbs_detail),
+    path('disease/<int:id>', views.disease_each),
+    path('crop', views.crop_all)
 ]
 
 # urlpatterns = format_suffix_patterns(urlpatterns)
