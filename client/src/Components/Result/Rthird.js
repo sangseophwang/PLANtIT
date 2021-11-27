@@ -4,8 +4,8 @@ import ReactElasticCarousel from 'react-elastic-carousel';
 import Rmodal from 'Components/Common/Rmodal';
 
 const breakPoints = [
-  { width: 500, itemsToShow: 1 },
-  { width: 550, itemsToShow: 2 },
+  { width: 300, itemsToShow: 1 },
+  { width: 400, itemsToShow: 2 },
   { width: 768, itemsToShow: 3 },
   { width: 1200, itemsToShow: 4 },
   { width: 1300, itemsToShow: 5 },
