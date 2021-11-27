@@ -1,34 +1,12 @@
 version: "3"
 
 services:
-  database:
-    container_name: database
-    build: infra/db/
-    image: database-image
-    volumes:
-      - ./mysql:/var/lib/mysql
-    ports:
-      - 3306:3306
-    env_file:
-      - docker.env
-
   backend:
     container_name: backend
-    build: infra/django/
-    image: backend-image
+    image: jhj967878/backend:django
     volumes:
       - ./server:/project/server
     ports:
       - 8000:8000
-    restart: always
-
-  database-m1:
-    container_name: database
-    build: infra/dbm1/
-    image: database-image
-    volumes:
-      - ./mysql:/var/lib/mysql
-    ports:
-      - 3306:3306
-    env_file:
-      - docker.env
+    working_dir: /project/server
+    command: python3 manage.py runserver 0.0.0.0:8000
