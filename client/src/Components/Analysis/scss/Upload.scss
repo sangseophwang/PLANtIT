@@ -3,7 +3,7 @@
 .Upload__Layout {
     margin-top: 8rem;
     height: 100%;
-    width: 80%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -18,7 +18,7 @@
     }
 
     @include responsive("tablet") {
-        flex-direction: column;
+        flex-direction: column-reverse;
         margin-top: 1rem;
     }
 }
@@ -32,12 +32,18 @@
         padding-right: 1rem;
     }
 
+    @include responsive("mobile") {
+        width: 90%;
+        padding-right: 0;
+        margin-top: 2rem;
+    }
+
     @include responsive("mobile__small") {
         padding-right: 0;
     }
 
     .Main__Text {
-        font-size: 3rem;
+        font-size: 2.8rem;
         font-weight: 700;
         text-align: center;
 
@@ -45,8 +51,13 @@
             font-size: 2.3rem;
         }
 
+        @include responsive("tablet") {
+            margin-top: 2rem;
+        }
+
         @include responsive("mobile__small") {
             font-size: 1.8rem;
+            margin-top: 1rem;
         }
     }
 
@@ -57,6 +68,7 @@
         word-break: break-word;
 
         @include responsive("mobile") {
+            width: 100%;
             font-size: 1rem;
         }
     }
@@ -127,6 +139,9 @@
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
+    @include responsive("mobile__small") {
+        width: 90%;
+    }
 
     text-align: center;
     p {
@@ -145,6 +160,12 @@
     width: 350px;
     background: #fbfbff;
     border-radius: 12px;
+
+    @include responsive("mobile__small") {
+        width: 90%;
+        margin: 0 auto;
+    }
+
     .Upload__Image {
         display: flex;
         flex-wrap: wrap;

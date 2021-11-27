@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'Components/Common/Modal';
 import 'Components/Dictionary/scss/CropsList.scss';
+import { Link } from 'react-router-dom';
 
 const CropsList = (props: any) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -23,7 +24,9 @@ const CropsList = (props: any) => {
 
               <div className="CropsList__Name">{value.name}</div>
 
-              <div className="CropsList__Content">{value.name}에 대해 알아보세요</div>
+              <div className="CropsList__Content">
+                {value.name}에 대해 알아보세요
+              </div>
 
               <div className="CropsList__Click">
                 <button
@@ -31,6 +34,7 @@ const CropsList = (props: any) => {
                   onClick={() => {
                     setModalData(value);
                     setModalOpen(true);
+                    document.body.style.overflow = 'hidden';
                   }}
                 >
                   정보확인

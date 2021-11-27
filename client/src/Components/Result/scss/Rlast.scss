@@ -1,0 +1,15 @@
+@import "/src/Components/Common/scss/mixins";
+
+.Last__Content {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: #5d5d5d;
+
+    @include responsive("mobile") {
+        font-size: 1.5rem;
+        width: 90%;
+        margin: 2rem auto;
+    }
+}

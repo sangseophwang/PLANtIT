@@ -1,0 +1,94 @@
+@import "/src/Components/Common/scss/mixins";
+.Rfirst__Container {
+    width: 75%;
+    margin-top: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+
+    @include responsive("tablet") {
+        position: relative;
+        flex-direction: column;
+        width: 80%;
+        margin-top: 5rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @include responsive("mobile__small") {
+        width: 90%;
+    }
+}
+
+.Rfirst__Image-continer {
+    width: 50%;
+    display: flex;
+
+    @include responsive("tablet") {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    @include responsive("mobile__small") {
+        width: 100%;
+    }
+
+    .Rfirst__Image {
+        width: 100%;
+        border-radius: 12px;
+        border-radius: 12px;
+        border: 2px solid #8c9d3d;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+}
+
+.Rfirst__Text-continer {
+    width: 50%;
+    padding: 3rem;
+
+    @include responsive("tablet") {
+        width: 100%;
+        padding: 0rem;
+        margin: 0 auto;
+    }
+
+    .Crops__class {
+        font-size: 2rem;
+        color: #659e38;
+        margin-bottom: 1rem;
+        font-weight: 700;
+
+        @include responsive("tablet") {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        @include responsive("mobile__small") {
+            font-size: 1.5rem;
+        }
+    }
+
+    .Disease__Title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+
+        @include responsive("tablet") {
+            text-align: center;
+        }
+
+        @include responsive("mobile__small") {
+            font-size: 2.5rem;
+        }
+    }
+
+    .Disease__Content {
+        font-size: 1rem;
+        line-height: 1.3;
+
+        @include responsive("mobile__small") {
+            font-size: 0.8rem;
+        }
+    }
+}
