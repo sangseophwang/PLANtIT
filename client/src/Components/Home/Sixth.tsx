@@ -1,7 +1,7 @@
 import 'Components/Home/scss/Sixth.scss';
-
 import Logo from 'Assets/logo.png';
-import Sfooter from 'Components/Common/Footer/Sfooter';
+
+import Footer from 'Components/Common/Footer';
 export default function Sixth(): JSX.Element {
   return (
     <div className="Sixth__Container">
@@ -13,7 +13,7 @@ export default function Sixth(): JSX.Element {
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
       </div>
-      <Sfooter />
+      <Footer data={'absolute'} />
     </div>
   );
 }
