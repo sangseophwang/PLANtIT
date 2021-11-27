@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'Components/Common/Modal';
 import 'Components/Dictionary/scss/CropsList.scss';
+import { Link } from 'react-router-dom';
 
 const CropsList = (props: any) => {
   const [modalOpen, setModalOpen] = useState(false);
