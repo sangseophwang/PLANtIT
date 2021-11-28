@@ -8,6 +8,7 @@ from pesticide import views
 # Create your tests here.
 
 pesticide = list(Pesticide.objects.filter(name="발라 액제").values())
+
 class PesticideApiTest(TestCase):
     def setUp(self):
         self.client = APIClient()

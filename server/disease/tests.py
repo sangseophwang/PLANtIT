@@ -61,11 +61,7 @@ class DiseaseEachApiTest(TestCase):
     def test_disease_each(self):
         
         url = reverse(views.disease_each, kwargs={'id': 1})
-        
-        # print(Disease.objects.filter(id=1).values())
-        # list(Disease.objects.filter(id=1).values())
         res = self.client.get(url)
-
         test_data = res.json()['data']['pesticides']=[ "캡틴에이 입상수화제", "새론 수화제", "발라 액제", "델란 입상수화제", "영일베스트 유현탁제", "차세대 수화제", "아리메타실엠지 수화제", "아리베노밀 수화제"]
         test_data = res.json()['data']
  
