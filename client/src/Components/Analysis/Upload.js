@@ -84,15 +84,19 @@ const Upload = () => {
 
         <div className="Button-Continer">
           {isUploaded ? (
-            <div className="Upload__Button">
-              <Link
-                style={{ textDecoration: 'none', color: 'white' }}
-                to="/result"
-                onClick={scrollToServiceSection}
-              >
-                검사시작
-              </Link>
-            </div>
+            <Link
+              className="Upload__Button"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                display: 'block',
+                width: '100%',
+              }}
+              to="/result"
+              onClick={scrollToServiceSection}
+            >
+              검사시작
+            </Link>
           ) : (
             <div className="Fail__Button">검사시작</div>
           )}

@@ -87,7 +87,6 @@ def naver_login(request):
         user = create_user(email=email, password="naver-user", nickname=nickname, user_type=user_type)
         if not user:
             return Response(data='Register Fail', status=400)
-        return Response(data='Register Success', status=200)
     
     user_id = user.id
     access_token = create_token(email=email, user_type=user_type, user_id=user_id)
@@ -115,7 +114,6 @@ def google_login(request):
         user = create_user(email=email, password="google-user", nickname=nickname, user_type=user_type)
         if not user:
             return Response(data='Register Fail', status=400)
-        return Response(data='Register Success', status=200)
     
     user_id = user.id
     access_token = create_token(email=email, user_type=user_type, user_id=user_id)
