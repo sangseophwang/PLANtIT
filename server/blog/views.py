@@ -117,7 +117,7 @@ def blog_list(request):
     if page_number == None:
         page_number = 1
     if order == None:
-        order = 0
+        order = '0'
     
     if order == '0':
         blogs = get_all_blog_by_date()
@@ -127,6 +127,10 @@ def blog_list(request):
         return Response(data="Bad Request", status=400)
     
     blogs_paginator = Paginator(blogs, 4)
+    
+    if page_number > blogs_paginator.num_pages:
+        page_number = blogs_paginator.num_pages
+        
     blogs_result = blogs_paginator.get_page(page_number)
     
     response_data = [blog.as_dict() for blog in blogs_result]
