@@ -5,3 +5,4 @@ docker.env
 plantit.sql
 *.key
 *.crt
+dump.rdb
