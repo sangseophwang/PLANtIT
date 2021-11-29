@@ -3,3 +3,5 @@ mysql
 .env
 docker.env
 plantit.sql
+*.key
+*.crt
