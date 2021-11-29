@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
 
 
 # Application definition
@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'blog.apps.BlogConfig',
     'storages',
-    'corsheaders'
+    'corsheaders',
+    'sslserver',
 ]
 
 MIDDLEWARE = [
