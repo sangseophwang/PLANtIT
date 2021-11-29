@@ -1,6 +1,6 @@
 import React from 'react';
 import 'Components/Introduction/scss/Banner.scss';
-import IntroImage from 'Assets/IntroImage.jpg';
+import IntroImage from 'Assets/Serviceintro/IntroImage.jpg';
 
 const Banner = () => {
   return (

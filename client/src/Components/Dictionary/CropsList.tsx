@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'Components/Common/Modal';
 import 'Components/Dictionary/scss/CropsList.scss';
 import { Link } from 'react-router-dom';
@@ -7,17 +7,27 @@ const CropsList = (props: any) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState('');
 
+  useEffect(() => {
+    if (!props.data) {
+      return;
+    }
+    const current_url = window.location.href.includes('?name=');
+    const disease_name = decodeURI(window.location.href.split('=')[1]);
+
+    if (current_url) {
+      const need = props.data.filter((val: any) => val.name == disease_name);
+      setModalData(need[0]);
+      setModalOpen(true);
+    }
+  }, []);
+
   return (
     <>
       <div className="Search__Result">
         {props.data &&
           props.data.map((value: any) => (
             <div className="CropsList__Container-Box">
-              <img
-                className="CropsList__Image"
-                src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
-                alt="crops"
-              />
+              <img className="CropsList__Image" src={value.image} alt="crops" />
               <div className="CropsList__Classification">
                 <div className="Classification__Name">{value.crops_id}</div>
               </div>
@@ -29,7 +39,9 @@ const CropsList = (props: any) => {
               </div>
 
               <div className="CropsList__Click">
-                <button
+                <Link
+                  style={{ textDecoration: 'none' }}
+                  to={window.location.pathname + `?name=${value.name}`}
                   className="CropsList__Button"
                   onClick={() => {
                     setModalData(value);
@@ -38,7 +50,7 @@ const CropsList = (props: any) => {
                   }}
                 >
                   정보확인
-                </button>
+                </Link>
               </div>
             </div>
           ))}
