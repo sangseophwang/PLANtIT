@@ -1,9 +1,10 @@
 //@ts-ignore
 import ImageResize from '@looop/quill-image-resize-module-react';
-import { useMemo, useEffect, useRef } from 'react';
+import { useMemo, useRef, useCallback } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import QuillImageDropAndPaste from 'quill-image-drop-and-paste';
 import 'react-quill/dist/quill.snow.css';
+import { CommunityApi } from 'API/CommunityApi';
 
 interface EditorProps {
   contents: string;
@@ -13,29 +14,41 @@ interface EditorProps {
 Quill.register('modules/imageResize', ImageResize);
 Quill.register('modules/imageDropAndPaste', QuillImageDropAndPaste);
 
-export default function Editor({ contents, onChange }: EditorProps): JSX.Element {
+export default function Editor({
+  contents,
+  onChange,
+}: EditorProps): JSX.Element {
   const QuillRef = useRef<ReactQuill>(null);
 
-  // const imageHandler = useCallback(() => {
-  //   const input = document.createElement('input');
+  const imageHandler = useCallback(() => {
+    const input = document.createElement('input');
+    const formData = new FormData();
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+    input.click();
 
-  //   input.setAttribute('type', 'file');
-  //   input.setAttribute('accept', 'image/*');
-  //   input.click();
+    const quill = QuillRef.current?.getEditor();
 
-  //   let quill = QuillRef.current.getEditor();
+    input.onchange = async () => {
+      const file = input.files;
+      if (file !== null) formData.append('image', file[0]);
 
-  //   input.onchange = async () => {
-  //     const file = input.files[0];
-  //     const formData = new FormData();
+      // Save current cursor state
+      const range = quill?.getSelection()?.index;
+      const res = await CommunityApi.Upload_Image.post('/blog/image', formData);
+      const url = res.data;
+      if (range !== undefined && range !== null) {
+        let quill = QuillRef.current?.getEditor();
+        quill?.setSelection(range, 1);
 
-  //     formData.append('image', file);
-
-  //     const range = quill.getSelection();
-
-  //   }
-
-  // }, [])
+        quill?.clipboard.dangerouslyPasteHTML(
+          range,
+          `<img src=${url}  alt="이미지 태그 입니다." className="w-full"/>`,
+        );
+      }
+      console.log(res.data);
+    };
+  }, []);
 
   const modules = useMemo(
     () => ({
@@ -43,12 +56,18 @@ export default function Editor({ contents, onChange }: EditorProps): JSX.Element
         container: [
           [{ size: ['small', false, 'large', 'huge'] }],
           ['bold', 'underline', 'strike', 'blockquote'],
-          [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }, { align: [] }],
+          [
+            { list: 'ordered' },
+            { list: 'bullet' },
+            { indent: '-1' },
+            { indent: '+1' },
+            { align: [] },
+          ],
           ['image'],
         ],
-        // handlers: {
-        //   image: imageHandler,
-        // },
+        handlers: {
+          image: imageHandler,
+        },
       },
       imageDropAndPaste: true,
       clipboard: { matchVisual: false },
@@ -60,11 +79,29 @@ export default function Editor({ contents, onChange }: EditorProps): JSX.Element
     [],
   );
 
-  const formats = ['size', 'bold', 'underline', 'strike', 'blockquote', 'list', 'bullet', 'indent', 'align', 'image'];
+  const formats = [
+    'size',
+    'bold',
+    'underline',
+    'strike',
+    'blockquote',
+    'list',
+    'bullet',
+    'indent',
+    'align',
+    'image',
+  ];
 
-  useEffect(() => {
-    QuillRef.current?.getEditor().root.setAttribute('spellcheck', 'false');
-  }, []);
-
-  return <ReactQuill className="Editor" ref={QuillRef} theme="snow" value={contents} onChange={onChange} modules={modules} formats={formats} placeholder={'내용을 입력해주세요.'} />;
+  return (
+    <ReactQuill
+      className="Editor"
+      ref={QuillRef}
+      theme="snow"
+      value={contents}
+      onChange={onChange}
+      modules={modules}
+      formats={formats}
+      placeholder={'내용을 입력해주세요.'}
+    />
+  );
 }
