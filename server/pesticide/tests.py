@@ -8,6 +8,7 @@ from pesticide import views
 # Create your tests here.
 
 pesticide = list(Pesticide.objects.filter(name="발라 액제").values())
+
 class PesticideApiTest(TestCase):
     def setUp(self):
         self.client = APIClient()
@@ -20,8 +21,8 @@ class PesticideApiTest(TestCase):
         test_data = {
                         "id": 3,
                         "name": "발라 액제",
-                        "image": "a",
-                        "description": "약효 증진시켜주는 기능성 전착제",
+                        "image": "Assets/Pesticides/vala.png",
+                        "description": "고기능성 전착제",
                         "component": "polyether modified polyslioxane 99%",
                         "packing_unit": "100ml",
                         "kind": "실록세인계",
@@ -38,5 +39,5 @@ class PesticideApiTest(TestCase):
         # get 요청 확인 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
 
-        # DB 조회 후 총 길이 확인
+        # 테스트로 생성한 작물과 실제 데이터 베이스에 있는 작물과 같은지 확인
         self.assertEqual(test_data, pesticide[0])

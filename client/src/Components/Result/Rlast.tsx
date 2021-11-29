@@ -8,7 +8,7 @@ export default function Rlast(): JSX.Element {
     <section className="Last__Container">
       <div className="Last__Content">주변의 치료시설을 찾아보세요!</div>
       <CenterMap data={Location} />
-      <Footer />
+      <Footer data={'relative'} />
     </section>
   );
 }

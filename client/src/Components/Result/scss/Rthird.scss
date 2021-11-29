@@ -72,6 +72,10 @@
 #root > div > div > section.Rthird__Container > div.rec.rec-carousel-wrapper {
     width: 75%;
     margin: 0 auto;
+
+    @include responsive("mobile__small") {
+        width: 85%;
+    }
 }
 
 // 좌우버튼
@@ -79,11 +83,12 @@
 #root > div > div > section.Rthird__Container > div.rec-carousel-wrapper > div.rec.rec-carousel > button {
     background-color: white;
     color: #5d5d5d;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: none;
 }
 
 #root > div > div > section.Rthird__Container > div.rec-carousel-wrapper > div.rec.rec-carousel > button:hover {
-    background-color: darken($color: white, $amount: 10%);
+    background-color: #5d5d5d;
+    color: white;
 }
 
 // carousel dot button: 밑에 동그라미

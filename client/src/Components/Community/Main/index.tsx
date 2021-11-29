@@ -2,8 +2,7 @@ import 'Components/Community/scss/Main.scss';
 import Logo from 'Assets/logo.png';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export default function Community(): JSX.Element {
   const isLoggedin = sessionStorage.getItem('access_token');
@@ -32,7 +31,6 @@ export default function Community(): JSX.Element {
         <h3>이 곳은 여러분의 식물과 관련된 이야기를 쓰는 곳입니다.</h3>
         <h3>당신의 지식을 많은 사람들과 공유해보세요.</h3>
         <button onClick={handleCreatePost}>글쓰기</button>
-        <ToastContainer />
       </div>
       <div className="Main__Contents-Wrapper">
         <div className="one"></div>

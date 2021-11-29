@@ -76,7 +76,7 @@ export default function Editor({
         modules: ['Resize', 'DisplaySize', 'Toolbar'],
       },
     }),
-    [],
+    [imageHandler],
   );
 
   const formats = [

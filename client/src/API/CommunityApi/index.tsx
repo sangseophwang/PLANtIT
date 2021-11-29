@@ -5,7 +5,7 @@ const Post = axios.create({
   baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: 'Bearer' + sessionStorage.getItem('access_token'),
+    Authorization: sessionStorage.getItem('access_token') || '',
   },
 });
 
