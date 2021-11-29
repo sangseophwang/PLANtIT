@@ -17,7 +17,9 @@ export default function Post(): JSX.Element {
       CommunityApi.Post.post('/blog/post', {
         title: title,
         content: contents,
-      }).then(response => console.log(response));
+      })
+        .then(response => console.log(response))
+        .catch(console.log);
     }
   };
   return (

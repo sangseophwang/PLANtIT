@@ -13,7 +13,7 @@ const Upload_Image = axios.create({
   baseURL: BASE_URL,
   headers: {
     'Content-Type': 'multipart/form-data',
-    Authorization: 'Bearer' + sessionStorage.getItem('access_token'),
+    Authorization: sessionStorage.getItem('access_token') || '',
   },
 });
 
