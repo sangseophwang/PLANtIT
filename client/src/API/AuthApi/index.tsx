@@ -10,14 +10,26 @@ import axios from 'axios';
 // }
 
 const naverClientId = 'ioHK_g45Ha9ZWdoNfune';
-const googleClientId = '981453120514-lh9cf035sa3pbhan5qa8fjr9eg85idot.apps.googleusercontent.com';
+const googleClientId =
+  '981453120514-lh9cf035sa3pbhan5qa8fjr9eg85idot.apps.googleusercontent.com';
 
 const requestDjango = axios.create({
   baseURL: 'http://localhost:8000/api/',
   headers: { 'Content-Type': 'application/json' },
 });
 
-function isValidateForm(callBackList: ((arg0: any) => boolean)[], maskBooleanList: boolean[], ...formData: any[]): boolean[] {
+function createRequestAxios(_baseURL: any, _headers: any) {
+  return axios.create({
+    baseURL: _baseURL,
+    headers: _headers,
+  });
+}
+
+function isValidateForm(
+  callBackList: ((arg0: any) => boolean)[],
+  maskBooleanList: boolean[],
+  ...formData: any[]
+): boolean[] {
   return formData.map((data, index) => {
     return callBackList[index](data) === maskBooleanList[index] ? true : false;
   });
@@ -38,6 +50,7 @@ function parsingUrl(url: string[]): any[] {
 
 export const authApi = {
   requestDjango,
+  createRequestAxios,
   isValidateForm,
   parsingUrl,
   naverClientId,
