@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CloseIcon from 'Assets/CloseIcon.svg';
 import FolderIcon from 'Assets/folder_icon_transparent.png';
 import 'Components/Analysis/scss/Upload.scss';
@@ -14,6 +14,7 @@ const Upload = () => {
   const [result, setResult] = useState('');
 
   const ImageInput = useRef(null);
+  const navigate = useNavigate();
 
   // 이미지 업로더 코드
   function ImageChangehandler(e) {
@@ -48,9 +49,11 @@ const Upload = () => {
     setLoading(true);
 
     const AnalysisResponse = await axios
-      .post(`http://localhost:8000/analysis`, formData)
+      .post(`http://localhost/api/analysis`, formData)
       .then(response => {
         setResult(response.data);
+        console.log('검사하기 페이지', response.data);
+        navigate('/result', { state: response.data });
       })
       .catch(e => {
         setError(e);

@@ -9,7 +9,7 @@ from disease.views import disease_each
 # Create your views here.
 
 # 농약 정보
-@api_view(['GET'])
+@api_view(['POST'])
 @logging_time
 def analysis(request, name='고추탄저병'):
     '''
