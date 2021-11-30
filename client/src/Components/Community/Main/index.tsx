@@ -1,12 +1,33 @@
-import 'Components/Community/scss/Main.scss';
-import Logo from 'Assets/logo.png';
-import Back from 'Components/Common/Back';
+import { useState, useEffect, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { CommunityApi } from 'API/CommunityApi';
+import Logo from 'Assets/logo.png';
+import Back from 'Components/Common/Back';
 import Pagination from './Pagination';
+import 'Components/Community/scss/Main.scss';
 
 export default function Community(): JSX.Element {
-  const isLoggedin = sessionStorage.getItem('access_token');
+  const [length, setLength] = useState<number>();
+  const [page, setPage] = useState<number>(1);
+
+  console.log(`page:${page}`);
+  // 전체 게시글 수 불러오기
+  useEffect(() => {
+    async function getLength() {
+      let response = await CommunityApi.Get_Page.get('/blog');
+      console.log(response);
+      setLength(response.data.length);
+    }
+    getLength();
+  }, []);
+
+  // 페이지 번호 바뀔 때마다 업데이트
+  const handlePage = (event: any, number: SetStateAction<number>) => {
+    setPage(number);
+  };
+
+  // 로그인하지 않았을 때 팝업창 발생
   const CustomToastWithLink = () => (
     <div>
       <Link style={{ textDecoration: 'none', color: 'gray' }} to="/login">
@@ -14,7 +35,10 @@ export default function Community(): JSX.Element {
       </Link>
     </div>
   );
+
+  // 로그인 여부 확인하고 페이지 이동
   const handleCreatePost = async () => {
+    const isLoggedin = sessionStorage.getItem('access_token');
     if (!isLoggedin) {
       toast.error(CustomToastWithLink);
       return;
@@ -32,7 +56,7 @@ export default function Community(): JSX.Element {
         <h3>이 곳은 여러분의 식물과 관련된 이야기를 쓰는 곳입니다.</h3>
         <h3>당신의 지식을 많은 사람들과 공유해보세요.</h3>
         <button onClick={handleCreatePost}>글쓰기</button>
-        <Pagination />
+        <Pagination length={length} page={page} onChangePage={handlePage} />
       </div>
     </section>
   );
