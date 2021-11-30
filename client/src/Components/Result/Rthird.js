@@ -39,16 +39,20 @@ export default function Rthird(props) {
 
       <ReactElasticCarousel breakPoints={breakPoints}>
         {props.data.data.pesticides.map(value => (
-          <button
-            className="pesticides__Button"
-            onClick={() => {
-              setModalData(value);
-              setModalOpen(true);
-              document.body.style.overflow = 'hidden';
-            }}
-          >
+          <div className="image">
             <img src={value.image} alt="" className="pesticides__Image" />
-          </button>
+            <div
+              class="image__overlay image__overlay--primary"
+              onClick={() => {
+                setModalData(value);
+                setModalOpen(true);
+                document.body.style.overflow = 'hidden';
+              }}
+            >
+              <div class="image__title">{value.name}</div>
+              <p class="image__description">클릭해보세요!</p>
+            </div>
+          </div>
         ))}
       </ReactElasticCarousel>
       {modalOpen && <Rmodal setOpenModal={setModalOpen} data={modalData} />}
