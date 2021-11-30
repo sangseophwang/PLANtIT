@@ -1,1 +1,1 @@
-docker rmi jhj967878/backend:django && docker-compose up -d
+docker rmi jhj967878/plantit:django && docker-compose up -d
