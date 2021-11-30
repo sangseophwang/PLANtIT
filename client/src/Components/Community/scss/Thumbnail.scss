@@ -1,0 +1,31 @@
+@import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
+
+.Thumbnail__Container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .Thumbnail__SelectButton__Wrapper {
+    width: 80%;
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    justify-content: flex-end;
+    .Thumbnail__SelectButton {
+      width: 70px;
+      height: 30px;
+      color: gray;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      font-size: 16px;
+      @include responsive('tablet') {
+        width: 100px;
+        font-size: 25px;
+      }
+      @include responsive('mobile') {
+        width: 60px;
+        font-size: 13px;
+      }
+    }
+  }
+}

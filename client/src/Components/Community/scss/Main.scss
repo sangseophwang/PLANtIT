@@ -1,9 +1,13 @@
 @import '/src/Components/Common/scss/mixins';
 .Main__Container {
+  user-select: none;
   .Main__Title {
     @include Container__Form();
     height: 90vh;
     flex-direction: column;
+    @include responsive('mobile') {
+      height: 70vh;
+    }
     .Main__Logo-Mobile {
       @include Logo__Mobile();
       @include responsive('tablet') {

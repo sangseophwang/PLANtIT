@@ -24,7 +24,6 @@
     .Pagination__Number {
       margin: 0 10px;
       cursor: pointer;
-      user-select: none;
       @include responsive('mobile') {
         margin: 0 5px;
       }

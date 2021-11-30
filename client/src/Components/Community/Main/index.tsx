@@ -5,26 +5,36 @@ import { CommunityApi } from 'API/CommunityApi';
 import Logo from 'Assets/logo.png';
 import Back from 'Components/Common/Back';
 import Pagination from './Pagination';
+import Thumbnail from './Thumbnail';
 import 'Components/Community/scss/Main.scss';
 
 export default function Community(): JSX.Element {
   const [length, setLength] = useState<number>();
   const [page, setPage] = useState<number>(1);
+  const [order, setOrder] = useState<number>(0);
 
+  console.log(order);
   console.log(`page:${page}`);
   // 전체 게시글 수 불러오기
   useEffect(() => {
     async function getLength() {
-      let response = await CommunityApi.Get_Page.get('/blog');
+      let response = await CommunityApi.Get_Page.get(
+        `/blog?page=${page}&order=${order}`,
+      );
       console.log(response);
       setLength(response.data.length);
     }
     getLength();
-  }, []);
+  }, [page, order]);
 
   // 페이지 번호 바뀔 때마다 업데이트
   const handlePage = (event: any, number: SetStateAction<number>) => {
     setPage(number);
+  };
+
+  // 최신순, 조회순 변경 업데이트
+  const handleOrder = (event: any, number: SetStateAction<number>) => {
+    setOrder(number);
   };
 
   // 로그인하지 않았을 때 팝업창 발생
@@ -56,6 +66,7 @@ export default function Community(): JSX.Element {
         <h3>이 곳은 여러분의 식물과 관련된 이야기를 쓰는 곳입니다.</h3>
         <h3>당신의 지식을 많은 사람들과 공유해보세요.</h3>
         <button onClick={handleCreatePost}>글쓰기</button>
+        <Thumbnail onChangeOrder={handleOrder} />
         <Pagination length={length} page={page} onChangePage={handlePage} />
       </div>
     </section>
