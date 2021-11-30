@@ -6,6 +6,7 @@ import 'Components/Common/scss/Map.scss';
 export default function CenterMap(props) {
   useEffect(() => {
     mapscript();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props]);
 
   const imageSrc = 'https://ifh.cc/g/xP2IRR.png'; // 마커이미지의 주소.
