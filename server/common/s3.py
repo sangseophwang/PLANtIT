@@ -19,8 +19,8 @@ s3 = boto3.client(
 
 def upload_blog_image(image, filename):
     upload_time = datetime.datetime.now().strftime('%y%m%d-%H%M%S')
-    s3.upload_fileobj(image, AWS_STORAGE_BUCKET_NAME, 'blog/' + upload_time + filename)
-    image_url = AWS_DOMAIN + 'blog/' + upload_time + filename
+    s3.upload_fileobj(image, AWS_STORAGE_BUCKET_NAME, 'blog/' + upload_time + filename.replace(' ',''))
+    image_url = AWS_DOMAIN + 'blog/' + upload_time + filename.replace(' ','')
     return image_url
 
 def get_thumbnail_url(html_code):
