@@ -28,15 +28,14 @@ export default function SocialLoginPopUpPage(): JSX.Element {
             opener.location.replace(
               `http://localhost:3000/login/${accessToken}`,
             )
-          : // window.close()
-            alert(message);
+          : window.close();
 
-        // window.close();
+        window.close();
       })
       .catch(error => {
         console.log(error);
         alert('error from Django');
-        // window.close();
+        window.close();
       });
   }, []);
 

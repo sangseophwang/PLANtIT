@@ -25,8 +25,6 @@ function createRequestAxios(_baseURL: any, _headers: any) {
   });
 }
 
-
-
 function isValidateForm(
   callBackList: ((arg0: any) => boolean)[],
   maskBooleanList: boolean[],
