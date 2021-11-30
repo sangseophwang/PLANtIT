@@ -3,12 +3,9 @@ import Logo from 'Assets/logo.png';
 import Back from 'Components/Common/Back';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { CommunityApi } from 'API/CommunityApi';
 import Pagination from './Pagination';
-import { useState } from 'react';
 
 export default function Community(): JSX.Element {
-  const [test, setTest] = useState('');
   const isLoggedin = sessionStorage.getItem('access_token');
   const CustomToastWithLink = () => (
     <div>

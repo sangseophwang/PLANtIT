@@ -1,4 +1,3 @@
-import React from 'react';
 import Navigation from 'Components/Common/Navigation';
 import Banner from 'Components/Introduction/Banner';
 import IntroContent from 'Components/Introduction/IntroContent';

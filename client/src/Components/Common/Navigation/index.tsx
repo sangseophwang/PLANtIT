@@ -18,10 +18,10 @@ library.add(faHome, faLeaf, faBook, faComment, faUser, faVial);
 export default function Navigation(): JSX.Element {
   const category = [
     { name: '홈', address: '/', icon: faHome },
-    { name: '소개', address: '/Introduction', icon: faLeaf },
-    { name: '질병도감', address: '/Dictionary', icon: faBook },
-    { name: '검사하기', address: '/Analysis', icon: faVial },
-    { name: '커뮤니티', address: '/Community', icon: faComment },
+    { name: '소개', address: '/introduction', icon: faLeaf },
+    { name: '질병도감', address: '/dictionary', icon: faBook },
+    { name: '검사하기', address: '/analysis', icon: faVial },
+    { name: '커뮤니티', address: '/community', icon: faComment },
   ];
   return (
     <nav className="Navigation__Container">

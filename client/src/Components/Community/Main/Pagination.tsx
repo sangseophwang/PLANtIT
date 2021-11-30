@@ -3,19 +3,19 @@ import { CommunityApi } from 'API/CommunityApi';
 import { useState, useEffect } from 'react';
 
 export default function Pagination(): JSX.Element {
-  const [length, setLength] = useState<number>();
+  const [length, setLength] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     async function getLength() {
-      const response = await CommunityApi.Get_Page.get('/blog').then(response =>
-        console.log(response),
-      );
+      let response = await CommunityApi.Get_Page.get('/blog');
+      setLength(response.data);
     }
+    getLength();
   }, []);
-
+  console.log(length);
   return (
     <>
-      <h2>hello</h2>
+      <button onClick={() => navigate('/community/1')}>hello</button>
     </>
   );
 }
