@@ -51,8 +51,7 @@ def analysis(request, name='고추탄저병'):
 
         data = {"data" : disease[0]}
 
-        # return JsonResponse(data, json_dumps_params={'ensure_ascii': False}, safe=False)
-        return img
+        return JsonResponse(data, json_dumps_params={'ensure_ascii': False}, safe=False)
         
     except:
         return Response('잘못된 형식')
