@@ -4,8 +4,7 @@ import 'Components/Result/scss/Result.scss';
 import Rfirst from 'Components/Result/Rfirst';
 import Rsecond from 'Components/Result/Rsecond';
 import Rthird from 'Components/Result/Rthird';
-import axios from 'axios';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Rlast from './Rlast';
 
 export default function Result(): JSX.Element {
@@ -25,11 +24,15 @@ export default function Result(): JSX.Element {
 
   return (
     <div className="Result__Container">
-      <Navigation />
-      <Rfirst />
-      <Rsecond />
-      <Rthird />
-      <Rlast />
+      {state && (
+        <>
+          <Navigation />
+          <Rfirst data={state} />
+          <Rsecond />
+          <Rthird data={state} />
+          <Rlast />
+        </>
+      )}
     </div>
   );
 }
