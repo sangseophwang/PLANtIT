@@ -1,8 +1,38 @@
 import { useNavigate } from 'react-router-dom';
-import React from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
+import { authApi } from 'API/AuthApi';
 
 export default function Mypage(): JSX.Element {
   const navigate = useNavigate();
+
+  const initMypage = useCallback(() => {
+    console.log(
+      '마이페이지 진입시 token: ',
+      sessionStorage.getItem('access_token'),
+    );
+    const requestPlantitService = authApi.createRequestAxios(
+      'http://localhost:8000/api/',
+      {
+        'Content-Type': 'application/json',
+        Authorization: `${sessionStorage.getItem('access_token')}`,
+      },
+    );
+
+    requestPlantitService
+      .get('/user/mypage')
+      .then(response => {
+        console.log('response: ', response);
+        console.log('resoponse.data: ', response.data);
+      })
+      .catch(error => {
+        console.log('error: ', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    initMypage();
+  }, []);
+
   return (
     <div className="Mypage__Container">
       <h1>마이페이지 : 미완성 </h1>
