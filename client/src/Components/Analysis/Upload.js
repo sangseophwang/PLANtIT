@@ -11,7 +11,7 @@ const Upload = () => {
   const [isUploaded, setIsUploaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [result, setResult] = useState('');
+  // const [result, setResult] = useState('');
 
   const ImageInput = useRef(null);
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ const Upload = () => {
     const AnalysisResponse = await axios
       .post(`http://localhost/api/analysis`, formData)
       .then(response => {
-        setResult(response.data);
+        // setResult(response.data);
         console.log('검사하기 페이지', response.data);
         navigate('/result', { state: response.data });
       })
@@ -74,7 +74,6 @@ const Upload = () => {
         </Link>
       </>
     );
-  // if (!result) return null;
 
   return (
     <div className="Upload__Layout">

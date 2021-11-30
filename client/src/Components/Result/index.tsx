@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Navigation from 'Components/Common/Navigation';
 import 'Components/Result/scss/Result.scss';
 import Rfirst from 'Components/Result/Rfirst';
@@ -20,6 +20,7 @@ export default function Result(): JSX.Element {
 
   useEffect(() => {
     ReadResponse();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   return (
