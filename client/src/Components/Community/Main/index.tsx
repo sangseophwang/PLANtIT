@@ -25,6 +25,7 @@ export default function Community(): JSX.Element {
       window.location.replace('/community/post');
     }
   };
+
   return (
     <section className="Main__Container">
       <div className="Main__Title">

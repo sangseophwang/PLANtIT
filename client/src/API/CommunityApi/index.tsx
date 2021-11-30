@@ -17,7 +17,7 @@ const Upload_Image = axios.create({
   },
 });
 
-const Pagination = axios.create({
+const Get_Page = axios.create({
   baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
@@ -27,5 +27,5 @@ const Pagination = axios.create({
 export const CommunityApi = {
   Post,
   Upload_Image,
-  Pagination,
+  Get_Page,
 };

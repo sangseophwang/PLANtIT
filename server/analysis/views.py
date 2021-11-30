@@ -30,11 +30,10 @@ def analysis(request, name='고추탄저병'):
     농약 각각의 정보
     '''
     try:
-        img = request.FILES['image']
+        img = request.FILES['files']
         filename = img.name
         img_url = upload_analysis_image(image=img, filename=filename)
 
-        print(img_url)
         disease = list(Disease.objects.filter(name=name).values())
         
         _pesticides = []

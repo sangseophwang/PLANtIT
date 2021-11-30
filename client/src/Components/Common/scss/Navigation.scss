@@ -3,6 +3,7 @@
 .Navigation__Container {
   width: 90%;
   height: 9vh;
+  min-height: 70px;
   position: fixed;
   display: flex;
   align-items: center;
@@ -42,6 +43,7 @@
     }
     .Navigation__Logo {
       height: 5vh;
+      min-height: 45px;
       margin-right: 50px;
     }
     .Navigation__Category-Without-Login {
