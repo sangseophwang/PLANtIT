@@ -4,18 +4,37 @@ from django.http import JsonResponse
 from disease.models import Disease
 from pesticide.models import Pesticide
 from time_log import logging_time
-from disease.views import disease_each
+from common.s3 import s3
+from django.conf import settings
+import boto3
+
 
 # Create your views here.
+AWS_STORAGE_BUCKET_NAME = settings.AWS_STORAGE_BUCKET_NAME
+AWS_REGION = settings.AWS_REGION
+AWS_DOMAIN = 'https://%s.s3.%s.amazonaws.com/' % (AWS_STORAGE_BUCKET_NAME, AWS_REGION)
+
+# 검사하려는 이미지 파일 s3로 저장
+def upload_analysis_image(image, filename):
+    path_prefix = 'analysis/'
+    upload_filename = path_prefix + filename +'-analysis.png'
+    s3.upload_fileobj(image, AWS_STORAGE_BUCKET_NAME, upload_filename)
+    image_url = AWS_DOMAIN + upload_filename
+    return image_url
 
 # 농약 정보
-@api_view(['GET'])
+@api_view(['POST'])
 @logging_time
 def analysis(request, name='고추탄저병'):
     '''
     농약 각각의 정보
     '''
     try:
+        img = request.FILES['image']
+        filename = img.name
+        img_url = upload_analysis_image(image=img, filename=filename)
+
+        print(img_url)
         disease = list(Disease.objects.filter(name=name).values())
         
         _pesticides = []
@@ -26,13 +45,14 @@ def analysis(request, name='고추탄저병'):
             _pesticides += find_each_pesticide
         
         disease[0]['pesticides'] = _pesticides
-        disease[0]['image'] = '유저가 업로드한 이미지 (aws s3 url)'
+        disease[0]['image'] = img_url
         disease[0]['level'] = 2 # AI Model에서 나온 값 적용해야함
         disease[0].pop('crops_id')
 
         data = {"data" : disease[0]}
 
-        return JsonResponse(data, json_dumps_params={'ensure_ascii': False}, safe=False)
+        # return JsonResponse(data, json_dumps_params={'ensure_ascii': False}, safe=False)
+        return img
         
     except:
         return Response('잘못된 형식')
