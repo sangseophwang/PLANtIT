@@ -1,6 +1,6 @@
 //@ts-ignore
 import ImageResize from '@looop/quill-image-resize-module-react';
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef, useCallback } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 import QuillImageDropAndPaste from 'quill-image-drop-and-paste';
 import 'react-quill/dist/quill.snow.css';
@@ -18,44 +18,36 @@ export default function Editor({
   contents,
   onChange,
 }: EditorProps): JSX.Element {
-  const QuillRef = useRef<ReactQuill>();
+  const QuillRef = useRef<ReactQuill>(null);
 
-  const imageHandler = () => {
+  const imageHandler = useCallback(() => {
     const input = document.createElement('input');
     const formData = new FormData();
-    let url = '';
-
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/*');
     input.click();
 
+    let quill = QuillRef.current?.getEditor();
+
     input.onchange = async () => {
       const file = input.files;
-      if (file !== null) {
-        formData.append('image', file[0]);
+      if (file !== null) formData.append('image', file[0]);
 
-        try {
-          const res = await CommunityApi.Post.post('/blog/image', formData);
-          url = res.data;
+      // Save current cursor state
+      const range = quill?.getSelection()?.index;
+      const res = await CommunityApi.Upload_Image.post('/blog/image', formData);
+      const url = res.data;
+      if (range !== undefined && range !== null) {
+        let quill = QuillRef.current?.getEditor();
+        quill?.setSelection(range, 1);
 
-          const range = QuillRef.current?.getEditor().getSelection()?.index;
-          if (range !== null && range !== undefined) {
-            let quill = QuillRef.current?.getEditor();
-
-            quill?.setSelection(range, 1);
-
-            quill?.clipboard.dangerouslyPasteHTML(
-              range,
-              `<img src=${url} alt="">`,
-            );
-          }
-          return { ...res, success: true };
-        } catch (error) {
-          console.log(error);
-        }
+        quill?.clipboard.dangerouslyPasteHTML(
+          range,
+          `<img src=${url} alt="이미지 태그 입니다."/>`,
+        );
       }
     };
-  };
+  }, []);
 
   const modules = useMemo(
     () => ({
@@ -83,7 +75,7 @@ export default function Editor({
         modules: ['Resize', 'DisplaySize', 'Toolbar'],
       },
     }),
-    [],
+    [imageHandler],
   );
 
   const formats = [
@@ -102,11 +94,7 @@ export default function Editor({
   return (
     <ReactQuill
       className="Editor"
-      ref={element => {
-        if (element !== null) {
-          QuillRef.current = element;
-        }
-      }}
+      ref={QuillRef}
       theme="snow"
       value={contents}
       onChange={onChange}

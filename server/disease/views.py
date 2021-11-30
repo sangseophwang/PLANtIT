@@ -4,19 +4,23 @@ from django.http import JsonResponse
 from .models import Disease, Crop
 from pesticide.models import Pesticide
 from time_log import logging_time
-
+from django.core.cache import cache
+import time
 
 
 # Create your views here.
 # 질병 도감에 사용
 @api_view(['GET'])
+@logging_time
 def disease_all(request):
     '''
     질병 전체
     '''
     try:
-        diseases = Disease.objects.all()
-        diseases = list(diseases.values())
+
+        diseases = cache.get_or_set('diseases', Disease.objects.all().values(),timeout=None)
+        # diseases = Disease.objects.all().values()
+        diseases = list(diseases)
 
         for crop in diseases:
             crop_id = crop['crops_id']
@@ -25,6 +29,7 @@ def disease_all(request):
             crop['crops_id'] = crop_name[0]['name']
             
         result = {"data" : diseases}
+      
         return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
     except:
         return Response('잘못된 형식')
@@ -38,8 +43,9 @@ def disease_each(request, id):
     질병 각각
     '''
     try:
-        disease = Disease.objects.filter(id = id)
-        disease = list(disease.values())
+        disease = cache.get_or_set(f'disease_{id}',Disease.objects.filter(id = id).values(), timeout=None)
+        # disease = Disease.objects.filter(id = id).values()
+        disease = list(disease)
         
         _pesticides = []
 
@@ -58,6 +64,7 @@ def disease_each(request, id):
 
 
 @api_view(['GET'])
+@logging_time
 def crop_all(request):
     '''
     작물 전체
