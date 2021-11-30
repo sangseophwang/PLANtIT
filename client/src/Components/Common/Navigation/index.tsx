@@ -49,7 +49,11 @@ export default function Navigation(): JSX.Element {
       </div>
       <div className="Navigation__Category-Mobile">
         {category.map(item => (
-          <Link className="Navigation__Item-Mobile" to={item.address}>
+          <Link
+            className="Navigation__Item-Mobile"
+            to={item.address}
+            key={item.address}
+          >
             <FontAwesomeIcon icon={item.icon} />
             <span>{item.name}</span>
           </Link>

@@ -4,10 +4,10 @@ import IntroContent from 'Components/Introduction/IntroContent';
 
 export default function Introduction(): JSX.Element {
   return (
-    <div>
+    <>
       <Navigation />
       <Banner />
       <IntroContent />
-    </div>
+    </>
   );
 }
