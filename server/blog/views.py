@@ -1,9 +1,7 @@
 import json
 import random
 
-from django.shortcuts import render
-from django.conf import settings
-from django.core.paginator import Page, Paginator
+from django.core.paginator import Paginator
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -21,11 +19,12 @@ def get_blog(request, blog_id):
         return Response(data="Not Found Blog")
     
     is_author = False
-    access_token = request.META['HTTP_AUTHORIZATION']
-    token_validation = validate_token(access_token)
-    if token_validation.status_code == 200:
-        if token_validation.data['user_id'] == blog_detail.user.id:
-            is_author = True
+    if 'HTTP_AUTHORIZATION' in request.META:
+        access_token = request.META['HTTP_AUTHORIZATION']
+        token_validation = validate_token(access_token)
+        if token_validation.status_code == 200:
+            if token_validation.data['user_id'] == blog_detail.user.id:
+                is_author = True
     
     response_data = {
         'blog_id': blog_detail.id,
@@ -41,7 +40,6 @@ def get_blog(request, blog_id):
 @api_view(['POST'])
 def post_blog(request):
     access_token = request.META['HTTP_AUTHORIZATION']
-    
     token_validation = validate_token(access_token)
     if not token_validation.status_code == 200:
         return token_validation
@@ -112,20 +110,28 @@ def upload_image(request):
 
 @api_view(['GET'])
 def blog_list(request):
-    page_number = request.GET['page']
-    order = request.GET['order']
-    if page_number == None:
+    if 'page' in request.GET:
+        if not request.GET['page'].isdigit():
+            return Response(data="Bad Request", status=400)
+        page_number = int(request.GET['page'])
+    else:
         page_number = 1
-    if order == None:
-        order = '0'
     
-    if order == '0':
+    if 'order' in request.GET:
+        if not request.GET['order'].isdigit():
+            return Response(data="Bad Request", status=400)
+        order = int(request.GET['order'])
+    else:
+        order = 0
+    
+    if order == 0:
         blogs = get_all_blog_by_date()
-    elif order == '1':
+    elif order == 1:
         blogs = get_all_blog_by_view()
     else:
         return Response(data="Bad Request", status=400)
     
+    length = len(list(blogs))
     blogs_paginator = Paginator(blogs, 4)
     
     if page_number > blogs_paginator.num_pages:
@@ -133,6 +139,25 @@ def blog_list(request):
         
     blogs_result = blogs_paginator.get_page(page_number)
     
-    response_data = [blog.as_dict() for blog in blogs_result]
+    response_data = {
+        'length': length,
+        'blogs': [blog.as_dict() for blog in blogs_result]
+    }
     
+    return Response(data=response_data, status=200)
+
+@api_view(['GET'])
+def mainpage(request):
+    blogs = get_all_blog_by_view()
+    main_blogs = list(blogs)[:4]
+    
+    response_data = []
+    for blog in main_blogs:
+        data = {
+            'blog_id': blog.id,
+            'author': blog.user.nickname,
+            'title': blog.title,
+            'thumbnail': blog.thumbnail
+        }
+        response_data.append(data)
     return Response(data=response_data, status=200)
