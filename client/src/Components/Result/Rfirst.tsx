@@ -1,7 +1,7 @@
 import React from 'react';
 import 'Components/Result/scss/Rfirst.scss';
 
-const Rfirst = () => {
+const Rfirst = (props: any) => {
   return (
     <section className="Rfirst__Container">
       <div className="Rfirst__Image-continer">
@@ -13,16 +13,12 @@ const Rfirst = () => {
       </div>
       <div className="Rfirst__Text-continer">
         <div className="Crops__class">Result</div>
-        <div className="Disease__Title">고추 흰가루병</div>
-        <div className="Disease__Content">
-          동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화
-          삼천리 화려강산, 동해물과 백두산이 마르고 닳도록 하느님이 보우하사
-          우리나라만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이
-          보전하세,동해물과 백두산이 마르고 닳도록 하느님이 보우하사
-          우리나라만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이
-          보전하세,동해물과 백두산이 마르고 닳도록 하느님이 보우하사
-          우리나라만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
-        </div>
+        {props.data && (
+          <>
+            <div className="Disease__Title">{props.data.data.name}</div>
+            <div className="Disease__Content">{props.data.data.symptom}</div>
+          </>
+        )}
       </div>
     </section>
   );
