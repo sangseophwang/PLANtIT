@@ -22,11 +22,11 @@ export default function Community(): JSX.Element {
       toast.error(CustomToastWithLink);
       return;
     } else {
-      navigate('/community/post');
+      window.location.replace('/community/post');
     }
   };
 
-  CommunityApi.Post.get('/blog/3').then(response => {
+  CommunityApi.Post.get('/blog/20').then(response => {
     setTest(response.data.content);
   });
   console.log(test);
@@ -35,7 +35,6 @@ export default function Community(): JSX.Element {
       <div className="Main__Title">
         <img className="Main__Logo-Mobile" src={Logo} alt="로고" />
         <h1>당신의 이야기를 들려주세요.</h1>
-        <div dangerouslySetInnerHTML={{ __html: test }}></div>
         <h3>이 곳은 여러분의 식물과 관련된 이야기를 쓰는 곳입니다.</h3>
         <h3>당신의 지식을 많은 사람들과 공유해보세요.</h3>
         <button onClick={handleCreatePost}>글쓰기</button>
