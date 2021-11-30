@@ -39,12 +39,6 @@ export default function Community(): JSX.Element {
         <h3>당신의 지식을 많은 사람들과 공유해보세요.</h3>
         <button onClick={handleCreatePost}>글쓰기</button>
       </div>
-      <div className="Main__Contents-Wrapper">
-        <div className="one"></div>
-        <div className="two"></div>
-        <div className="three"></div>
-        <div className="four"></div>
-      </div>
     </section>
   );
 }

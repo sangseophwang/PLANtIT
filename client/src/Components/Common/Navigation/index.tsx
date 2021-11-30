@@ -26,7 +26,9 @@ export default function Navigation(): JSX.Element {
   return (
     <nav className="Navigation__Container">
       <div className="Navigation__Category-Web">
-        <img className="Navigation__Logo" src={Logo} alt="로고 이미지" />
+        <Link to="/">
+          <img className="Navigation__Logo" src={Logo} alt="로고 이미지" />
+        </Link>
         <div className="Navigation__Category-Without-Login">
           {category.map(data => (
             <NavItem data={data} key={data.address} />
