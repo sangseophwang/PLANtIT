@@ -18,7 +18,7 @@ export default function Dictionary(): JSX.Element {
     setPathology(null);
     setLoading(true);
     const DictionaryResponse = await axios
-      .get(`http://localhost:8000/api/disease`)
+      .get(`http://localhost/api/disease`)
       .then(response => {
         setPathology(response.data);
       })
@@ -33,7 +33,8 @@ export default function Dictionary(): JSX.Element {
     GetDictionaryAPI();
   }, []);
 
-  if (loading) return <div className="Notice__Container">잠시만 기다려 주세요</div>;
+  if (loading)
+    return <div className="Notice__Container">잠시만 기다려 주세요</div>;
   if (error)
     return (
       <>
