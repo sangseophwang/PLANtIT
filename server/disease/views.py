@@ -44,7 +44,6 @@ def disease_each(request, id):
     '''
     try:
         disease = cache.get_or_set(f'disease_{id}',Disease.objects.filter(id = id).values(), timeout=None)
-        # disease = Disease.objects.filter(id = id).values()
         disease = list(disease)
         
         _pesticides = []
