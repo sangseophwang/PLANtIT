@@ -29,7 +29,7 @@ export default function Result(): JSX.Element {
         <>
           <Navigation />
           <Rfirst data={state} />
-          <Rsecond />
+          <Rsecond data={state} />
           <Rthird data={state} />
           <Rlast />
         </>
