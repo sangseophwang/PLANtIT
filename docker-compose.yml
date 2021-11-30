@@ -7,7 +7,8 @@ services:
     volumes:
       - ./server:/project/server
     working_dir: /project/server
-    command: gunicorn --bind 0:8000 server.wsgi:application
+    command: bash -c "service redis-server start && gunicorn --bind 0:8000 server.wsgi:application"
+
     expose:
       - 8000
 
