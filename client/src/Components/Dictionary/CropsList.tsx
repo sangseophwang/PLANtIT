@@ -15,10 +15,11 @@ const CropsList = (props: any) => {
     const disease_name = decodeURI(window.location.href.split('=')[1]);
 
     if (current_url) {
-      const need = props.data.filter((val: any) => val.name == disease_name);
+      const need = props.data.filter((val: any) => val.name === disease_name);
       setModalData(need[0]);
       setModalOpen(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

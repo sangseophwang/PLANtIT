@@ -11,93 +11,47 @@ const breakPoints = [
   { width: 1300, itemsToShow: 5 },
 ];
 
-export default function Rthird() {
+export default function Rthird(props) {
   const [modalOpen, setModalOpen] = useState(false);
-  // const [modalData, setModalData] = useState('');
+  const [modalData, setModalData] = useState('');
+
+  // 방제방법 렌더링 함수
+  const rendering = () => {
+    const result = [];
+    for (let i = 0; i < props.data.data.prevention.length; i++) {
+      result.push(
+        <span key={i}>
+          - {props.data.data.prevention[i]}
+          <br />
+        </span>,
+      );
+    }
+    return result;
+  };
 
   return (
     <section className="Rthird__Container">
       <div className="Rthird__Text-Container">
         <div className="Rthird__Title">예방법</div>
-        <div className="Rthird__Content">
-          - 평소에 물 많이 주고 추운 곳에 두지 마세요.
-          <br />- 따뜻하게 해주고 좋은 흙에서 자랄 수 있도록 영양분이 높은
-          비료를 주세요.
-        </div>
+
+        <div className="Rthird__Content">{rendering()}</div>
       </div>
 
       <ReactElasticCarousel breakPoints={breakPoints}>
-        <button
-          className="pesticides__Button"
-          onClick={() => {
-            setModalOpen(true);
-            document.body.style.overflow = 'hidden';
-          }}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
-            alt=""
-            className="pesticides__Image"
-          />
-        </button>
-
-        <button
-          className="pesticides__Button"
-          onClick={() => {
-            setModalOpen(true);
-            document.body.style.overflow = 'hidden';
-          }}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
-            alt=""
-            className="pesticides__Image"
-          />
-        </button>
-
-        <button
-          className="pesticides__Button"
-          onClick={() => {
-            setModalOpen(true);
-            document.body.style.overflow = 'hidden';
-          }}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
-            alt=""
-            className="pesticides__Image"
-          />
-        </button>
-
-        <button
-          className="pesticides__Button"
-          onClick={() => {
-            setModalOpen(true);
-            document.body.style.overflow = 'hidden';
-          }}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
-            alt=""
-            className="pesticides__Image"
-          />
-        </button>
-
-        <button
-          className="pesticides__Button"
-          onClick={() => {
-            setModalOpen(true);
-            document.body.style.overflow = 'hidden';
-          }}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
-            alt=""
-            className="pesticides__Image"
-          />
-        </button>
+        {props.data.data.pesticides.map(value => (
+          <button
+            className="pesticides__Button"
+            onClick={() => {
+              setModalData(value);
+              setModalOpen(true);
+              document.body.style.overflow = 'hidden';
+            }}
+          >
+            <img src={value.image} alt="" className="pesticides__Image" />
+          </button>
+        ))}
       </ReactElasticCarousel>
-      {modalOpen && <Rmodal setOpenModal={setModalOpen} />}
+      {modalOpen && <Rmodal setOpenModal={setModalOpen} data={modalData} />}
     </section>
   );
 }
