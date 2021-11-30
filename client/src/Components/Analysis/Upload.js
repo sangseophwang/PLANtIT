@@ -4,15 +4,18 @@ import CloseIcon from 'Assets/CloseIcon.svg';
 import FolderIcon from 'Assets/folder_icon_transparent.png';
 import 'Components/Analysis/scss/Upload.scss';
 import axios from 'axios';
+import { useRef } from 'react';
 
 const Upload = () => {
   const [image, setImage] = useState('');
   const [isUploaded, setIsUploaded] = useState(false);
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
-  // const [result, setResult] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [result, setResult] = useState('');
 
-  // 이미지 업로드 코드
+  const ImageInput = useRef(null);
+
+  // 이미지 업로더 코드
   function ImageChangehandler(e) {
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
@@ -26,46 +29,49 @@ const Upload = () => {
     }
   }
 
-  const scrollToServiceSection = () => {
+  // 서버로 이미지 Post 전송하는 코드
+
+  const PostAnalysisAPI = async e => {
+    // 스크롤 맨 위로
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
+
+    const formData = new FormData();
+
+    const uploadFile = ImageInput.current.files[0];
+    formData.append('files', uploadFile);
+    console.log(formData.get('files'));
+
+    setError(null);
+    setLoading(true);
+
+    const AnalysisResponse = await axios
+      .post(`http://localhost:8000/analysis`, formData)
+      .then(response => {
+        setResult(response.data);
+      })
+      .catch(e => {
+        setError(e);
+      });
+    setLoading(false);
+
+    return AnalysisResponse;
   };
 
-  // 서버로 이미지 Post 전송하는 코드
-
-  // const PostAnalysisAPI = async e => {
-  //   setError(null);
-  //   setLoading(true);
-
-  //   const img = new FormData();
-  //   img.append('file', e.target.files[0]);
-
-  //   const AnalysisResponse = await axios
-  //     .post(`http://localhost:8000/analysis`, img)
-  //     .then(response => {
-  //       setResult(response.data);
-  //     })
-  //     .catch(e => {
-  //       setError(e);
-  //     });
-  //   setLoading(false);
-  //   console.log('result', result);
-  //   return AnalysisResponse;
-  // };
-
-  // if (loading)
-  //   return <div className="Notice__Container">잠시만 기다려 주세요</div>;
-  // if (error)
-  //   return (
-  //     <>
-  //       <div className="Notice__Container">API 에러가 발생했습니다</div>
-  //       <Link to="/" className="Button__Home">
-  //         홈으로
-  //       </Link>
-  //     </>
-  //   );
+  if (loading)
+    return <div className="Notice__Container">잠시만 기다려 주세요</div>;
+  if (error)
+    return (
+      <>
+        <div className="Notice__Container">API 에러가 발생했습니다</div>
+        <Link to="/" className="Button__Home">
+          홈으로
+        </Link>
+      </>
+    );
+  // if (!result) return null;
 
   return (
     <div className="Upload__Layout">
@@ -93,7 +99,7 @@ const Upload = () => {
                 width: '100%',
               }}
               to="/result"
-              onClick={scrollToServiceSection}
+              onClick={PostAnalysisAPI}
             >
               검사시작
             </Link>
@@ -116,13 +122,6 @@ const Upload = () => {
                   />
                   <p style={{ color: '#444' }}>작물이미지를 넣어보세요.</p>
                 </label>
-
-                <input
-                  id="upload-input"
-                  type="file"
-                  accept=".jpg,.jpeg,.png,"
-                  onChange={ImageChangehandler}
-                />
               </>
             ) : (
               <div className="Image__Preview">
@@ -145,10 +144,16 @@ const Upload = () => {
                 }
               </div>
             )}
+
+            <input
+              id="upload-input"
+              type="file"
+              accept=".jpg,.jpeg,.png,"
+              onChange={ImageChangehandler}
+              ref={ImageInput}
+            />
           </div>
         </div>
-
-        {/* {isUploaded ? <div className="Upload-Information">{typeFile}파일 입니다.</div> : null} */}
 
         <div className="Upload-Information">
           가능한 확장자: .jpg / .jpeg / .png
