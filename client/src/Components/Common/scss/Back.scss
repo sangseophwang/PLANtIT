@@ -1,0 +1,17 @@
+@import '/src/Components/Common/scss/variables';
+
+.Back__Container {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  text-decoration: none;
+  color: gray;
+  transition: 0.5s;
+  &:hover {
+    transition: 0.5s;
+    color: $LightGreen;
+  }
+  > span {
+    font-weight: 600;
+  }
+}
