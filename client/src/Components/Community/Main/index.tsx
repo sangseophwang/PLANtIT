@@ -10,30 +10,31 @@ import 'Components/Community/scss/Main.scss';
 
 export default function Community(): JSX.Element {
   const [length, setLength] = useState<number>();
+  const [data, setData] = useState([]);
   const [page, setPage] = useState<number>(1);
   const [order, setOrder] = useState<number>(0);
 
-  console.log(order);
-  console.log(`page:${page}`);
+  console.log(data);
+
   // 전체 게시글 수 불러오기
   useEffect(() => {
     async function getLength() {
       let response = await CommunityApi.Get_Page.get(
         `/blog?page=${page}&order=${order}`,
       );
-      console.log(response);
       setLength(response.data.length);
+      setData(response.data.blogs);
     }
     getLength();
   }, [page, order]);
 
   // 페이지 번호 바뀔 때마다 업데이트
-  const handlePage = (event: any, number: SetStateAction<number>) => {
+  const handlePage = (number: SetStateAction<number>) => {
     setPage(number);
   };
 
   // 최신순, 조회순 변경 업데이트
-  const handleOrder = (event: any, number: SetStateAction<number>) => {
+  const handleOrder = (number: SetStateAction<number>) => {
     setOrder(number);
   };
 

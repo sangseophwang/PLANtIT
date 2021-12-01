@@ -8,7 +8,7 @@ export default function Thumbnail({
   onChangeOrder,
 }: ThumbnailProps): JSX.Element {
   const handleOrder = (event: any) => {
-    onChangeOrder(event, event.target.value);
+    onChangeOrder(event.target.value);
   };
   return (
     <section className="Thumbnail__Container">

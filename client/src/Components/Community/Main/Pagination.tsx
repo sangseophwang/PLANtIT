@@ -36,8 +36,8 @@ export default function Pagination({
             ? 'Pagination__Number Here'
             : 'Pagination__Number'
         }
-        onClick={event => {
-          onChangePage(event, props.value);
+        onClick={() => {
+          onChangePage(props.value);
         }}
       >
         {props.value}
@@ -46,13 +46,13 @@ export default function Pagination({
   };
 
   // 이전 화살표 버튼
-  const handlePreviousButton = (event: any) => {
-    onChangePage(event, page - 1);
+  const handlePreviousButton = () => {
+    onChangePage(page - 1);
   };
 
   // 다음 화살표 버튼
-  const handleNextButton = (event: any) => {
-    onChangePage(event, page + 1);
+  const handleNextButton = () => {
+    onChangePage(page + 1);
   };
 
   return (
