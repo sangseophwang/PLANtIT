@@ -17,7 +17,15 @@ const Upload_Image = axios.create({
   },
 });
 
+const Get_Page = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
 export const CommunityApi = {
   Post,
   Upload_Image,
+  Get_Page,
 };

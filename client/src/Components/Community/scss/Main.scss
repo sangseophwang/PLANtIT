@@ -1,8 +1,13 @@
 @import '/src/Components/Common/scss/mixins';
 .Main__Container {
+  user-select: none;
   .Main__Title {
     @include Container__Form();
+    height: 90vh;
     flex-direction: column;
+    @include responsive('mobile') {
+      height: 70vh;
+    }
     .Main__Logo-Mobile {
       @include Logo__Mobile();
       @include responsive('tablet') {
@@ -57,28 +62,6 @@
         margin-top: 30px;
         border-radius: 6px;
       }
-    }
-  }
-  .Main__Contents-Wrapper {
-    display: grid;
-    gap: 3px;
-    grid-template-columns: repeat(2, 50%);
-    grid-template-rows: repeat(3, 50vh);
-    .one {
-      background-color: teal;
-      grid-column: span 2;
-    }
-    .two {
-      background-color: tomato;
-      grid-column: span 1;
-    }
-    .three {
-      background-color: purple;
-      grid-column: span 1;
-    }
-    .four {
-      background-color: orange;
-      grid-column: span 2;
     }
   }
 }

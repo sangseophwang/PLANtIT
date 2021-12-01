@@ -19,9 +19,7 @@ class Blog(models.Model):
             'blog_id': self.id,
             'author': self.user.nickname,
             'title': self.title,
-            'content': self.content,
-            'upload_date': self.upload_date,
-            'view': self.view,
+            'thumbnail': self.thumbnail
         }
         return response_data
     
