@@ -9,6 +9,7 @@ import { CommunityApi } from 'API/CommunityApi';
 export default function Post(): JSX.Element {
   const [title, setTitle] = useState<string>('');
   const [contents, setContents] = useState<string>('');
+  console.log(contents);
   const navigate = useNavigate();
   const onSubmitHandler = () => {
     if (!title) {

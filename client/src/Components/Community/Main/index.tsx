@@ -15,7 +15,6 @@ export default function Community(): JSX.Element {
   const [order, setOrder] = useState<number>(0);
 
   console.log(data);
-
   // 전체 게시글 수 불러오기
   useEffect(() => {
     async function getLength() {
@@ -67,9 +66,9 @@ export default function Community(): JSX.Element {
         <h3>이 곳은 여러분의 식물과 관련된 이야기를 쓰는 곳입니다.</h3>
         <h3>당신의 지식을 많은 사람들과 공유해보세요.</h3>
         <button onClick={handleCreatePost}>글쓰기</button>
-        <Thumbnail onChangeOrder={handleOrder} />
-        <Pagination length={length} page={page} onChangePage={handlePage} />
       </div>
+      <Thumbnail data={data} onChangeOrder={handleOrder} />
+      <Pagination length={length} page={page} onChangePage={handlePage} />
     </section>
   );
 }
