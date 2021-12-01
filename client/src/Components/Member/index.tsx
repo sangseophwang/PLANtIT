@@ -1,12 +1,13 @@
-import React from 'react';
-import MemberList from 'Components/Member/MemberList';
+import Back from 'Components/Common/Back';
 import Team from 'Components/Member/Team';
+import MemberList from 'Components/Member/MemberList';
 
 export default function Member(): JSX.Element {
   return (
-    <div>
+    <>
+      <Back />
       <Team />
       <MemberList />
-    </div>
+    </>
   );
 }
