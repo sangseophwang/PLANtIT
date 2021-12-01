@@ -3,9 +3,10 @@
 .Mypage__Container {
   @include Container__Form();
 
-  main {
+  > main {
     display: flex;
-    section {
+
+    > section {
       display: flex;
       .Thumbnail__Area {
         display: flex;

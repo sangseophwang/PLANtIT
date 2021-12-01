@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { authApi } from 'API/AuthApi';
 
 import 'Components/Mypage/scss/Mypage.scss';
@@ -12,24 +12,12 @@ export default function MypageMain(): JSX.Element {
   const [nickname, setNickname] = useState('');
   const [description, setDescription] = useState('');
 
-  const initMypage = useCallback(() => {
-    console.log(
-      '마이페이지 진입시 token: ',
-      sessionStorage.getItem('access_token'),
-    );
-    const requestPlantitService = authApi.createRequestAxios(
-      'http://localhost/api/',
-      {
-        'Content-Type': 'application/json',
-        Authorization: `${sessionStorage.getItem('access_token')}`,
-      },
-    );
-
-    requestPlantitService
-      .get('/user/mypage')
+  useEffect(() => {
+    authApi
+      .authRequestGet('/user/mypage', 'application/json', '')
       .then(response => {
         console.log('response: ', response);
-        console.log('resoponse.data: ', response.data);
+        console.log('response.data: ', response.data);
         setNickname(response.data.nickname);
         setDescription(response.data.description);
       })
@@ -38,17 +26,65 @@ export default function MypageMain(): JSX.Element {
       });
   }, []);
 
-  useEffect(() => {
-    initMypage();
-  }, []);
-
-  function onSubmitDeRegister() {
-    // requestPlantitService.post('/user/deregister').then().catch();
+  function onSubmitDeRegister(event: any): void {
+    event.preventDefault();
+    authApi
+      .authRequestPost('/user/deregister', 'application/json', '')
+      .then(response => {
+        console.log('response: ', response);
+        console.log('response.data: ', response.data);
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        response.data === 'Deregister Success'
+          ? (sessionStorage.removeItem('access_token'),
+            navigate('/'),
+            alert('계정이 삭제되었습니다. 안녕히가십시오.'))
+          : alert('response.data is not "Deregister Success"');
+      })
+      .catch(error => {
+        console.log('error: ', error);
+        alert('error');
+      });
   }
 
-  // function onSubmitChangeNickname(event) {}
+  function onSubmitChangeUser(event: any): void {
+    event.preventDefault();
+    console.log('event: ', event.target.name);
+    let updateNickname = 'test nickname';
+    let updateDescription = 'test description';
 
-  // function onSubmitChangeDescription(event) {}
+    switch (event.target.name) {
+      case 'ChangeNickname':
+        updateDescription = description;
+        break;
+      case 'ChangeDescription':
+        updateNickname = nickname;
+        break;
+    }
+    const testData = {
+      nickname: updateNickname,
+      description: updateDescription,
+    };
+    authApi
+      .authRequestPost('/user/update', 'application/json', testData)
+      .then(response => {
+        console.log('response: ', response);
+        console.log('response.data: ', response.data);
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        response.data.message === 'success'
+          ? (setNickname(response.data.nickname),
+            setDescription(response.data.description))
+          : alert('message is not "success"');
+      })
+      .catch(error => {
+        console.log('error', error);
+        alert('error');
+      });
+  }
+
+  function onSubmitChangeImage(event: any) {
+    event.preventDefault();
+    
+  }
 
   return (
     <div className="Mypage__Container">
@@ -74,33 +110,43 @@ export default function MypageMain(): JSX.Element {
         <section></section>
       </main>
 
-      <button
-        type="button"
-        name="logout"
-        onClick={() => {
-          sessionStorage.removeItem('access_token');
-          console.log(
-            '로그아웃 후 세션 스토리지 값: ',
-            sessionStorage.getItem('access_token'),
-          );
-          navigate('/');
-          alert('로그아웃 되었습니다.');
-        }}
-      >
-        로그아웃
-      </button>
+      <form className="UpdateUser__Form">
+        <button
+          type="submit"
+          name="logout"
+          onClick={() => {
+            sessionStorage.removeItem('access_token');
+            console.log(
+              '로그아웃 후 세션 스토리지 값: ',
+              sessionStorage.getItem('access_token'),
+            );
+            navigate('/');
+            alert('로그아웃 되었습니다.');
+          }}
+        >
+          로그아웃
+        </button>
 
-      <button type="button" name="DeRegister" onClick={onSubmitDeRegister}>
-        회원탈퇴
-      </button>
+        <button type="submit" name="DeRegister" onClick={onSubmitDeRegister}>
+          회원탈퇴
+        </button>
 
-      <button type="button" name="ChangeNickname">
-        닉네임 변경
-      </button>
+        <button
+          type="submit"
+          name="ChangeNickname"
+          onClick={onSubmitChangeUser}
+        >
+          닉네임 변경
+        </button>
 
-      <button type="button" name="ChangeDescription">
-        내용 변경
-      </button>
+        <button
+          type="submit"
+          name="ChangeDescription"
+          onClick={onSubmitChangeUser}
+        >
+          내용 변경
+        </button>
+      </form>
     </div>
   );
 }

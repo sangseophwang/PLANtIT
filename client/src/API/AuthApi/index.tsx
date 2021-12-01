@@ -13,6 +13,8 @@ const naverClientId = 'ioHK_g45Ha9ZWdoNfune';
 const googleClientId =
   '981453120514-lh9cf035sa3pbhan5qa8fjr9eg85idot.apps.googleusercontent.com';
 
+const plantitServerUrl = 'http://localhost/api';
+
 const requestDjango = axios.create({
   baseURL: 'http://localhost/api/',
   headers: { 'Content-Type': 'application/json' },
@@ -22,6 +24,32 @@ function createRequestAxios(_baseURL: any, _headers: any) {
   return axios.create({
     baseURL: _baseURL,
     headers: _headers,
+  });
+}
+
+function authRequestPost(
+  _endpoint: string,
+  _contentTypeValue: string,
+  data: any,
+) {
+  return axios.post(plantitServerUrl + _endpoint, data, {
+    headers: {
+      'Content-Type': _contentTypeValue,
+      Authorization: `${sessionStorage.getItem('access_token')}`,
+    },
+  });
+}
+
+function authRequestGet(
+  _endpoint: string,
+  _contentTypeValue: string,
+  _query: string,
+) {
+  return axios.get(plantitServerUrl + _endpoint + _query, {
+    headers: {
+      'Content-Type': _contentTypeValue,
+      Authorization: `${sessionStorage.getItem('access_token')}`,
+    },
   });
 }
 
@@ -51,6 +79,8 @@ function parsingUrl(url: string[]): any[] {
 export const authApi = {
   requestDjango,
   createRequestAxios,
+  authRequestPost,
+  authRequestGet,
   isValidateForm,
   parsingUrl,
   naverClientId,
