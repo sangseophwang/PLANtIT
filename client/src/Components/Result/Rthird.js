@@ -11,17 +11,20 @@ const breakPoints = [
   { width: 1300, itemsToShow: 5 },
 ];
 
+// 결과 페이지의 3번째 화면(예방법 & 농약)
 export default function Rthird(props) {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState('');
 
-  // 방제방법 렌더링 함수
+  const RthirdData = props.data.data;
+
+  // 예방법 렌더링 함수
   const rendering = () => {
     const result = [];
-    for (let i = 0; i < props.data.data.prevention.length; i++) {
+    for (let i = 0; i < RthirdData.prevention.length; i++) {
       result.push(
         <span key={i}>
-          - {props.data.data.prevention[i]}
+          - {RthirdData.prevention[i]}
           <br />
         </span>,
       );
@@ -38,19 +41,24 @@ export default function Rthird(props) {
       </div>
 
       <ReactElasticCarousel breakPoints={breakPoints}>
-        {props.data.data.pesticides.map(value => (
-          <button
-            className="pesticides__Button"
-            onClick={() => {
-              setModalData(value);
-              setModalOpen(true);
-              document.body.style.overflow = 'hidden';
-            }}
-          >
-            <img src={value.image} alt="" className="pesticides__Image" />
-          </button>
+        {RthirdData.pesticides.map(value => (
+          <div className="Image">
+            <img src={value.image} alt="" className="Pesticides__Image" />
+            <div
+              className="Image__Overlay Image__Overlay--Primary"
+              onClick={() => {
+                setModalData(value);
+                setModalOpen(true);
+                document.body.style.overflow = 'hidden';
+              }}
+            >
+              <div className="Image__Title">{value.name}</div>
+              <p className="Image__Description">클릭해보세요!</p>
+            </div>
+          </div>
         ))}
       </ReactElasticCarousel>
+
       {modalOpen && <Rmodal setOpenModal={setModalOpen} data={modalData} />}
     </section>
   );

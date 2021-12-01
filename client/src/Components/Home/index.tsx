@@ -1,4 +1,3 @@
-import React from 'react';
 import Navigation from 'Components/Common/Navigation';
 import First from 'Components/Home/First';
 import Second from 'Components/Home/Second';
@@ -14,7 +13,14 @@ import 'swiper/components/pagination/pagination.scss';
 
 SwiperCore.use([Mousewheel, Pagination]);
 
-const bullet = ['- 소개', '- 영상', '- 비전', '- 인공지능', '- 커뮤니티', '- 메세지'];
+const bullet = [
+  '- 소개',
+  '- 영상',
+  '- 비전',
+  '- 인공지능',
+  '- 커뮤니티',
+  '- 메세지',
+];
 
 export default function Home(): JSX.Element {
   return (
@@ -30,7 +36,13 @@ export default function Home(): JSX.Element {
         pagination={{
           clickable: true,
           renderBullet: function (index, className) {
-            return '<div class="' + className + '"><span>' + bullet[index] + '</span></div>';
+            return (
+              '<div class="' +
+              className +
+              '"><span>' +
+              bullet[index] +
+              '</span></div>'
+            );
           },
         }}
         className="mySwiper"

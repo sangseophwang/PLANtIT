@@ -1,8 +1,7 @@
-import React from 'react';
 import Member from 'Assets/Dummy/Member';
 import 'Components/Member/scss/MemberList.scss';
 
-const MemberList = () => {
+export default function MemberList(): JSX.Element {
   return (
     <section className="Member__Container">
       {Member.map(option => (
@@ -19,7 +18,9 @@ const MemberList = () => {
               <div className="Member__Role">{option.role}</div>
               <div className="Member__Name">{option.name}</div>
 
-              <article className="Member__Introduction">{option.content}</article>
+              <article className="Member__Introduction">
+                {option.content}
+              </article>
               <div className="Member__Tag-Container ">
                 <button className="Member__Tag">
                   <span>{option.tag1}</span>
@@ -34,6 +35,4 @@ const MemberList = () => {
       ))}
     </section>
   );
-};
-
-export default MemberList;
+}

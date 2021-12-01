@@ -1,0 +1,22 @@
+@import '/src/Components/Common/scss/variables';
+@import '/src/Components/Common/scss/mixins';
+
+.Back__Container {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  text-decoration: none;
+  color: gray;
+  transition: 0.5s;
+  &:hover {
+    transition: 0.5s;
+    color: $LightGreen;
+  }
+  @include responsive('mobile') {
+    font-size: 12px;
+    color: lightgray;
+  }
+  > span {
+    font-weight: 600;
+  }
+}

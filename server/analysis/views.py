@@ -17,6 +17,7 @@ AWS_DOMAIN = 'https://%s.s3.%s.amazonaws.com/' % (AWS_STORAGE_BUCKET_NAME, AWS_R
 # 검사하려는 이미지 파일 s3로 저장
 def upload_analysis_image(image, filename):
     path_prefix = 'analysis/'
+    filename = filename.split('.')[0]
     upload_filename = path_prefix + filename +'-analysis.png'
     s3.upload_fileobj(image, AWS_STORAGE_BUCKET_NAME, upload_filename)
     image_url = AWS_DOMAIN + upload_filename
@@ -30,11 +31,10 @@ def analysis(request, name='고추탄저병'):
     농약 각각의 정보
     '''
     try:
-        img = request.FILES['image']
-        filename = img.name
-        img_url = upload_analysis_image(image=img, filename=filename)
+        # img = request.FILES['files']
+        # filename = img.name
+        # img_url = upload_analysis_image(image=img, filename=filename)
 
-        print(img_url)
         disease = list(Disease.objects.filter(name=name).values())
         
         _pesticides = []
@@ -45,13 +45,13 @@ def analysis(request, name='고추탄저병'):
             _pesticides += find_each_pesticide
         
         disease[0]['pesticides'] = _pesticides
-        disease[0]['image'] = img_url
+        # disease[0]['image'] = img_url
         disease[0]['level'] = 2 # AI Model에서 나온 값 적용해야함
         disease[0].pop('crops_id')
 
         data = {"data" : disease[0]}
 
-        return JsonResponse(data, json_dumps_params={'ensure_ascii': False}, safe=False)
+        return Response(data, status=200)
         
     except:
-        return Response('잘못된 형식')
+        return Response('잘못된 형식', status=400)
