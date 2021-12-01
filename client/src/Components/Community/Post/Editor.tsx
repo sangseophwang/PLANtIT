@@ -1,8 +1,9 @@
 //@ts-ignore
 import ImageResize from '@looop/quill-image-resize-module-react';
+//@ts-ignore
+import { ImageDrop } from 'quill-image-drop-module';
 import { useMemo, useRef } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
-import QuillImageDropAndPaste from 'quill-image-drop-and-paste';
 import 'react-quill/dist/quill.snow.css';
 import { CommunityApi } from 'API/CommunityApi';
 
@@ -12,7 +13,7 @@ interface EditorProps {
 }
 
 Quill.register('modules/imageResize', ImageResize);
-Quill.register('modules/imageDropAndPaste', QuillImageDropAndPaste);
+Quill.register('modules/imageDrop', ImageDrop);
 
 export default function Editor({
   contents,
@@ -72,11 +73,9 @@ export default function Editor({
           ],
           ['image'],
         ],
-        handlers: {
-          image: imageHandler,
-        },
+        handlers: { image: imageHandler },
       },
-      imageDropAndPaste: true,
+      imageDrop: true,
       clipboard: { matchVisual: false },
       imageResize: {
         parchment: Quill.import('parchment'),

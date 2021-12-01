@@ -9632,10 +9632,12 @@ quill-delta@^3.6.2:
     extend "^3.0.2"
     fast-diff "1.1.2"
 
-quill-image-drop-and-paste@^1.2.9:
-  version "1.2.9"
-  resolved "https://registry.yarnpkg.com/quill-image-drop-and-paste/-/quill-image-drop-and-paste-1.2.9.tgz#900c606cb7f682a328a2c9c75e3c1c2b96d89f72"
-  integrity sha512-NZ3hWRL8IL8/qg2wpMm1NPmA3S0vwQEJj8NVvTbKMHJ2j2rpDXbxhVYVWmyaD6ERgw1U8kKqWmQfUhzVpE13lA==
+quill-image-drop-module@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/quill-image-drop-module/-/quill-image-drop-module-1.0.3.tgz#0e5ec8329dd67a12126f166b191bf64d2057a7d3"
+  integrity sha1-Dl7IMp3WehISbxZrGRv2TSBXp9M=
+  dependencies:
+    quill "^1.2.2"
 
 quill-image-resize-module-react@^3.0.0:
   version "3.0.0"

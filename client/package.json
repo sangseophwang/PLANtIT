@@ -22,7 +22,7 @@
     "node": "^17.0.1",
     "node-sass": "^6.0.1",
     "prettier": "^2.4.1",
-    "quill-image-drop-and-paste": "^1.2.9",
+    "quill-image-drop-module": "^1.0.3",
     "quill-image-resize-module": "^3.0.0",
     "quill-image-resize-module-react": "^3.0.0",
     "react": "^17.0.2",

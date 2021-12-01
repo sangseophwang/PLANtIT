@@ -12,6 +12,9 @@
     border-bottom: 1px solid lightgray;
     margin-bottom: 10px;
     justify-content: flex-end;
+    @include responsive('tablet') {
+      width: 95%;
+    }
     .Thumbnail__SelectButton {
       width: 70px;
       height: 30px;
@@ -31,12 +34,62 @@
     }
   }
   .Thumbnail__Post {
-    width: 100%;
-    height: 40vh;
+    width: 80%;
+    height: 60vh;
+    position: relative;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+    @include responsive('tablet') {
+      width: 100%;
+      height: 40vh;
+    }
+    @include responsive('mobile') {
+      height: 35vh;
+    }
     .Thumbnail__Image {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+    .Thumbnail__Title-Wrapper {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      .Thumbnail__Title {
+        color: white;
+        font-size: 5vw;
+        font-weight: 700;
+        margin-bottom: 40px;
+        @include responsive('tablet') {
+          font-size: 8vw;
+          margin-bottom: 20px;
+        }
+      }
+      .Thumbnail__Subtitle {
+        color: white;
+        @include responsive('mobile') {
+          font-size: 2vw;
+        }
+        > em {
+          font-style: italic;
+        }
+      }
+    }
+    &:hover {
+      transition: 0.5s;
+      .Thumbnail__Image {
+        filter: brightness(50%);
+        transition: 0.3s;
+      }
+      .Thumbnail__Title {
+        color: tomato;
+        transition: 0.5s;
+      }
     }
   }
 }

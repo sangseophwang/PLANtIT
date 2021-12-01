@@ -44,8 +44,12 @@ export default function Thumbnail({
                 src={post.thumbnail}
                 alt={`${post.blog_id} 썸네일`}
               />
-              <h1>{post.title}</h1>
-              <h3>by {post.author}</h3>
+              <div className="Thumbnail__Title-Wrapper">
+                <h1 className="Thumbnail__Title">{post.title}</h1>
+                <h3 className="Thumbnail__Subtitle">
+                  <em>by </em> {post.author}
+                </h3>
+              </div>
             </div>
           ),
         )}
