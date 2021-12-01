@@ -39,7 +39,6 @@
     position: relative;
     margin-bottom: 5px;
     cursor: pointer;
-    transition: 0.5s;
     @include responsive('tablet') {
       width: 100%;
       height: 40vh;
@@ -51,22 +50,33 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: 0.5s;
     }
     .Thumbnail__Title-Wrapper {
       position: absolute;
       display: flex;
       flex-direction: column;
+      width: 95%;
       align-items: center;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      @include responsive('tablet') {
+        width: 85%;
+      }
+      @include responsive('mobile') {
+        width: 80%;
+      }
       .Thumbnail__Title {
         color: white;
-        font-size: 5vw;
+        font-size: 4vw;
         font-weight: 700;
         margin-bottom: 40px;
+        transition: 0.5s;
+        line-height: 1.3;
+        text-align: center;
         @include responsive('tablet') {
-          font-size: 8vw;
+          font-size: 7vw;
           margin-bottom: 20px;
         }
       }
@@ -77,14 +87,14 @@
         }
         > em {
           font-style: italic;
+          margin-right: 3px;
         }
       }
     }
     &:hover {
-      transition: 0.5s;
       .Thumbnail__Image {
         filter: brightness(50%);
-        transition: 0.3s;
+        transition: 0.5s;
       }
       .Thumbnail__Title {
         color: tomato;

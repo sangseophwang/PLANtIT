@@ -11,6 +11,7 @@ export default function Thumbnail({
   data,
 }: ThumbnailProps): JSX.Element {
   const navigate = useNavigate();
+
   const handleOrder = (event: any) => {
     onChangeOrder(event.target.value);
   };
@@ -37,7 +38,10 @@ export default function Thumbnail({
             <div
               className="Thumbnail__Post"
               key={post.blog_id}
-              onClick={() => navigate(`/community/${post.blog_id}`)}
+              onClick={() => (
+                window.scrollTo(0, 0),
+                navigate(`/community/${post.blog_id}`, { state: post.blog_id })
+              )}
             >
               <img
                 className="Thumbnail__Image"

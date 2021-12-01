@@ -62,7 +62,7 @@ export default function Editor({
     () => ({
       toolbar: {
         container: [
-          [{ size: ['small', false, 'large', 'huge'] }],
+          [{ size: [false] }],
           ['bold', 'underline', 'strike', 'blockquote'],
           [
             { list: 'ordered' },

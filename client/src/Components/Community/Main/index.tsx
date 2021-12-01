@@ -14,7 +14,6 @@ export default function Community(): JSX.Element {
   const [page, setPage] = useState<number>(1);
   const [order, setOrder] = useState<number>(0);
 
-  console.log(data);
   // 전체 게시글 수 불러오기
   useEffect(() => {
     async function getLength() {

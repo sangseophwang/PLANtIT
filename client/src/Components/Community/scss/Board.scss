@@ -24,20 +24,104 @@
       }
     }
   }
-  .Board__Contents {
-    height: 100vh;
-    width: 80%;
+  .Board__Contents-Wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
-    background-color: teal;
+    width: 80%;
+    .Board__Title {
+      height: 30vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 1.2;
+      color: darkslategrey;
+      font-weight: 700;
+      font-size: 50px;
+      @include responsive('tablet') {
+        height: 20vh;
+      }
+      @include responsive('mobile') {
+        font-size: 8vw;
+        height: 15vh;
+      }
+    }
+    .Board__Contents {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      @include responsive('mobile') {
+        width: 100%;
+      }
+      .ql-align-center {
+        text-align: center;
+      }
+      .ql-align-right {
+        text-align: right;
+      }
+      > p {
+        color: darkslategrey;
+        line-height: 1.6;
+        font-size: 18px;
+        @include responsive('mobile') {
+          font-size: 16px;
+          line-height: 1.4;
+        }
+        > strong {
+          font-weight: 700;
+        }
+        > u {
+          text-decoration: underline;
+        }
+        > s {
+          text-decoration: line-through;
+        }
+        > img {
+          display: block;
+          margin: 0 auto;
+          max-width: 90%;
+          min-width: 60%;
+          margin-bottom: 10px;
+          @include responsive('mobile') {
+            max-width: 100%;
+          }
+        }
+      }
+      > blockquote {
+        border-left: 3px solid gray;
+        padding-left: 15px;
+        word-break: keep-all;
+        line-height: 1.4;
+        color: darkgray;
+        font-weight: 500;
+      }
+    }
+  }
+  .Board__Back {
+    border: none;
+    color: white;
+    background-color: #bcdea1;
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: 0.5s;
+    cursor: pointer;
+    &:hover {
+      transition: 0.5s;
+      background-color: #92cd7b;
+    }
   }
   .Board__Profile {
     height: 20vh;
     width: 60%;
-    background-color: tomato;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .disqusFrame {
     margin-top: 10px;
