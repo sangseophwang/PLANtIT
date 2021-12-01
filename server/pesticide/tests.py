@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from .models import Pesticide
 from django.urls import reverse
 from rest_framework.test import APIClient
@@ -11,7 +11,7 @@ pesticide = list(Pesticide.objects.filter(name="발라 액제").values())
 
 class PesticideApiTest(TestCase):
     def setUp(self):
-        self.client = APIClient()
+        self.client = Client()
         
 
     def test_pesticide_each(self):
