@@ -45,7 +45,7 @@
   }
 }
 
-.pesticides__Image {
+.Pesticides__Image {
   display: block;
   width: 100%;
 
@@ -60,7 +60,7 @@
   }
 }
 
-.image__overlay {
+.Image__Overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -77,45 +77,54 @@
   transition: opacity 0.25s;
 }
 
-.image {
+.Image {
   position: relative;
   width: 400px;
 }
 
-.image__overlay--blur {
+.Image__Overlay--Blur {
   backdrop-filter: blur(5px);
 }
 
-.image__overlay--primary {
+.Image__Overlay--Primary {
   background: rgba(0, 0, 0, 0.6);
   cursor: pointer;
 }
 
-.image__overlay > * {
+.Image__Overlay > * {
   transform: translateY(20px);
   transition: transform 0.25s;
 }
 
-.image__overlay:hover {
+.Image__Overlay:hover {
   opacity: 1;
 }
 
-.image__overlay:hover > * {
+.Image__Overlay:hover > * {
   transform: translateY(0);
 }
 
-.image__title {
-  font-size: 2em;
+.Image__Title {
+  font-size: 2rem;
   font-weight: bold;
+
+  @include responsive("tablet") {
+    font-size: 1.5rem;
+  }
 }
 
-.image__description {
-  font-size: 1.25em;
-  margin-top: 0.25em;
+.Image__Description {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+
+  @include responsive("tablet") {
+    font-size: 1rem;
+  }
 }
 
 // carousel 디자인
 
+// carousel 크기
 #root > div > div > section.Rthird__Container > div.rec.rec-carousel-wrapper {
   width: 75%;
   margin: 0 auto;
@@ -130,12 +139,18 @@
 #root > div > div > section.Rthird__Container > div.rec-carousel-wrapper > div.rec.rec-carousel > button {
   background-color: white;
   color: #5d5d5d;
+  font-size: 3rem;
   box-shadow: none;
 }
 
 #root > div > div > section.Rthird__Container > div.rec-carousel-wrapper > div.rec.rec-carousel > button:hover {
-  background-color: #5d5d5d;
-  color: white;
+  // background-color: #5d5d5d;
+  font-size: 4rem;
+  // color: white;
+}
+
+#root > div > div > section.Rthird__Container > div.rec-carousel-wrapper > div.rec.rec-carousel > button:disabled {
+  visibility: hidden;
 }
 
 // carousel dot button: 밑에 동그라미
@@ -159,4 +174,13 @@
   > div.rec.rec-pagination
   > button.rec.rec-dot {
   box-shadow: 0 0 1px 3px #5d5d5d;
+}
+
+.rec.rec-arrow:disabled {
+  visibility: hidden;
+}
+
+.rec-carousel-item:focus {
+  outline: none;
+  box-shadow: inset 0 0 1px 1px lightgrey;
 }

@@ -27,7 +27,7 @@ const CropsList = (props: any) => {
       <div className="Search__Result">
         {props.data &&
           props.data.map((value: any) => (
-            <div className="CropsList__Container-Box">
+            <div className="CropsList__Container-Box" key={value.id}>
               <img className="CropsList__Image" src={value.image} alt="crops" />
               <div className="CropsList__Classification">
                 <div className="Classification__Name">{value.crops_id}</div>

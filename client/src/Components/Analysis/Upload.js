@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CloseIcon from 'Assets/CloseIcon.svg';
 import FolderIcon from 'Assets/folder_icon_transparent.png';
@@ -62,6 +62,10 @@ const Upload = () => {
 
     return AnalysisResponse;
   };
+
+  useEffect(() => {
+    return () => setLoading(false);
+  }, []);
 
   if (loading)
     return <div className="Notice__Container">잠시만 기다려 주세요</div>;
