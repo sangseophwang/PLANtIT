@@ -22,7 +22,13 @@ export default function Post(): JSX.Element {
           title: title,
           content: contents,
         }).then(response => {
-          navigate('/community');
+          console.log(response);
+          if (response.data.new_token) {
+            sessionStorage.set('access_token', response.data.new_token);
+            navigate('/community');
+          } else {
+            navigate('/community');
+          }
         });
       } catch (error) {
         console.log(error);

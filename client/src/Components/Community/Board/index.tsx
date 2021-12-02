@@ -17,7 +17,8 @@ export default function Board(): JSX.Element {
   const location = useLocation();
   const item = location.state;
   const [data, setData] = useState<any>();
-
+  const [isAuthor, setIsAuthor] = useState<Boolean>(false);
+  console.log(data);
   // 게시글 번호에 맞는 글 불러오기
   useEffect(() => {
     async function getPost() {
@@ -37,6 +38,15 @@ export default function Board(): JSX.Element {
       );
     } catch (e) {
       toast.error('본인만 삭제할 수 있습니다.');
+    }
+  };
+
+  const onModifyHandler = () => {
+    console.log(isAuthor);
+    if (isAuthor) {
+      toast.info('오 당신이 적은거 맞는데?');
+    } else {
+      toast.error('아니잖아!');
     }
   };
 
@@ -76,7 +86,9 @@ export default function Board(): JSX.Element {
         <button className="Board__Delete" onClick={onDeleteHandler}>
           삭제
         </button>
-        <button className="Board__Modify">수정</button>
+        <button className="Board__Modify" onClick={onModifyHandler}>
+          수정
+        </button>
       </div>
       <div className="disqusFrame">
         <Disqus.DiscussionEmbed

@@ -26,7 +26,7 @@ export default function Pagination({
     pageNumber = [];
     for (let j = LIMIT_PAGE; j >= LIMIT_PAGE - 4; j--) {
       pageNumber.push(j);
-      pageNumber.sort();
+      pageNumber.sort((a, b) => a - b);
     }
   } else {
     for (let i = page; i <= page + 4; i++) {
