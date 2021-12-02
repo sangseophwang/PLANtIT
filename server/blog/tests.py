@@ -17,7 +17,7 @@ class BlogTest(TestCase):
         self.nickname = "plant-user"
 
         self.test_user = User.objects.create(email=self.email, password=self.password, nickname=self.nickname, user_type=0)
-        self.access_token = create_token(email=self.email, user_type=0, user_id=self.test_user.id)
+        self.access_token = create_token(email=self.email, user_type=0, user_id=self.test_user.id, token_type='access')
         
     def test_커뮤니티_게시글_생성(self):
         title = "토마토 이렇게 드세요"

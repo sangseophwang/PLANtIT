@@ -8,7 +8,7 @@ from rest_framework.decorators import api_view
 
 from common.token import validate_token, create_token
 from common.s3 import upload_user_image
-from .queryset import find_user_by_email_usertype, find_user_by_id, create_user, update_user, update_user_profile_image
+from .queryset import find_user_by_email_usertype, find_user_by_id, create_user, update_user, update_user_profile_image, update_user_refresh_token
 
 # Create your views here.
 
@@ -61,7 +61,13 @@ def login(request):
         return Response(data='Wrong Password', status=400)
     
     user_id = user.id
-    access_token = create_token(email=email, user_type=user_type, user_id=user_id)
+    access_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='access')
+    refresh_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='refresh')
+    if access_token == False or refresh_token == False:
+        return Response(data='Fail To Generate Token', status=400)
+    
+    if not update_user_refresh_token(user_id, refresh_token):
+        return Response(data='Fail To Save Refresh Token', status=400)
     
     response_data = {
         'token': access_token,
@@ -89,7 +95,13 @@ def naver_login(request):
             return Response(data='Register Fail', status=400)
     
     user_id = user.id
-    access_token = create_token(email=email, user_type=user_type, user_id=user_id)
+    access_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='access')
+    refresh_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='refresh')
+    if access_token == False or refresh_token == False:
+        return Response(data='Fail To Generate Token', status=400)
+    
+    if not update_user_refresh_token(user_id, refresh_token):
+        return Response(data='Fail To Save Refresh Token', status=400)
     
     response_data = {
         'token': access_token,
@@ -116,7 +128,13 @@ def google_login(request):
             return Response(data='Register Fail', status=400)
     
     user_id = user.id
-    access_token = create_token(email=email, user_type=user_type, user_id=user_id)
+    access_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='access')
+    refresh_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='refresh')
+    if access_token == False or refresh_token == False:
+        return Response(data='Fail To Generate Token', status=400)
+    
+    if not update_user_refresh_token(user_id, refresh_token):
+        return Response(data='Fail To Save Refresh Token', status=400)
     
     response_data = {
         'token': access_token,
@@ -133,7 +151,7 @@ def deregister(request):
     if not token_validation.status_code == 200:
         return token_validation
     
-    user_id = token_validation.data['user_id']
+    user_id = token_validation.data['payload']['user_id']
     target_user = find_user_by_id(user_id)
     target_user.delete()
     
@@ -151,7 +169,7 @@ def update(request):
     request_body = json.loads(request.body)
     nickname = request_body['nickname']
     description = request_body['description']
-    user_id = token_validation.data['user_id']
+    user_id = token_validation.data['payload']['user_id']
     
     update_result = update_user(user_id=user_id, nickname=nickname, description=description)
     if not update_result:
@@ -161,7 +179,9 @@ def update(request):
         'message' : "success",
         'nickname' : nickname,
         'description' : description,
+        'new_token': token_validation.data['new_token'] if 'new_token' in token_validation.data else None
     }
+        
     return Response(data=response_data, status=200)
 
 @api_view(['POST'])
@@ -172,13 +192,19 @@ def update_profile_image(request):
     if not token_validation.status_code == 200:
         return token_validation
     
-    user_id = token_validation.data['user_id']
+    user_id = token_validation.data['payload']['user_id']
     image = request.FILES['image']
     image_url = upload_user_image(image=image, user_id=user_id)
     
     if not update_user_profile_image(user_id=user_id, image=image_url):
         return Response(data='Update Fail', status=400)
-    return Response(data=image_url, status=200)
+    
+    response_data = {
+        'image_url': image_url,
+        'new_token': token_validation.data['new_token'] if 'new_token' in token_validation.data else None
+    }
+        
+    return Response(data=response_data, status=200)
 
 @api_view(['GET'])
 def mypage(request):
@@ -188,13 +214,15 @@ def mypage(request):
     if not token_validation.status_code == 200:
         return token_validation
 
-    user_id = token_validation.data['user_id']
+    user_id = token_validation.data['payload']['user_id']
     target_user = find_user_by_id(user_id)
     
     response_data = {
         'message' : "success",
         'nickname' : target_user.nickname,
         'description' : target_user.description,
-        'image' : target_user.image
+        'image' : target_user.image,
+        'new_token': token_validation.data['new_token'] if 'new_token' in token_validation.data else None
     }
+    
     return Response(data=response_data, status=200)
