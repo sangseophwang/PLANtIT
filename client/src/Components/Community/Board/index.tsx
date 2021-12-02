@@ -3,6 +3,7 @@ import { useLocation } from 'react-router';
 import 'Components/Community/scss/Board.scss';
 import Disqus from 'disqus-react';
 import Navigation from 'Components/Common/Navigation';
+import ProgressBar from 'Components/Common/ProgressBar';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
@@ -83,6 +84,7 @@ export default function Board(): JSX.Element {
     <>
       <section className="Board__Container">
         <Navigation />
+        <ProgressBar />
         <div className="Board__Top">
           <div className="Board__Information">
             <h1>{data && data.upload_date}</h1>
