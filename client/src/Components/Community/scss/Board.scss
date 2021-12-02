@@ -141,6 +141,39 @@
     justify-content: center;
     align-items: center;
   }
+  .Board__Modify__Delete {
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    > button {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      margin-left: 8px;
+      cursor: pointer;
+      transition: 0.5s;
+      font-size: 16px;
+      font-weight: 600;
+      @include responsive('mobile') {
+        font-size: 15px;
+        margin-left: 5px;
+      }
+    }
+    .Board__Modify {
+      color: darkseagreen;
+      &:hover {
+        transition: 0.5s;
+        transform: scale(1.07);
+      }
+    }
+    .Board__Delete {
+      color: tomato;
+      &:hover {
+        transition: 0.5s;
+        transform: scale(1.07);
+      }
+    }
+  }
   .disqusFrame {
     margin: 10px 0 100px 0;
     width: 70%;

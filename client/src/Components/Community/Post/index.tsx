@@ -18,7 +18,7 @@ export default function Post(): JSX.Element {
       toast.error('글을 작성해주세요.');
     } else {
       try {
-        CommunityApi.Post.post('/blog/post', {
+        CommunityApi.Community_Post.post('/blog/post', {
           title: title,
           content: contents,
         }).then(response => {

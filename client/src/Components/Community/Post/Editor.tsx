@@ -33,7 +33,10 @@ export default function Editor({
         formData.append('image', file[0]);
 
         try {
-          const res = await CommunityApi.Post.post('/blog/image', formData);
+          const res = await CommunityApi.Community_Post.post(
+            '/blog/image',
+            formData,
+          );
           url = res.data;
 
           const range = QuillRef.current?.getEditor().getSelection()?.index;

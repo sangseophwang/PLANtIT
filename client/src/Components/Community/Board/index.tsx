@@ -3,6 +3,7 @@ import { useLocation } from 'react-router';
 import 'Components/Community/scss/Board.scss';
 import Disqus from 'disqus-react';
 import Navigation from 'Components/Common/Navigation';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -16,14 +17,29 @@ export default function Board(): JSX.Element {
   const location = useLocation();
   const item = location.state;
   const [data, setData] = useState<any>();
+
+  // 게시글 번호에 맞는 글 불러오기
   useEffect(() => {
-    async function getBoard() {
+    async function getPost() {
       let response = await CommunityApi.Get_Page.get(`/blog/${item}`);
       setData(response.data);
     }
-    getBoard();
+    getPost();
   }, [item]);
-  console.log(data && data.content);
+
+  const onDeleteHandler = async () => {
+    try {
+      await CommunityApi.Community_Post.post(`/blog/delete/${item}`).then(
+        response => {
+          console.log(response.status);
+          navigate('/community');
+        },
+      );
+    } catch (e) {
+      toast.error('본인만 삭제할 수 있습니다.');
+    }
+  };
+
   // DISQUS
   const disqusShortname = 'plantit';
   const disqusConfig = {
@@ -56,6 +72,12 @@ export default function Board(): JSX.Element {
         뒤로 가기
       </button>
       <div className="Board__Profile">작성자 : {data && data.author}</div>
+      <div className="Board__Modify__Delete">
+        <button className="Board__Delete" onClick={onDeleteHandler}>
+          삭제
+        </button>
+        <button className="Board__Modify">수정</button>
+      </div>
       <div className="disqusFrame">
         <Disqus.DiscussionEmbed
           shortname={disqusShortname}

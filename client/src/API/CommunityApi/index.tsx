@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost/api/';
-const Post = axios.create({
+const Community_Post = axios.create({
   baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ const Get_Page = axios.create({
 });
 
 export const CommunityApi = {
-  Post,
+  Community_Post,
   Upload_Image,
   Get_Page,
 };
