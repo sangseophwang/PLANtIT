@@ -14,17 +14,25 @@ interface PaginationProps {
   onChangePage: Function;
 }
 
-const LIMIT_PAGE = 4;
-
 export default function Pagination({
   length,
   page,
   onChangePage,
 }: PaginationProps): JSX.Element {
   // 페이지네이션 수 배열에 담기
-  let pageNumber = [];
-  for (let i = 1; i <= Math.ceil(length / LIMIT_PAGE); i++) {
-    pageNumber.push(i);
+  const LIMIT_PAGE = Math.ceil(length / 4);
+  let pageNumber: number[] = [];
+  if (page + 4 >= LIMIT_PAGE) {
+    pageNumber = [];
+    for (let j = LIMIT_PAGE; j >= LIMIT_PAGE - 4; j--) {
+      pageNumber.push(j);
+      pageNumber.sort((a, b) => a - b);
+    }
+  } else {
+    for (let i = page; i <= page + 4; i++) {
+      pageNumber.push(i);
+      pageNumber.sort((a, b) => a - b);
+    }
   }
 
   // 페이지네이션, 현재 페이지 위치 출력

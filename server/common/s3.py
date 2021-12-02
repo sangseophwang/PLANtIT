@@ -24,17 +24,17 @@ def upload_blog_image(image, filename):
     return image_url
 
 def get_thumbnail_url(html_code):
-    opentag = '<img src='
-    closetag = '>'
+    opentag = '<img src="'
+    closetag = '"'
 
-    opentag_idx = html_code.find(opentag) + 1
+    opentag_idx = html_code.find(opentag)
     if opentag_idx == -1:
         return False
 
-    html_copy = html_code[opentag_idx:]
-    closetag_idx = html_copy.find(closetag) - 1
+    html_copy = html_code[opentag_idx+len(opentag):]
+    closetag_idx = html_copy.find(closetag)
 
-    result = html_code[opentag_idx + len(opentag) : opentag_idx + closetag_idx]
+    result = html_code[opentag_idx + len(opentag) : opentag_idx + len(opentag) + closetag_idx]
     return result
 
 def upload_user_image(image, user_id):

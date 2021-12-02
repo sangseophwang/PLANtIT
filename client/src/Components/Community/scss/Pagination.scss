@@ -14,6 +14,11 @@
   }
   .Pagination__Wrapper {
     display: flex;
+    width: 20%;
+    justify-content: space-between;
+    @include responsive('tablet') {
+      width: 50%;
+    }
     .Pagination__Arrow {
       margin: 1px 10px 0 10px;
       cursor: pointer;
