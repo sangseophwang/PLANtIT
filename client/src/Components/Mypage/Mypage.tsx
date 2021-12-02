@@ -18,8 +18,25 @@ export default function MypageMain(): JSX.Element {
       .then(response => {
         console.log('response: ', response);
         console.log('response.data: ', response.data);
-        setNickname(response.data.nickname);
-        setDescription(response.data.description);
+        console.log('new_token', response.data.new_token);
+
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        response.data.message === 'success'
+          ? (setNickname(response.data.nickname),
+            setDescription(response.data.description))
+          : alert('message is not "success"');
+
+        if (response.data.new_token !== null) {
+          console.log(
+            'new_token === old?',
+            sessionStorage.getItem('access_token') === response.data.new_token,
+          );
+          sessionStorage.setItem('access_token', response.data.new_token);
+          console.log(
+            '일치?',
+            response.data.new_token === sessionStorage.getItem('access_token'),
+          );
+        }
       })
       .catch(error => {
         console.log('error: ', error);
@@ -69,21 +86,30 @@ export default function MypageMain(): JSX.Element {
       .then(response => {
         console.log('response: ', response);
         console.log('response.data: ', response.data);
+
+        // if (response.data.new_token === null) {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         response.data.message === 'success'
           ? (setNickname(response.data.nickname),
             setDescription(response.data.description))
           : alert('message is not "success"');
+
+        if (response.data.new_token !== null) {
+          console.log(
+            'new_token === old?',
+            sessionStorage.getItem('access_token') === response.data.new_token,
+          );
+          sessionStorage.setItem('access_token', response.data.new_token);
+          console.log(
+            '일치?',
+            response.data.new_token === sessionStorage.getItem('access_token'),
+          );
+        }
       })
       .catch(error => {
         console.log('error', error);
         alert('error');
       });
-  }
-
-  function onSubmitChangeImage(event: any) {
-    event.preventDefault();
-    
   }
 
   return (
