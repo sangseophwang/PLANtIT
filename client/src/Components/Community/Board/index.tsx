@@ -19,9 +19,7 @@ export default function Board(): JSX.Element {
   const item = location.state;
   const [data, setData] = useState<any>();
   const [isAuthor, setIsAuthor] = useState<Boolean>(false);
-  console.log(data);
-  console.log(`내가 작성한 글이 맞는가?: ${isAuthor}`);
-
+  const modifyProps = [data, item];
   // 게시글 번호에 맞는 글 불러오기
   useEffect(() => {
     async function getPost() {
@@ -67,7 +65,7 @@ export default function Board(): JSX.Element {
   async function onModifyHandler() {
     console.log(isAuthor);
     if (isAuthor) {
-      toast.info('오 당신이 적은거 맞는데?');
+      navigate('/community/post', { state: modifyProps });
     } else {
       toast.error('아니잖아!');
     }

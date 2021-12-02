@@ -3,7 +3,7 @@ import 'Components/Common/scss/ProgressBar.scss';
 
 export default function ProgressBar(): JSX.Element {
   const [scroll, setScroll] = useState<number>(0);
-  console.log(scroll);
+
   useEffect(() => {
     let progressBarHandler = () => {
       const totalScroll = document.documentElement.scrollTop;
@@ -16,6 +16,7 @@ export default function ProgressBar(): JSX.Element {
     window.addEventListener('scroll', progressBarHandler);
     return () => window.removeEventListener('scroll', progressBarHandler);
   }, []);
+
   return (
     <div className="ProgressBar__Container">
       <div

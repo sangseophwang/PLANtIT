@@ -11,6 +11,15 @@ function Community_Post(endpoint: string, data: any) {
   });
 }
 
+function Modify_Post(endpoint: string, data: any) {
+  return axios.patch(BASE_URL + endpoint, data, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${sessionStorage.getItem('access_token')}`,
+    },
+  });
+}
+
 function Upload_Image(endpoint: string, data: any) {
   return axios.post(BASE_URL + endpoint, data, {
     headers: {
@@ -33,4 +42,5 @@ export const CommunityApi = {
   Community_Post,
   Upload_Image,
   Get_Page,
+  Modify_Post,
 };
