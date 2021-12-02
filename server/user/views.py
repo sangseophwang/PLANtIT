@@ -1,13 +1,16 @@
 import json
 import bcrypt
 import requests
+import datetime
 
+from re import compile
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from common.token import validate_token, create_token
 from common.s3 import upload_user_image
+from common.regex import validate_email, validate_password
 from .queryset import find_user_by_email_usertype, find_user_by_id, create_user, update_user, update_user_profile_image, update_user_refresh_token
 
 # Create your views here.
@@ -25,6 +28,12 @@ def register(request):
     
     if email == '' or password1 == '' or password2 == '' or nickname == '':
         return Response(data='Register Fail', status=400)
+    
+    if not validate_email(email):
+        return Response(data='Invalid Email', status=400)
+    
+    if not validate_password(password1):
+        return Response(data='Invalid Password', status=400)
     
     if not password1 == password2:
         return Response(data='Password Not Same', status=400)
@@ -61,8 +70,9 @@ def login(request):
         return Response(data='Wrong Password', status=400)
     
     user_id = user.id
-    access_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='access')
-    refresh_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='refresh')
+    iat = datetime.datetime.utcnow()
+    access_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='access', iat=iat)
+    refresh_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='refresh', iat=iat)
     if access_token == False or refresh_token == False:
         return Response(data='Fail To Generate Token', status=400)
     
@@ -95,8 +105,9 @@ def naver_login(request):
             return Response(data='Register Fail', status=400)
     
     user_id = user.id
-    access_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='access')
-    refresh_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='refresh')
+    iat = datetime.datetime.utcnow()
+    access_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='access', iat=iat)
+    refresh_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='refresh', iat=iat)
     if access_token == False or refresh_token == False:
         return Response(data='Fail To Generate Token', status=400)
     
@@ -128,8 +139,9 @@ def google_login(request):
             return Response(data='Register Fail', status=400)
     
     user_id = user.id
-    access_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='access')
-    refresh_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='refresh')
+    iat = datetime.datetime.utcnow()
+    access_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='access', iat=iat)
+    refresh_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='refresh', iat=iat)
     if access_token == False or refresh_token == False:
         return Response(data='Fail To Generate Token', status=400)
     
