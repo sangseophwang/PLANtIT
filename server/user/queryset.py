@@ -41,6 +41,17 @@ def update_user_profile_image(user_id, image):
     target_user = find_user_by_id(user_id)
     try:
         target_user.image = image
+        target_user.save()
+    except:
+        return False
+    else:
+        return True
+    
+def update_user_refresh_token(user_id, refresh_token):
+    target_user = find_user_by_id(user_id)
+    try:
+        target_user.refresh_token = refresh_token
+        target_user.save()
     except:
         return False
     else:
