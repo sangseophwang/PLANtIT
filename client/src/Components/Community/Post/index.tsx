@@ -9,8 +9,9 @@ import { CommunityApi } from 'API/CommunityApi';
 export default function Post(): JSX.Element {
   const [title, setTitle] = useState<string>('');
   const [contents, setContents] = useState<string>('');
-  console.log(contents);
   const navigate = useNavigate();
+
+  // 게시글 등록
   const onSubmitHandler = () => {
     if (!title) {
       toast.error('제목을 입력해주세요.');
@@ -18,11 +19,18 @@ export default function Post(): JSX.Element {
       toast.error('글을 작성해주세요.');
     } else {
       try {
-        CommunityApi.Post.post('/blog/post', {
+        CommunityApi.Community_Post('blog/post', {
           title: title,
           content: contents,
         }).then(response => {
-          navigate('/community');
+          if (response.data.new_token !== null) {
+            console.log('새로운 토큰이 도착했습니다!');
+            sessionStorage.removeItem('access_token');
+            sessionStorage.setItem('access_token', response.data.new_token);
+            navigate('/community');
+          } else {
+            navigate('/community');
+          }
         });
       } catch (error) {
         console.log(error);

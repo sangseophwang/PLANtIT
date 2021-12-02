@@ -4,11 +4,13 @@ import 'Components/Community/scss/Thumbnail.scss';
 interface ThumbnailProps {
   onChangeOrder: Function;
   data: any;
+  length: any;
 }
 
 export default function Thumbnail({
   onChangeOrder,
   data,
+  length,
 }: ThumbnailProps): JSX.Element {
   const navigate = useNavigate();
   const handleOrder = (event: any) => {
@@ -17,6 +19,7 @@ export default function Thumbnail({
   return (
     <section className="Thumbnail__Container">
       <div className="Thumbnail__SelectButton__Wrapper">
+        <span>총 {length} 페이지</span>
         <select
           className="Thumbnail__SelectButton"
           name="게시 순서"
@@ -37,15 +40,22 @@ export default function Thumbnail({
             <div
               className="Thumbnail__Post"
               key={post.blog_id}
-              onClick={() => navigate(`/community/${post.blog_id}`)}
+              onClick={() => (
+                window.scrollTo(0, 0),
+                navigate(`/community/${post.blog_id}`, { state: post.blog_id })
+              )}
             >
               <img
                 className="Thumbnail__Image"
                 src={post.thumbnail}
                 alt={`${post.blog_id} 썸네일`}
               />
-              <h1>{post.title}</h1>
-              <h3>by {post.author}</h3>
+              <div className="Thumbnail__Title-Wrapper">
+                <h1 className="Thumbnail__Title">{post.title}</h1>
+                <h3 className="Thumbnail__Subtitle">
+                  <em>by </em> {post.author}
+                </h3>
+              </div>
             </div>
           ),
         )}

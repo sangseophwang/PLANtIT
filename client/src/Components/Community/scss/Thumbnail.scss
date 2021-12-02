@@ -11,7 +11,21 @@
     display: flex;
     border-bottom: 1px solid lightgray;
     margin-bottom: 10px;
-    justify-content: flex-end;
+    justify-content: space-between;
+    @include responsive('tablet') {
+      width: 95%;
+    }
+    > span {
+      color: gray;
+      font-size: 15px;
+      margin-top: 7px;
+      @include responsive('tablet') {
+        font-size: 23px;
+      }
+      @include responsive('mobile') {
+        font-size: 13px;
+      }
+    }
     .Thumbnail__SelectButton {
       width: 70px;
       height: 30px;
@@ -19,6 +33,7 @@
       cursor: pointer;
       outline: none;
       border: none;
+      background-color: transparent;
       font-size: 16px;
       @include responsive('tablet') {
         width: 100px;
@@ -31,12 +46,72 @@
     }
   }
   .Thumbnail__Post {
-    width: 100%;
-    height: 40vh;
+    width: 80%;
+    height: 60vh;
+    position: relative;
+    margin-bottom: 5px;
+    cursor: pointer;
+    @include responsive('tablet') {
+      width: 100%;
+      height: 40vh;
+    }
+    @include responsive('mobile') {
+      height: 35vh;
+    }
     .Thumbnail__Image {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: 0.5s;
+    }
+    .Thumbnail__Title-Wrapper {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      width: 95%;
+      align-items: center;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      @include responsive('tablet') {
+        width: 85%;
+      }
+      @include responsive('mobile') {
+        width: 80%;
+      }
+      .Thumbnail__Title {
+        color: white;
+        font-size: 4vw;
+        font-weight: 700;
+        margin-bottom: 40px;
+        transition: 0.5s;
+        line-height: 1.3;
+        text-align: center;
+        @include responsive('tablet') {
+          font-size: 7vw;
+          margin-bottom: 20px;
+        }
+      }
+      .Thumbnail__Subtitle {
+        color: white;
+        @include responsive('mobile') {
+          font-size: 2vw;
+        }
+        > em {
+          font-style: italic;
+          margin-right: 3px;
+        }
+      }
+    }
+    &:hover {
+      .Thumbnail__Image {
+        filter: brightness(50%);
+        transition: 0.5s;
+      }
+      .Thumbnail__Title {
+        color: tomato;
+        transition: 0.5s;
+      }
     }
   }
 }
