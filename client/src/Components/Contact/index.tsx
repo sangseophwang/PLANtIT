@@ -5,6 +5,7 @@ import Navigation from 'Components/Common/Navigation';
 import emailjs from 'emailjs-com';
 import { toast } from 'react-toastify';
 import Logo from 'Assets/logo.png';
+import { Helmet } from 'react-helmet';
 
 export default function Contact(): JSX.Element {
   const [name, setName] = useState('');
@@ -61,6 +62,9 @@ export default function Contact(): JSX.Element {
 
   return (
     <>
+      <Helmet>
+        <title>문의하기</title>
+      </Helmet>
       <Navigation />
 
       <div className="Banner__Container">
