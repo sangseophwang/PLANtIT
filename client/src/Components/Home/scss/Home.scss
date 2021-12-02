@@ -4,4 +4,9 @@
   height: 600vh;
   position: relative;
   @include Swiper__Pagination();
+  .swiper-pagination-bullet {
+    @include responsive('mobile__small') {
+      font-size: 5px;
+    }
+  }
 }
