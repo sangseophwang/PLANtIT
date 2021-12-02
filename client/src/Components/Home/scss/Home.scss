@@ -5,6 +5,9 @@
   position: relative;
   @include Swiper__Pagination();
   .swiper-pagination-bullet {
+    width: fit-content;
+    height: fit-content;
+    border-radius: 0;
     @include responsive('mobile__small') {
       font-size: 5px;
     }

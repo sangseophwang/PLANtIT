@@ -5,6 +5,13 @@
   position: relative;
   width: 100%;
   height: 70vh;
+  cursor: pointer;
+  &:hover {
+    .Banner__Text {
+      transition: 0.5s;
+      color: $LightGreen;
+    }
+  }
   @include responsive('tablet') {
     height: 50vh;
   }
@@ -16,7 +23,7 @@
     height: 100%;
     object-fit: cover;
   }
-  .Banner__text {
+  .Banner__Text {
     width: 100%;
     position: absolute;
     top: 55%;
@@ -28,14 +35,8 @@
     text-align: center;
     transition: 0.5s;
     cursor: pointer;
-    &:hover {
-      color: $LightGreen;
-    }
-    @include responsive('tablet__large') {
-      font-size: 5rem;
-    }
-    @include responsive('mobile') {
-      font-size: 3rem;
+    @include responsive('tablet') {
+      font-size: 4rem;
     }
     @include responsive('mobile__small') {
       font-size: 2rem;

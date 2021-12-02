@@ -88,9 +88,10 @@
             }
           }
           > img {
-            height: 17vw;
-            width: 17vw;
+            height: 16vw;
+            width: 16vw;
             margin-bottom: 15px;
+            object-fit: fill;
             @include responsive('tablet') {
               height: 35vw;
               width: 35vw;

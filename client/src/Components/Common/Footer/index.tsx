@@ -10,10 +10,10 @@ export default function Footer(props: any): JSX.Element {
         <div className="Footer__Text">
           <Link to="/member">팀 소개</Link>
           <Link to="/contact">문의</Link>
-          <a href="https://www.facebook.com">페이스북</a>
-          <a href="https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0">
-            블로그
+          <a href="https://www.facebook.com/%ED%94%8C%EB%9E%98%EB%8B%9B-103380602183948">
+            페이스북
           </a>
+          <a href="https://www.instagram.com/team_plant_it/">인스타그램</a>
         </div>
       </div>
       <span className="Footer__Copyright">
