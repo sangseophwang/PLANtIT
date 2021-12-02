@@ -10,6 +10,7 @@ export default function Post(): JSX.Element {
   const [title, setTitle] = useState<string>('');
   const [contents, setContents] = useState<string>('');
   const navigate = useNavigate();
+  console.log(contents);
   const onSubmitHandler = () => {
     if (!title) {
       toast.error('제목을 입력해주세요.');

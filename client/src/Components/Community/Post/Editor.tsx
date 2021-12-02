@@ -61,7 +61,13 @@ export default function Editor({
         container: [
           [{ size: [false] }],
           ['bold', 'underline', 'strike', 'blockquote'],
-          [{ align: [] }],
+          [
+            { list: 'ordered' },
+            { list: 'bullet' },
+            { indent: '-1' },
+            { indent: '+1' },
+            { align: [] },
+          ],
           ['image'],
         ],
         handlers: { image: imageHandler },

@@ -65,6 +65,22 @@
       .ql-align-right {
         text-align: right;
       }
+      @for $i from 1 through 10 {
+        $margin-left: 20px * $i;
+        .ql-indent-#{$i} {
+          margin-left: $margin-left;
+        }
+      }
+      > ul {
+        list-style: circle;
+        line-height: 1.5;
+        margin-left: 20px;
+      }
+      > ol {
+        list-style: decimal;
+        line-height: 1.5;
+        margin-left: 20px;
+      }
       > p {
         color: darkslategrey;
         line-height: 1.6;
