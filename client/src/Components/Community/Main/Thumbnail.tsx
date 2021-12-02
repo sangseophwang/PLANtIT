@@ -4,20 +4,22 @@ import 'Components/Community/scss/Thumbnail.scss';
 interface ThumbnailProps {
   onChangeOrder: Function;
   data: any;
+  length: any;
 }
 
 export default function Thumbnail({
   onChangeOrder,
   data,
+  length,
 }: ThumbnailProps): JSX.Element {
   const navigate = useNavigate();
-
   const handleOrder = (event: any) => {
     onChangeOrder(event.target.value);
   };
   return (
     <section className="Thumbnail__Container">
       <div className="Thumbnail__SelectButton__Wrapper">
+        <span>총 {length} 페이지</span>
         <select
           className="Thumbnail__SelectButton"
           name="게시 순서"

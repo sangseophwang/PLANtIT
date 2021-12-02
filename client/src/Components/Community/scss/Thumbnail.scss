@@ -11,9 +11,20 @@
     display: flex;
     border-bottom: 1px solid lightgray;
     margin-bottom: 10px;
-    justify-content: flex-end;
+    justify-content: space-between;
     @include responsive('tablet') {
       width: 95%;
+    }
+    > span {
+      color: gray;
+      font-size: 15px;
+      margin-top: 7px;
+      @include responsive('tablet') {
+        font-size: 23px;
+      }
+      @include responsive('mobile') {
+        font-size: 13px;
+      }
     }
     .Thumbnail__SelectButton {
       width: 70px;
