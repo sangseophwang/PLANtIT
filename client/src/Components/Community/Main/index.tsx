@@ -14,12 +14,11 @@ export default function Community(): JSX.Element {
   const [page, setPage] = useState<number>(1);
   const [order, setOrder] = useState<number>(0);
 
-  console.log(data);
   // 전체 게시글 수 불러오기
   useEffect(() => {
     async function getLength() {
-      let response = await CommunityApi.Get_Page.get(
-        `/blog?page=${page}&order=${order}`,
+      let response = await CommunityApi.Get_Page(
+        `blog?page=${page}&order=${order}`,
       );
       setLength(response.data.length);
       setData(response.data.blogs);
@@ -67,7 +66,7 @@ export default function Community(): JSX.Element {
         <h3>당신의 지식을 많은 사람들과 공유해보세요.</h3>
         <button onClick={handleCreatePost}>글쓰기</button>
       </div>
-      <Thumbnail data={data} onChangeOrder={handleOrder} />
+      <Thumbnail data={data} length={length} onChangeOrder={handleOrder} />
       <Pagination length={length} page={page} onChangePage={handlePage} />
     </section>
   );

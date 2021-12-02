@@ -34,10 +34,7 @@ const Upload = () => {
 
   const PostAnalysisAPI = async e => {
     // 스크롤 맨 위로
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    window.scrollTo(0, 0);
 
     const formData = new FormData();
 
