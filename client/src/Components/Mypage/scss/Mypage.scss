@@ -1,0 +1,58 @@
+@import 'Components/Common/scss/mixins';
+
+.Mypage__Container {
+  @include Container__Form();
+
+  > main {
+    display: flex;
+
+    > section {
+      display: flex;
+      .Thumbnail__Area {
+        display: flex;
+
+        padding-right: 1.5rem;
+        flex-direction: column;
+
+        > img {
+          justify-content: center;
+          align-items: center;
+          width: 10rem;
+          height: 10rem;
+          border-radius: 70%;
+          object-fit: cover;
+          overflow: hidden;
+
+          margin-bottom: 20px;
+        }
+
+        > button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #88bb61;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          color: white;
+          font-weight: bold;
+          font-size: 1rem;
+          padding: 0px 1.25rem;
+          height: 2rem;
+        }
+      }
+
+      .Info__Area {
+        display: flex;
+        flex-direction: column;
+        padding-left: 24px;
+        border-left: 1px solid rgb(233, 236, 239);
+
+        > h2 {
+          font-size: 2.25rem;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}

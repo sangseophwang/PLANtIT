@@ -16,7 +16,7 @@
     display: flex;
     width: 20%;
     justify-content: space-between;
-    @include responsive('mobile') {
+    @include responsive('tablet') {
       width: 50%;
     }
     .Pagination__Arrow {

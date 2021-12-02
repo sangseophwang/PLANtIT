@@ -10,7 +10,8 @@ export default function Post(): JSX.Element {
   const [title, setTitle] = useState<string>('');
   const [contents, setContents] = useState<string>('');
   const navigate = useNavigate();
-  console.log(contents);
+
+  // 게시글 등록
   const onSubmitHandler = () => {
     if (!title) {
       toast.error('제목을 입력해주세요.');
@@ -22,11 +23,13 @@ export default function Post(): JSX.Element {
           title: title,
           content: contents,
         }).then(response => {
-          console.log(response);
-          if (response.data.new_token) {
-            sessionStorage.set('access_token', response.data.new_token);
+          if (response.data.new_token !== null) {
+            console.log('새로운 토큰이 도착했습니다!');
+            sessionStorage.removeItem('access_token');
+            sessionStorage.setItem('access_token', response.data.new_token);
             navigate('/community');
           } else {
+            console.log('뉴토큰이 없습니다.');
             navigate('/community');
           }
         });
