@@ -8,8 +8,17 @@ const Rmodal = ({ setOpenModal, data }: any) => {
     const result = [];
     for (let i = 0; i < value.length; i++) {
       result.push(
-        <span key={i}>
-          - {value[i]}
+        <span
+          key={i}
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            lineHeight: '1.5',
+            wordBreak: 'keep-all',
+          }}
+        >
+          <div style={{ marginRight: '0.2rem' }}>✔</div>
+          {value[i]}
           <br />
         </span>,
       );
@@ -47,20 +56,25 @@ const Rmodal = ({ setOpenModal, data }: any) => {
               <div className="Pesticide__Title">{data.name}</div>
 
               <div className="Pesticide__Feature">
-                유효성분: {data.component}
+                <span style={{ fontWeight: 'bold' }}>유효성분: </span>
+                {data.component}
               </div>
-              <div className="Pesticide__Feature">계통: {data.kind}</div>
               <div className="Pesticide__Feature">
-                포장단위: {data.packing_unit}
+                <span style={{ fontWeight: 'bold' }}>계통: </span>
+                {data.kind}
+              </div>
+              <div className="Pesticide__Feature">
+                <span style={{ fontWeight: 'bold' }}>포장단위: </span>
+                {data.packing_unit}
               </div>
 
               <div className="Pesticide__Subtitle">주요특성</div>
-              <hr style={{ width: '100px' }} />
+
               <div className="Pesticide__Explain">
                 {rendering(data.attribute)}
               </div>
               <div className="Pesticide__Subtitle">기타정보</div>
-              <hr style={{ width: '100px' }} />
+
               <div className="Pesticide__Explain ">
                 {rendering(data.information)}
                 <br />
