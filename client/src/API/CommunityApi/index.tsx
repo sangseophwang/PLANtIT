@@ -1,31 +1,33 @@
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost/api/';
-const TOKEN = sessionStorage.getItem('access_token') || '';
 
-const Community_Post = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: TOKEN,
-  },
-});
+function Community_Post(endpoint: string, data: any) {
+  return axios.post(BASE_URL + endpoint, data, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${sessionStorage.getItem('access_token')}`,
+    },
+  });
+}
 
-const Upload_Image = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    'Content-Type': 'multipart/form-data',
-    Authorization: TOKEN,
-  },
-});
+function Upload_Image(endpoint: string, data: any) {
+  return axios.post(BASE_URL + endpoint, data, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `${sessionStorage.getItem('access_token')}`,
+    },
+  });
+}
 
-const Get_Page = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: TOKEN,
-  },
-});
+function Get_Page(endpoint: string) {
+  return axios.get(BASE_URL + endpoint, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${sessionStorage.getItem('access_token')}`,
+    },
+  });
+}
 
 export const CommunityApi = {
   Community_Post,

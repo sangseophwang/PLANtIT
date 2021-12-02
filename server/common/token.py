@@ -19,7 +19,8 @@ def create_token(email, user_type, user_id, token_type, iat):
     jwt_algorithm = settings.JWT_ALGORITHM
     token = jwt.encode(payload, jwt_key, jwt_algorithm)
     if token_type == 'refresh':
-        update_user_refresh_token(user_id=user_id, refresh_token=token)
+        if not update_user_refresh_token(user_id=user_id, refresh_token=token):
+            return False
     return token
 
 def re_create_token(token):

@@ -24,18 +24,19 @@ export default function Board(): JSX.Element {
   // 게시글 번호에 맞는 글 불러오기
   useEffect(() => {
     async function getPost() {
-      let response = await CommunityApi.Get_Page.get(`/blog/${item}`);
-      if (response.data.new_token !== null) {
-        console.log('새로운 토큰이 도착했습니다!');
-        sessionStorage.removeItem('access_token');
-        sessionStorage.setItem('access_token', response.data.new_token);
-        setData(response.data);
-        setIsAuthor(response.data.is_author);
-      } else {
-        console.log('뉴토큰이 없습니다.');
-        setData(response.data);
-        setIsAuthor(response.data.is_author);
-      }
+      await CommunityApi.Get_Page(`blog/${item}`).then(response => {
+        if (response.data.new_token !== null) {
+          console.log('새로운 토큰이 도착했습니다!');
+          sessionStorage.removeItem('access_token');
+          sessionStorage.setItem('access_token', response.data.new_token);
+          setData(response.data);
+          setIsAuthor(response.data.is_author);
+        } else {
+          console.log('뉴토큰이 없습니다.');
+          setData(response.data);
+          setIsAuthor(response.data.is_author);
+        }
+      });
     }
     getPost();
   }, [item]);
@@ -43,7 +44,7 @@ export default function Board(): JSX.Element {
   // 게시글 삭제
   async function onDeleteHandler() {
     try {
-      await CommunityApi.Community_Post.post(`/blog/delete/${item}`).then(
+      await CommunityApi.Community_Post(`blog/delete/${item}`, '').then(
         response => {
           if (response.data.new_token !== null) {
             console.log('새로운 토큰이 도착했습니다!');

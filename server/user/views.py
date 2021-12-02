@@ -76,9 +76,6 @@ def login(request):
     if access_token == False or refresh_token == False:
         return Response(data='Fail To Generate Token', status=400)
     
-    if not update_user_refresh_token(user_id, refresh_token):
-        return Response(data='Fail To Save Refresh Token', status=400)
-    
     response_data = {
         'token': access_token,
         'message': 'login success'
@@ -111,9 +108,6 @@ def naver_login(request):
     if access_token == False or refresh_token == False:
         return Response(data='Fail To Generate Token', status=400)
     
-    if not update_user_refresh_token(user_id, refresh_token):
-        return Response(data='Fail To Save Refresh Token', status=400)
-    
     response_data = {
         'token': access_token,
         'message': 'naver login success'
@@ -144,9 +138,6 @@ def google_login(request):
     refresh_token = create_token(email=email, user_type=user_type, user_id=user_id, token_type='refresh', iat=iat)
     if access_token == False or refresh_token == False:
         return Response(data='Fail To Generate Token', status=400)
-    
-    if not update_user_refresh_token(user_id, refresh_token):
-        return Response(data='Fail To Save Refresh Token', status=400)
     
     response_data = {
         'token': access_token,

@@ -19,7 +19,7 @@ export default function Post(): JSX.Element {
       toast.error('글을 작성해주세요.');
     } else {
       try {
-        CommunityApi.Community_Post.post('/blog/post', {
+        CommunityApi.Community_Post('blog/post', {
           title: title,
           content: contents,
         }).then(response => {
@@ -29,7 +29,6 @@ export default function Post(): JSX.Element {
             sessionStorage.setItem('access_token', response.data.new_token);
             navigate('/community');
           } else {
-            console.log('뉴토큰이 없습니다.');
             navigate('/community');
           }
         });

@@ -23,9 +23,10 @@ def get_blog(request, blog_id):
     if 'HTTP_AUTHORIZATION' in request.META:
         access_token = request.META['HTTP_AUTHORIZATION']
         token_validation = validate_token(access_token)
-        if token_validation.status_code == 200:
-            if token_validation.data['payload']['user_id'] == blog_detail.user.id:
-                is_author = True
+        if token_validation.status_code != 200:
+            return token_validation
+        if token_validation.data['payload']['user_id'] == blog_detail.user.id:
+            is_author = True
     
     response_data = {
         'blog_id': blog_detail.id,

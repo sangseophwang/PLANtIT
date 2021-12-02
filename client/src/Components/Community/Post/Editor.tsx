@@ -33,11 +33,11 @@ export default function Editor({
         formData.append('image', file[0]);
 
         try {
-          const res = await CommunityApi.Community_Post.post(
-            '/blog/image',
+          const response = await CommunityApi.Upload_Image(
+            'blog/image',
             formData,
           );
-          url = res.data;
+          url = response.data;
 
           const range = QuillRef.current?.getEditor().getSelection()?.index;
           if (range !== null && range !== undefined) {
@@ -50,7 +50,7 @@ export default function Editor({
               `<img src=${url} alt="">`,
             );
           }
-          return { ...res, success: true };
+          return { ...response, success: true };
         } catch (error) {
           console.log(error);
         }

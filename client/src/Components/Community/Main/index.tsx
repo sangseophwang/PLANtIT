@@ -17,8 +17,8 @@ export default function Community(): JSX.Element {
   // 전체 게시글 수 불러오기
   useEffect(() => {
     async function getLength() {
-      let response = await CommunityApi.Get_Page.get(
-        `/blog?page=${page}&order=${order}`,
+      let response = await CommunityApi.Get_Page(
+        `blog?page=${page}&order=${order}`,
       );
       setLength(response.data.length);
       setData(response.data.blogs);
