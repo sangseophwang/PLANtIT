@@ -40,17 +40,20 @@
       font-size: 50px;
       @include responsive('tablet') {
         height: 20vh;
+        margin-bottom: 25px;
+        font-size: 7vw;
+        text-align: center;
       }
-      @include responsive('mobile') {
+      @include responsive('mobile__small') {
         font-size: 8vw;
         height: 15vh;
+        margin-bottom: 0px;
       }
     }
     .Board__Contents {
       width: 70%;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: space-between;
       padding: 20px 0;
       @include responsive('mobile') {
@@ -66,6 +69,7 @@
         color: darkslategrey;
         line-height: 1.6;
         font-size: 18px;
+        text-align: left;
         @include responsive('mobile') {
           font-size: 16px;
           line-height: 1.4;
@@ -82,12 +86,9 @@
         > img {
           display: block;
           margin: 0 auto;
-          max-width: 90%;
           min-width: 60%;
+          width: 100%;
           margin-bottom: 10px;
-          @include responsive('mobile') {
-            max-width: 100%;
-          }
         }
       }
       > blockquote {
@@ -104,10 +105,11 @@
     border: none;
     color: white;
     background-color: #bcdea1;
-    width: 100px;
-    height: 40px;
-    font-size: 15px;
+    width: 120px;
+    height: 50px;
+    font-size: 17px;
     font-weight: 700;
+    margin-top: 30px;
     border-radius: 8px;
     transition: 0.5s;
     cursor: pointer;
@@ -124,7 +126,7 @@
     align-items: center;
   }
   .disqusFrame {
-    margin-top: 10px;
+    margin: 10px 0 100px 0;
     width: 70%;
     text-align: center;
   }
