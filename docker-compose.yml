@@ -3,7 +3,7 @@ version: "3"
 services:
   backend:
     container_name: backend
-    image: jhj967878/plantit:django
+    image: jhj967878/plantit:django_ai
     volumes:
       - ./server:/project/server
     working_dir: /project/server
