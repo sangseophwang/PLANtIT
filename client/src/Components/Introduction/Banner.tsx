@@ -9,7 +9,7 @@ const Banner = () => {
         className="Banner__Image"
         alt="배너 이미지"
       />
-      <div className="Banner__text">플래닛을 소개합니다!</div>
+      <span className="Banner__Text">플래닛을 소개합니다!</span>
     </div>
   );
 };

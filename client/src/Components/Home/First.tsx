@@ -14,8 +14,20 @@ export default function First(): JSX.Element {
         <span>안녕하세요.</span>
         <span>우리는 플래닛입니다.</span>
         <div className="First__SNS">
-          <FontAwesomeIcon icon={faFacebook} onClick={() => window.open('https://www.facebook.com')} />
-          <FontAwesomeIcon icon={faInstagram} onClick={() => window.open('https://www.instagram.com')} />
+          <FontAwesomeIcon
+            icon={faFacebook}
+            onClick={() =>
+              window.open(
+                'https://www.facebook.com/%ED%94%8C%EB%9E%98%EB%8B%9B-103380602183948',
+              )
+            }
+          />
+          <FontAwesomeIcon
+            icon={faInstagram}
+            onClick={() =>
+              window.open('https://www.instagram.com/team_plant_it/')
+            }
+          />
         </div>
       </div>
     </header>
