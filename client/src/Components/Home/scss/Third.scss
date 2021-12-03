@@ -1,72 +1,104 @@
-@import '/src/Components/Common/scss/mixins';
+@import "/src/Components/Common/scss/mixins";
 .Third__Container {
   @include Container__Form();
-  margin-top: -50px;
-  @include responsive('tablet') {
-    align-items: flex-start;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include responsive("mobile") {
+    margin-left: 1rem;
   }
-  .Third__Background {
-    display: none;
+}
+
+// 검색창
+.HSearch__Container {
+  border-bottom: 10px solid #68d391;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include responsive("mobile") {
+    width: 70%;
   }
-  @include responsive('tablet') {
-    .Third__Background {
-      width: 100%;
-      height: 100vh;
-      display: inline;
-      position: absolute;
-      z-index: -999;
-      object-fit: cover;
+}
+
+.HSearch__Input {
+  padding-left: 5px;
+  display: flex;
+  width: 98%;
+
+  .HSearch__Icon {
+    color: #68d391;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 5rem;
+    height: 5rem;
+
+    @include responsive("mobile") {
+      width: 2.5rem;
+      height: 2.5rem;
     }
   }
-  .Third__Contents {
-    display: flex;
-    width: 60%;
-    height: 40vh;
-    .Third__Image {
-      display: flex;
-      justify-content: center;
-      > img {
-        width: 300px;
-        height: fit-content;
-      }
+
+  input {
+    font-size: 2.5rem;
+    color: darkgray;
+    width: 100%;
+    padding: 10px 2rem;
+    border: none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+
+    @include responsive("mobile") {
+      font-size: 1rem;
+      padding: 10px 0.5rem;
     }
-    .Third__Text {
-      margin-left: 30px;
-      > h1 {
-        font-weight: 900;
-        line-height: 1.3;
-        font-size: 4vw;
-      }
-      > p {
-        font-size: 14px;
-        margin-top: 30px;
-        color: gray;
-        font-weight: 500;
-        line-height: 2;
-      }
+  }
+
+  .HClose__Icon {
+    color: #68d391;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 5rem;
+    height: 5rem;
+    @include responsive("mobile") {
+      width: 2.5rem;
+      height: 2.5rem;
     }
-    @include responsive('tablet') {
-      .Third__Text {
-        text-align: center;
-        color: #292929;
-        width: 100%;
-        > h1 {
-          font-size: 7vw;
-        }
-        > p {
-          color: black;
-          font-size: 2vw;
-        }
-      }
-      .Third__Image {
-        display: none;
-        > img {
-          display: none;
-        }
-      }
+  }
+}
+
+.Data__Result {
+  width: 60%;
+  max-height: 10rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  overflow-y: auto;
+  text-decoration: none;
+
+  @include responsive("mobile") {
+    width: 70%;
+  }
+
+  .Data__Item {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 1rem 0.5rem;
+    padding-left: 1rem;
+    @include responsive("mobile") {
+      font-size: 1rem;
     }
+  }
+}
+
+.Search__Sub-Icon {
+  width: 1.3rem;
+  margin-right: 1rem;
+
+  @include responsive("mobile") {
+    width: 0.8rem;
   }
 }
