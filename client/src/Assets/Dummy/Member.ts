@@ -11,11 +11,11 @@ const Member = [
     name: '박우람',
     role: '팀장',
     src: parkwooram,
-    github: 'https://kdt-gitlab.elice.io/ions789123',
-    content:
-      '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세',
-    tag1: '#플래닛',
-    tag2: '#리더',
+    github: 'https://github.com/wrp21',
+    content: '박우람입니다. 우람한 개발자가 되겠습니다.',
+    tag1: '#팀장',
+    tag2: '#프론트엔드',
+    tag3: '#Auth',
   },
 
   {
@@ -24,10 +24,10 @@ const Member = [
     role: '프론트엔드',
     src: hwangsangseop,
     github: 'https://github.com/sangseophwang',
-    content:
-      '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세',
-    tag1: '#플래닛',
-    tag2: '#디자인',
+    content: '"Less is more."',
+    tag1: '#Non',
+    tag2: '#Fungible',
+    tag3: '#Human',
   },
   {
     key: '3',
@@ -35,10 +35,10 @@ const Member = [
     role: '프론트엔드',
     src: kimjinkyung,
     github: 'https://github.com/Typonote',
-    content:
-      '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세',
-    tag1: '#플래닛',
-    tag2: '#기획',
+    content: '식물을 사랑하는 남자 김진경입니다. 그래서 야채를 안먹습니다🤮',
+    tag1: '#프론트맨',
+    tag2: '#식물허준',
+    tag3: '#오이극혐',
   },
   {
     key: '4',
@@ -47,9 +47,10 @@ const Member = [
     src: jeongheejae,
     github: 'https://github.com/hee-jae',
     content:
-      '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세',
-    tag1: '#플래닛',
-    tag2: '#친환경',
+      '감자국에서 태어나 감자 먹고 자라 감으로 코드짜는 시골청년입니다. 감자합니다.  (⑅´•⌔•`)✲ﾟ｡',
+    tag1: '#백엔드',
+    tag2: '#원주민',
+    tag3: '#마블광팬',
   },
   {
     key: '5',
@@ -58,9 +59,10 @@ const Member = [
     src: leegeumhong,
     github: 'https://github.com/ryan3780',
     content:
-      '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세',
-    tag1: '#플래닛',
-    tag2: '#친환경',
+      '프론트 개발자 출신 백엔드 개발자입니다. 일단 돌아가게는 만들어요.',
+    tag1: '#백엔드',
+    tag2: '#프론트',
+    tag3: '#PoolStack',
   },
   {
     key: '6',
@@ -68,10 +70,10 @@ const Member = [
     role: 'AI',
     src: handonghee,
     github: 'https://github.com/Donghee4',
-    content:
-      '동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세',
-    tag1: '#플래닛',
-    tag2: '#친환경',
+    content: '111010101011100010110000111010101011001110000100',
+    tag1: '#기계말고',
+    tag2: '#내가학습',
+    tag3: '#정복',
   },
 ];
 

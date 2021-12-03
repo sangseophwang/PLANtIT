@@ -5,18 +5,18 @@ import Third from 'Components/Home/Third';
 import Fourth from 'Components/Home/Fourth';
 import Fifth from 'Components/Home/Fifth';
 import Sixth from 'Components/Home/Sixth';
+import Dummy from 'Assets/Dummy/Thrid.js';
 import SwiperCore, { Pagination, Mousewheel } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import 'Components/Home/scss/Home.scss';
 import 'swiper/components/pagination/pagination.scss';
-import Dummy from 'Assets/Dummy/Thrid.js';
 
 SwiperCore.use([Mousewheel, Pagination]);
 
 const bullet = [
+  '- 플래닛',
   '- 소개',
-  '- 영상',
   '- 질병도감',
   '- 인공지능',
   '- 커뮤니티',

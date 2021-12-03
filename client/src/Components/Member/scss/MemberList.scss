@@ -3,7 +3,7 @@
 .Member__Container {
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 40%;
   margin: 0 auto;
   margin-top: 10vh;
   @include responsive('tablet') {
@@ -15,7 +15,8 @@
   .Member__Container-Box {
     position: relative;
     display: flex;
-    justify-content: center;
+    width: 100%;
+    justify-content: flex-start;
     margin-bottom: 7vh;
     &:hover {
       .Member__Github {
@@ -27,6 +28,8 @@
       display: none;
       position: absolute;
       top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       color: white;
       z-index: 9999;
       text-decoration: none;
@@ -47,6 +50,7 @@
       cursor: pointer;
       background-color: white;
       transition: 0.7s;
+      width: 100%;
       &:hover {
         filter: brightness(10%);
         transition: 0.7s;
@@ -89,6 +93,7 @@
         .Member__Text-Container {
           flex: 1 1 auto;
           margin-left: 0.75rem;
+          width: 100%;
           justify-content: space-evenly;
           padding-top: 0.5rem;
           padding-bottom: 0.5rem;
@@ -117,10 +122,12 @@
             font-size: 2rem;
             font-weight: 700;
             @include responsive('tablet') {
-              font-size: 3rem;
+              font-size: 3.5rem;
+              margin-bottom: 30px;
             }
             @include responsive('mobile') {
               font-size: 2rem;
+              margin-bottom: 10px;
             }
           }
           .Member__Introduction {
@@ -133,9 +140,12 @@
             padding-bottom: 1rem;
             @include responsive('tablet') {
               font-size: 25px;
+              line-height: 1.7;
+              margin-bottom: 20px;
             }
             @include responsive('mobile__small') {
               font-size: 14px;
+              margin-bottom: 10px;
             }
           }
         }
@@ -159,7 +169,7 @@
             align-items: center;
             @include responsive('tablet') {
               margin-bottom: 0;
-              font-size: 30px;
+              font-size: 2.5vw;
               padding: 1rem 2rem;
             }
             @include responsive('mobile__small') {

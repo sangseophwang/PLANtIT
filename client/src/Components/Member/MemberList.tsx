@@ -38,6 +38,9 @@ export default function MemberList(): JSX.Element {
                   <button className="Member__Tag">
                     <span>{option.tag2}</span>
                   </button>
+                  <button className="Member__Tag">
+                    <span>{option.tag3}</span>
+                  </button>
                 </div>
               </div>
             </div>

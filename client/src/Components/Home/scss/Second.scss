@@ -1,53 +1,84 @@
 @import '/src/Components/Common/scss/mixins';
+
 .Second__Container {
   @include Container__Form();
-  > span {
-    position: relative;
-    width: 100%;
-    height: fit-content;
+  margin-top: -30px;
+  @include responsive('tablet') {
+    align-items: flex-start;
     display: flex;
-    align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 7vw;
-    font-weight: 900;
-    @include responsive('tablet') {
-      width: 70%;
-      text-align: center;
-      line-height: 1.7;
-      font-size: 12vw;
-    }
-    @include responsive('mobile__small') {
-      width: 50%;
-      text-align: center;
-      line-height: 1.7;
-      font-size: 12vw;
-    }
-    > div {
-      color: white;
-      font-size: 7vw;
-      font-weight: 900;
+    align-items: center;
+    margin-top: 0px;
+  }
+  .Second__Background {
+    display: none;
+  }
+  @include responsive('tablet') {
+    .Second__Background {
+      width: 100%;
+      height: 100vh;
+      display: inline;
       position: absolute;
-      top: -52%;
-      left: 65.7%;
-      @include responsive('tablet') {
-        top: 28%;
-        left: 61%;
-        font-size: 9vw;
-      }
-      @include responsive('mobile__small') {
-        top: 46%;
-        left: 65%;
-      }
+      z-index: -999;
+      object-fit: cover;
     }
   }
-  > video {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 100%;
-    object-fit: cover;
-    z-index: -1;
+  .Second__Contents {
+    display: flex;
+    width: 60%;
+    height: 40vh;
+    @include responsive('tablet') {
+      height: 75vh;
+      width: 85%;
+    }
+    .Second__Image {
+      display: flex;
+      justify-content: center;
+      > img {
+        width: 300px;
+        height: fit-content;
+      }
+      @include responsive('tablet') {
+        display: none;
+      }
+    }
+    .Second__Text {
+      margin-left: 30px;
+      @include responsive('tablet') {
+        text-align: left;
+        color: tomato;
+        width: 100%;
+        height: 63vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .Second__Title {
+        > h1 {
+          font-weight: 900;
+          line-height: 1.3;
+          font-size: 4vw;
+          @include responsive('tablet') {
+            font-size: 11vw;
+            line-height: 1.1;
+            text-align: left;
+          }
+        }
+      }
+      > p {
+        font-size: 14px;
+        margin-top: 30px;
+        color: gray;
+        font-weight: 500;
+        line-height: 2;
+        @include responsive('tablet') {
+          width: 70%;
+          color: white;
+          font-size: 2.5vw;
+          line-height: 1.5;
+        }
+      }
+    }
   }
 }
