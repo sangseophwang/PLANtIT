@@ -23,7 +23,7 @@ def get_blog(request, blog_id):
     token_validation = None
     if 'HTTP_AUTHORIZATION' in request.META:
         access_token = request.META['HTTP_AUTHORIZATION']
-        if access_token:
+        if access_token and len(access_token) > 10:
             token_validation = validate_token(access_token)
             if token_validation.status_code != 200:
                 return token_validation
