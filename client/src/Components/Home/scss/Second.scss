@@ -2,9 +2,44 @@
 .Second__Container {
   @include Container__Form();
   > h1 {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     font-size: 7vw;
     font-weight: 900;
+    @include responsive('tablet') {
+      width: 70%;
+      text-align: center;
+      line-height: 1.7;
+      font-size: 12vw;
+    }
+    @include responsive('mobile__small') {
+      width: 50%;
+      text-align: center;
+      line-height: 1.7;
+      font-size: 12vw;
+    }
+    > h2 {
+      color: white;
+      font-size: 7vw;
+      font-weight: 900;
+      position: absolute;
+      top: -52%;
+      left: 65.7%;
+      @include responsive('tablet') {
+        top: 28%;
+        left: 61%;
+        font-size: 9vw;
+      }
+      @include responsive('mobile__small') {
+        top: 46%;
+        left: 65%;
+      }
+    }
   }
   > video {
     position: absolute;

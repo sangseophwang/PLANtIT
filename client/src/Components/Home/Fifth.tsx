@@ -28,7 +28,7 @@ export default function Fifth(): JSX.Element {
         <img src={props.data.thumbnail} alt="썸네일 이미지" />
         <h1>{props.data.title}</h1>
         <span>
-          <em>by </em> {props.data.author}
+          <em>by. </em> {props.data.author}
         </span>
       </div>
     );

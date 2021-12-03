@@ -47,6 +47,19 @@
           transition: 0.5s;
         }
       }
+      > span {
+        color: white;
+        font-weight: 500;
+        margin-bottom: 10px;
+        transition: 0.5s;
+        width: fit-content;
+        height: fit-content;
+        cursor: pointer;
+        &:hover {
+          color: $Green;
+          transition: 0.5s;
+        }
+      }
     }
   }
   .Footer__Copyright {
