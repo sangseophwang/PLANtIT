@@ -1,6 +1,8 @@
 import 'Components/Home/scss/Third.scss';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import CropsName from 'Assets/Dummy/CropsName.js';
+import ThridDummy from 'Assets/Dummy/Thrid.js';
 
 export default function Third(props: any): JSX.Element {
   const [filterData, setFilterData] = useState<any[]>([]);
@@ -25,6 +27,24 @@ export default function Third(props: any): JSX.Element {
   return (
     <section className="Third__Container">
       <div className="Third__Test-Container">
+        <div className="Third__Tag-container">
+          {CropsName.map((value: any) => (
+            <button
+              className="Test__Test"
+              onClick={() => {
+                const searchWord = value.class;
+                setClearWord(searchWord);
+                const newFilter = ThridDummy.filter((value: any) => {
+                  return value.class.includes(searchWord);
+                });
+                setFilterData(newFilter);
+              }}
+            >
+              # {value.class}
+            </button>
+          ))}
+        </div>
+
         <div className="HSearch__Container">
           <div className="HSearch__Input">
             <input
