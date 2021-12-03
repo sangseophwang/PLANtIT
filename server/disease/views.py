@@ -73,6 +73,6 @@ def crop_all(request):
         crop = list(crop.values())
 
         result = {"data" : crop}
-        return Response(result, status=200)
+        return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
     except:
         return Response('잘못된 형식', status=400)

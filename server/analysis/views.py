@@ -7,7 +7,7 @@ from time_log import logging_time
 from common.s3 import s3
 from django.conf import settings
 import boto3
-
+import plant_ai.ai_disease as ai
 
 # Create your views here.
 AWS_STORAGE_BUCKET_NAME = settings.AWS_STORAGE_BUCKET_NAME
@@ -23,18 +23,21 @@ def upload_analysis_image(image, filename):
     image_url = AWS_DOMAIN + upload_filename
     return image_url
 
+
 # 농약 정보
 @api_view(['POST'])
 @logging_time
 def analysis(request, name='고추탄저병'):
     '''
-    농약 각각의 정보
+    검사하기
     '''
     try:
-        # img = request.FILES['files']
-        # filename = img.name
-        # img_url = upload_analysis_image(image=img, filename=filename)
-
+        img = request.FILES['files']
+        
+        filename = img.name
+        img_url = upload_analysis_image(image=img, filename=filename)
+        name = ai.disease(img)[0]
+        print(name, name, name, name)
         disease = list(Disease.objects.filter(name=name).values())
         
         _pesticides = []
@@ -45,13 +48,13 @@ def analysis(request, name='고추탄저병'):
             _pesticides += find_each_pesticide
         
         disease[0]['pesticides'] = _pesticides
-        # disease[0]['image'] = img_url
+        disease[0]['image'] = img_url
         disease[0]['level'] = 2 # AI Model에서 나온 값 적용해야함
         disease[0].pop('crops_id')
 
         data = {"data" : disease[0]}
 
-        return Response(data, status=200)
+        return JsonResponse(data, json_dumps_params={'ensure_ascii': False}, safe=False)
         
     except:
         return Response('잘못된 형식', status=400)
