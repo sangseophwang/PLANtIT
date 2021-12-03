@@ -1,3 +1,4 @@
+import json
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
@@ -5,8 +6,6 @@ from .models import Disease, Crop
 from pesticide.models import Pesticide
 from time_log import logging_time
 from django.core.cache import cache
-import time
-
 
 # Create your views here.
 # 질병 도감에 사용
@@ -29,10 +28,11 @@ def disease_all(request):
             crop['crops_id'] = crop_name[0]['name']
             
         result = {"data" : diseases}
-      
+        
         return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
     except:
         return Response('잘못된 형식')
+
 
 
 # 결과페이지에 사용, 농약 value 수정 필요
@@ -43,7 +43,7 @@ def disease_each(request, id):
     질병 각각
     '''
     try:
-        disease = cache.get_or_set(f'disease_{id}',Disease.objects.filter(id = id).values(), timeout=None)
+        disease = cache.get_or_set(f'disease_{id}',Disease.objects.filter(id = id).values(), timeout=604800)
         disease = list(disease)
         
         _pesticides = []
@@ -59,7 +59,7 @@ def disease_each(request, id):
         return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
 
     except:
-        return Response('잘못된 형식')
+        return Response('잘못된 형식', status=400)
 
 
 @api_view(['GET'])
@@ -73,6 +73,6 @@ def crop_all(request):
         crop = list(crop.values())
 
         result = {"data" : crop}
-        return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)
+        return Response(result, status=200)
     except:
-        return Response('잘못된 형식')
+        return Response('잘못된 형식', status=400)

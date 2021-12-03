@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { MainApi } from 'API/MainApi';
 import 'Components/Home/scss/Fifth.scss';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 export default function Fifth(): JSX.Element {
   const [data, setData] = useState([]);
-
+  const navigate = useNavigate();
   const getThumbnail = async () => {
     const response = await MainApi.Get_Thumbnail.get('/blog/main');
     setData(response.data);
@@ -17,13 +17,20 @@ export default function Fifth(): JSX.Element {
   //
   const ThumbnailItem = (props: any) => {
     return (
-      <Link className="Fifth__Article" to={`/community/${props.data.blog_id}`}>
+      <div
+        className="Fifth__Article"
+        onClick={() =>
+          navigate(`/community/${props.data.blog_id}`, {
+            state: props.data.blog_id,
+          })
+        }
+      >
         <img src={props.data.thumbnail} alt="썸네일 이미지" />
         <h1>{props.data.title}</h1>
         <span>
-          <em>by </em> {props.data.author}
+          <em>by. </em> {props.data.author}
         </span>
-      </Link>
+      </div>
     );
   };
 

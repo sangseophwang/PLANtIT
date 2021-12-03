@@ -14,7 +14,7 @@ export default function IntroContent(): JSX.Element {
         ))}
       </div>
       <p className="Introduction__Content">
-        플래닛은 <span>지속가능한 농업</span>을 위해 노력합니다 🌱
+        플래닛은 <span>지속가능한 가드닝라이프</span>를 위해 노력합니다 🌱
       </p>
     </div>
   );

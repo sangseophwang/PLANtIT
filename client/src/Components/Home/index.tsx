@@ -16,7 +16,7 @@ SwiperCore.use([Mousewheel, Pagination]);
 const bullet = [
   '- 소개',
   '- 영상',
-  '- 비전',
+  '- 질병도감',
   '- 인공지능',
   '- 커뮤니티',
   '- 메세지',

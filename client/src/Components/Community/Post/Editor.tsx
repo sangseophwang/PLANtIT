@@ -2,7 +2,6 @@
 import ImageResize from '@looop/quill-image-resize-module-react';
 import { useMemo, useRef } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
-import QuillImageDropAndPaste from 'quill-image-drop-and-paste';
 import 'react-quill/dist/quill.snow.css';
 import { CommunityApi } from 'API/CommunityApi';
 
@@ -12,7 +11,6 @@ interface EditorProps {
 }
 
 Quill.register('modules/imageResize', ImageResize);
-Quill.register('modules/imageDropAndPaste', QuillImageDropAndPaste);
 
 export default function Editor({
   contents,
@@ -35,8 +33,11 @@ export default function Editor({
         formData.append('image', file[0]);
 
         try {
-          const res = await CommunityApi.Post.post('/blog/image', formData);
-          url = res.data;
+          const response = await CommunityApi.Upload_Image(
+            'blog/image',
+            formData,
+          );
+          url = response.data;
 
           const range = QuillRef.current?.getEditor().getSelection()?.index;
           if (range !== null && range !== undefined) {
@@ -49,7 +50,7 @@ export default function Editor({
               `<img src=${url} alt="">`,
             );
           }
-          return { ...res, success: true };
+          return { ...response, success: true };
         } catch (error) {
           console.log(error);
         }
@@ -61,7 +62,7 @@ export default function Editor({
     () => ({
       toolbar: {
         container: [
-          [{ size: ['small', false, 'large', 'huge'] }],
+          [{ size: [false] }],
           ['bold', 'underline', 'strike', 'blockquote'],
           [
             { list: 'ordered' },
@@ -72,11 +73,8 @@ export default function Editor({
           ],
           ['image'],
         ],
-        handlers: {
-          image: imageHandler,
-        },
+        handlers: { image: imageHandler },
       },
-      imageDropAndPaste: true,
       clipboard: { matchVisual: false },
       imageResize: {
         parchment: Quill.import('parchment'),

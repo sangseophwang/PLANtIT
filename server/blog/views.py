@@ -2,6 +2,7 @@ import json
 import random
 
 from django.core.paginator import Paginator
+from django.template import response
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -22,9 +23,10 @@ def get_blog(request, blog_id):
     if 'HTTP_AUTHORIZATION' in request.META:
         access_token = request.META['HTTP_AUTHORIZATION']
         token_validation = validate_token(access_token)
-        if token_validation.status_code == 200:
-            if token_validation.data['user_id'] == blog_detail.user.id:
-                is_author = True
+        if token_validation.status_code != 200:
+            return token_validation
+        if token_validation.data['payload']['user_id'] == blog_detail.user.id:
+            is_author = True
     
     response_data = {
         'blog_id': blog_detail.id,
@@ -33,8 +35,10 @@ def get_blog(request, blog_id):
         'content': blog_detail.content,
         'view': blog_detail.view,
         'upload_date': blog_detail.upload_date,
-        'is_author': is_author
+        'is_author': is_author,
+        'new_token': token_validation.data['new_token'] if 'new_token' in token_validation.data else None
     }
+        
     return Response(data=response_data, status=200)
     
 @api_view(['POST'])
@@ -44,7 +48,7 @@ def post_blog(request):
     if not token_validation.status_code == 200:
         return token_validation
 
-    user_id = token_validation.data['user_id']
+    user_id = token_validation.data['payload']['user_id']
     user = find_user_by_id(user_id)
     request_body = json.loads(request.body)
     title = request_body['title']
@@ -53,10 +57,15 @@ def post_blog(request):
     if not thumbnail:
         random_number = random.randint(1, 12)
         thumbnail = 'Assets/Thumbnail/' + str(random_number) + '.jpg'
-        
+            
+    response_data = {
+        'message': 'Post Success',
+        'new_token': token_validation.data['new_token'] if 'new_token' in token_validation.data else None
+    }
+    
     if not create_blog(user=user, title=title, content=content, thumbnail=thumbnail):
         return Response(data='Post Fail', status=400)
-    return Response(data='Post Success', status=200)
+    return Response(data=response_data, status=200)
 
 @api_view(['PATCH'])
 def patch_blog(request, blog_id):
@@ -66,7 +75,7 @@ def patch_blog(request, blog_id):
     if not token_validation.status_code == 200:
         return token_validation
     
-    user_id = token_validation.data['user_id']
+    user_id = token_validation.data['payload']['user_id']
     blog_owner_id = find_blog_by_id(blog_id).user.id
     if user_id != blog_owner_id:
         return Response(data='Access Denied', status=400)
@@ -79,9 +88,14 @@ def patch_blog(request, blog_id):
         random_number = random.randint(1, 12)
         thumbnail = 'Assets/Thumbnail/' + str(random_number) + '.jpg'
     
+    response_data = {
+        'message': 'Update Success',
+        'new_token': token_validation.data['new_token'] if 'new_token' in token_validation.data else None
+    }
+    
     if not update_blog(blog_id=blog_id, title=title, content=content, thumbnail=thumbnail):
         return Response(data='Update Fail', status=400)
-    return Response(data='Update Success', status=200)
+    return Response(data=response_data, status=200)
 
 @api_view(['POST'])
 def delete_blog(request, blog_id):
@@ -91,14 +105,19 @@ def delete_blog(request, blog_id):
     if not token_validation.status_code == 200:
         return token_validation
     
-    user_id = token_validation.data['user_id']
+    user_id = token_validation.data['payload']['user_id']
     blog_onwer_id = find_blog_by_id(blog_id).user.id
     if user_id != blog_onwer_id:
         return Response(data='Access Denied', status=400)
     
+    response_data = {
+        'message': 'Remove Success',
+        'new_token': token_validation.data['new_token'] if 'new_token' in token_validation.data else None
+    }
+    
     if not remove_blog(blog_id=blog_id):
         return Response(data='Remove Fail', status=400)
-    return Response(data='Remove Success', status=200)
+    return Response(data=response_data, status=200)
 
 @api_view(['POST'])
 def upload_image(request):
