@@ -178,5 +178,8 @@
     margin: 10px 0 100px 0;
     width: 70%;
     text-align: center;
+    @include responsive('tablet') {
+      margin-bottom: 150px;
+    }
   }
 }
