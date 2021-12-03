@@ -3,10 +3,11 @@
 
 .Back__Container {
   position: absolute;
+  z-index: 999;
   left: 20px;
   top: 20px;
   text-decoration: none;
-  color: gray;
+  color: darkgray;
   transition: 0.5s;
   &:hover {
     transition: 0.5s;

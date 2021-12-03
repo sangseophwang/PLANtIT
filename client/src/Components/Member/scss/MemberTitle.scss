@@ -1,45 +1,42 @@
 @import '/src/Components/Common/scss/mixins';
 @import '/src/Components/Common/scss/variables';
 
-.Banner__Container {
-  position: relative;
+.Team__Container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 70vh;
+  height: 60vh;
+  position: relative;
   cursor: pointer;
+  @include responsive('tablet') {
+    height: 50vh;
+  }
   &:hover {
-    .Banner__Text {
+    .Team__Title {
       transition: 0.5s;
       color: $LightGreen;
     }
   }
-  @include responsive('tablet') {
-    height: 50vh;
-  }
-  @include responsive('mobile') {
-    height: 40vh;
-  }
-  .Banner__Image {
+  .Team__Image {
     width: 100%;
     height: 100%;
+    margin: 0 auto;
     object-fit: cover;
   }
-  .Banner__Text {
+  .Team__Title {
     width: 100%;
+    color: white;
     position: absolute;
-    top: 55%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 6rem;
-    font-weight: 700;
-    color: white;
     text-align: center;
+    font-size: 5vw;
+    font-weight: 700;
+    margin-bottom: 1rem;
     transition: 0.5s;
-    cursor: pointer;
     @include responsive('tablet') {
-      font-size: 4rem;
-    }
-    @include responsive('mobile__small') {
-      font-size: 2rem;
+      font-size: 9vw;
     }
   }
 }

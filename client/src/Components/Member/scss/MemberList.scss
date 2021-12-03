@@ -1,114 +1,183 @@
-@import "/src/Components/Common/scss/mixins";
+@import '/src/Components/Common/scss/mixins';
 
 .Member__Container {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  margin: 0 auto;
+  margin-top: 10vh;
+  @include responsive('tablet') {
     width: 80%;
-    margin: 0 auto;
-
-    .Member__Container-Box {
-        display: flex;
-        flex: none;
-        border-radius: 1.5rem;
-        background-color: #fff;
-        margin-bottom: 1rem;
+  }
+  @include responsive('mobile') {
+    width: 90%;
+  }
+  .Member__Container-Box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 7vh;
+    &:hover {
+      .Member__Github {
+        display: block;
+        animation: fadein 1s;
+      }
     }
-
-    .Member__Container-Query {
+    .Member__Github {
+      display: none;
+      position: absolute;
+      top: 50%;
+      color: white;
+      z-index: 9999;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 600;
+      > svg {
+        margin-left: 5px;
+      }
+      @include responsive('tablet') {
+        font-size: 30px;
+      }
+      @include responsive('mobile__small') {
+        font-size: 20px;
+      }
+    }
+    .Member__Wrapper {
+      padding: 0 10px;
+      cursor: pointer;
+      background-color: white;
+      transition: 0.7s;
+      &:hover {
+        filter: brightness(10%);
+        transition: 0.7s;
+      }
+      @include responsive('mobile') {
+        padding: 0;
+      }
+      .Member__Container-Query {
         display: flex;
-
-        @include responsive("tablet") {
-            flex-direction: column;
+        @include responsive('tablet') {
+          flex-direction: column;
+          align-items: center;
         }
-
         .Member__Image-Container {
-            width: 12rem;
-            height: 12rem;
-            margin-bottom: 0.75rem;
-
-            @include responsive("tablet") {
-                width: 80%;
-                height: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .Member__Image {
-                width: 100%;
-                height: 12rem;
-                border-radius: 1.5rem;
-                object-fit: cover;
-
-                @include responsive("tablet") {
-                    width: 100%;
-                    height: 15rem;
-                    margin-left: auto;
-                    margin-right: auto;
-                }
-            }
-        }
-
-        .Member__Text-Container {
-            flex: 1 1 auto;
-            margin-left: 0.75rem;
-            justify-content: space-evenly;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-
-            @include responsive("tablet") {
-                text-align: center;
-                width: 80%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .Member__Role {
-                width: 100%;
-                color: #659238;
-                font-size: 1rem;
-                font-weight: 700;
-                margin-bottom: 0.5rem;
-            }
-
-            .Member__Name {
-                width: 100%;
-                color: #111111;
-                font-size: 2rem;
-                font-weight: 700;
-            }
-
-            .Member__Introduction {
-                width: 100%;
-                color: #111111;
-                font-size: 1rem;
-                font-weight: 400;
-                padding-top: 1rem;
-                padding-bottom: 1rem;
-            }
-        }
-
-        .Member__Tag-Container {
+          width: 12rem;
+          height: 12rem;
+          margin-bottom: 0.75rem;
+          margin-right: 40px;
+          @include responsive('tablet') {
+            width: 80%;
+            height: 80%;
+            margin-right: 0px;
             display: flex;
-            font-size: 0.75rem;
-            font-weight: 700;
-
-            .Member__Tag {
-                display: inline-flex;
-                background-color: #fff;
-                color: #718096;
-                margin-bottom: 0.5rem;
-                margin-right: 0.5rem;
-                padding: 0.5rem 0.5rem;
-                letter-spacing: 0.05em;
-                border: 1px solid #718096;
-                border-radius: 0.75rem;
-                align-items: center;
-
-                @include responsive("tablet") {
-                    margin-bottom: 0;
-                }
+            justify-content: center;
+          }
+          .Member__Image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            @include responsive('tablet') {
+              width: 40%;
+              height: 40%;
             }
+            @include responsive('mobile__small') {
+              width: 50%;
+              height: 60%;
+            }
+          }
         }
+        .Member__Text-Container {
+          flex: 1 1 auto;
+          margin-left: 0.75rem;
+          justify-content: space-evenly;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+          @include responsive('tablet') {
+            text-align: center;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .Member__Role {
+            width: 100%;
+            color: #659238;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            @include responsive('tablet') {
+              font-size: 2rem;
+            }
+            @include responsive('mobile') {
+              font-size: 1rem;
+            }
+          }
+          .Member__Name {
+            width: 100%;
+            color: #111111;
+            font-size: 2rem;
+            font-weight: 700;
+            @include responsive('tablet') {
+              font-size: 3rem;
+            }
+            @include responsive('mobile') {
+              font-size: 2rem;
+            }
+          }
+          .Member__Introduction {
+            width: 100%;
+            color: darkslategray;
+            font-size: 18px;
+            font-weight: 400;
+            padding-top: 1rem;
+            line-height: 1.4;
+            padding-bottom: 1rem;
+            @include responsive('tablet') {
+              font-size: 25px;
+            }
+            @include responsive('mobile__small') {
+              font-size: 14px;
+            }
+          }
+        }
+        .Member__Tag-Container {
+          display: flex;
+          font-size: 0.75rem;
+          font-weight: 700;
+          @include responsive('tablet') {
+            justify-content: space-around;
+          }
+          .Member__Tag {
+            display: inline-flex;
+            background-color: #fff;
+            color: #718096;
+            margin-bottom: 0.5rem;
+            margin-right: 0.5rem;
+            padding: 0.5rem 0.5rem;
+            letter-spacing: 0.05em;
+            border: 1px solid #718096;
+            border-radius: 0.75rem;
+            align-items: center;
+            @include responsive('tablet') {
+              margin-bottom: 0;
+              font-size: 30px;
+              padding: 1rem 2rem;
+            }
+            @include responsive('mobile__small') {
+              font-size: 14px;
+              padding: 0.5rem 0.7rem;
+            }
+          }
+        }
+      }
     }
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
