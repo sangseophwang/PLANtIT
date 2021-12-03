@@ -65,8 +65,7 @@
   flex-direction: column;
   justify-content: center;
   width: 50%;
-  background-size: cover;
-  background-color: #edf2f7;
+  background-color: #68d391;
 
   @media screen and (max-width: 1024px) {
     display: none;
@@ -75,6 +74,8 @@
 
 .Contact__Content {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 2rem 1rem;
 }
 
@@ -82,7 +83,8 @@
   display: flex;
   align-items: center;
   font-size: 1.5rem;
-  color: #a0aec0;
+  margin-top: 0.5rem;
+  color: white;
 }
 
 //svg Image
@@ -90,7 +92,7 @@
 .Svg__Image {
   width: 4rem;
   height: 4rem;
-  color: #a0aec0;
+  color: white;
 }
 
 .Contact__Email-Container {
@@ -118,6 +120,7 @@
 
 .Input__Label {
   margin-top: 1rem;
+  margin-left: 0.3rem;
 }
 
 .Email__Input {
@@ -132,7 +135,7 @@
 }
 
 .Email__Input:focus {
-  border: 1px solid #667eea;
+  border: 1px solid #68d391;
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
@@ -148,12 +151,18 @@
   padding: 0.5rem;
 }
 
+.Text__Area:focus {
+  border: 1px solid #68d391;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
 .Submit__Button {
   font-size: 1rem;
   font-weight: 700;
   padding: 1rem 2rem;
   border: 0;
-  background-color: #90bb65;
+  background-color: #68d391;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   color: #fff;
   border-radius: 0.5rem;
@@ -164,4 +173,10 @@
     font-size: 0.8rem;
     padding: 0.5rem;
   }
+}
+
+.Submit__Button:disabled {
+  background-color: #8c8c8c;
+  color: #fff;
+  cursor: not-allowed;
 }
