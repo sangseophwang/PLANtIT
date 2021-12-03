@@ -1,13 +1,34 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import 'Components/Contact/scss/Contact.scss';
 import Image from 'Assets/ContactImage.jpg';
 import Navigation from 'Components/Common/Navigation';
 import emailjs from 'emailjs-com';
 import { toast } from 'react-toastify';
 import Logo from 'Assets/logo.png';
-import ContactImage from 'Assets/contact.jpeg';
+import { Helmet } from 'react-helmet';
 
 export default function Contact(): JSX.Element {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+
+  const onChangeNamehandler = (e: any) => {
+    setName(e.target.value);
+  };
+
+  const onChangeEmailhandler = (e: any) => {
+    setEmail(e.target.value);
+  };
+
+  const onChangePhonehandler = (e: any) => {
+    setPhone(e.target.value);
+  };
+
+  const onChangeMessagehandler = (e: any) => {
+    setMessage(e.target.value);
+  };
+
   // Email.js
   const form = useRef<HTMLFormElement>(null);
 
@@ -41,6 +62,9 @@ export default function Contact(): JSX.Element {
 
   return (
     <>
+      <Helmet>
+        <title>문의하기</title>
+      </Helmet>
       <Navigation />
 
       <div className="Banner__Container">
@@ -74,7 +98,9 @@ export default function Contact(): JSX.Element {
                   d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                 />
               </svg>
-              <div className="Contact__Text">경기도 용인 아몰랑동</div>
+              <div className="Contact__Text">
+                서울시 강남구 선릉로 433 세방빌딩 6층
+              </div>
             </div>
 
             <div className="Contact__Content">
@@ -121,12 +147,15 @@ export default function Contact(): JSX.Element {
             <img src={Logo} alt="" className="Contact__Logo" />
             <form className="Email__Container" ref={form} onSubmit={sendEmail}>
               <div className="Input__Box">
-                <label htmlFor="name">성함</label>
+                <label htmlFor="name" className="Input__Label">
+                  성함
+                </label>
                 <input
                   type="text"
                   name="user_name"
-                  placeholder="성함"
+                  placeholder=""
                   className="Email__Input"
+                  onChange={onChangeNamehandler}
                 />
               </div>
 
@@ -137,8 +166,9 @@ export default function Contact(): JSX.Element {
                 <input
                   type="email"
                   name="user_email"
-                  placeholder="이메일"
+                  placeholder=""
                   className="Email__Input"
+                  onChange={onChangeEmailhandler}
                 />
               </div>
 
@@ -149,20 +179,33 @@ export default function Contact(): JSX.Element {
                 <input
                   type="tel"
                   name="user_tel"
-                  placeholder="연락처"
+                  placeholder=""
                   className="Email__Input"
+                  onChange={onChangePhonehandler}
                 />
               </div>
               <label htmlFor="tel" className="Input__Label">
                 문의내용
               </label>
+
               <textarea
                 name="message"
                 className="Text__Area"
-                placeholder="문의내용"
+                placeholder=""
+                onChange={onChangeMessagehandler}
               />
 
-              <input type="submit" value="전송" className="Submit__Button" />
+              {}
+              <input
+                type="submit"
+                value="전송"
+                className="Submit__Button"
+                disabled={
+                  name !== '' && email !== '' && phone !== '' && message !== ''
+                    ? false
+                    : true
+                }
+              />
             </form>
           </div>
         </div>

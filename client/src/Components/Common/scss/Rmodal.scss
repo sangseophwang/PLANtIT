@@ -29,47 +29,44 @@
 
   @include responsive("tablet") {
     width: 90%;
-    top: 10px;
+    top: 30px;
     margin-left: 0 auto;
   }
 
   // Modal__Container  = Modal창 그 자체
   .Rmodal__Container {
-    min-height: 400px;
-    max-height: 700px;
     border-radius: 12px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
+
     padding: 1rem;
     z-index: 150;
 
-    @include responsive("tablet__large") {
+    @include responsive("tablet") {
       margin: 0 auto;
-      max-height: 600px;
-    }
-
-    @include responsive("mobile") {
+      height: 70vh;
       overflow-y: scroll;
     }
 
     @include responsive("mobile__small") {
       padding: 0.5rem;
-      max-height: 600px;
+      height: 80vh;
     }
 
     // Modal__Content = Modal의 내용 (이미지, 글)이 들어가는 공간
     .Rmodal__Content {
       display: flex;
       flex-direction: row;
+      align-items: center;
 
       @include responsive("mobile") {
         flex-direction: column;
       }
 
       .Rmodal__Image {
-        width: 40%;
+        width: 30%;
         height: 45vh;
         object-fit: contain;
         border-radius: 12px;
@@ -100,6 +97,7 @@
           margin-bottom: 0.5rem;
 
           @include responsive("mobile") {
+            font-size: 1.3rem;
             text-align: center;
           }
         }
@@ -112,6 +110,7 @@
           margin-bottom: 1rem;
 
           @include responsive("mobile") {
+            font-size: 1.7rem;
             text-align: center;
           }
         }
@@ -127,11 +126,18 @@
 
         // 주요특성, 기타정보
         .Pesticide__Subtitle {
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+          width: 80px;
           font-size: 1rem;
           font-weight: 700;
-          display: inline-block;
           margin-top: 1rem;
           text-align: center;
+          background-image: linear-gradient(transparent 60%, #f8cd07 40%);
+
+          @include responsive("tablet") {
+            margin: 1rem auto;
+          }
         }
 
         .Pesticide__Explain {
@@ -139,10 +145,6 @@
           font-size: 0.8rem;
           line-height: 1.2;
           margin: 0.5rem 0;
-
-          @include responsive("mobile") {
-            text-align: center;
-          }
         }
       }
     }
