@@ -10,6 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import 'Components/Home/scss/Home.scss';
 import 'swiper/components/pagination/pagination.scss';
+import Dummy from 'Assets/Dummy/Thrid.js';
 
 SwiperCore.use([Mousewheel, Pagination]);
 
@@ -54,7 +55,7 @@ export default function Home(): JSX.Element {
           <Second />
         </SwiperSlide>
         <SwiperSlide>
-          <Third />
+          <Third data={Dummy} />
         </SwiperSlide>
         <SwiperSlide>
           <Fourth />
