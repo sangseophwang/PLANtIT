@@ -6,6 +6,7 @@ class User(models.Model):
     password = models.CharField(max_length=256)
     nickname = models.CharField(max_length=50)
     user_type = models.IntegerField()
+    refresh_token = models.CharField(max_length=512, null=True)
     description = models.CharField(max_length=256, null=True)
     image = models.CharField(max_length=100, null=True) # image url
     

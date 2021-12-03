@@ -10,9 +10,9 @@ interface SubmitProps {
 export default function Submit({ onSubmitHandler }: SubmitProps): JSX.Element {
   const [time, setTime] = useState(moment());
   const navigate = useNavigate();
+
   useEffect(() => {
     let timer: any = null;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     timer = setInterval(() => {
       setTime(moment());
     }, 1000);

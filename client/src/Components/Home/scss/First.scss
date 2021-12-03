@@ -44,16 +44,20 @@
         }
       }
       @include responsive('tablet') {
-        bottom: 140px;
+        bottom: 120px;
       }
-      @include responsive('mobile') {
+      @include responsive('mobile__small') {
         bottom: 80px;
         font-size: 18px;
+        height: 50px;
       }
     }
     > span {
       margin-left: 15px;
       display: block;
+      @include responsive('mobile__small') {
+        margin-left: 3px;
+      }
     }
   }
 }
