@@ -1,6 +1,7 @@
 import React from 'react';
 import 'Components/Common/scss/Modal.scss';
 import CloseIcon from 'Assets/CloseIcon.svg';
+import { Link } from 'react-router-dom';
 
 function Modal({ setOpenModal, data }: any) {
   // 방제방법 렌더링 함수
@@ -38,15 +39,17 @@ function Modal({ setOpenModal, data }: any) {
       <div className="Modal__Container-Test">
         <div className="Modal__Container">
           <div className="Modal__CloseBtn">
-            <img
-              className="Modal__Icon"
-              src={CloseIcon}
-              alt="CloseIcon"
-              onClick={() => {
-                setOpenModal(false);
-                document.body.style.overflow = 'scroll';
-              }}
-            />
+            <Link to="">
+              <img
+                className="Modal__Icon"
+                src={CloseIcon}
+                alt="CloseIcon"
+                onClick={() => {
+                  setOpenModal(false);
+                  document.body.style.overflow = 'scroll';
+                }}
+              />
+            </Link>
           </div>
 
           <div className="Modal__Content">
