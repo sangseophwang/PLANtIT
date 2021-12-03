@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { authApi } from 'API/AuthApi';
 
 import 'Components/Mypage/scss/Mypage.scss';
@@ -11,6 +11,8 @@ export default function MypageMain(): JSX.Element {
   const navigate = useNavigate();
   const [nickname, setNickname] = useState('');
   const [description, setDescription] = useState('');
+  const [imageUrl, setImageUrl] = useState();
+  const [changeImg, setChangeImg] = useState(false);
 
   useEffect(() => {
     authApi
@@ -23,7 +25,8 @@ export default function MypageMain(): JSX.Element {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         response.data.message === 'success'
           ? (setNickname(response.data.nickname),
-            setDescription(response.data.description))
+            setDescription(response.data.description),
+            setImageUrl(response.data.image))
           : alert('message is not "success"');
 
         if (response.data.new_token !== null) {
@@ -41,7 +44,7 @@ export default function MypageMain(): JSX.Element {
       .catch(error => {
         console.log('error: ', error);
       });
-  }, []);
+  }, [imageUrl]);
 
   function onSubmitDeRegister(event: any): void {
     event.preventDefault();
@@ -112,19 +115,55 @@ export default function MypageMain(): JSX.Element {
       });
   }
 
+  function onChangeImageInput(e: React.ChangeEvent<HTMLInputElement>) {
+    e.preventDefault();
+
+    if (e.target.files) {
+      const uploadFile = e.target.files[0];
+      console.log('uploadFile: ', uploadFile);
+      const formData = new FormData();
+      formData.append('image', uploadFile);
+
+      authApi
+        .authRequestPost('/user/image', 'multipart/form-data', formData)
+        .then(response => {
+          console.log('img response: ', response);
+          console.log(response.data);
+          setImageUrl(response.data.image_url);
+          setChangeImg(true);
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
+          if (response.data.new_token !== null) {
+            sessionStorage.setItem('access_token', response.data.new_token);
+          }
+        })
+        .catch(error => {
+          console.log('error: ', error);
+        });
+    }
+  }
+
   return (
     <div className="Mypage__Container">
       <main>
         <section>
           <div className="Thumbnail__Area">
-            <img
-              className="Thumbnail__Area-img"
-              src={joy}
-              alt="profile-user-img"
-            ></img>
-            <button type="button" name="ChangeImg">
-              이미지 업로드
-            </button>
+            {changeImg && (
+              <img className="Thumbnail__Area-img" src={imageUrl} alt=""></img>
+            )}
+
+            <form>
+              <label className="Upload__button" htmlFor="input-file">
+                이미지 업로드
+              </label>
+              <input
+                type="file"
+                id="input-file"
+                accept="image/jpg, image/jpeg, image/png"
+                required
+                onChange={onChangeImageInput}
+              ></input>
+            </form>
           </div>
 
           <div className="Info__Area">
@@ -146,7 +185,7 @@ export default function MypageMain(): JSX.Element {
               '로그아웃 후 세션 스토리지 값: ',
               sessionStorage.getItem('access_token'),
             );
-            navigate('/');
+
             alert('로그아웃 되었습니다.');
           }}
         >

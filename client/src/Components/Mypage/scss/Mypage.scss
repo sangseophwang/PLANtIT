@@ -26,19 +26,26 @@
           margin-bottom: 20px;
         }
 
-        > button {
-          display: inline-flex;
-          align-items: center;
+        > form {
+          display: flex;
           justify-content: center;
-          background-color: #88bb61;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          color: white;
-          font-weight: bold;
-          font-size: 1rem;
-          padding: 0px 1.25rem;
-          height: 2rem;
+          align-items: center;
+          .Upload__button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #88bb61;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0px 1.25rem;
+            height: 2rem;
+          }
+
+          
         }
       }
 
