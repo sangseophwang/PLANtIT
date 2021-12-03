@@ -20,13 +20,15 @@ def get_blog(request, blog_id):
         return Response(data="Not Found Blog")
     
     is_author = False
+    token_validation = None
     if 'HTTP_AUTHORIZATION' in request.META:
         access_token = request.META['HTTP_AUTHORIZATION']
-        token_validation = validate_token(access_token)
-        if token_validation.status_code != 200:
-            return token_validation
-        if token_validation.data['payload']['user_id'] == blog_detail.user.id:
-            is_author = True
+        if access_token:
+            token_validation = validate_token(access_token)
+            if token_validation.status_code != 200:
+                return token_validation
+            if token_validation.data['payload']['user_id'] == blog_detail.user.id:
+                is_author = True
     
     response_data = {
         'blog_id': blog_detail.id,
@@ -36,7 +38,7 @@ def get_blog(request, blog_id):
         'view': blog_detail.view,
         'upload_date': blog_detail.upload_date,
         'is_author': is_author,
-        'new_token': token_validation.data['new_token'] if 'new_token' in token_validation.data else None
+        'new_token': token_validation.data['new_token'] if token_validation is not None and 'new_token' in token_validation.data else None
     }
         
     return Response(data=response_data, status=200)
