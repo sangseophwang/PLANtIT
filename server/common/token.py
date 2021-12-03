@@ -7,10 +7,10 @@ from user.queryset import find_user_by_id, update_user_refresh_token
 
 def create_token(email, user_type, user_id, token_type, iat):
     if token_type == 'access':
-        expire_period = iat + datetime.timedelta(seconds=30)
+        expire_period = iat + datetime.timedelta(hours=1)
         payload = {'exp': expire_period, 'email': email, 'user_type': user_type, 'user_id': user_id, 'iat': iat}
     elif token_type == 'refresh':
-        expire_period = iat + datetime.timedelta(seconds=60)
+        expire_period = iat + datetime.timedelta(days=7)
         payload = {'exp': expire_period, 'user_id': user_id, 'iat': iat}
     else:
         return False
@@ -19,7 +19,8 @@ def create_token(email, user_type, user_id, token_type, iat):
     jwt_algorithm = settings.JWT_ALGORITHM
     token = jwt.encode(payload, jwt_key, jwt_algorithm)
     if token_type == 'refresh':
-        update_user_refresh_token(user_id=user_id, refresh_token=token)
+        if not update_user_refresh_token(user_id=user_id, refresh_token=token):
+            return False
     return token
 
 def re_create_token(token):

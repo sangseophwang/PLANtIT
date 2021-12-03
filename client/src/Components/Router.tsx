@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Member from 'Components/Member';
 import Home from 'Components/Home';
