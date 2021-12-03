@@ -1,7 +1,7 @@
 @import '/src/Components/Common/scss/mixins';
 .Second__Container {
   @include Container__Form();
-  > h1 {
+  > span {
     position: relative;
     width: 100%;
     height: fit-content;
@@ -23,7 +23,7 @@
       line-height: 1.7;
       font-size: 12vw;
     }
-    > h2 {
+    > div {
       color: white;
       font-size: 7vw;
       font-weight: 900;
