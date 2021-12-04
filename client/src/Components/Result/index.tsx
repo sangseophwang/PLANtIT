@@ -14,8 +14,8 @@ export default function Result(): JSX.Element {
   const ReadResponse = () => {
     if (state) {
       console.log('결과 페이지', state);
+      return state;
     }
-    return state;
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function Result(): JSX.Element {
 
   return (
     <div className="Result__Container">
-      {state && (
+      {state ? (
         <>
           <Navigation />
           <Rfirst data={state} />
@@ -33,6 +33,8 @@ export default function Result(): JSX.Element {
           <Rthird data={state} />
           <Rlast />
         </>
+      ) : (
+        <div className="Notice__Container">잠시만 기다려 주세요</div>
       )}
     </div>
   );
