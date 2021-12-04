@@ -1,6 +1,10 @@
 import 'Components/Home/scss/Third.scss';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import CropsName from 'Assets/Dummy/CropsName.js';
+import ThridDummy from 'Assets/Dummy/Thrid.js';
+import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Third(props: any): JSX.Element {
   const [filterData, setFilterData] = useState<any[]>([]);
@@ -24,7 +28,25 @@ export default function Third(props: any): JSX.Element {
 
   return (
     <section className="Third__Container">
-      <div className="Third__Test-Container">
+      <div className="Third__Subcontainer">
+        <div className="Tag-Container">
+          {CropsName.map((value: any) => (
+            <button
+              className="Crops__Tag"
+              onClick={() => {
+                const searchWord = value.class;
+                setClearWord(searchWord);
+                const newFilter = ThridDummy.filter((value: any) => {
+                  return value.class.includes(searchWord);
+                });
+                setFilterData(newFilter);
+              }}
+            >
+              # {value.class}
+            </button>
+          ))}
+        </div>
+
         <div className="HSearch__Container">
           <div className="HSearch__Input">
             <input
@@ -34,36 +56,13 @@ export default function Third(props: any): JSX.Element {
               onChange={FilterOnChangeHandler}
             />
             {filterData.length === 0 ? (
-              <svg
-                className="HSearch__Icon"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
+              <FontAwesomeIcon icon={faSearch} className="HSearch__Icon" />
             ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
+              <FontAwesomeIcon
+                icon={faTimes}
                 className="HClose__Icon"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
                 onClick={clearInput}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              />
             )}
           </div>
           {filterData.length !== 0 && (
@@ -74,20 +73,10 @@ export default function Third(props: any): JSX.Element {
                   style={{ textDecoration: 'none', color: 'black' }}
                 >
                   <div className="Data__Item">
-                    <svg
+                    <FontAwesomeIcon
+                      icon={faSearch}
                       className="Search__Sub-Icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      />
-                    </svg>
+                    />
                     {option.name}
                   </div>
                 </Link>
