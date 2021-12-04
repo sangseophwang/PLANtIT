@@ -34,7 +34,12 @@ export default function Result(): JSX.Element {
           <Rlast />
         </>
       ) : (
-        <div className="Notice__Container">잠시만 기다려 주세요</div>
+        <>
+          <div className="Result__Notice-Container">
+            <div className="loader" />
+            AI 분석중입니다.
+          </div>
+        </>
       )}
     </div>
   );

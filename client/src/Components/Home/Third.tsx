@@ -32,6 +32,7 @@ export default function Third(props: any): JSX.Element {
         <div className="Tag-Container">
           {CropsName.map((value: any) => (
             <button
+              key={value.id}
               className="Crops__Tag"
               onClick={() => {
                 const searchWord = value.class;

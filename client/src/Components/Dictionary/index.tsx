@@ -19,7 +19,9 @@ export default function Dictionary(): JSX.Element {
     setPathology(null);
     setLoading(true);
     const DictionaryResponse = await axios
-      .get(`http://localhost/api/disease`)
+      .get(
+        `http://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api/disease`,
+      )
       .then(response => {
         setPathology(response.data);
       })
