@@ -45,7 +45,9 @@
             height: 2rem;
           }
 
-          
+          > input {
+            display: none;
+          }
         }
       }
 
@@ -62,4 +64,24 @@
       }
     }
   }
+
+  .UpdateUser__Form {
+    > button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #88bb61;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0px 1.25rem;
+      height: 2rem;
+    }
+  }
+
+
+  
 }

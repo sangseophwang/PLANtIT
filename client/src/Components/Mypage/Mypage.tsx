@@ -11,8 +11,17 @@ export default function MypageMain(): JSX.Element {
   const navigate = useNavigate();
   const [nickname, setNickname] = useState('');
   const [description, setDescription] = useState('');
-  const [imageUrl, setImageUrl] = useState();
-  const [changeImg, setChangeImg] = useState(false);
+  const [imageUrl, setImageUrl] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const btnRef = useRef<HTMLButtonElement>(null);
+
+  let imgElement = (
+    <img
+      className="Thumbnail__Area-img"
+      src={imageUrl}
+      alt=""
+    ></img>
+  );
 
   useEffect(() => {
     authApi
@@ -118,6 +127,7 @@ export default function MypageMain(): JSX.Element {
   function onChangeImageInput(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
 
+    setIsLoading(true);
     if (e.target.files) {
       const uploadFile = e.target.files[0];
       console.log('uploadFile: ', uploadFile);
@@ -129,8 +139,16 @@ export default function MypageMain(): JSX.Element {
         .then(response => {
           console.log('img response: ', response);
           console.log(response.data);
+          console.log(
+            'imageUrl === new Url?',
+            imageUrl === response.data.image_url,
+          );
+
+          // setImageUrl('');
+
+          
           setImageUrl(response.data.image_url);
-          setChangeImg(true);
+          // window.location.replace('/mypage');
           // eslint-disable-next-line @typescript-eslint/no-unused-expressions
 
           if (response.data.new_token !== null) {
@@ -141,6 +159,7 @@ export default function MypageMain(): JSX.Element {
           console.log('error: ', error);
         });
     }
+    setIsLoading(false);
   }
 
   return (
@@ -148,9 +167,7 @@ export default function MypageMain(): JSX.Element {
       <main>
         <section>
           <div className="Thumbnail__Area">
-            {changeImg && (
-              <img className="Thumbnail__Area-img" src={imageUrl} alt=""></img>
-            )}
+            {!isLoading && imgElement}
 
             <form>
               <label className="Upload__button" htmlFor="input-file">
@@ -212,6 +229,10 @@ export default function MypageMain(): JSX.Element {
           내용 변경
         </button>
       </form>
+
+
+
+      
     </div>
   );
 }
