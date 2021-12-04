@@ -44,7 +44,12 @@ export default function Rthird(props) {
         <ReactElasticCarousel breakPoints={breakPoints}>
           {RthirdData.pesticides.map(value => (
             <div className="Image">
-              <img src={value.image} alt="" className="Pesticides__Image" />
+              <img
+                src={value.image}
+                alt=""
+                className="Pesticides__Image"
+                key={value.id}
+              />
               <div
                 className="Image__Overlay Image__Overlay--Primary"
                 onClick={() => {

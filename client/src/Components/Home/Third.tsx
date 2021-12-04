@@ -70,6 +70,7 @@ export default function Third(props: any): JSX.Element {
             <div className="Data__Result">
               {filterData.map(option => (
                 <Link
+                  key={option.id}
                   to={`/Dictionary?name=${option.name}`}
                   style={{ textDecoration: 'none', color: 'black' }}
                 >

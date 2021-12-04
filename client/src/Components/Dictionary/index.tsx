@@ -5,7 +5,7 @@ import DictTopSection from 'Components/Dictionary/DictTopSection';
 import SearchBar from 'Components/Dictionary/SearchBar';
 import 'Components/Dictionary/scss/index.scss';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 export default function Dictionary(): JSX.Element {
   const [pathology, setPathology] = useState([] as any);
@@ -51,14 +51,16 @@ export default function Dictionary(): JSX.Element {
 
   return (
     <>
-      <Helmet>
-        <title>질병도감</title>
-      </Helmet>
-      <div>
-        <Navigation />
-        <DictTopSection />
-        <SearchBar data={pathology} />
-      </div>
+      <HelmetProvider>
+        <Helmet>
+          <title>질병도감</title>
+        </Helmet>
+        <div>
+          <Navigation />
+          <DictTopSection />
+          <SearchBar data={pathology} />
+        </div>
+      </HelmetProvider>
     </>
   );
 }
