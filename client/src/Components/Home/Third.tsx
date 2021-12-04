@@ -1,7 +1,7 @@
 import 'Components/Home/scss/Third.scss';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import CropsName from 'Assets/Dummy/CropsName.js';
+import CropsName from 'Assets/Dummy/CropsName';
 import ThridDummy from 'Assets/Dummy/Thrid.js';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -21,7 +21,7 @@
     border-top-right-radius: 20px;
   }
   .Navigation__Category-Web {
-    width: 91%;
+    width: 88%;
     margin-left: 100px;
     display: flex;
     align-items: center;
@@ -32,10 +32,14 @@
     .Navigation__Item-Web {
       margin-right: 50px;
       text-decoration: none;
+      width: max-content;
       color: lightgray;
       font-weight: 500;
       margin-top: 20px;
       transition: 0.5s;
+      &:last-child {
+        width: 85px;
+      }
       &:hover {
         color: darkgray;
         transition: 0.5s;

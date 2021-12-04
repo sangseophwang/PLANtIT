@@ -7,6 +7,7 @@ export default function IntroContent(): JSX.Element {
       <div className="IntroContent__Image-Container">
         {IntroDummy.map(option => (
           <img
+            key={Math.random()}
             src={option.src}
             alt="소개 이미지"
             className="IntroContent__Image"

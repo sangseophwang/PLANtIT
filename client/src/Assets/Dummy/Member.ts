@@ -70,7 +70,7 @@ const Member = [
     role: 'AI',
     src: handonghee,
     github: 'https://github.com/Donghee4',
-    content: '111010101011100010110000111010101011001110000100',
+    content: '111010101 01110001 011000011101 0101011001110 000100',
     tag1: '#기계말고',
     tag2: '#내가학습',
     tag3: '#정복',
