@@ -9,6 +9,7 @@ from time_log import logging_time
 from common.s3 import s3
 from django.conf import settings
 import plant_ai.ai_disease as ai
+import plant_ai.ai_risk as ri
 
 # Create your views here.
 AWS_STORAGE_BUCKET_NAME = settings.AWS_STORAGE_BUCKET_NAME
@@ -37,6 +38,8 @@ def analysis(request):
         
         img_url = upload_analysis_image(image=img)
         name = ai.disease(img_url)[0]
+        risk = ri.risk(img_url)[0]
+
         if name == '정상':
             return Response(data={'data': 'six-man'}, status=200)
         disease = list(Disease.objects.filter(name=name).values())
@@ -50,7 +53,7 @@ def analysis(request):
         
         disease[0]['pesticides'] = _pesticides
         disease[0]['image'] = img_url
-        disease[0]['level'] = 2 # AI Model에서 나온 값 적용해야함
+        disease[0]['level'] = risk
         disease[0].pop('crops_id')
 
         data = {"data" : disease[0]}
