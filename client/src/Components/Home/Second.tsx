@@ -1,5 +1,5 @@
 import 'Components/Home/scss/Second.scss';
-import SecondImage from 'Assets/Second_Image.jpg';
+import SecondImage from 'Assets/Home/Background.jpg';
 export default function Second(): JSX.Element {
   return (
     <section className="Second__Container">

@@ -1,4 +1,4 @@
-import Member from 'Assets/Dummy/Member';
+import Member from 'Components/Common/Variables/MemberList';
 import 'Components/Member/scss/MemberList.scss';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';

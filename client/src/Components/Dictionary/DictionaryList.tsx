@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import Modal from 'Components/Common/Modal';
-import 'Components/Dictionary/scss/CropsList.scss';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Modal from 'Components/Dictionary/DictionaryModal';
+import 'Components/Dictionary/scss/DictionaryList.scss';
 
-const CropsList = (props: any) => {
+export default function DictionaryList(props: any) {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState('');
 
   useEffect(() => {
+    const current_url = window.location.href.includes('?name=');
+    const disease_name = decodeURI(window.location.href.split('=')[1]);
     if (!props.data) {
       return;
     }
-    const current_url = window.location.href.includes('?name=');
-    const disease_name = decodeURI(window.location.href.split('=')[1]);
-
     if (current_url) {
       const need = props.data.filter((val: any) => val.name === disease_name);
       setModalData(need[0]);
       setModalOpen(true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [props.data]);
 
   return (
     <>
@@ -32,13 +30,7 @@ const CropsList = (props: any) => {
               <div className="CropsList__Classification">
                 <div className="Classification__Name">{value.crops_id}</div>
               </div>
-
               <div className="CropsList__Name">{value.name}</div>
-
-              <div className="CropsList__Content">
-                {value.name}에 대해 알아보세요
-              </div>
-
               <div className="CropsList__Click">
                 <Link
                   style={{ textDecoration: 'none' }}
@@ -59,6 +51,4 @@ const CropsList = (props: any) => {
       {modalOpen && <Modal setOpenModal={setModalOpen} data={modalData} />}
     </>
   );
-};
-
-export default CropsList;
+}

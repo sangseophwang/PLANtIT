@@ -1,5 +1,5 @@
 import 'Components/Introduction/scss/Banner.scss';
-import Introduction_Image from 'Assets/Serviceintro/Introduction_Image.jpg';
+import Introduction_Image from 'Assets/Introduction/Introduction_Image.jpg';
 
 const Banner = () => {
   return (

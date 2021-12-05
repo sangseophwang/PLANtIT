@@ -1,5 +1,5 @@
 import 'Components/Member/scss/MemberTitle.scss';
-import TitleImage from 'Assets/MemberTitle.jpg';
+import TitleImage from 'Assets/Member/MemberTitle.jpg';
 
 export default function MemberTitle() {
   return (

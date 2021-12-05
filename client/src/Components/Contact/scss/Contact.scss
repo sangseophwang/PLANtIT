@@ -6,7 +6,9 @@
 // 연락처
 .Contact__Container {
   margin: 7rem 0;
-
+  @include responsive('tablet') {
+    margin: 3rem 0 7rem 0;
+  }
   .Contact__Card {
     width: 50%;
     display: flex;
@@ -18,6 +20,7 @@
       rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
     @include responsive('tablet') {
       width: 60%;
+      box-shadow: none;
     }
     @include responsive('mobile') {
       width: 90%;

@@ -46,7 +46,10 @@ const Upload = () => {
     setLoading(true);
 
     const AnalysisResponse = await axios
-      .post(`http://localhost/api/analysis`, formData)
+      .post(
+        `http://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api/analysis`,
+        formData,
+      )
       .then(response => {
         // setResult(response.data);
         console.log('검사하기 페이지', response.data);

@@ -1,5 +1,5 @@
 import 'Components/Home/scss/First.scss';
-import Video from 'Assets/Home_First.mp4';
+import Video from 'Assets/Home/Home_First.mp4';
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
