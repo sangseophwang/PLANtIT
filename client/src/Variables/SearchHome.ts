@@ -1,4 +1,4 @@
-const Third = [
+const SearchHome = [
   {
     name: '고추탄저병',
     class: '고추',
@@ -116,4 +116,4 @@ const Third = [
   },
 ];
 
-export default Third;
+export default SearchHome;

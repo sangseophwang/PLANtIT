@@ -1,4 +1,4 @@
-const CropsName = [
+const TagList = [
   {
     class: '고추',
     id: 1,
@@ -50,4 +50,4 @@ const CropsName = [
   },
 ];
 
-export default CropsName;
+export default TagList;
