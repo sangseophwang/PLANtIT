@@ -1,6 +1,6 @@
 import Footer from 'Components/Common/Footer';
 import CenterMap from 'Components/Common/Map';
-import Location from 'Assets/Dummy/Location';
+import Location from 'Variables/Location';
 import 'Components/Result/scss/Rlast.scss';
 
 export default function Rlast(): JSX.Element {

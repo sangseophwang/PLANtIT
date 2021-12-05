@@ -1,0 +1,167 @@
+@import "/src/Components/Common/scss/mixins";
+
+// Modal__Background = Modal창의 외부 배경화면
+.Rmodal__Background {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  position: fixed;
+  top: 70px;
+  z-index: 50;
+
+  @include responsive("tablet") {
+    top: 0px;
+  }
+}
+
+.Rmodal__Container-Test {
+  position: fixed;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 200px;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+
+  @include responsive("tablet") {
+    width: 90%;
+    top: 30px;
+    margin-left: 0 auto;
+  }
+
+  // Modal__Container  = Modal창 그 자체
+  .Rmodal__Container {
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+    z-index: 150;
+
+    @include responsive("tablet") {
+      margin: 0 auto;
+      height: 70vh;
+      overflow-y: scroll;
+    }
+
+    @include responsive("mobile__small") {
+      padding: 0.5rem;
+      height: 80vh;
+    }
+
+    // Modal__Content = Modal의 내용 (이미지, 글)이 들어가는 공간
+    .Rmodal__Content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      @include responsive("tablet") {
+        flex-direction: column;
+      }
+
+      .Rmodal__Image {
+        width: 30%;
+        height: 45vh;
+        object-fit: contain;
+        border-radius: 12px;
+
+        @include responsive("tablet") {
+          width: 90%;
+          margin: 0.5rem auto;
+        }
+      }
+
+      // text가 들어가는 공간
+      .Rmodal__Body {
+        padding: 1rem 1rem 1rem 2rem;
+        flex: 60%;
+        display: flex;
+        flex-direction: column;
+        font-size: 0.8rem;
+
+        @include responsive("mobile") {
+          padding: 1rem;
+        }
+
+        // 농약 소개
+        .Pesticide__Description {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #659e38;
+          margin-bottom: 0.5rem;
+
+          @include responsive("tablet") {
+            font-size: 1.3rem;
+            text-align: center;
+          }
+        }
+
+        // 농약 이름
+        .Pesticide__Title {
+          font-size: 2rem;
+          font-weight: 700;
+          display: inline-block;
+          margin-bottom: 1rem;
+
+          @include responsive("tablet") {
+            font-size: 1.7rem;
+            text-align: center;
+          }
+        }
+
+        .Pesticide__Feature {
+          font-size: 0.8rem;
+          line-height: 1.5;
+
+          @include responsive("tablet") {
+            text-align: center;
+          }
+        }
+
+        // 주요특성, 기타정보
+        .Pesticide__Subtitle {
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+          width: 80px;
+          font-size: 1rem;
+          font-weight: 700;
+          margin-top: 1rem;
+          text-align: center;
+          background-image: linear-gradient(transparent 60%, #f8cd07 40%);
+
+          @include responsive("tablet") {
+            margin: 1rem auto;
+          }
+        }
+
+        .Pesticide__Explain {
+          width: 100%;
+          font-size: 0.8rem;
+          line-height: 1.2;
+          margin: 0.5rem 0;
+        }
+      }
+    }
+  }
+}
+
+.Rmodal__CloseBtn {
+  display: flex;
+  justify-content: flex-end;
+
+  .Rmodal__Icon {
+    background: #000;
+    border-radius: 5px;
+    opacity: 0.8;
+    cursor: pointer;
+    :hover {
+      opacity: 1;
+    }
+  }
+}
