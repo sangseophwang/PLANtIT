@@ -1,18 +1,38 @@
-@import 'Components/Common/scss/mixins';
+@import 'Components/Common/scss/_mixins';
 
 .Mypage__Container {
   @include Container__Form();
 
   > main {
-    display: flex;
+    display: block;
+    // margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 768px;
+    padding-bottom: 5rem;
+
+    @include responsive('mobile') {
+      width: 80%;
+      height: 30%;
+    }
 
     > section {
       display: flex;
+
+      @include responsive('mobile') {
+        height: auto;
+        flex-direction: column;
+      }
       .Thumbnail__Area {
         display: flex;
-
         padding-right: 1.5rem;
         flex-direction: column;
+
+        @include responsive('mobile') {
+          align-items: center;
+          padding-right: 0px;
+          padding-bottom: 1.5rem;
+        }
 
         > img {
           justify-content: center;
@@ -24,6 +44,12 @@
           overflow: hidden;
 
           margin-bottom: 20px;
+
+          @include responsive('mobile') {
+            width: 6rem;
+            height: 6rem;
+            margin-bottom: 1rem;
+          }
         }
 
         > form {
@@ -43,6 +69,11 @@
             font-size: 1rem;
             padding: 0px 1.25rem;
             height: 2rem;
+
+            @include responsive('mobile') {
+              width: 10rem;
+              font-size: 0.875rem;
+            }
           }
 
           > input {
@@ -53,18 +84,36 @@
 
       .Info__Area {
         display: block;
-        // flex-direction: column;
         padding-left: 24px;
         border-left: 1px solid rgb(233, 236, 239);
 
+        @include responsive('mobile') {
+          padding-top: 1.5rem;
+          padding-bottom: 1.5rem;
+          border-top: 1px solid rgb(241, 243, 245);
+          border-bottom: 1px solid rgb(241, 243, 245);
+          border-left: none;
+          padding-left: 0px;
+        }
+
         > h2 {
+          display: block;
           font-size: 2.25rem;
           line-height: 1.5;
           margin: 8px;
+
+          @include responsive('mobile') {
+            font-size: 1.25rem;
+          }
         }
 
         > p {
+          display: block;
           margin: 8px;
+
+          @include responsive('mobile') {
+            font-size: 0.875rem;
+          }
         }
 
         > button {
@@ -81,26 +130,53 @@
           font-size: 1rem;
           padding: 0px 1.25rem;
           height: 2rem;
+
+          @include responsive('mobile') {
+            font-size: 0.5rem;
+          }
         }
       }
 
       .Change__Value {
-        > input {
+        .Change__Name {
+          margin: 8px;
+          display: flex;
+          font-size: 2.25rem;
+          line-height: 1.5rem;
+          border: 1px solid rgb(222, 226, 230);
+          background: white;
+          color: rgb(73, 80, 87);
+          // line-height: 1rem;
+          outline: none;
+          border-radius: 4px;
+          width: 100%;
+
+          @include responsive('mobile') {
+            font-size: 1.25rem;
+          }
+        }
+
+        .Change__Description {
           margin: 8px;
           display: block;
           border: 1px solid rgb(222, 226, 230);
           background: white;
           color: rgb(73, 80, 87);
+          font-size: 1rem;
           line-height: 1rem;
           outline: none;
           border-radius: 4px;
           width: 100%;
+
+          @include responsive('mobile') {
+            font-size: 0.5rem;
+          }
         }
 
         .Change__Button-Wrapper {
           display: flex;
-          margin-top: 1.5rem;
-          justify-content: flex-end;
+          margin: 8px;
+          justify-content: flex-start;
           > button {
             display: inline-flex;
             align-items: center;
@@ -117,23 +193,6 @@
           }
         }
       }
-    }
-  }
-
-  .UpdateUser__Form {
-    > button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #88bb61;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      color: white;
-      font-weight: bold;
-      font-size: 1rem;
-      padding: 0px 1.25rem;
-      height: 2rem;
     }
   }
 }

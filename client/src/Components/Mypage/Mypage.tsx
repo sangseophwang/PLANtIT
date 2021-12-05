@@ -161,7 +161,7 @@ export default function MypageMain(): JSX.Element {
       <main>
         <section>
           <div className="Thumbnail__Area">
-            <img className="Thumbnail__Area-img" src={imageUrl} alt="123"></img>
+            <img className="Thumbnail__Area-img" src={imageUrl} alt=" "></img>
 
             <form>
               <label className="Upload__button" htmlFor="input-file">
@@ -182,31 +182,58 @@ export default function MypageMain(): JSX.Element {
               <h2>{nickname !== null ? nickname : '닉네임'}</h2>
               <p>{description !== null ? description : '자기 소개'}</p>
               <button
-                type="submit"
+                type="button"
                 name="Change"
                 onClick={event => {
                   event.preventDefault();
                   setChange(true);
                 }}
               >
-                수정
+                내용 수정
+              </button>
+              <button
+                type="button"
+                name="logout"
+                onClick={() => {
+                  sessionStorage.removeItem('access_token');
+                  console.log(
+                    '로그아웃 후 세션 스토리지 값: ',
+                    sessionStorage.getItem('access_token'),
+                  );
+                  navigate('/');
+                  alert('로그아웃 되었습니다.');
+                }}
+              >
+                로그아웃
+              </button>
+
+              <button
+                type="button"
+                name="DeRegister"
+                onClick={onSubmitDeRegister}
+              >
+                회원탈퇴
               </button>
             </div>
           ) : (
             <div className="Info__Area">
               <form className="Change__Value">
                 <input
+                  type="text"
                   className="Change__Name"
                   name="displayName"
                   placeholder="닉네임"
+                  maxLength={10}
                   value={nickname}
                   onChange={onChangeInputHandler}
                 ></input>
                 <input
+                  type="text"
                   className="Change__Description"
                   name="displayDescription"
                   placeholder="한 줄 소개 (50자 이내)"
-                  value={description}
+                  maxLength={50}
+                  value={description === null ? '' : description}
                   onChange={onChangeInputHandler}
                 ></input>
                 <div className="Change__Button-Wrapper">
@@ -222,31 +249,7 @@ export default function MypageMain(): JSX.Element {
             </div>
           )}
         </section>
-
-        <section></section>
       </main>
-
-      <form className="UpdateUser__Form">
-        <button
-          type="submit"
-          name="logout"
-          onClick={() => {
-            sessionStorage.removeItem('access_token');
-            console.log(
-              '로그아웃 후 세션 스토리지 값: ',
-              sessionStorage.getItem('access_token'),
-            );
-
-            alert('로그아웃 되었습니다.');
-          }}
-        >
-          로그아웃
-        </button>
-
-        <button type="submit" name="DeRegister" onClick={onSubmitDeRegister}>
-          회원탈퇴
-        </button>
-      </form>
     </div>
   );
 }
