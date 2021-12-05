@@ -97,6 +97,7 @@ const Third = [
   {
     name: '파노균병',
     class: '파',
+    id: 17,
   },
   {
     name: '파녹병',

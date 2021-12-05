@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router';
-import 'Components/Community/scss/Board.scss';
-import Disqus from 'disqus-react';
-import Navigation from 'Components/Common/Navigation';
-import ProgressBar from 'Components/Common/ProgressBar';
+import { useNavigate, useLocation } from 'react-router';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CommunityApi } from 'API/CommunityApi';
+import Disqus from 'disqus-react';
+import Navigation from 'Components/Common/Navigation';
+import ProgressBar from 'Components/Common/ProgressBar';
+import 'Components/Community/scss/Board.scss';
 
 library.add(faEye);
 
@@ -20,6 +19,7 @@ export default function Board(): JSX.Element {
   const [data, setData] = useState<any>();
   const [isAuthor, setIsAuthor] = useState<Boolean>(false);
   const modifyProps = [data, item];
+
   // 게시글 번호에 맞는 글 불러오기
   useEffect(() => {
     async function getPost() {

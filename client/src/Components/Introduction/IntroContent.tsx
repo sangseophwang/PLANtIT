@@ -1,12 +1,13 @@
-import IntroDummy from 'Assets/Dummy/IntroDummy';
+import IntroductionList from 'Variables/IntroductionList';
 import 'Components/Introduction/scss/IntroContent.scss';
 
 export default function IntroContent(): JSX.Element {
   return (
     <div className="IntroContent__Container">
       <div className="IntroContent__Image-Container">
-        {IntroDummy.map(option => (
+        {IntroductionList.map(option => (
           <img
+            key={Math.random()}
             src={option.src}
             alt="소개 이미지"
             className="IntroContent__Image"

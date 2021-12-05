@@ -1,4 +1,4 @@
-import Member from 'Assets/Dummy/Member';
+import Member from 'Variables/MemberList';
 import 'Components/Member/scss/MemberList.scss';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -37,6 +37,9 @@ export default function MemberList(): JSX.Element {
                   </button>
                   <button className="Member__Tag">
                     <span>{option.tag2}</span>
+                  </button>
+                  <button className="Member__Tag">
+                    <span>{option.tag3}</span>
                   </button>
                 </div>
               </div>

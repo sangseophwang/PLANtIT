@@ -1,7 +1,6 @@
-import React from 'react';
-import 'Components/Dictionary/scss/DictTopSection.scss';
+import 'Components/Dictionary/scss/DictionaryTitle.scss';
 
-const DictTopSection = () => {
+const DictionaryTitle = () => {
   return (
     <div className="Dict__Text-Container">
       <div className="Dict__Text">
@@ -12,4 +11,4 @@ const DictTopSection = () => {
   );
 };
 
-export default DictTopSection;
+export default DictionaryTitle;

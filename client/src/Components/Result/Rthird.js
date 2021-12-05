@@ -40,24 +40,30 @@ export default function Rthird(props) {
         <div className="Rthird__Content">{rendering()}</div>
       </div>
 
-      <ReactElasticCarousel breakPoints={breakPoints}>
-        {RthirdData.pesticides.map(value => (
-          <div className="Image">
-            <img src={value.image} alt="" className="Pesticides__Image" />
-            <div
-              className="Image__Overlay Image__Overlay--Primary"
-              onClick={() => {
-                setModalData(value);
-                setModalOpen(true);
-                document.body.style.overflow = 'hidden';
-              }}
-            >
-              <div className="Image__Title">{value.name}</div>
-              <p className="Image__Description">클릭해보세요!</p>
+      {RthirdData.pesticides.length !== 0 ? (
+        <ReactElasticCarousel breakPoints={breakPoints}>
+          {RthirdData.pesticides.map(value => (
+            <div className="Image" key={value.id}>
+              <img src={value.image} alt="" className="Pesticides__Image" />
+              <div
+                className="Image__Overlay Image__Overlay--Primary"
+                onClick={() => {
+                  setModalData(value);
+                  setModalOpen(true);
+                  document.body.style.overflow = 'hidden';
+                }}
+              >
+                <div className="Image__Title">{value.name}</div>
+                <p className="Image__Description">클릭해보세요!</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </ReactElasticCarousel>
+          ))}
+        </ReactElasticCarousel>
+      ) : (
+        <div className="No__Result_Text">
+          해당 질병에 대한 농약이 존재 하지 않습니다.
+        </div>
+      )}
 
       {modalOpen && <Rmodal setOpenModal={setModalOpen} data={modalData} />}
     </section>
