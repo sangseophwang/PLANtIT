@@ -1,8 +1,8 @@
 import React from 'react';
 import CloseIcon from 'Assets/CloseIcon.svg';
-import 'Components/Common/scss/Rmodal.scss';
+import 'Components/Result/scss/ResultModal.scss';
 
-const Rmodal = ({ setOpenModal, data }: any) => {
+const ResultModal = ({ setOpenModal, data }: any) => {
   // 주요특성, 기타정보 렌더링 함수
   const rendering = (value: any) => {
     const result = [];
@@ -89,4 +89,4 @@ const Rmodal = ({ setOpenModal, data }: any) => {
   );
 };
 
-export default Rmodal;
+export default ResultModal;

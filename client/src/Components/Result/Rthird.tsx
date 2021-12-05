@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'Components/Result/scss/Rthird.scss';
 import ReactElasticCarousel from 'react-elastic-carousel';
-import Rmodal from 'Components/Common/Rmodal';
+import ResultModal from './ResultModal';
 
 const breakPoints = [
   { width: 300, itemsToShow: 1 },
@@ -65,7 +65,9 @@ export default function Rthird(props: any) {
         </div>
       )}
 
-      {modalOpen && <Rmodal setOpenModal={setModalOpen} data={modalData} />}
+      {modalOpen && (
+        <ResultModal setOpenModal={setModalOpen} data={modalData} />
+      )}
     </section>
   );
 }
