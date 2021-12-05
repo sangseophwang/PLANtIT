@@ -32,7 +32,7 @@ const Upload = () => {
 
   // 서버로 이미지 Post 전송하는 코드
 
-  const PostAnalysisAPI = async e => {
+  const PostAnalysisAPI = async () => {
     // 스크롤 맨 위로
     window.scrollTo(0, 0);
 
