@@ -7,6 +7,8 @@ import DictionaryContainer from 'Components/Dictionary/DictionaryContainer';
 import ProgressBar from 'Components/Common/ProgressBar';
 import DictionaryTitle from 'Components/Dictionary/DictionaryTitle';
 import 'Components/Dictionary/scss/index.scss';
+import { Link } from 'react-router-dom';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 export default function Dictionary(): JSX.Element {
   const [error, setError] = useState(null);

@@ -32,6 +32,7 @@ export default function Third(props: any): JSX.Element {
         <div className="Tag-Container">
           {CropsName.map((value: any) => (
             <button
+              key={value.id}
               className="Crops__Tag"
               onClick={() => {
                 const searchWord = value.class;
@@ -55,7 +56,7 @@ export default function Third(props: any): JSX.Element {
               placeholder="작물의 이름을 검색해주세요"
               onChange={FilterOnChangeHandler}
             />
-            {filterData.length === 0 ? (
+            {clearWord.length === 0 ? (
               <FontAwesomeIcon icon={faSearch} className="HSearch__Icon" />
             ) : (
               <FontAwesomeIcon
@@ -69,6 +70,7 @@ export default function Third(props: any): JSX.Element {
             <div className="Data__Result">
               {filterData.map(option => (
                 <Link
+                  key={option.id}
                   to={`/Dictionary?name=${option.name}`}
                   style={{ textDecoration: 'none', color: 'black' }}
                 >
