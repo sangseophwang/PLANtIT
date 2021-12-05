@@ -16,6 +16,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-helmet": "^6.1.4",
+    "aos": "^2.3.4",
     "axios": "^0.24.0",
     "disqus-react": "^1.1.2",
     "dotenv": "^10.0.0",
