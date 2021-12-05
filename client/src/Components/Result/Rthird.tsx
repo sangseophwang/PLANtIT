@@ -12,7 +12,7 @@ const breakPoints = [
 ];
 
 // 결과 페이지의 3번째 화면(예방법 & 농약)
-export default function Rthird(props) {
+export default function Rthird(props: any) {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState('');
 
@@ -41,8 +41,8 @@ export default function Rthird(props) {
       </div>
 
       {RthirdData.pesticides.length !== 0 ? (
-        <ReactElasticCarousel breakPoints={breakPoints}>
-          {RthirdData.pesticides.map(value => (
+        <ReactElasticCarousel breakPoints={breakPoints} isRTL={true}>
+          {RthirdData.pesticides.map((value: any) => (
             <div className="Image" key={value.id}>
               <img src={value.image} alt="" className="Pesticides__Image" />
               <div
