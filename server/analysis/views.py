@@ -41,7 +41,7 @@ def analysis(request):
         risk = ri.risk(img_url)[0]
 
         if name == '정상':
-            return 'six-man'
+            return Response(data='six-man', status=200)
 
         disease = list(Disease.objects.filter(name=name).values())
         

@@ -1,11 +1,20 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import 'Components/Contact/scss/Contact.scss';
-import Image from 'Assets/ContactImage.jpg';
 import Navigation from 'Components/Common/Navigation';
+import Logo from 'Assets/logo.png';
+import Image from 'Assets/ContactImage.jpg';
 import emailjs from 'emailjs-com';
 import { toast } from 'react-toastify';
-import Logo from 'Assets/logo.png';
 import { Helmet } from 'react-helmet';
+import {
+  faMapMarkerAlt,
+  faPhoneAlt,
+  faEnvelopeOpenText,
+} from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(faMapMarkerAlt, faPhoneAlt, faEnvelopeOpenText);
 
 export default function Contact(): JSX.Element {
   const [name, setName] = useState('');
@@ -29,12 +38,43 @@ export default function Contact(): JSX.Element {
     setMessage(e.target.value);
   };
 
+  const Information = [
+    {
+      key: 1,
+      icon: faMapMarkerAlt,
+      content: '서울시 강남구 선릉로 433 세방빌딩 6층',
+    },
+    { key: 2, icon: faPhoneAlt, content: '+82-10-9907-0180' },
+    { key: 3, icon: faEnvelopeOpenText, content: 'team3.plant.it@gmail.com' },
+  ];
+
+  const Contact = [
+    {
+      key: 1,
+      id: 'name',
+      name: '성함',
+      type: 'text',
+      onChange: onChangeNamehandler,
+    },
+    {
+      key: 2,
+      id: 'email',
+      name: '이메일',
+      type: 'email',
+      onChange: onChangeEmailhandler,
+    },
+    {
+      key: 3,
+      id: 'tel',
+      name: '연락처',
+      type: 'tel',
+      onChange: onChangePhonehandler,
+    },
+  ];
   // Email.js
   const form = useRef<HTMLFormElement>(null);
-
   const sendEmail = (e: any) => {
     e.preventDefault();
-
     emailjs
       .sendForm(
         'service_fm88c5d',
@@ -56,7 +96,6 @@ export default function Contact(): JSX.Element {
           });
         },
       );
-
     e.target.reset();
   };
 
@@ -66,136 +105,47 @@ export default function Contact(): JSX.Element {
         <title>문의하기</title>
       </Helmet>
       <Navigation />
-
-      <div className="Banner__Container">
-        <img src={Image} alt="" className="Banner__Image" />
-        <div className="Banner__text">도움이 필요하신가요?</div>
+      <div className="Banner">
+        <img src={Image} alt="배너 이미지" />
+        <p>도움이 필요하신가요?</p>
       </div>
 
       <div className="Contact__Container">
         <div className="Contact__Card">
           <div className="Contact__Content-Container">
-            <div className="Contact__Content">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-                className="Svg__Image"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-              <div className="Contact__Text">
-                서울시 강남구 선릉로 433 세방빌딩 6층
+            {Information.map(data => (
+              <div className="Contact__Content" key={data.key}>
+                <FontAwesomeIcon icon={data.icon} />
+                <span>{data.content}</span>
               </div>
-            </div>
-
-            <div className="Contact__Content">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-                className="Svg__Image"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                />
-              </svg>
-              <div className="Contact__Text">123-456-789</div>
-            </div>
-
-            <div className="Contact__Content">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-                className="Svg__Image"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-              <div className="Contact__Text">team3.plant.it@gmail.com</div>
-            </div>
+            ))}
           </div>
+
           <div className="Contact__Email-Container">
             <img src={Logo} alt="" className="Contact__Logo" />
             <form className="Email__Container" ref={form} onSubmit={sendEmail}>
-              <div className="Input__Box">
-                <label htmlFor="name" className="Input__Label">
-                  성함
-                </label>
-                <input
-                  type="text"
-                  name="user_name"
-                  placeholder=""
-                  className="Email__Input"
-                  onChange={onChangeNamehandler}
-                />
-              </div>
-
-              <div className="Input__Box">
-                <label htmlFor="email" className="Input__Label">
-                  이메일
-                </label>
-                <input
-                  type="email"
-                  name="user_email"
-                  placeholder=""
-                  className="Email__Input"
-                  onChange={onChangeEmailhandler}
-                />
-              </div>
-
-              <div className="Input__Box">
-                <label htmlFor="tel" className="Input__Label">
-                  연락처
-                </label>
-                <input
-                  type="tel"
-                  name="user_tel"
-                  placeholder=""
-                  className="Email__Input"
-                  onChange={onChangePhonehandler}
-                />
-              </div>
-              <label htmlFor="tel" className="Input__Label">
+              {Contact.map(data => (
+                <div className="Input__Box" key={data.key}>
+                  <label className="Input__Label" htmlFor={data.id}>
+                    {data.name}
+                  </label>
+                  <input
+                    className="Email__Input"
+                    type={data.type}
+                    id={data.id}
+                    onChange={data.onChange}
+                  />
+                </div>
+              ))}
+              <label htmlFor="text" className="Input__Label">
                 문의내용
               </label>
-
               <textarea
+                id="text"
                 name="message"
                 className="Text__Area"
-                placeholder=""
                 onChange={onChangeMessagehandler}
               />
-
-              {}
               <input
                 type="submit"
                 value="전송"

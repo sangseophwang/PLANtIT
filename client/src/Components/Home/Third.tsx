@@ -1,7 +1,7 @@
 import 'Components/Home/scss/Third.scss';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import CropsName from 'Assets/Dummy/CropsName.js';
+import CropsName from 'Assets/Dummy/CropsName';
 import ThridDummy from 'Assets/Dummy/Thrid.js';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -56,7 +56,7 @@ export default function Third(props: any): JSX.Element {
               placeholder="작물의 이름을 검색해주세요"
               onChange={FilterOnChangeHandler}
             />
-            {filterData.length === 0 ? (
+            {clearWord.length === 0 ? (
               <FontAwesomeIcon icon={faSearch} className="HSearch__Icon" />
             ) : (
               <FontAwesomeIcon

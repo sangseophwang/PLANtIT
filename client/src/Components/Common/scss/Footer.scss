@@ -13,25 +13,29 @@
     padding-top: 30px;
   }
   .Footer__Contents {
-    width: 240px;
+    width: 300px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin: 10px 0 10px 0;
-    @include responsive('mobile') {
-      margin-top: 0px;
+    @include responsive('mobile__small') {
+      margin-top: -10px;
+      width: 46%;
     }
     .Footer__Logo {
       width: 140px;
       height: fit-content;
       display: inline-block;
       margin-bottom: 25px;
+      @include responsive('mobile__small') {
+        width: 80px;
+      }
     }
     .Footer__Text {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      @include responsive('mobile') {
+      @include responsive('mobile__small') {
         font-size: 11px;
       }
       > a {
@@ -46,6 +50,10 @@
           color: $Green;
           transition: 0.5s;
         }
+        @include responsive('mobile__small') {
+          font-size: 5px;
+          margin-bottom: 4px;
+        }
       }
       > span {
         color: white;
@@ -59,15 +67,22 @@
           color: $Green;
           transition: 0.5s;
         }
+        @include responsive('mobile__small') {
+          font-size: 5px;
+          margin-bottom: 4px;
+        }
       }
     }
   }
   .Footer__Copyright {
     color: lightgray;
     font-weight: 500;
-    @include responsive('mobile') {
-      margin-top: -10px;
-      font-size: 10px;
+    @include responsive('tablet') {
+      letter-spacing: 1.2;
+    }
+    @include responsive('mobile__small') {
+      margin-top: -5px;
+      font-size: 6px;
       word-spacing: 3px;
     }
   }

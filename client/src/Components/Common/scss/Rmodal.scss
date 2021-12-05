@@ -61,7 +61,7 @@
       flex-direction: row;
       align-items: center;
 
-      @include responsive("mobile") {
+      @include responsive("tablet") {
         flex-direction: column;
       }
 
@@ -71,7 +71,7 @@
         object-fit: contain;
         border-radius: 12px;
 
-        @include responsive("mobile") {
+        @include responsive("tablet") {
           width: 90%;
           margin: 0.5rem auto;
         }
@@ -96,7 +96,7 @@
           color: #659e38;
           margin-bottom: 0.5rem;
 
-          @include responsive("mobile") {
+          @include responsive("tablet") {
             font-size: 1.3rem;
             text-align: center;
           }
@@ -109,7 +109,7 @@
           display: inline-block;
           margin-bottom: 1rem;
 
-          @include responsive("mobile") {
+          @include responsive("tablet") {
             font-size: 1.7rem;
             text-align: center;
           }
@@ -119,7 +119,7 @@
           font-size: 0.8rem;
           line-height: 1.5;
 
-          @include responsive("mobile") {
+          @include responsive("tablet") {
             text-align: center;
           }
         }

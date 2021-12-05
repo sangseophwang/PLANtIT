@@ -1,9 +1,9 @@
 import React from 'react';
 import 'Components/Result/scss/Rsecond.scss';
-import level0 from 'Assets/Level/level0.png';
-import level1 from 'Assets/Level/level1.png';
-import level2 from 'Assets/Level/level2.png';
-import level3 from 'Assets/Level/level3.png';
+import level0 from 'Assets/Analysis_Result/Level/level0.png';
+import level1 from 'Assets/Analysis_Result/Level/level1.png';
+import level2 from 'Assets/Analysis_Result/Level/level2.png';
+import level3 from 'Assets/Analysis_Result/Level/level3.png';
 
 export default function Rsecond(props: any): JSX.Element {
   const RsecondData = props.data.data;
