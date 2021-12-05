@@ -1,9 +1,10 @@
 @import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
 
 // 검색창
 .Search__Container {
-  border-bottom: 1px solid #bdbdbd;
-  width: 45%;
+  width: 758px;
+  border-bottom: 1px solid lightgray;
   margin-bottom: 5rem;
   @include responsive('tablet') {
     width: 93%;
@@ -18,6 +19,7 @@
     margin-bottom: auto;
     width: 1.5rem;
     height: 1.5rem;
+    color: gray;
   }
   > input {
     font-size: 1rem;
@@ -25,8 +27,19 @@
     width: 100%;
     padding: 10px 10px;
     border: none;
-    outline: 2px solid transparent;
-    outline-offset: 2px;
+    outline: none;
+    &::placeholder {
+      color: lightgray;
+      transition: 0.5s;
+    }
+    &:focus {
+      transition: 0.5s;
+      color: $LightGreen;
+      text-decoration: none;
+      &::placeholder {
+        color: white;
+      }
+    }
   }
 
   .Close__Icon {
