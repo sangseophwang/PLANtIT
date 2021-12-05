@@ -1,8 +1,8 @@
 import 'Components/Home/scss/Third.scss';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import CropsName from 'Assets/Dummy/CropsName';
-import ThridDummy from 'Assets/Dummy/Thrid.js';
+import TagList from 'Variables/TagList';
+import SearchHome from 'Variables/SearchHome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -30,14 +30,14 @@ export default function Third(props: any): JSX.Element {
     <section className="Third__Container">
       <div className="Third__Subcontainer">
         <div className="Tag-Container">
-          {CropsName.map((value: any) => (
+          {TagList.map((value: any) => (
             <button
               key={value.id}
               className="Crops__Tag"
               onClick={() => {
                 const searchWord = value.class;
                 setClearWord(searchWord);
-                const newFilter = ThridDummy.filter((value: any) => {
+                const newFilter = SearchHome.filter((value: any) => {
                   return value.class.includes(searchWord);
                 });
                 setFilterData(newFilter);

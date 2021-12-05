@@ -1,8 +1,16 @@
+import { useEffect } from 'react';
 import 'Components/Dictionary/scss/DictionaryModal.scss';
 import CloseIcon from 'Assets/CloseIcon.svg';
 import { Link } from 'react-router-dom';
+//@ts-ignore
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-function Modal({ setOpenModal, data }: any) {
+export default function Modal({ setOpenModal, data }: any): JSX.Element {
+  useEffect(() => {
+    AOS.init();
+  });
+
   // 방제방법 렌더링 함수
   const rendering = () => {
     const result = [];
@@ -36,7 +44,11 @@ function Modal({ setOpenModal, data }: any) {
         }}
       />
       <div className="Modal__Container-Test">
-        <div className="Modal__Container">
+        <div
+          className="Modal__Container"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
           <div className="Modal__CloseBtn">
             <Link to="">
               <img
@@ -72,5 +84,3 @@ function Modal({ setOpenModal, data }: any) {
     </>
   );
 }
-
-export default Modal;

@@ -5,7 +5,7 @@ import Third from 'Components/Home/Third';
 import Fourth from 'Components/Home/Fourth';
 import Fifth from 'Components/Home/Fifth';
 import Sixth from 'Components/Home/Sixth';
-import Dummy from 'Assets/Dummy/Thrid.js';
+import SearchHome from 'Variables/SearchHome';
 import SwiperCore, { Pagination, Mousewheel } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
@@ -55,7 +55,7 @@ export default function Home(): JSX.Element {
           <Second />
         </SwiperSlide>
         <SwiperSlide>
-          <Third data={Dummy} />
+          <Third data={SearchHome} />
         </SwiperSlide>
         <SwiperSlide>
           <Fourth />

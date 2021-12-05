@@ -6,13 +6,13 @@ import ProgressBar from 'Components/Common/ProgressBar';
 import DictionaryTitle from 'Components/Dictionary/DictionaryTitle';
 import 'Components/Dictionary/scss/index.scss';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 export default function Dictionary(): JSX.Element {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [pathology, setPathology] = useState([] as any);
-
   // API로 부터 정보를 받아옴.
   const GetDictionaryAPI = async () => {
     // 요청이 시작 할 때 초기화
@@ -22,6 +22,7 @@ export default function Dictionary(): JSX.Element {
     const DictionaryResponse = await DictionaryApi.Get_Dictionary('disease')
       .then(response => {
         setPathology(response.data);
+        toast.success('질병도감에 오신 것을 환영합니다!');
       })
       .catch(e => {
         setError(e);
