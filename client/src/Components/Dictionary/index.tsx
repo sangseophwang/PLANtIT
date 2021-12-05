@@ -1,5 +1,3 @@
-import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { DictionaryApi } from 'API/DictionaryApi';
 import Navigation from 'Components/Common/Navigation';
@@ -50,7 +48,7 @@ export default function Dictionary(): JSX.Element {
   if (!pathology) return null as any;
 
   return (
-    <>
+    <HelmetProvider>
       <Helmet>
         <title>질병도감</title>
       </Helmet>
@@ -62,6 +60,6 @@ export default function Dictionary(): JSX.Element {
           <DictionaryContainer data={pathology} />
         </div>
       </div>
-    </>
+    </HelmetProvider>
   );
 }
