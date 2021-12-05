@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { authApi } from 'API/AuthApi';
 
 import 'Components/Mypage/scss/Mypage.scss';
-import FirstImage from 'Assets/FirstProfileImage.png';
+import FirstImage from 'Assets/Mypage/FirstProfileImage.png';
 
 export default function MypageMain(): JSX.Element {
   const navigate = useNavigate();

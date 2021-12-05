@@ -5,11 +5,7 @@ import { authApi } from 'API/AuthApi/index';
 
 import 'Components/Auth/scss/Register.scss';
 import Logo from 'Assets/logo.png';
-import { faUserAlt, faKey } from '@fortawesome/free-solid-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-library.add(faUserAlt, faKey);
+import SignImage from 'Assets/Auth/sign.jpg';
 
 function RegisterPage(): JSX.Element {
   const [id, setId] = useState('');
@@ -33,6 +29,9 @@ function RegisterPage(): JSX.Element {
         break;
       case 'password':
         setPassword(value);
+        value !== repeatPassword
+          ? setMsg('비밀번호를 확인해주세요.')
+          : setMsg('');
         break;
       case 'repeatPassword':
         setRepeatPassword(value);
@@ -70,75 +69,88 @@ function RegisterPage(): JSX.Element {
       });
   }
 
+  const formContents = [
+    {
+      labelHtmlFor: 'id',
+      labelValue: '아이디',
+      inputType: 'email',
+      inputName: 'id',
+      inputPlaceHolder: '아이디를 입력해주세요.',
+      inputValue: id,
+      inputOnChange: onChangeInputHandler,
+    },
+    {
+      labelHtmlFor: 'name',
+      labelValue: '닉네임',
+      inputType: 'text',
+      inputPlaceHolder: '닉네임을 입력해주세요.',
+      inputName: 'name',
+      inputValue: name,
+      inputOnChange: onChangeInputHandler,
+    },
+    {
+      labelHtmlFor: 'password',
+      labelValue: '비밀번호',
+      inputType: 'password',
+      inputPlaceHolder: '비밀번호를 입력해주세요.',
+      inputName: 'password',
+      inputValue: password,
+      inputOnChange: onChangeInputHandler,
+    },
+
+    {
+      labelHtmlFor: 'repeatPassword',
+      labelValue: '비밀번호 확인',
+      inputType: 'password',
+      inputPlaceHolder: '비밀번호를 입력해주세요.',
+      inputName: 'repeatPassword',
+      inputValue: repeatPassword,
+      inputOnChange: onChangeInputHandler,
+    },
+  ];
+
   return (
-    <div className="register__container">
-      <div className="register__contents">
-        <GoMain />
-        <img className="register__logo" src={Logo} alt="plantit logo"></img>
+    <div className="Component__Container">
+      <div className="RegisterPage__Container">
+        <div className="Side__Image-Wrapper">
+          <img src={SignImage} alt="" className="Side__Image" />
+        </div>
+        <div className="Register__Container">
+          <GoMain />
+          <img src={Logo} alt="" className="Plaintit__logo-Image" />
 
-        <form className="register-form">
-          <div>
-            <label htmlFor="id">
-              <FontAwesomeIcon icon={faUserAlt} />
-            </label>
-            <input
-              type="email"
-              name="id"
-              placeholder="아이디를 입력해주세요."
-              value={id}
-              onChange={onChangeInputHandler}
-              required
-            ></input>
+          {formContents.map((valueList, index) => (
+            <div className="Form__Content-Wrapper" key={index}>
+              <div className="Form__Label-Wrapper">
+                <label className="Form__Label" htmlFor={valueList.labelHtmlFor}>
+                  {valueList.labelValue}
+                </label>
+              </div>
+              <input
+                className="Form__Input"
+                type={valueList.inputType}
+                name={valueList.inputName}
+                placeholder={valueList.inputPlaceHolder}
+                value={valueList.inputValue}
+                onChange={valueList.inputOnChange}
+                required
+              />
+            </div>
+          ))}
+
+          <span className="Password__Message">{msg}</span>
+          <div className="Submit__Form-Wrapper">
+            <div></div>
+            <button
+              className="Plantit__Register-Button"
+              type="button"
+              onClick={onClickSubmitHandler}
+            >
+              회원가입
+            </button>
+            <div></div>
           </div>
-
-          <div>
-            <label htmlFor="name">
-              <FontAwesomeIcon icon={faUserAlt} />
-            </label>
-            <input
-              type="text"
-              name="name"
-              placeholder="닉네임을 입력해주세요."
-              value={name}
-              onChange={onChangeInputHandler}
-              required
-            ></input>
-          </div>
-
-          <div>
-            <label htmlFor="password">
-              <FontAwesomeIcon icon={faKey} />
-            </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="비밀번호를 입력해주세요."
-              value={password}
-              onChange={onChangeInputHandler}
-              required
-            ></input>
-          </div>
-
-          <div>
-            <label htmlFor="repeatPassword">
-              <FontAwesomeIcon icon={faKey} />
-            </label>
-            <input
-              type="password"
-              name="repeatPassword"
-              placeholder="비밀번호를 한번 더 입력해주세요."
-              value={repeatPassword}
-              onChange={onChangeInputHandler}
-              required
-            ></input>
-          </div>
-
-          <span>{msg}</span>
-
-          <button type="submit" onClick={onClickSubmitHandler}>
-            회원가입
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   );
