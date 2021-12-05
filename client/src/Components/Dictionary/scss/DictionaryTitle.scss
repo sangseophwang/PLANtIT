@@ -1,0 +1,23 @@
+@import '/src/Components/Common/scss/mixins';
+
+.Dict__Text-Container {
+  margin: 8rem auto 5rem auto;
+  @include responsive('tablet') {
+    margin-top: 2rem;
+    width: 95%;
+  }
+  @include responsive('mobile__small') {
+    margin: 0 auto 3rem auto;
+    width: 100%;
+  }
+  .Dict__Text {
+    font-size: 5rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.2;
+    @include responsive('mobile') {
+      font-size: 8vw;
+      line-height: 1.5;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost/api/';
+const BASE_URL =
+  'http://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api/';
 
 function Community_Post(endpoint: string, data: any) {
   return axios.post(BASE_URL + endpoint, data, {

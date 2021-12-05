@@ -1,5 +1,4 @@
-import React from 'react';
-import 'Components/Common/scss/Modal.scss';
+import 'Components/Dictionary/scss/DictionaryModal.scss';
 import CloseIcon from 'Assets/CloseIcon.svg';
 import { Link } from 'react-router-dom';
 

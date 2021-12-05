@@ -1,17 +1,19 @@
+@import '/src/Components/Common/scss/variables';
+
 @mixin responsive($device) {
-  @if $device == "tablet__large" {
+  @if $device == 'tablet__large' {
     @media screen and (max-width: 1280px) {
       @content;
     }
-  } @else if $device == "tablet" {
+  } @else if $device == 'tablet' {
     @media screen and (max-width: 1024px) {
       @content;
     }
-  } @else if $device == "mobile" {
+  } @else if $device == 'mobile' {
     @media screen and (max-width: 768px) {
       @content;
     }
-  } @else if $device == "mobile__small" {
+  } @else if $device == 'mobile__small' {
     @media screen and (max-width: 500px) {
       @content;
     }
@@ -31,10 +33,10 @@
     text-align: left;
     width: 120px;
     left: 60px;
-    @include responsive("tablet") {
+    @include responsive('tablet') {
       left: 30px;
     }
-    @include responsive("mobile") {
+    @include responsive('mobile') {
       left: 10px;
     }
   }
@@ -45,7 +47,7 @@
     padding-top: 17px;
     font-size: 15px;
     width: 100%;
-    @include responsive("tablet") {
+    @include responsive('tablet') {
       font-size: 12px;
       padding-top: 10px;
     }
@@ -53,7 +55,7 @@
   .swiper-pagination-bullet-active {
     color: #00b564;
     font-size: 18px;
-    @include responsive("tablet") {
+    @include responsive('tablet') {
       font-size: 14px;
     }
   }
@@ -67,5 +69,47 @@
     left: 28%;
     top: 20px;
     display: block;
+  }
+}
+
+@mixin Banner() {
+  .Banner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    cursor: pointer;
+    @include responsive('tablet') {
+      height: 50vh;
+    }
+    &:hover {
+      > p {
+        transition: 0.5s;
+        color: $LightGreen;
+      }
+    }
+    > img {
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      object-fit: cover;
+    }
+    > p {
+      width: 100%;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-size: 5vw;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      transition: 0.5s;
+      @include responsive('tablet') {
+        font-size: 9vw;
+      }
+    }
   }
 }

@@ -1,6 +1,7 @@
 import 'Components/Home/scss/Fourth.scss';
-import Video from 'Assets/Home_Fourth.mp4';
+import Video from 'Assets/Home/Home_Fourth.mp4';
 import { Link } from 'react-router-dom';
+
 export default function Fourth(): JSX.Element {
   return (
     <section className="Fourth__Container">
