@@ -1,8 +1,8 @@
-# PLANtIT - Backend 파트 소개 🚀
+<h1> PLANtIT - Backend 파트 소개 🚀 </h1>
 
-## 💻 기술 스택
+<h2> 💻 기술 스택 </h2>
 
-<br/>
+<br>
 <img alt="django" src="https://img.shields.io/badge/-Django-092E20?&style=flat-square&logo=django&logoColor=white"/>
 <img alt="jwt" src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white"/>
 <img alt="mysql" src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/>
@@ -10,11 +10,13 @@
 <img alt="aws-s3" src="https://img.shields.io/badge/AWS_S3-569A31?&style=flat-square&logo=amazons3&logoColor=white"/>
 <img alt="gunicorn" src="https://img.shields.io/badge/Gunicorn-499848?style=flat-square&logo=gunicorn&logoColor=white"/>
 <img alt="nginx" src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white"/>
-<br/>
 <img alt="redis" src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white"/>
-<br/>
 
-## 🌲 디렉토리 구조
+</br>
+</br>
+
+
+<h2> 🌲 디렉토리 구조 </h2>
 
 ```bash
 server
@@ -49,7 +51,7 @@ API 디렉토리 기본 구조
 
 <br/>
 
-## ⚙️ 주요 기능
+<h2> ⚙️ 주요 기능 </h2>
 
 1. 자체 로그인 / 로그아웃 / 회원가입, 소셜 로그인
 2. JWT 기반 유저 인증
@@ -58,7 +60,9 @@ API 디렉토리 기본 구조
 5. Redis를 이용한 DB Caching
 6. 이미지 파일 관리를 위한 AWS S3 연동
 
-## 👨‍💻 백엔드 멤버
+<br>
+
+<h2> 👨‍💻 백엔드 멤버 </h2>
 <table>
     <tr align="center">
         <td style="min-width: 100px;">
