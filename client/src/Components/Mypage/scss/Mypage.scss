@@ -52,14 +52,69 @@
       }
 
       .Info__Area {
-        display: flex;
-        flex-direction: column;
+        display: block;
+        // flex-direction: column;
         padding-left: 24px;
         border-left: 1px solid rgb(233, 236, 239);
 
         > h2 {
           font-size: 2.25rem;
           line-height: 1.5;
+          margin: 8px;
+        }
+
+        > p {
+          margin: 8px;
+        }
+
+        > button {
+          margin: 8px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #88bb61;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          color: white;
+          font-weight: bold;
+          font-size: 1rem;
+          padding: 0px 1.25rem;
+          height: 2rem;
+        }
+      }
+
+      .Change__Value {
+        > input {
+          margin: 8px;
+          display: block;
+          border: 1px solid rgb(222, 226, 230);
+          background: white;
+          color: rgb(73, 80, 87);
+          line-height: 1rem;
+          outline: none;
+          border-radius: 4px;
+          width: 100%;
+        }
+
+        .Change__Button-Wrapper {
+          display: flex;
+          margin-top: 1.5rem;
+          justify-content: flex-end;
+          > button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #88bb61;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0px 1.25rem;
+            height: 2rem;
+          }
         }
       }
     }
@@ -81,7 +136,4 @@
       height: 2rem;
     }
   }
-
-
-  
 }

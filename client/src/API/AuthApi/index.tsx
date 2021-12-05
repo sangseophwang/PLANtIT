@@ -13,10 +13,12 @@ const naverClientId = 'ioHK_g45Ha9ZWdoNfune';
 const googleClientId =
   '981453120514-lh9cf035sa3pbhan5qa8fjr9eg85idot.apps.googleusercontent.com';
 
-const plantitServerUrl = 'http://localhost/api';
+// const plantitServerUrl = 'http://localhost/api';
+
+const BASE_URL = `http://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api`;
 
 const requestDjango = axios.create({
-  baseURL: 'http://localhost/api/',
+  baseURL: BASE_URL,
   headers: { 'Content-Type': 'application/json' },
 });
 
@@ -32,7 +34,7 @@ function authRequestPost(
   _contentTypeValue: string,
   data: any,
 ) {
-  return axios.post(plantitServerUrl + _endpoint, data, {
+  return axios.post(BASE_URL + _endpoint, data, {
     headers: {
       'Content-Type': _contentTypeValue,
       Authorization: `${sessionStorage.getItem('access_token')}`,
@@ -45,7 +47,7 @@ function authRequestGet(
   _contentTypeValue: string,
   _query: string,
 ) {
-  return axios.get(plantitServerUrl + _endpoint + _query, {
+  return axios.get(BASE_URL + _endpoint + _query, {
     headers: {
       'Content-Type': _contentTypeValue,
       Authorization: `${sessionStorage.getItem('access_token')}`,

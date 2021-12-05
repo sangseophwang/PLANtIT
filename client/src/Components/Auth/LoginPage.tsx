@@ -41,8 +41,10 @@ export default function LoginPage(): JSX.Element {
   }, [navigate, tokenParam]);
 
   function onChangeInputHandler(event: {
-    target: { name: any; value: string };
+    preventDefault: () => void;
+    target: { name: any; value: any };
   }): void {
+    event.preventDefault();
     const [name, value] = [event.target.name, event.target.value];
     switch (name) {
       case 'id':
@@ -50,7 +52,6 @@ export default function LoginPage(): JSX.Element {
         break;
       case 'password':
         setPassword(value);
-
         break;
     }
   }

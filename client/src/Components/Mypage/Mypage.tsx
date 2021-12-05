@@ -1,27 +1,16 @@
 import { useNavigate } from 'react-router-dom';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { authApi } from 'API/AuthApi';
 
 import 'Components/Mypage/scss/Mypage.scss';
-
-const joy =
-  'https://raw.githubusercontent.com/baeharam/Redvelvet-Fansite/master/images/about-joy.jpg';
+import FirstImage from 'Assets/FirstProfileImage.png';
 
 export default function MypageMain(): JSX.Element {
   const navigate = useNavigate();
   const [nickname, setNickname] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const btnRef = useRef<HTMLButtonElement>(null);
-
-  let imgElement = (
-    <img
-      className="Thumbnail__Area-img"
-      src={imageUrl}
-      alt=""
-    ></img>
-  );
+  const [change, setChange] = useState(false);
 
   useEffect(() => {
     authApi
@@ -35,7 +24,9 @@ export default function MypageMain(): JSX.Element {
         response.data.message === 'success'
           ? (setNickname(response.data.nickname),
             setDescription(response.data.description),
-            setImageUrl(response.data.image))
+            response.data.image === null
+              ? setImageUrl(FirstImage)
+              : setImageUrl(response.data.image))
           : alert('message is not "success"');
 
         if (response.data.new_token !== null) {
@@ -53,7 +44,7 @@ export default function MypageMain(): JSX.Element {
       .catch(error => {
         console.log('error: ', error);
       });
-  }, [imageUrl]);
+  }, []);
 
   function onSubmitDeRegister(event: any): void {
     event.preventDefault();
@@ -75,31 +66,36 @@ export default function MypageMain(): JSX.Element {
       });
   }
 
-  function onSubmitChangeUser(event: any): void {
+  function onChangeInputHandler(event: {
+    preventDefault: () => void;
+    target: { name: any; value: any };
+  }): void {
     event.preventDefault();
-    console.log('event: ', event.target.name);
-    let updateNickname = 'test nickname';
-    let updateDescription = 'test description';
-
-    switch (event.target.name) {
-      case 'ChangeNickname':
-        updateDescription = description;
+    const [name, value] = [event.target.name, event.target.value];
+    switch (name) {
+      case 'displayName':
+        setNickname(value);
         break;
-      case 'ChangeDescription':
-        updateNickname = nickname;
+      case 'displayDescription':
+        setDescription(value);
         break;
     }
-    const testData = {
-      nickname: updateNickname,
-      description: updateDescription,
+  }
+
+  function onSubmitChangeValue(event: any): void {
+    event.preventDefault();
+
+    const data = {
+      nickname: nickname,
+      description: description,
     };
+
     authApi
-      .authRequestPost('/user/update', 'application/json', testData)
+      .authRequestPost('/user/update', 'application/json', data)
       .then(response => {
         console.log('response: ', response);
         console.log('response.data: ', response.data);
 
-        // if (response.data.new_token === null) {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         response.data.message === 'success'
           ? (setNickname(response.data.nickname),
@@ -122,12 +118,13 @@ export default function MypageMain(): JSX.Element {
         console.log('error', error);
         alert('error');
       });
+
+    setChange(false);
   }
 
   function onChangeImageInput(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
 
-    setIsLoading(true);
     if (e.target.files) {
       const uploadFile = e.target.files[0];
       console.log('uploadFile: ', uploadFile);
@@ -144,11 +141,9 @@ export default function MypageMain(): JSX.Element {
             imageUrl === response.data.image_url,
           );
 
-          // setImageUrl('');
-
-          
           setImageUrl(response.data.image_url);
-          // window.location.replace('/mypage');
+          setImageUrl('');
+          window.location.replace('/mypage');
           // eslint-disable-next-line @typescript-eslint/no-unused-expressions
 
           if (response.data.new_token !== null) {
@@ -159,7 +154,6 @@ export default function MypageMain(): JSX.Element {
           console.log('error: ', error);
         });
     }
-    setIsLoading(false);
   }
 
   return (
@@ -167,7 +161,7 @@ export default function MypageMain(): JSX.Element {
       <main>
         <section>
           <div className="Thumbnail__Area">
-            {!isLoading && imgElement}
+            <img className="Thumbnail__Area-img" src={imageUrl} alt="123"></img>
 
             <form>
               <label className="Upload__button" htmlFor="input-file">
@@ -183,10 +177,50 @@ export default function MypageMain(): JSX.Element {
             </form>
           </div>
 
-          <div className="Info__Area">
-            <h2>{nickname !== null ? nickname : '닉네임'}</h2>
-            <p>{description !== null ? description : '자기 소개'}</p>
-          </div>
+          {change === false ? (
+            <div className="Info__Area">
+              <h2>{nickname !== null ? nickname : '닉네임'}</h2>
+              <p>{description !== null ? description : '자기 소개'}</p>
+              <button
+                type="submit"
+                name="Change"
+                onClick={event => {
+                  event.preventDefault();
+                  setChange(true);
+                }}
+              >
+                수정
+              </button>
+            </div>
+          ) : (
+            <div className="Info__Area">
+              <form className="Change__Value">
+                <input
+                  className="Change__Name"
+                  name="displayName"
+                  placeholder="닉네임"
+                  value={nickname}
+                  onChange={onChangeInputHandler}
+                ></input>
+                <input
+                  className="Change__Description"
+                  name="displayDescription"
+                  placeholder="한 줄 소개 (50자 이내)"
+                  value={description}
+                  onChange={onChangeInputHandler}
+                ></input>
+                <div className="Change__Button-Wrapper">
+                  <button
+                    className="Change__Button"
+                    type="submit"
+                    onClick={onSubmitChangeValue}
+                  >
+                    저장
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
         </section>
 
         <section></section>
@@ -212,27 +246,7 @@ export default function MypageMain(): JSX.Element {
         <button type="submit" name="DeRegister" onClick={onSubmitDeRegister}>
           회원탈퇴
         </button>
-
-        <button
-          type="submit"
-          name="ChangeNickname"
-          onClick={onSubmitChangeUser}
-        >
-          닉네임 변경
-        </button>
-
-        <button
-          type="submit"
-          name="ChangeDescription"
-          onClick={onSubmitChangeUser}
-        >
-          내용 변경
-        </button>
       </form>
-
-
-
-      
     </div>
   );
 }
