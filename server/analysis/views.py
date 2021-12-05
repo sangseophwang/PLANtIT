@@ -38,7 +38,7 @@ def analysis(request):
         img_url = upload_analysis_image(image=img)
         name = ai.disease(img_url)[0]
         if name == '정상':
-            return Response(data='six-man', status=200)
+            return Response(data={'data': 'six-man'}, status=200)
         disease = list(Disease.objects.filter(name=name).values())
         
         _pesticides = []
