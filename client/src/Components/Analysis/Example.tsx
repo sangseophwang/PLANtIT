@@ -1,11 +1,11 @@
 import React from 'react';
 import 'Components/Analysis/scss/Example.scss';
-import Good1 from 'Assets/Example/Good/good1.jpeg';
-import Good2 from 'Assets/Example/Good/good2.jpg';
-import Good3 from 'Assets/Example/Good/good3.jpg';
-import Bad1 from 'Assets/Example/Bad/bad1.jpeg';
-import Bad2 from 'Assets/Example/Bad/bad2.jpg';
-import Bad3 from 'Assets/Example/Bad/bad3.jpg';
+import Good1 from 'Assets/Analysis_Result/Good/good1.jpeg';
+import Good2 from 'Assets/Analysis_Result/Good/good2.jpg';
+import Good3 from 'Assets/Analysis_Result/Good/good3.jpg';
+import Bad1 from 'Assets/Analysis_Result/Bad/bad1.jpeg';
+import Bad2 from 'Assets/Analysis_Result/Bad/bad2.jpg';
+import Bad3 from 'Assets/Analysis_Result/Bad/bad3.jpg';
 
 const Example = () => {
   return (

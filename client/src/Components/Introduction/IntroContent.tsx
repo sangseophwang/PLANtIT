@@ -1,4 +1,4 @@
-import IntroductionList from 'Components/Common/Variables/IntroductionList';
+import IntroductionList from 'Variables/IntroductionList';
 import 'Components/Introduction/scss/IntroContent.scss';
 
 export default function IntroContent(): JSX.Element {
