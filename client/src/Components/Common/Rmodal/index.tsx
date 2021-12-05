@@ -59,10 +59,12 @@ const Rmodal = ({ setOpenModal, data }: any) => {
                 <span style={{ fontWeight: 'bold' }}>유효성분: </span>
                 {data.component}
               </div>
+
               <div className="Pesticide__Feature">
                 <span style={{ fontWeight: 'bold' }}>계통: </span>
                 {data.kind}
               </div>
+
               <div className="Pesticide__Feature">
                 <span style={{ fontWeight: 'bold' }}>포장단위: </span>
                 {data.packing_unit}
