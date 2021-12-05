@@ -2,8 +2,14 @@
 import React, { useEffect } from 'react';
 import 'Components/Common/scss/Map.scss';
 
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
+
 // 전체지도 생성
-export default function CenterMap(props) {
+export default function CenterMap(props: any): JSX.Element {
   useEffect(() => {
     mapscript();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -11,11 +17,11 @@ export default function CenterMap(props) {
 
   const imageSrc = 'https://ifh.cc/g/xP2IRR.png'; // 마커이미지의 주소.
 
-  const imageSize = new kakao.maps.Size(35, 40); // 마커이미지의 크기
-  const imageOption = { offset: new kakao.maps.Point(0, 22) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+  const imageSize = new window.kakao.maps.Size(35, 40); // 마커이미지의 크기
+  const imageOption = { offset: new window.kakao.maps.Point(0, 22) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
   // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-  const markerImage = new kakao.maps.MarkerImage(
+  const markerImage = new window.kakao.maps.MarkerImage(
     imageSrc,
     imageSize,
     imageOption,
@@ -28,22 +34,22 @@ export default function CenterMap(props) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         const options = {
-          center: new kakao.maps.LatLng(
+          center: new window.kakao.maps.LatLng(
             position.coords.latitude,
             position.coords.longitude,
           ),
           level: 8,
         };
 
-        const map = new kakao.maps.Map(container, options);
+        const map = new window.kakao.maps.Map(container, options);
 
-        props.data.forEach(el => {
+        props.data.forEach((el: { lat: any; lng: any; name: any }) => {
           // 마커를 생성.
-          let marker = new kakao.maps.Marker({
+          let marker = new window.kakao.maps.Marker({
             // 마커가 표시 될 지도
             map: map,
             // 마커가 표시 될 위치
-            position: new kakao.maps.LatLng(el.lat, el.lng),
+            position: new window.kakao.maps.LatLng(el.lat, el.lng),
             // 마커에 hover시 나타날 title
             title: el.name,
             // 이미지 변경
@@ -52,13 +58,13 @@ export default function CenterMap(props) {
           });
 
           // 인포윈도우를 생성.
-          let infowindow = new kakao.maps.InfoWindow({
+          let infowindow = new window.kakao.maps.InfoWindow({
             removable: true,
             zIndex: 1,
           });
 
           // 마커에 클릭이벤트를 등록
-          kakao.maps.event.addListener(marker, 'click', function () {
+          window.kakao.maps.event.addListener(marker, 'click', function () {
             // 마커 위에 인포윈도우를 표시
             infowindow.setContent(
               '<div style="padding:5px;font-size:12px;text-align:center">' +
@@ -74,15 +80,15 @@ export default function CenterMap(props) {
     } else {
       console.log('geolocation을 사용 X');
       const options = {
-        center: new kakao.maps.LatLng(37.5043, 127.04925),
+        center: new window.kakao.maps.LatLng(37.5043, 127.04925),
         level: 12,
       };
-      const map = new kakao.maps.Map(container, options);
+      const map = new window.kakao.maps.Map(container, options);
 
-      props.data.forEach(el => {
-        new kakao.maps.Marker({
+      props.data.forEach((el: { lat: any; lng: any; name: any }) => {
+        new window.kakao.maps.Marker({
           map: map,
-          position: new kakao.maps.LatLng(el.lat, el.lng),
+          position: new window.kakao.maps.LatLng(el.lat, el.lng),
           title: el.name,
           image: markerImage,
         });
