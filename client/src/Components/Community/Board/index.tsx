@@ -5,6 +5,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CommunityApi } from 'API/CommunityApi';
+import { useCookies } from "react-cookie";
 import Disqus from 'disqus-react';
 import Navigation from 'Components/Common/Navigation';
 import ProgressBar from 'Components/Common/ProgressBar';
@@ -19,26 +20,33 @@ export default function Board(): JSX.Element {
   const [data, setData] = useState<any>();
   const [isAuthor, setIsAuthor] = useState<Boolean>(false);
   const modifyProps = [data, item];
+  const [cookies, setCookie, removeCookie] = useCookies(['plant-blog']);
 
   // 게시글 번호에 맞는 글 불러오기
   useEffect(() => {
     async function getPost() {
-      await CommunityApi.Get_Page(`blog/${item}`).then(response => {
+      
+      await CommunityApi.Get_Page(`blog/${item}`, `${cookies['plant-blog']}`).then(response => {
         if (response.data.new_token !== null) {
           console.log('새로운 토큰이 도착했습니다!');
           sessionStorage.removeItem('access_token');
           sessionStorage.setItem('access_token', response.data.new_token);
           setData(response.data);
           setIsAuthor(response.data.is_author);
+          setCookie('plant-blog', item)
+    
         } else {
           console.log('뉴토큰이 없습니다.');
           setData(response.data);
           setIsAuthor(response.data.is_author);
+          setCookie('plant-blog', item)
         }
       });
     }
     getPost();
+    
   }, [item]);
+
 
   // 게시글 삭제
   async function onDeleteHandler() {
