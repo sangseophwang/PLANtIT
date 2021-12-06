@@ -2,7 +2,6 @@ import json
 import random
 
 from django.core.paginator import Paginator
-from django.template import response
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -10,6 +9,7 @@ from .queryset import find_blog_by_id, create_blog, update_blog, remove_blog, ge
 from user.queryset import find_user_by_id
 from common.token import validate_token
 from common.s3 import get_thumbnail_url, upload_blog_image
+
 # Create your views here.
 
 @api_view(['GET'])
@@ -18,7 +18,11 @@ def get_blog(request, blog_id):
     
     if not blog_detail:
         return Response(data="Not Found Blog")
-    
+
+    if request.headers['views'] == 'undefined' or request.headers['views'] != str(blog_id):
+        blog_detail.view += 1
+        blog_detail.save()
+
     is_author = False
     token_validation = None
     if 'HTTP_AUTHORIZATION' in request.META:
@@ -40,7 +44,7 @@ def get_blog(request, blog_id):
         'is_author': is_author,
         'new_token': token_validation.data['new_token'] if token_validation is not None and 'new_token' in token_validation.data else None
     }
-        
+    
     return Response(data=response_data, status=200)
     
 @api_view(['POST'])
