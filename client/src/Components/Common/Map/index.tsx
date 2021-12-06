@@ -69,7 +69,7 @@ export default function CenterMap(props: any): JSX.Element {
             infowindow.setContent(
               '<div style="padding:5px;font-size:12px;text-align:center">' +
                 el.name +
-                '</div>',
+                `</div><a href="https://map.kakao.com/link/to/${el.name},${el.lat},${el.lng}" style="text-decoration:none;text-align:center;display:block;padding:1rem;color: #5085BB;">길 찾기</a>`,
             );
             infowindow.open(map, marker);
           });
