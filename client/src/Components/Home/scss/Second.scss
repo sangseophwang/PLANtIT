@@ -1,83 +1,203 @@
 @import '/src/Components/Common/scss/mixins';
-
+@import '/src/Components/Common/scss/variables';
 .Second__Container {
   @include Container__Form();
-  margin-top: -30px;
-  @include responsive('tablet') {
-    align-items: flex-start;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0px;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include responsive('mobile') {
+    margin-left: 1rem;
   }
-  .Second__Background {
-    display: none;
-  }
-  @include responsive('tablet') {
-    .Second__Background {
-      width: 100%;
-      height: 100vh;
-      display: inline;
+  .Second__Wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    .Tag-Container {
       position: absolute;
-      z-index: -999;
-      object-fit: cover;
+      top: 40%;
+      left: 20%;
+      width: 60%;
+      max-width: 900px;
+      display: grid;
+      grid-template-columns: repeat(10, minmax(0, 1fr));
+      @include responsive('tablet') {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 0.5rem;
+        left: 17%;
+        top: 39%;
+      }
+      @include responsive('mobile__small') {
+        left: 15%;
+        width: 75%;
+        gap: 0.2rem;
+      }
+      .Crops__Tag {
+        font-size: 1rem;
+        color: #a6a6a6;
+        margin: 0 auto;
+        cursor: pointer;
+        background-color: white;
+        border: none;
+        transition: 0.5s;
+        @include responsive('tablet') {
+          font-size: 1.3rem;
+        }
+        @include responsive('mobile') {
+          font-size: 1rem;
+        }
+        @include responsive('mobile__small') {
+          font-size: 0.7rem;
+        }
+        &:hover {
+          color: tomato;
+          transition: 0.5s;
+          font-weight: 700;
+        }
+      }
     }
   }
-  .Second__Contents {
+}
+
+// 검색창
+.HSearch__Container {
+  position: absolute;
+  top: 45%;
+  left: 20%;
+  border: 3px solid #68d391;
+  width: 60%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px;
+  @include responsive('tablet') {
+    left: 17%;
+  }
+  @include responsive('mobile__small') {
+    left: 15%;
+    width: 75%;
+  }
+
+  .HSearch__Input {
     display: flex;
-    width: 60%;
-    height: 40vh;
-    @include responsive('tablet') {
-      height: 75vh;
-      width: 85%;
-    }
-    .Second__Image {
-      display: flex;
-      justify-content: center;
-      > img {
-        width: 300px;
-        height: fit-content;
-      }
+    width: 100%;
+    align-items: center;
+    .HSearch__Icon {
+      color: #68d391;
+      width: 1.5rem;
+      height: 1.5rem;
+      padding: 0.3rem;
+      margin-right: 10px;
       @include responsive('tablet') {
-        display: none;
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+      @include responsive('mobile') {
+        width: 2rem;
+        height: 2rem;
+      }
+      @include responsive('mobile__small') {
+        width: 1.5rem;
+        height: 1.5rem;
       }
     }
-    .Second__Text {
-      margin-left: 30px;
+    .HClose__Icon {
+      color: #68d391;
+      width: 1.4rem;
+      height: 1.4rem;
+      padding: 0.3rem;
+      cursor: pointer;
+      margin-right: 20px;
       @include responsive('tablet') {
-        text-align: left;
-        color: tomato;
-        width: 100%;
-        height: 63vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
+        width: 2.5rem;
+        height: 2.5rem;
       }
-      .Second__Title {
-        > h1 {
-          font-weight: 900;
-          line-height: 1.3;
-          font-size: 4vw;
-          @include responsive('tablet') {
-            font-size: 11vw;
-            line-height: 1.1;
-            text-align: left;
-          }
-        }
+      @include responsive('mobile') {
+        width: 2rem;
+        height: 2rem;
       }
-      > p {
-        font-size: 14px;
-        margin-top: 30px;
-        color: gray;
-        font-weight: 500;
-        line-height: 2;
-        @include responsive('tablet') {
-          width: 70%;
+      @include responsive('mobile__small') {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+    > input {
+      font-size: 1.2rem;
+      color: $LightGreen;
+      font-weight: 600;
+      width: 100%;
+      padding: 10px 1.2rem;
+      border: none;
+      text-decoration: none;
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      border-radius: 12px;
+      &::placeholder {
+        color: lightgray;
+        transition: 0.5s;
+      }
+      &:focus {
+        &::placeholder {
           color: white;
-          font-size: 2.5vw;
-          line-height: 1.5;
+          transition: 0.5s;
         }
+      }
+      @include responsive('tablet') {
+        font-size: 1.5rem;
+        padding-left: 1rem;
+      }
+      @include responsive('mobile') {
+        font-size: 1rem;
+        padding: 10px 0.5rem;
+      }
+      @include responsive('mobile__small') {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+      }
+    }
+  }
+}
+
+.Data__Result {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 13rem;
+  overflow: hidden;
+  text-decoration: none;
+  @include responsive('mobile') {
+    height: 12rem;
+  }
+  .Data__Item {
+    font-size: 1rem;
+    font-weight: 500;
+    color: darkslategray;
+    width: 100%;
+    line-height: 2;
+    padding-left: 2rem;
+    transition: 0.3s;
+    @include responsive('tablet') {
+      font-size: 1.1rem;
+      padding-left: 1rem;
+    }
+    @include responsive('mobile') {
+      font-size: 0.9rem;
+      padding: 0.1rem 0.5rem;
+    }
+    .Search__Sub-Icon {
+      width: 1.2rem;
+      margin-right: 1rem;
+      color: #8c8c8c;
+      @include responsive('mobile') {
+        width: 0.8rem;
+      }
+    }
+    &:hover {
+      transition: 0.3s;
+      color: $Green;
+      .Search__Sub-Icon {
+        color: $Green;
       }
     }
   }

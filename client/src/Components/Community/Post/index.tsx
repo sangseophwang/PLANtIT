@@ -19,7 +19,7 @@ export default function Post(): JSX.Element {
       setTitle(location.state[0].title);
       setContents(location.state[0].content);
     }
-  }, []);
+  }, [location]);
 
   // 게시글 등록
   const onSubmitHandler = () => {
