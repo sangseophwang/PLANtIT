@@ -22,7 +22,9 @@ export default function Dictionary(): JSX.Element {
     const DictionaryResponse = await DictionaryApi.Get_Dictionary('disease')
       .then(response => {
         setPathology(response.data);
-        toast.success('질병도감에 오신 것을 환영합니다!');
+        toast.success('질병도감에 오신 것을 환영합니다!', {
+          position: toast.POSITION.TOP_CENTER,
+        });
       })
       .catch(e => {
         setError(e);

@@ -4,7 +4,6 @@ import Second from 'Components/Home/Second';
 import Third from 'Components/Home/Third';
 import Fourth from 'Components/Home/Fourth';
 import Fifth from 'Components/Home/Fifth';
-import Sixth from 'Components/Home/Sixth';
 import SearchHome from 'Variables/SearchHome';
 import SwiperCore, { Pagination, Mousewheel } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,7 +15,6 @@ SwiperCore.use([Mousewheel, Pagination]);
 
 const bullet = [
   '- 플래닛',
-  '- 소개',
   '- 질병도감',
   '- 인공지능',
   '- 커뮤니티',
@@ -34,6 +32,7 @@ export default function Home(): JSX.Element {
         spaceBetween={30}
         mousewheel={true}
         speed={1000}
+        shortSwipes={false}
         pagination={{
           clickable: true,
           renderBullet: function (index, className) {
@@ -52,19 +51,16 @@ export default function Home(): JSX.Element {
           <First />
         </SwiperSlide>
         <SwiperSlide>
-          <Second />
+          <Second data={SearchHome} />
         </SwiperSlide>
         <SwiperSlide>
-          <Third data={SearchHome} />
+          <Third />
         </SwiperSlide>
         <SwiperSlide>
           <Fourth />
         </SwiperSlide>
         <SwiperSlide>
           <Fifth />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Sixth />
         </SwiperSlide>
       </Swiper>
     </div>

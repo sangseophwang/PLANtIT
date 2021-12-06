@@ -1,10 +1,14 @@
 import { useEffect } from 'react';
 import 'Components/Dictionary/scss/DictionaryModal.scss';
-import CloseIcon from 'Assets/CloseIcon.svg';
 import { Link } from 'react-router-dom';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //@ts-ignore
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+library.add(faTimes);
 
 export default function Modal({ setOpenModal, data }: any): JSX.Element {
   useEffect(() => {
@@ -25,7 +29,7 @@ export default function Modal({ setOpenModal, data }: any): JSX.Element {
             wordBreak: 'keep-all',
           }}
         >
-          <div style={{ marginRight: '0.2rem' }}>✔</div>
+          <div style={{ marginRight: '0.2rem' }}>🌱</div>
           {data.prevention[i]}
           <br />
         </span>,
@@ -51,14 +55,13 @@ export default function Modal({ setOpenModal, data }: any): JSX.Element {
         >
           <div className="Modal__CloseBtn">
             <Link to="">
-              <img
+              <FontAwesomeIcon
                 className="Modal__Icon"
-                src={CloseIcon}
-                alt="CloseIcon"
                 onClick={() => {
                   setOpenModal(false);
                   document.body.style.overflow = 'scroll';
                 }}
+                icon={faTimes}
               />
             </Link>
           </div>

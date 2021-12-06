@@ -100,6 +100,7 @@ export default function Board(): JSX.Element {
         </div>
         <button
           className="Board__Back"
+          // eslint-disable-next-line no-sequences
           onClick={() => (window.scrollTo(0, 0), navigate('/community'))}
         >
           뒤로 가기
