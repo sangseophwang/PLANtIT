@@ -67,9 +67,9 @@ export default function CenterMap(props: any): JSX.Element {
           window.kakao.maps.event.addListener(marker, 'click', function () {
             // 마커 위에 인포윈도우를 표시
             infowindow.setContent(
-              '<div style="padding:5px;font-size:12px;text-align:center">' +
+              '<div className="" style="padding:5px;font-size:1rem;text-align:center;margin:1rem auto; width:100%">' +
                 el.name +
-                `</div><a href="https://map.kakao.com/link/to/${el.name},${el.lat},${el.lng}" style="text-decoration:none;text-align:center;display:block;padding:1rem;color: #5085BB;">길 찾기</a>`,
+                `</div><a href="https://map.kakao.com/link/to/${el.name},${el.lat},${el.lng}" style="text-decoration:none;text-align:center;display:block;margin:1rem auto;color: #5085BB;">길 찾기</a>`,
             );
             infowindow.open(map, marker);
           });
