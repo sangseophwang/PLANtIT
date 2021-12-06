@@ -15,20 +15,22 @@ const Upload = () => {
   const [error, setError] = useState(null);
   // const [result, setResult] = useState('');
 
-  const ImageInput = useRef(null);
+  const ImageInput = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   const UploadText = '잠시만 기다려 주세요';
   const ErrorText = 'API 에러가 발생했습니다';
 
   // 이미지 업로더 코드
-  function ImageChangehandler(e) {
+  function ImageChangehandler(e: any) {
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
 
       reader.onload = function (e) {
-        setImage(e.target.result);
-        setIsUploaded(true);
+        if (e.target) {
+          setImage(e.target.result as string);
+          setIsUploaded(true);
+        }
       };
 
       reader.readAsDataURL(e.target.files[0]);
@@ -43,8 +45,10 @@ const Upload = () => {
 
     const formData = new FormData();
 
-    const uploadFile = ImageInput.current.files[0];
-    formData.append('files', uploadFile);
+    if (ImageInput.current && ImageInput.current.files) {
+      const uploadFile = ImageInput.current.files[0];
+      formData.append('files', uploadFile);
+    }
     console.log(formData.get('files'));
 
     setError(null);
@@ -141,7 +145,7 @@ const Upload = () => {
                   alt="CloseIcon"
                   onClick={() => {
                     setIsUploaded(false);
-                    setImage(null);
+                    setImage('');
                   }}
                 />
                 {

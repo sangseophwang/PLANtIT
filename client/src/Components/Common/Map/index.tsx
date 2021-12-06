@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 /* global kakao */
 import React, { useEffect } from 'react';
 import 'Components/Common/scss/Map.scss';
@@ -18,7 +19,7 @@ export default function CenterMap(props: any): JSX.Element {
   const imageSrc = 'https://ifh.cc/g/xP2IRR.png'; // 마커이미지의 주소.
 
   const imageSize = new window.kakao.maps.Size(35, 40); // 마커이미지의 크기
-  const imageOption = { offset: new window.kakao.maps.Point(0, 22) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+  const imageOption = { offset: new window.kakao.maps.Point(15, 0) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
   // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
   const markerImage = new window.kakao.maps.MarkerImage(
@@ -69,7 +70,7 @@ export default function CenterMap(props: any): JSX.Element {
             infowindow.setContent(
               '<div className="" style="padding:5px;font-size:1rem;text-align:center;margin:1rem auto; width:100%">' +
                 el.name +
-                `</div><a href="https://map.kakao.com/link/to/${el.name},${el.lat},${el.lng}" style="text-decoration:none;text-align:center;display:block;margin:1rem auto;color: #5085BB;">길 찾기</a>`,
+                `</div><a target='_blank' href="https://map.kakao.com/link/to/${el.name},${el.lat},${el.lng}" style="text-decoration:none;text-align:center;display:block;margin:1rem auto;color: #5085BB;">길 찾기</a>`,
             );
             infowindow.open(map, marker);
           });
