@@ -26,7 +26,7 @@ export default function MypageMain(): JSX.Element {
             setDescription(response.data.description),
             response.data.image === null
               ? setImageUrl(FirstImage)
-              : setImageUrl(response.data.image))
+              : setImageUrl(response.data.image + '?t=' + new Date().getTime()))
           : alert('message is not "success"');
 
         if (response.data.new_token !== null) {
@@ -141,9 +141,9 @@ export default function MypageMain(): JSX.Element {
             imageUrl === response.data.image_url,
           );
 
-          setImageUrl(response.data.image_url);
-          setImageUrl('');
-          window.location.replace('/mypage');
+          setImageUrl(response.data.image_url + '?t=' + new Date().getTime());
+
+          // window.location.replace('/mypage');
           // eslint-disable-next-line @typescript-eslint/no-unused-expressions
 
           if (response.data.new_token !== null) {
