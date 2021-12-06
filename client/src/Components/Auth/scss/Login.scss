@@ -1,17 +1,11 @@
 @import 'Components/Common/scss/_mixins.scss';
 
 .Component__Container {
-  padding-top: 12rem;
-  // padding-bottom: 1.5rem;
-
-  @include responsive('tablet') {
-    // max-width: 24rem;
-  }
-
-  @include responsive('mobile') {
-    // width: 90%;
-    padding-top: 4rem;
-  }
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
 
   // 전체 컨테이너
   .LoginPage__Container {
@@ -26,13 +20,18 @@
       rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 
     @include responsive('tablet') {
-      max-width: 24rem;
-      box-shadow: none;
+      // max-width: 24rem;
+      box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+        rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
     }
 
     @include responsive('mobile') {
-      width: 90%;
+      width: 60%;
       box-shadow: none;
+    }
+
+    @include responsive('mobile__small') {
+      width: 90%;
     }
 
     // 이미지 컨테이너
@@ -42,7 +41,7 @@
       background-color: rgb(39, 43, 33);
       width: 50%;
 
-      @include responsive('tablet') {
+      @include responsive('mobile') {
         display: none;
       }
 
@@ -57,7 +56,7 @@
       width: 50%;
       padding: 2rem;
 
-      @include responsive('tablet') {
+      @include responsive('mobile') {
         width: 100%;
       }
 
