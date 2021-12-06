@@ -1,17 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router';
-import 'Components/Community/scss/Board.scss';
-import Disqus from 'disqus-react';
-import Navigation from 'Components/Common/Navigation';
-import ProgressBar from 'Components/Common/ProgressBar';
+import { useNavigate, useLocation } from 'react-router';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CommunityApi } from 'API/CommunityApi';
 import { useCookies } from "react-cookie";
-
+import Disqus from 'disqus-react';
+import Navigation from 'Components/Common/Navigation';
+import ProgressBar from 'Components/Common/ProgressBar';
+import 'Components/Community/scss/Board.scss';
 
 library.add(faEye);
 

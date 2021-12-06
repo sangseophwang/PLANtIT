@@ -1,8 +1,8 @@
 import 'Components/Home/scss/Third.scss';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import CropsName from 'Assets/Dummy/CropsName.js';
-import ThridDummy from 'Assets/Dummy/Thrid.js';
+import TagList from 'Variables/TagList';
+import SearchHome from 'Variables/SearchHome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -30,13 +30,14 @@ export default function Third(props: any): JSX.Element {
     <section className="Third__Container">
       <div className="Third__Subcontainer">
         <div className="Tag-Container">
-          {CropsName.map((value: any) => (
+          {TagList.map((value: any) => (
             <button
+              key={value.id}
               className="Crops__Tag"
               onClick={() => {
                 const searchWord = value.class;
                 setClearWord(searchWord);
-                const newFilter = ThridDummy.filter((value: any) => {
+                const newFilter = SearchHome.filter((value: any) => {
                   return value.class.includes(searchWord);
                 });
                 setFilterData(newFilter);
@@ -55,7 +56,7 @@ export default function Third(props: any): JSX.Element {
               placeholder="작물의 이름을 검색해주세요"
               onChange={FilterOnChangeHandler}
             />
-            {filterData.length === 0 ? (
+            {clearWord.length === 0 ? (
               <FontAwesomeIcon icon={faSearch} className="HSearch__Icon" />
             ) : (
               <FontAwesomeIcon
@@ -69,6 +70,7 @@ export default function Third(props: any): JSX.Element {
             <div className="Data__Result">
               {filterData.map(option => (
                 <Link
+                  key={option.id}
                   to={`/Dictionary?name=${option.name}`}
                   style={{ textDecoration: 'none', color: 'black' }}
                 >

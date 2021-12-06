@@ -1,82 +1,168 @@
-@import '../../Common/scss/mixins';
+@import 'Components/Common/scss/_mixins.scss';
 
-.register__container {
-  @include Container__Form();
-  .register__contents {
-    width: 500px;
-    height: 700px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.Component__Container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 
-    @include responsive('mobile') {
-      width: 80%;
-      height: 70%;
-    }
+// 전체 컨테이너
+.RegisterPage__Container {
+  max-width: 55rem;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 
-    .register__logo {
-      width: 70%;
-      margin-bottom: 20px;
-    }
-
-    .register-form {
-      margin: 30px 0 -30px 0;
-      width: 70%;
-      height: 70%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-
-      > div {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        > label {
-          line-height: 1.9;
-          margin-right: 20px;
-          color: #88bb61;
-        }
-        > input {
-          line-height: 2.5;
-          width: 100%;
-          color: #88bb61;
-          text-align: center;
-          outline: none;
-          border-top: none;
-          border-left: none;
-          border-right: none;
-          border-bottom: 0.3px solid #88bb61;
-          &::placeholder {
-            color: gray;
-
-            @include responsive('mobile') {
-              font-size: 10px;
-            }
-          }
-          &:focus {
-            border-bottom: 0.3px solid #88bb61;
-            transition: ease-in-out 0.5s;
-          }
-          &:focus::placeholder {
-            color: gray;
-            transition: ease-in-out 0.3s;
-          }
-        }
-      }
-
-      > button {
-        margin-top: 0px;
-        width: 50%;
-        height: 10%;
-        background-color: #88bb61;
-        border: none;
-        border-radius: 15px;
-        cursor: pointer;
-        font-weight: 700;
-        color: white;
-      }
-    }
+  @include responsive('tablet') {
+    // box-shadow: none;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   }
+
+  @include responsive('mobile') {
+    width: 60%;
+    box-shadow: none;
+    
+  }
+
+  @include responsive('mobile__small') {
+    width: 90%;
+  }
+}
+
+.Side__Image-Wrapper {
+  display: block;
+  width: 50%;
+  background-size: cover;
+  background-color: yellowgreen;
+
+  @include responsive('tablet') {
+    width: 80%;
+  }
+
+  @include responsive('mobile') {
+    display: none;
+  }
+}
+
+.Side__Image {
+  width: 100%;
+  height: 100%;
+}
+
+.Register__Container {
+  width: 50%;
+  padding: 2rem;
+  @include responsive('tablet') {
+    width: 100%;
+  }
+
+  @include responsive('mobile') {
+    width: 100%;
+  }
+}
+
+.Plaintit__logo-Image {
+  width: 60%;
+  margin-bottom: 1rem;
+  margin-left: 6rem;
+
+  @include responsive('tablet') {
+    margin-left: 3rem;
+  }
+
+  @include responsive('mobile') {
+    margin-left: 4rem;
+  }
+}
+
+.Form__Content-Wrapper {
+  margin-top: 1rem;
+}
+
+.Form__Label-Wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Form__Label {
+  display: block;
+  color: #4a5568;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.Form__Input {
+  width: 92%;
+  background-color: #edf2f7;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  appearance: none;
+
+  @include responsive('mobile') {
+    width: 90%;
+  }
+}
+
+.Form__Input:focus {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px #9ae6b4;
+}
+
+.Password__Message {
+  display: flex;
+  padding: 0.5rem 1.5rem;
+  margin: 1rem 5rem;
+  position: fixed;
+
+  @include responsive('tablet') {
+    margin-left: 4rem;
+    font-size: 12px;
+  }
+
+  @include responsive('mobile') {
+    margin-left: 2.5rem;
+  }
+}
+
+.Submit__Form-Wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 2rem;
+}
+
+.Plantit__Register-Button {
+  background-color: #88bb61;
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.25rem;
+  margin-top: 2rem;
+
+  // @include responsive('tablet') {
+  //   font-size: 10px;
+  //   padding: 0.5rem 1.5rem;
+  // }
+
+  @include responsive('mobile') {
+    font-size: 10px;
+  }
+}
+
+.Plantit__Register-Button:hover {
+  background-color: darken($color: #88bb61, $amount: 10%);
+  cursor: pointer;
 }

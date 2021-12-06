@@ -32,7 +32,7 @@ const Upload = () => {
 
   // 서버로 이미지 Post 전송하는 코드
 
-  const PostAnalysisAPI = async e => {
+  const PostAnalysisAPI = async () => {
     // 스크롤 맨 위로
     window.scrollTo(0, 0);
 
@@ -46,7 +46,10 @@ const Upload = () => {
     setLoading(true);
 
     const AnalysisResponse = await axios
-      .post(`http://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api/analysis`, formData)
+      .post(
+        `http://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api/analysis`,
+        formData,
+      )
       .then(response => {
         // setResult(response.data);
         console.log('검사하기 페이지', response.data);

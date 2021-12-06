@@ -184,3 +184,15 @@
   outline: none;
   box-shadow: inset 0 0 1px 1px lightgrey;
 }
+
+// 농약 정보가 없는 경우
+.No__Result_Text {
+  text-align: center;
+  font-size: 1.5rem;
+  color: darkgray;
+  margin: 2rem 0;
+}
+
+.No__Result_Text:hover {
+  color: tomato;
+}
