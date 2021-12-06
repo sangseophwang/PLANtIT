@@ -5,6 +5,8 @@ import FolderIcon from 'Assets/folder_icon_transparent.png';
 import 'Components/Analysis/scss/Upload.scss';
 import axios from 'axios';
 import { useRef } from 'react';
+import Loading from 'Components/Common/Loading';
+import Error from 'Components/Common/Error';
 
 const Upload = () => {
   const [image, setImage] = useState('');
@@ -15,6 +17,9 @@ const Upload = () => {
 
   const ImageInput = useRef(null);
   const navigate = useNavigate();
+
+  const UploadText = '잠시만 기다려 주세요';
+  const ErrorText = 'API 에러가 발생했습니다';
 
   // 이미지 업로더 코드
   function ImageChangehandler(e) {
@@ -67,12 +72,11 @@ const Upload = () => {
     return () => setLoading(false);
   }, []);
 
-  if (loading)
-    return <div className="Notice__Container">잠시만 기다려 주세요</div>;
+  if (loading) return <Loading text={UploadText} />;
   if (error)
     return (
       <>
-        <div className="Notice__Container">API 에러가 발생했습니다</div>
+        <Error text={ErrorText} />
         <Link to="/" className="Button__Home">
           홈으로
         </Link>
