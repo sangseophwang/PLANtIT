@@ -1,0 +1,47 @@
+@import "/src/Components/Common/scss/mixins";
+@import "/src/Components/Common/scss/variables";
+
+.Loading-Container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #68d391;
+
+  @include responsive("tablet") {
+    font-size: 1.6rem;
+  }
+
+  @include responsive("mobile") {
+    font-size: 1.3rem;
+  }
+
+  .Loading-Text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #68d391;
+    margin: 4rem auto;
+  }
+
+  .Loader {
+    border: 16px solid #eaeaea;
+    border-top: 16px solid #68d391;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin: 2rem 0;
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

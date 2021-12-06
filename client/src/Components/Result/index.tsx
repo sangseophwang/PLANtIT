@@ -7,9 +7,12 @@ import Rthird from 'Components/Result/Rthird';
 import { useLocation } from 'react-router-dom';
 import Rlast from './Rlast';
 import Exception from './Exception';
+import Loading from 'Components/Common/Loading';
 
 export default function Result(): JSX.Element {
   const { state } = useLocation();
+
+  const ResultText = 'AI 분석중입니다.';
 
   // useNavigate 값 받는 함수
   const ReadResponse = () => {
@@ -39,12 +42,7 @@ export default function Result(): JSX.Element {
           <Exception />
         )
       ) : (
-        <>
-          <div className="Result__Notice-Container">
-            <div className="loader" />
-            AI 분석중입니다.
-          </div>
-        </>
+        <Loading text={ResultText} />
       )}
     </div>
   );
