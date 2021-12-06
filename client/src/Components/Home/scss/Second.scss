@@ -73,10 +73,11 @@
   border-radius: 12px;
   @include responsive('tablet') {
     left: 17%;
+    padding-left: 10px;
   }
   @include responsive('mobile__small') {
     left: 15%;
-    width: 75%;
+    width: 70%;
   }
 
   .HSearch__Input {
@@ -85,22 +86,10 @@
     align-items: center;
     .HSearch__Icon {
       color: #68d391;
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 1.4rem;
+      height: 1.4rem;
       padding: 0.3rem;
       margin-right: 10px;
-      @include responsive('tablet') {
-        width: 2.5rem;
-        height: 2.5rem;
-      }
-      @include responsive('mobile') {
-        width: 2rem;
-        height: 2rem;
-      }
-      @include responsive('mobile__small') {
-        width: 1.5rem;
-        height: 1.5rem;
-      }
     }
     .HClose__Icon {
       color: #68d391;
@@ -109,22 +98,10 @@
       padding: 0.3rem;
       cursor: pointer;
       margin-right: 20px;
-      @include responsive('tablet') {
-        width: 2.5rem;
-        height: 2.5rem;
-      }
-      @include responsive('mobile') {
-        width: 2rem;
-        height: 2rem;
-      }
-      @include responsive('mobile__small') {
-        width: 1.5rem;
-        height: 1.5rem;
-      }
     }
     > input {
       font-size: 1.2rem;
-      color: $LightGreen;
+      color: #68d391;
       font-weight: 600;
       width: 100%;
       padding: 10px 1.2rem;
