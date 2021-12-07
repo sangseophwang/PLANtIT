@@ -127,7 +127,7 @@
   @include responsive('tablet') {
     align-items: center;
     width: 90%;
-    height: 50vh;
+    height: 60vh;
     box-shadow: none;
   }
   @include responsive('mobile__small') {
