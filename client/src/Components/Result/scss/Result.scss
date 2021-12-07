@@ -1,5 +1,11 @@
-@import "/src/Components/Common/scss/mixins";
+@import '/src/Components/Common/scss/mixins';
 
+.Result__Container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
 .Result__Notice-Container {
   display: flex;
   height: 100vh;
@@ -10,11 +16,11 @@
   font-weight: 700;
   color: #68d391;
 
-  @include responsive("tablet") {
+  @include responsive('tablet') {
     font-size: 1.6rem;
   }
 
-  @include responsive("mobile") {
+  @include responsive('mobile') {
     font-size: 1.3rem;
   }
 

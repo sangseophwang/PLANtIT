@@ -1,0 +1,25 @@
+@import '/src/Components/Common/scss/mixins';
+
+.ResultLast__Container {
+  width: 90%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 4rem 0;
+  .ResultLast__Content {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: #5d5d5d;
+    @include responsive('tablet__large') {
+      font-size: 3rem;
+    }
+    @include responsive('mobile__small') {
+      font-size: 1.5rem;
+      width: 90%;
+      margin: 2rem auto;
+    }
+  }
+}

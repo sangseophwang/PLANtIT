@@ -2,9 +2,9 @@ import Logo from 'Assets/logo.png';
 import { Link } from 'react-router-dom';
 import 'Components/Common/scss/Footer.scss';
 
-export default function Footer(props: any): JSX.Element {
+export default function Footer(): JSX.Element {
   return (
-    <footer className="Footer__Container" style={{ position: props.data }}>
+    <footer className="Footer__Container">
       <div className="Footer__Contents">
         <img className="Footer__Logo" src={Logo} alt="로고" />
         <div className="Footer__Text">

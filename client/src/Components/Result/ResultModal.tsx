@@ -1,8 +1,11 @@
-import React from 'react';
-import CloseIcon from 'Assets/CloseIcon.svg';
 import 'Components/Result/scss/ResultModal.scss';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const ResultModal = ({ setOpenModal, data }: any) => {
+library.add(faTimes);
+
+export default function ResultModal({ setOpenModal, data }: any): JSX.Element {
   // 주요특성, 기타정보 렌더링 함수
   const rendering = (value: any) => {
     const result = [];
@@ -17,7 +20,7 @@ const ResultModal = ({ setOpenModal, data }: any) => {
             wordBreak: 'keep-all',
           }}
         >
-          <div style={{ marginRight: '0.2rem' }}>✔</div>
+          <div style={{ marginRight: '0.2rem' }}>🌵</div>
           {value[i]}
           <br />
         </span>,
@@ -38,14 +41,13 @@ const ResultModal = ({ setOpenModal, data }: any) => {
       <div className="Rmodal__Container-Test">
         <div className="Rmodal__Container">
           <div className="Rmodal__CloseBtn">
-            <img
+            <FontAwesomeIcon
               className="Rmodal__Icon"
-              src={CloseIcon}
-              alt="CloseIcon"
               onClick={() => {
                 setOpenModal(false);
                 document.body.style.overflow = 'scroll';
               }}
+              icon={faTimes}
             />
           </div>
 
@@ -87,6 +89,4 @@ const ResultModal = ({ setOpenModal, data }: any) => {
       </div>
     </>
   );
-};
-
-export default ResultModal;
+}
