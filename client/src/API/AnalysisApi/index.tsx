@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL =
-  'https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api/';
+  'http://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api/';
 
 function Post_Analysis(endpoint: string, data: any) {
   return axios.post(BASE_URL + endpoint, data, {

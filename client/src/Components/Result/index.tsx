@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navigation from 'Components/Common/Navigation';
-import 'Components/Result/scss/Result.scss';
-import Rfirst from 'Components/Result/Rfirst';
+import Rfirst from 'Components/Result/ResultFirst';
 import Rsecond from 'Components/Result/Rsecond';
 import Rthird from 'Components/Result/Rthird';
-import { useLocation } from 'react-router-dom';
 import Rlast from './Rlast';
 import Exception from './Exception';
 import Loading from 'Components/Common/Loading';
+import ProgressBar from 'Components/Common/ProgressBar';
+import 'Components/Result/scss/Result.scss';
 
 export default function Result(): JSX.Element {
   const { state } = useLocation();
@@ -33,6 +34,7 @@ export default function Result(): JSX.Element {
         state.data !== 'six-man' ? (
           <>
             <Navigation />
+            <ProgressBar />
             <Rfirst data={state} />
             <Rsecond data={state} />
             <Rthird data={state} />

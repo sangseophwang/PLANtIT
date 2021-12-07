@@ -68,7 +68,7 @@ const Upload = (props: any) => {
     setLoading(true);
 
     const AnalysisResponse = await AnalysisApi.Post_Analysis(
-      '/analysis',
+      'analysis',
       formData,
     )
       .then(response => {
