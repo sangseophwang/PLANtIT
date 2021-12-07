@@ -6,17 +6,15 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 export default function Analysis(): JSX.Element {
   return (
-    <>
-      <HelmetProvider>
-        <Helmet>
-          <title>검사하기</title>
-        </Helmet>
-        <div>
-          <Navigation />
-          <Upload />
-          <Example />
-        </div>
-      </HelmetProvider>
-    </>
+    <HelmetProvider>
+      <Helmet>
+        <title>검사하기</title>
+      </Helmet>
+      <div>
+        <Navigation />
+        <Upload />
+        <Example />
+      </div>
+    </HelmetProvider>
   );
 }
