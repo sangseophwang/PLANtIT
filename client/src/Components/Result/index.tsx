@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navigation from 'Components/Common/Navigation';
-import Rfirst from 'Components/Result/ResultFirst';
-import Rsecond from 'Components/Result/ResultSecond';
-import Rthird from 'Components/Result/Rthird';
+import ResultFirst from 'Components/Result/ResultFirst';
+import ResultSecond from 'Components/Result/ResultSecond';
+import ResultThird from 'Components/Result/ResultThird';
 import Rlast from './Rlast';
 import Exception from './Exception';
 import Loading from 'Components/Common/Loading';
@@ -35,9 +35,9 @@ export default function Result(): JSX.Element {
           <>
             <Navigation />
             <ProgressBar />
-            <Rfirst data={state} />
-            <Rsecond data={state} />
-            <Rthird data={state} />
+            <ResultFirst data={state} />
+            <ResultSecond data={state} />
+            <ResultThird data={state} />
             <Rlast />
           </>
         ) : (

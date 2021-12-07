@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import 'Components/Result/scss/Rthird.scss';
+import { useState } from 'react';
+import 'Components/Result/scss/ResultThird.scss';
 import ReactElasticCarousel from 'react-elastic-carousel';
 import ResultModal from './ResultModal';
 
@@ -12,19 +12,19 @@ const breakPoints = [
 ];
 
 // 결과 페이지의 3번째 화면(예방법 & 농약)
-export default function Rthird(props: any) {
+export default function ResultThird(props: any) {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState('');
 
-  const RthirdData = props.data.data;
+  const ResultThirdData = props.data.data;
 
   // 예방법 렌더링 함수
   const rendering = () => {
     const result = [];
-    for (let i = 0; i < RthirdData.prevention.length; i++) {
+    for (let i = 0; i < ResultThirdData.prevention.length; i++) {
       result.push(
         <span key={i}>
-          - {RthirdData.prevention[i]}
+          🌳 {ResultThirdData.prevention[i]}
           <br />
         </span>,
       );
@@ -33,16 +33,15 @@ export default function Rthird(props: any) {
   };
 
   return (
-    <section className="Rthird__Container">
-      <div className="Rthird__Text-Container">
-        <div className="Rthird__Title">예방법</div>
-
-        <div className="Rthird__Content">{rendering()}</div>
+    <section className="ResultThird__Container">
+      <div className="ResultThird__Text-Container">
+        <div className="ResultThird__Title">예방법 🧑🏻‍🔬</div>
+        <div className="ResultThird__Content">{rendering()}</div>
       </div>
 
-      {RthirdData.pesticides.length !== 0 ? (
+      {ResultThirdData.pesticides.length !== 0 ? (
         <ReactElasticCarousel breakPoints={breakPoints} isRTL={true}>
-          {RthirdData.pesticides.map((value: any) => (
+          {ResultThirdData.pesticides.map((value: any) => (
             <div className="Image" key={value.id}>
               <img src={value.image} alt="" className="Pesticides__Image" />
               <div
@@ -54,7 +53,7 @@ export default function Rthird(props: any) {
                 }}
               >
                 <div className="Image__Title">{value.name}</div>
-                <p className="Image__Description">클릭해보세요!</p>
+                <p className="Image__Description">👆🏻</p>
               </div>
             </div>
           ))}
