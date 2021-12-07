@@ -67,6 +67,9 @@
     .Crops__Text {
       margin-top: 4rem;
       margin-bottom: 2rem;
+      text-align: center;
+      line-height: 1.3;
+      word-break: keep-all;
       color: #bdbdbd;
       @include responsive('tablet') {
         margin-top: 3rem;
@@ -80,7 +83,7 @@
     background: #fff;
     padding: 2rem;
     width: 40%;
-    border: 1px solid lightgray;
+    border: 1.7px dotted lightgray;
     border-radius: 12px;
     text-align: center;
     @include responsive('tablet') {
@@ -94,18 +97,12 @@
       padding-right: 0.5rem;
     }
     @include responsive('mobile__small') {
-      width: 90%;
-    }
-    .Upload__Score {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      color: $Green;
+      width: 70%;
     }
     .Upload-Information {
       margin: 2rem 0 1rem 0;
-      font-size: 1.2rem;
-      font-weight: 400;
+      font-size: 1rem;
+      font-weight: 500;
       color: $Green;
     }
     .Upload__Box {
@@ -124,8 +121,7 @@
         > label {
           cursor: pointer;
           > svg {
-            width: 7rem;
-            height: 7rem;
+            font-size: 7rem;
             color: #bcdea1;
             transition: 0.5s;
             &:hover {
@@ -133,31 +129,42 @@
               transform: scale(1.1);
               color: #92cd7b;
             }
+            @include responsive('mobile__small') {
+              font-size: 5rem;
+            }
           }
         }
         > input {
           display: none;
         }
-        .Image__Preview {
-          position: relative;
-          /* cursor: pointer; */
-          #uploaded-image {
-            height: 350px;
-            width: 100%;
-            object-fit: fill;
-            border-radius: 12px;
+        .Close__Icon {
+          color: $Green;
+          font-size: 20px;
+          position: absolute;
+          z-index: 10;
+          right: -10px;
+          top: -30px;
+          cursor: pointer;
+          transition: 0.5s;
+          &:hover {
+            color: tomato;
           }
-          .close-icon {
-            background: #000;
-            border-radius: 5px;
-            opacity: 0.8;
-            position: absolute;
-            z-index: 10;
-            right: 15px;
-            top: 20px;
-            cursor: pointer;
-            :hover {
-              opacity: 1;
+          @include responsive('tablet') {
+            right: 5px;
+            top: -20px;
+          }
+          @include responsive('mobile__small') {
+            top: -10px;
+            right: -5px;
+          }
+        }
+        .Image__Preview {
+          > svg {
+            font-size: 7rem;
+            color: #bcdea1;
+            transition: 0.5s;
+            @include responsive('mobile__small') {
+              font-size: 5rem;
             }
           }
         }
@@ -165,32 +172,41 @@
     }
   }
   .Button-Continer {
-    max-width: 450px;
-    margin: 5rem auto;
+    margin: 2rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
     .Upload__Button {
       text-align: center;
-      width: 100%;
-      font-size: 1.5rem;
-      font-weight: 700;
-      padding: 1rem 0;
-      background-color: #90bb65;
-      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 500;
+      padding: 1rem 1.3rem;
       border-radius: 0.5rem;
+      color: white;
+      background-color: #bcdea1;
+      transition: 0.5s;
       cursor: pointer;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      text-decoration: none;
+      @include responsive('mobile') {
+        font-size: 1rem;
+      }
       &:hover {
-        background-color: darken($color: #90bb65, $amount: 10%);
+        transition: 0.5s;
+        background-color: #92cd7b;
       }
     }
     .Fail__Button {
-      text-align: center;
-      width: 100%;
-      font-size: 1.5rem;
-      font-weight: 700;
-      padding: 1rem 0;
+      user-select: none;
       background-color: #8c8c8c;
-      color: #fff;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 500;
+      padding: 1rem 1.3rem;
       border-radius: 0.5rem;
+      color: white;
+      @include responsive('mobile') {
+        font-size: 1rem;
+      }
     }
   }
 }

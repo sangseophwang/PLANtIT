@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import Loading from 'Components/Common/Loading';
 import Error from 'Components/Common/Error';
 import { Link } from 'react-router-dom';
+import ProgressBar from 'Components/Common/ProgressBar';
 
 export default function Analysis(): JSX.Element {
   const [loading, setLoading] = useState(false);
@@ -63,6 +64,7 @@ export default function Analysis(): JSX.Element {
           </Helmet>
           <div>
             <Navigation />
+            <ProgressBar />
             <Upload data={count.data} />
             <Example />
           </div>

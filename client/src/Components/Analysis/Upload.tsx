@@ -1,19 +1,22 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import CloseIcon from 'Assets/CloseIcon.svg';
-import 'Components/Analysis/scss/Upload.scss';
-import { AnalysisApi } from 'API/AnalysisApi';
-import { useRef } from 'react';
 //@ts-ignore
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import 'Components/Analysis/scss/Upload.scss';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AnalysisApi } from 'API/AnalysisApi';
+import { useRef } from 'react';
 import Loading from 'Components/Common/Loading';
 import Error from 'Components/Common/Error';
-import { faFileUpload, faCheck } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFileUpload,
+  faCheck,
+  faTimes,
+} from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-library.add(faFileUpload, faCheck);
+library.add(faFileUpload, faCheck, faTimes);
 
 const Upload = (props: any) => {
   const [image, setImage] = useState('');
@@ -59,8 +62,6 @@ const Upload = (props: any) => {
       const uploadFile = ImageInput.current.files[0];
       formData.append('files', uploadFile);
     }
-    console.log(formData.get('files'));
-
     setError(null);
     setLoading(true);
 
@@ -107,34 +108,32 @@ const Upload = (props: any) => {
         </div>
       </div>
       <div className="Upload__Container">
-        <span className="Upload__Score">누적 검사 횟수: {props.data}회</span>
         <div className="Upload__Box">
           <div className="Upload__Image">
             {!isUploaded ? (
               <>
                 <label htmlFor="Upload__Input">
                   <FontAwesomeIcon icon={faFileUpload} />
-                  {/* <img
-                    src={FolderIcon}
-                    draggable={'false'}
-                    alt="placeholder"
-                    style={{ width: 100, height: 100 }}
-                  /> */}
+                  <div className="Upload-Information">
+                    사진을 업로드하세요 🌱
+                  </div>
                 </label>
               </>
             ) : (
-              <div className="Image__Preview">
-                <FontAwesomeIcon data-aos="flip-left" icon={faCheck} />
-                <img
-                  className="close-icon"
-                  src={CloseIcon}
-                  alt="CloseIcon"
+              <>
+                <FontAwesomeIcon
+                  className="Close__Icon"
+                  icon={faTimes}
                   onClick={() => {
                     setIsUploaded(false);
                     setImage('');
                   }}
                 />
-              </div>
+                <div className="Image__Preview">
+                  <FontAwesomeIcon data-aos="flip-left" icon={faCheck} />
+                  <div className="Upload-Information">업로드 성공 🌵</div>
+                </div>
+              </>
             )}
 
             <input
@@ -146,19 +145,11 @@ const Upload = (props: any) => {
             />
           </div>
         </div>
-
-        <div className="Upload-Information">Browse to upload 🌱</div>
       </div>
       <div className="Button-Continer">
         {isUploaded ? (
           <Link
             className="Upload__Button"
-            style={{
-              textDecoration: 'none',
-              color: 'white',
-              display: 'block',
-              width: '100%',
-            }}
             to="/result"
             onClick={PostAnalysisAPI}
           >
