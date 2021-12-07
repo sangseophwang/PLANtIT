@@ -88,11 +88,16 @@ export default function LoginPage(): JSX.Element {
       .catch(error => {
         console.log('error : ', error);
         console.log('error.response: ', error.response);
-        switch(error.response.data) {
-          case "Wrong Password": break;
-          case "User Not Found": break;
+        let errorMessage: string = '';
+        switch (error.response.data) {
+          case 'Wrong Password':
+            errorMessage = '아이디 및 비밀번호를 확인해주세요!';
+            break;
+          case 'User Not Found':
+            errorMessage = '등록된 유저가 아닙니다!';
+            break;
         }
-        alert('error');
+        toast.error(errorMessage);
       });
   }
 

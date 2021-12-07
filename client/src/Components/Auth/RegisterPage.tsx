@@ -70,19 +70,30 @@ function RegisterPage(): JSX.Element {
       .catch(error => {
         console.log('실패', error);
         console.log('error.response: ', error.response);
+        let errorMessage: string = '';
         switch (error.response.data) {
           case 'Register Fail':
+            errorMessage = '회원가입 양식을 모두 적어주세요.';
             break;
           case 'Invaild Email':
+            errorMessage = '잘못된 이메일 형식입니다.';
             break;
           case 'Invaild Password':
+            errorMessage =
+              // eslint-disable-next-line no-multi-str
+              ' 보안 기준에 맞지않는 패스워드 (아래 3가지 항목이 보안 기준입니다)\
+            패스워드는 최소한 8자 이상이 되어야함 \
+            8 ~ 9자 -> 영문, 숫자, 특수기호 모두 포함 \
+            10자 이상 -> 영문, 숫자, 특수기호 중 2가지 이상 포함';
             break;
           case 'Password Not Same':
+            errorMessage = '비밀번호가 일치하는지 확인해주세요.'
             break;
           case 'Already Exist':
+            errorMessage = '이미 등록된 이메일입니다.'
             break;
         }
-        toast.error('회원가입 실패');
+        toast.error(errorMessage);
       });
   }
 
