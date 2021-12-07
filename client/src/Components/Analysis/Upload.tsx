@@ -8,12 +8,11 @@ import { useRef } from 'react';
 import Loading from 'Components/Common/Loading';
 import Error from 'Components/Common/Error';
 
-const Upload = () => {
+const Upload = (props: any) => {
   const [image, setImage] = useState('');
   const [isUploaded, setIsUploaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  // const [result, setResult] = useState('');
 
   const ImageInput = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
@@ -123,6 +122,7 @@ const Upload = () => {
         </div>
       </div>
       <div className="Upload__Container">
+        <div className="Upload-Information">누적 검사 횟수: {props.data}회</div>
         <div className="Upload__Box">
           <div className="Upload__Image">
             {!isUploaded ? (
