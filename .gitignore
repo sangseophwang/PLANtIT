@@ -6,3 +6,4 @@ plantit.sql
 *.key
 *.crt
 dump.rdb
+certbot
