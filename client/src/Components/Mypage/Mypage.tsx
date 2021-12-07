@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { authApi } from 'API/AuthApi';
 
 import 'Components/Mypage/scss/Mypage.scss';
@@ -57,7 +58,9 @@ export default function MypageMain(): JSX.Element {
         response.data === 'Deregister Success'
           ? (sessionStorage.removeItem('access_token'),
             navigate('/'),
-            alert('계정이 삭제되었습니다. 안녕히가십시오.'))
+            toast.success('계정이 삭제되었습니다!', {
+              position: toast.POSITION.TOP_CENTER,
+            }))
           : alert('response.data is not "Deregister Success"');
       })
       .catch(error => {
@@ -142,8 +145,6 @@ export default function MypageMain(): JSX.Element {
           );
 
           setImageUrl(response.data.image_url + '?t=' + new Date().getTime());
-
-          // window.location.replace('/mypage');
           // eslint-disable-next-line @typescript-eslint/no-unused-expressions
 
           if (response.data.new_token !== null) {
@@ -201,7 +202,9 @@ export default function MypageMain(): JSX.Element {
                     sessionStorage.getItem('access_token'),
                   );
                   navigate('/');
-                  alert('로그아웃 되었습니다.');
+                  toast.success('로그아웃 성공!', {
+                    position: toast.POSITION.TOP_CENTER,
+                  });
                 }}
               >
                 로그아웃

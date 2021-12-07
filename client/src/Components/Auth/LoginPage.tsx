@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { authApi } from 'API/AuthApi/index';
 import NaverLogin from 'react-login-by-naver';
@@ -10,6 +10,7 @@ import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'Components/Auth/scss/LoginPage.scss';
+import { toast } from 'react-toastify';
 
 library.add(faGoogle);
 
@@ -20,9 +21,6 @@ export default function LoginPage(): JSX.Element {
   const navigate = useNavigate();
   const tokenState = sessionStorage.getItem('access_token');
 
-  const googleImgRef = useRef<HTMLImageElement>(null);
-  const naverImgRef = useRef<HTMLImageElement>(null);
-
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     sessionStorage.getItem('access_token') === null && tokenParam !== undefined
@@ -32,7 +30,9 @@ export default function LoginPage(): JSX.Element {
           '네이버 로그인 후 토큰',
           sessionStorage.getItem('access_token'),
         ),
-        alert('로그인 성공'))
+        toast.success('로그인 성공!', {
+          position: toast.POSITION.TOP_CENTER,
+        }))
       : sessionStorage.getItem('access_token') !== null
       ? navigate('/')
       : () => {};
@@ -75,7 +75,9 @@ export default function LoginPage(): JSX.Element {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         message === 'login success'
           ? (sessionStorage.setItem('access_token', accessToken),
-            alert('로그인 성공!'),
+            toast.success('로그인 성공!', {
+              position: toast.POSITION.TOP_CENTER,
+            }),
             console.log(
               '로그인 후 세션스토리지: ',
               sessionStorage.getItem('access_token'),
@@ -85,6 +87,11 @@ export default function LoginPage(): JSX.Element {
       })
       .catch(error => {
         console.log('error : ', error);
+        console.log('error.response: ', error.response);
+        switch(error.response.data) {
+          case "Wrong Password": break;
+          case "User Not Found": break;
+        }
         alert('error');
       });
   }
@@ -105,7 +112,9 @@ export default function LoginPage(): JSX.Element {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         message === 'google login success'
           ? (sessionStorage.setItem('access_token', accessToken),
-            alert('로그인 성공!'),
+            toast.success('로그인 성공!', {
+              position: toast.POSITION.TOP_CENTER,
+            }),
             console.log(
               '로그인 후 세션스토리지: ',
               sessionStorage.getItem('access_token'),
@@ -189,9 +198,6 @@ export default function LoginPage(): JSX.Element {
             <a
               href="###"
               className="SocialLogin__Link"
-              onClick={() => {
-                googleImgRef.current?.click();
-              }}
               style={{ textDecoration: 'none' }}
             >
               <GoogleLogin
@@ -213,9 +219,6 @@ export default function LoginPage(): JSX.Element {
             <a
               href="###"
               className="SocialLogin__Link"
-              onClick={() => {
-                naverImgRef.current?.click();
-              }}
               style={{ textDecoration: 'none' }}
             >
               <NaverLogin

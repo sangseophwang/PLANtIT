@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Back from 'Components/Common/Back';
 import { authApi } from 'API/AuthApi/index';
 
@@ -30,13 +31,13 @@ function RegisterPage(): JSX.Element {
       case 'password':
         setPassword(value);
         value !== repeatPassword
-          ? setMsg('비밀번호를 확인해주세요.')
+          ? setMsg('"비밀번호 확인"과 일치하는지 확인해주세요.')
           : setMsg('');
         break;
       case 'repeatPassword':
         setRepeatPassword(value);
         password !== value
-          ? setMsg('비밀번호가 일치하지 않습니다')
+          ? setMsg('"비밀번호"와 일치하는지 확인해주세요.')
           : setMsg('');
     }
   }
@@ -60,12 +61,28 @@ function RegisterPage(): JSX.Element {
         console.log('성공', response);
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         response.data === 'Register Success'
-          ? (navigate('/login'), alert('회원가입 성공!'))
+          ? (navigate('/login'),
+            toast.success('회원가입 성공!', {
+              position: toast.POSITION.TOP_CENTER,
+            }))
           : alert('fail register');
       })
       .catch(error => {
         console.log('실패', error);
-        alert('회원가입 실패');
+        console.log('error.response: ', error.response);
+        switch (error.response.data) {
+          case 'Register Fail':
+            break;
+          case 'Invaild Email':
+            break;
+          case 'Invaild Password':
+            break;
+          case 'Password Not Same':
+            break;
+          case 'Already Exist':
+            break;
+        }
+        toast.error('회원가입 실패');
       });
   }
 
