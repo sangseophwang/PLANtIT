@@ -1,93 +1,172 @@
 @import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
 
 .Upload__Layout {
-  margin-top: 8rem;
+  margin-top: 9rem;
   height: 100%;
-  width: 75%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   place-items: center;
-  background: tomato;
-  align-items: center;
-  justify-content: space-around;
-
+  align-items: space-around;
+  justify-content: center;
   @include responsive('tablet__large') {
     width: 90%;
   }
-
   @include responsive('tablet') {
-    flex-direction: column-reverse;
     margin-top: 1rem;
   }
-}
-
-.Upload__Text-Container {
-  width: 40%;
-  margin-top: 1rem;
-
-  @include responsive('tablet__large') {
-    width: 80%;
-    padding-right: 1rem;
-  }
-
-  @include responsive('mobile') {
-    width: 90%;
-    padding-right: 0;
-    margin-top: 2rem;
-  }
-
-  @include responsive('mobile__small') {
-    padding-right: 0;
-  }
-
-  .Main__Text {
-    font-size: 2.8rem;
-    font-weight: 700;
-    text-align: center;
-
+  .Upload__Text-Container {
+    width: 70%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     @include responsive('tablet__large') {
-      font-size: 2.3rem;
+      width: 80%;
+      padding-right: 1rem;
     }
-
-    @include responsive('tablet') {
+    @include responsive('mobile') {
+      width: 90%;
+      padding-right: 0;
       margin-top: 2rem;
     }
-
     @include responsive('mobile__small') {
-      font-size: 1.8rem;
-      margin-top: 1rem;
+      padding-right: 0;
+    }
+    .Main__Text {
+      font-size: 5vw;
+      font-weight: 800;
+      text-align: center;
+      @include responsive('tablet__large') {
+        font-size: 4rem;
+      }
+      @include responsive('tablet') {
+        margin-top: 3rem;
+      }
+      @include responsive('mobile__small') {
+        font-size: 2.1rem;
+        margin-top: 1rem;
+      }
+    }
+    .Sub__Text {
+      margin-top: 4rem;
+      font-weight: 400;
+      line-height: 1.5;
+      font-size: 1.5vw;
+      text-align: center;
+      word-break: break-word;
+      color: gray;
+      @include responsive('mobile') {
+        width: 100%;
+        font-size: 1rem;
+      }
+    }
+    .Crops__Text {
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+      color: #bdbdbd;
+      @include responsive('tablet') {
+        margin-top: 3rem;
+      }
     }
   }
-
-  .Sub__Text {
-    margin-top: 2rem;
-    font-weight: 400;
-    line-height: 1.5;
-    word-break: break-word;
-
-    @include responsive('mobile') {
-      width: 100%;
-      font-size: 1rem;
-    }
-  }
-
-  .Crops__Text {
-    margin-top: 4rem;
-    font-weight: 700;
-    color: #bdbdbd;
-
+  .Upload__Container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: #fff;
+    padding: 2rem;
+    width: 40%;
+    border: 1px solid lightgray;
+    border-radius: 12px;
+    text-align: center;
     @include responsive('tablet') {
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
+      margin-left: 0;
+      padding: 1.5rem;
+    }
+    @include responsive('mobile') {
+      margin-top: 0;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+    @include responsive('mobile__small') {
+      width: 90%;
+    }
+    .Upload__Score {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: $Green;
+    }
+    .Upload-Information {
+      margin: 2rem 0 1rem 0;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: $Green;
+    }
+    .Upload__Box {
+      display: grid;
+      margin-top: 1rem;
+      place-items: center;
+      position: relative;
+      border-radius: 12px;
+      @include responsive('mobile__small') {
+        width: 90%;
+        margin: 0 auto;
+      }
+      .Upload__Image {
+        display: flex;
+        flex-wrap: wrap;
+        > label {
+          cursor: pointer;
+          > svg {
+            width: 7rem;
+            height: 7rem;
+            color: #bcdea1;
+            transition: 0.5s;
+            &:hover {
+              transition: 0.7s;
+              transform: scale(1.1);
+              color: #92cd7b;
+            }
+          }
+        }
+        > input {
+          display: none;
+        }
+        .Image__Preview {
+          position: relative;
+          /* cursor: pointer; */
+          #uploaded-image {
+            height: 350px;
+            width: 100%;
+            object-fit: fill;
+            border-radius: 12px;
+          }
+          .close-icon {
+            background: #000;
+            border-radius: 5px;
+            opacity: 0.8;
+            position: absolute;
+            z-index: 10;
+            right: 15px;
+            top: 20px;
+            cursor: pointer;
+            :hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
     }
   }
-
   .Button-Continer {
     max-width: 450px;
     margin: 5rem auto;
-
     .Upload__Button {
       text-align: center;
       width: 100%;
@@ -103,7 +182,6 @@
         background-color: darken($color: #90bb65, $amount: 10%);
       }
     }
-
     .Fail__Button {
       text-align: center;
       width: 100%;
@@ -115,97 +193,4 @@
       border-radius: 0.5rem;
     }
   }
-}
-
-.Upload__Container {
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  padding: 2rem;
-  border: 1px solid lightgray;
-  border-radius: 12px;
-
-  @include responsive('tablet') {
-    margin-bottom: 1rem;
-    margin-left: 0;
-    padding: 1.5rem;
-  }
-
-  @include responsive('mobile') {
-    margin-top: 0;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  @include responsive('mobile__small') {
-    width: 90%;
-  }
-
-  text-align: center;
-  p {
-    margin-top: -10px;
-    color: #777;
-  }
-}
-
-.Upload__Box {
-  display: grid;
-  margin-top: 1rem;
-  place-items: center;
-  position: relative;
-  height: 350px;
-  width: 350px;
-  border-radius: 12px;
-
-  @include responsive('mobile__small') {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .Upload__Image {
-    display: flex;
-    flex-wrap: wrap;
-    > label {
-      cursor: pointer;
-      > svg {
-        width: 7rem;
-        height: 7rem;
-      }
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-    > input {
-      display: none;
-    }
-  }
-}
-
-.Image__Preview {
-  position: relative;
-  /* cursor: pointer; */
-  #uploaded-image {
-    height: 350px;
-    width: 100%;
-    object-fit: fill;
-    border-radius: 12px;
-  }
-  .close-icon {
-    background: #000;
-    border-radius: 5px;
-    opacity: 0.8;
-    position: absolute;
-    z-index: 10;
-    right: 15px;
-    top: 20px;
-    cursor: pointer;
-    :hover {
-      opacity: 1;
-    }
-  }
-}
-
-.Upload-Information {
-  margin-top: 1rem;
-  font-size: 1rem;
-  font-weight: 700;
 }

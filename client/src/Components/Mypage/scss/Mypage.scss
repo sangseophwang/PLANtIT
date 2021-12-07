@@ -22,7 +22,7 @@
     > section {
       display: flex;
       height: 65%;
-      width: 90%;
+      width: 85%;
       justify-content: space-between;
       @include responsive('tablet__large') {
         flex-direction: column;

@@ -3,7 +3,7 @@ import Navigation from 'Components/Common/Navigation';
 import Example from 'Components/Analysis/Example';
 import Upload from 'Components/Analysis/Upload';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { AnalysisCountApi } from 'API/CountApi';
+import { AnalysisApi } from 'API/AnalysisApi';
 import { toast } from 'react-toastify';
 import Loading from 'Components/Common/Loading';
 import Error from 'Components/Common/Error';
@@ -23,7 +23,7 @@ export default function Analysis(): JSX.Element {
     setError(null);
     setCount(null);
     setLoading(true);
-    const CountResponse = await AnalysisCountApi.Get_Count('analysis/count')
+    const CountResponse = await AnalysisApi.Get_Count('analysis/count')
       .then(response => {
         setCount(response.data as any);
         toast.success('검사하기에 오신 것을 환영합니다!', {
