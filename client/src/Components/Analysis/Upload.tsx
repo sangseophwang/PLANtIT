@@ -21,6 +21,7 @@ library.add(faFileUpload, faCheck, faTimes);
 const Upload = (props: any) => {
   const [image, setImage] = useState('');
   const [isUploaded, setIsUploaded] = useState(false);
+  const [uploadFileValue, setUploadFileValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -38,6 +39,7 @@ const Upload = (props: any) => {
   // 이미지 업로더 코드
   function ImageChangehandler(e: any) {
     if (e.target.files && e.target.files[0]) {
+      setUploadFileValue(e.target.value);
       let reader = new FileReader();
 
       reader.onload = function (e) {
@@ -127,6 +129,7 @@ const Upload = (props: any) => {
                   onClick={() => {
                     setIsUploaded(false);
                     setImage('');
+                    setUploadFileValue('');
                   }}
                 />
                 <div className="Image__Preview">
@@ -140,6 +143,7 @@ const Upload = (props: any) => {
               id="Upload__Input"
               type="file"
               accept=".jpg,.jpeg,.png,"
+              value={uploadFileValue}
               onChange={ImageChangehandler}
               ref={ImageInput}
             />

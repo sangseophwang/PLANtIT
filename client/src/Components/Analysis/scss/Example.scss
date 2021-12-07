@@ -1,102 +1,102 @@
-@import "/src/Components/Common/scss/mixins";
-.Example__container {
-  width: 75%;
-  margin-top: 2rem;
-  margin: 0 auto 4rem auto;
+@import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
+
+.Example__Container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-
-  @include responsive("tablet__large") {
-    width: 90%;
-  }
-
-  .Example__Title {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-top: 3rem;
-    margin-bottom: 4rem;
-    color: #659e38;
-
-    @include responsive("tablet") {
-      text-align: center;
-    }
-
-    @include responsive("mobile") {
-      font-size: 2rem;
-      margin-top: 0;
+  align-items: center;
+  margin-bottom: 5rem;
+  .Line {
+    width: 80%;
+    margin-top: 4rem;
+    border-top: 1px dotted lightgray;
+    @include responsive('mobile') {
+      margin-bottom: 3rem;
     }
   }
-}
-
-.SubExample__Container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 4rem;
-  margin-bottom: 1rem;
-
-  @include responsive("mobile") {
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  .Example__Content {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1rem;
-
-    @include responsive("tablet__large") {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    @include responsive("mobile__small") {
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-  }
-
-  .Example__Image {
-    width: 100%;
-    height: 13rem;
-    border-radius: 12px;
-
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-
-    @include responsive("mobile") {
-      width: 100%;
-      margin: 0 auto;
-    }
-  }
-
-  .Example__Subtitle {
+  .Example__Wrapper {
+    width: 60%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    font-size: 2rem;
-    font-weight: 700;
-    background-color: #f6f6f6;
-    border-radius: 12px;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-
-    @include responsive("mobile__small") {
-      height: 100px;
-      width: 100%;
-      margin: 0 auto;
+    margin-bottom: 2rem;
+    @include responsive('tablet') {
+      width: 80%;
+      margin-bottom: 3rem;
     }
-  }
-
-  .Example__Text {
-    font-size: 1.3rem;
-    line-height: 1.5;
-    margin-bottom: 4rem;
-
-    @include responsive("tablet") {
-      font-size: 1rem;
-    }
-
-    @include responsive("mobile") {
-      font-size: 1rem;
-      width: 100%;
-      margin-left: auto;
-      margin-right: auto;
+    .SubExample__Container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      width: 80%;
+      @include responsive('mobile') {
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+      }
+      .Example__Title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin: 3rem 0;
+        @include responsive('tablet') {
+          text-align: center;
+        }
+        @include responsive('mobile__small') {
+          font-size: 2rem;
+          margin-top: 0;
+        }
+      }
+      .Example__Text {
+        background-color: rgb(248, 248, 248);
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin: 2rem 2rem 4rem 2rem;
+        padding: 2.5rem;
+        color: $Green;
+        @include responsive('tablet') {
+          font-size: 1rem;
+        }
+        @include responsive('mobile') {
+          font-size: 1rem;
+          width: 100%;
+        }
+      }
+      .Example__Content {
+        display: grid;
+        grid-template-columns: repeat(3, 0.5fr);
+        grid-template-rows: repeat(2, 0.5fr);
+        gap: 1rem;
+        @include responsive('mobile__small') {
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        .Example__Subtitle {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 3rem;
+          font-weight: 700;
+          margin-bottom: 2rem;
+          color: $Green;
+          grid-column: 1 / -1;
+          @include responsive('mobile__small') {
+            height: 100px;
+            width: 100%;
+            margin: 0 auto;
+          }
+        }
+        .Example__Image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 12px;
+          @include responsive('mobile') {
+            width: 100%;
+            margin: 0 auto;
+          }
+        }
+      }
     }
   }
 }
