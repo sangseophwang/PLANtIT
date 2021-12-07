@@ -39,6 +39,8 @@ def get_blog(request, blog_id):
     response_data = {
         'blog_id': blog_detail.id,
         'author': blog_detail.user.nickname,
+        'author_image': blog_detail.user.image,
+        'author_desc': blog_detail.user.description,
         'title': blog_detail.title,
         'content': blog_detail.content,
         'view': blog_detail.view,
