@@ -1,15 +1,14 @@
-@import "/src/Components/Common/scss/mixins";
+@import '/src/Components/Common/scss/mixins';
 
 #map {
-  width: 75%;
-  margin: 0 auto 15rem auto;
-  height: 60vh;
+  width: 80%;
+  margin: 0 auto 3rem auto;
+  height: 70vh;
   border-radius: 12px;
   border: 2px solid #8c9d3d;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-  @include responsive("tablet") {
-    width: 80%;
-    margin: 0 auto 10rem auto;
+  @include responsive('tablet') {
+    width: 100%;
   }
 }

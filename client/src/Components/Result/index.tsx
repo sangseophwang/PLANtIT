@@ -4,8 +4,9 @@ import Navigation from 'Components/Common/Navigation';
 import ResultFirst from 'Components/Result/ResultFirst';
 import ResultSecond from 'Components/Result/ResultSecond';
 import ResultThird from 'Components/Result/ResultThird';
-import Rlast from './Rlast';
-import Exception from './Exception';
+import ResultLast from 'Components/Result/ResultLast';
+import Footer from 'Components/Common/Footer';
+import Exception from 'Components/Result/Exception';
 import Loading from 'Components/Common/Loading';
 import ProgressBar from 'Components/Common/ProgressBar';
 import 'Components/Result/scss/Result.scss';
@@ -38,7 +39,8 @@ export default function Result(): JSX.Element {
             <ResultFirst data={state} />
             <ResultSecond data={state} />
             <ResultThird data={state} />
-            <Rlast />
+            <ResultLast />
+            <Footer />
           </>
         ) : (
           <Exception />
