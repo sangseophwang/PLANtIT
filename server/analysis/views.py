@@ -1,4 +1,5 @@
 import datetime
+import boto3
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -8,6 +9,7 @@ from pesticide.models import Pesticide
 from time_log import logging_time
 from common.s3 import s3
 from django.conf import settings
+
 import plant_ai.ai_disease as ai
 import plant_ai.ai_risk as ri
 
@@ -62,3 +64,15 @@ def analysis(request):
         
     except:
         return Response('잘못된 형식', status=400)
+
+@api_view(['GET'])
+def total_analysis_count(request):
+    s3 = boto3.resource('s3')
+    bucket = s3.Bucket('team3-plantit')
+    
+    analysis_objects = bucket.objects.filter(Prefix="analysis/")
+    total_count = len(list(analysis_objects))
+    response_data = {
+        'data' : total_count
+    }
+    return Response(data=response_data, status=200)

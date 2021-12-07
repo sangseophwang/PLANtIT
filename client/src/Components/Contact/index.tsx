@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import 'Components/Contact/scss/Contact.scss';
 import Navigation from 'Components/Common/Navigation';
 import Logo from 'Assets/logo.png';
-import Image from 'Assets/ContactImage.jpg';
+import Image from 'Assets/Contact/ContactImage.jpg';
 import emailjs from 'emailjs-com';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet';

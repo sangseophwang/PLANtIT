@@ -22,18 +22,14 @@ export default function Pagination({
   // 페이지네이션 수 배열에 담기
   const LIMIT_PAGE = Math.ceil(length / 4);
   let pageNumber: number[] = [];
-  if (page + 4 >= LIMIT_PAGE) {
-    pageNumber = [];
-    for (let j = LIMIT_PAGE; j >= LIMIT_PAGE - 4; j--) {
-      pageNumber.push(j);
-      pageNumber.sort((a, b) => a - b);
-    }
-  } else {
-    for (let i = page; i <= page + 4; i++) {
-      pageNumber.push(i);
-      pageNumber.sort((a, b) => a - b);
-    }
+  for (let i = 1; i <= LIMIT_PAGE; i++) {
+    pageNumber.push(i);
   }
+  let visiblePage = page - 3;
+  if (visiblePage <= 0) visiblePage = 0;
+  else if (visiblePage > LIMIT_PAGE - 5) visiblePage = LIMIT_PAGE - 5;
+
+  pageNumber = pageNumber.slice(visiblePage, visiblePage + 5);
 
   // 페이지네이션, 현재 페이지 위치 출력
   const ListItem = (props: any) => {
