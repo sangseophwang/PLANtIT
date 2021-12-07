@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import { authApi } from 'API/AuthApi';
 
 import 'Components/Mypage/scss/Mypage.scss';
-import FirstImage from 'Assets/Mypage/FirstProfileImage.png';
 
 export default function MypageMain(): JSX.Element {
   const navigate = useNavigate();
@@ -25,9 +24,7 @@ export default function MypageMain(): JSX.Element {
         response.data.message === 'success'
           ? (setNickname(response.data.nickname),
             setDescription(response.data.description),
-            response.data.image === null
-              ? setImageUrl(FirstImage)
-              : setImageUrl(response.data.image + '?t=' + new Date().getTime()))
+            setImageUrl(response.data.image + '?t=' + new Date().getTime()))
           : alert('message is not "success"');
 
         if (response.data.new_token !== null) {
