@@ -51,6 +51,7 @@ export default function Second(props: any): JSX.Element {
         <div className="HSearch__Container">
           <div className="HSearch__Input">
             <input
+              className="Hsearch__Bar"
               type="text"
               value={clearWord}
               placeholder="작물의 이름을 검색해주세요"

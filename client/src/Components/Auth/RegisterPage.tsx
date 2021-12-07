@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import GoMain from 'Components/Auth/GoMain';
+import Back from 'Components/Common/Back';
 import { authApi } from 'API/AuthApi/index';
 
 import 'Components/Auth/scss/Register.scss';
 import Logo from 'Assets/logo.png';
-import SignImage from 'Assets/Auth/sign.jpg';
+import SignImage from 'Assets/Auth/login_side_image.jpeg';
 
 function RegisterPage(): JSX.Element {
   const [id, setId] = useState('');
@@ -116,7 +116,7 @@ function RegisterPage(): JSX.Element {
           <img src={SignImage} alt="" className="Side__Image" />
         </div>
         <div className="Register__Container">
-          <GoMain />
+          <Back />
           <img src={Logo} alt="" className="Plaintit__logo-Image" />
 
           {formContents.map((valueList, index) => (
@@ -127,7 +127,8 @@ function RegisterPage(): JSX.Element {
                 </label>
               </div>
               <input
-                className="Form__Input"
+                autoComplete="off"
+                className="Register__Input"
                 type={valueList.inputType}
                 name={valueList.inputName}
                 placeholder={valueList.inputPlaceHolder}
