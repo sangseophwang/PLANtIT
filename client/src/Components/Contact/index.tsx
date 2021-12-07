@@ -4,10 +4,17 @@ import Navigation from 'Components/Common/Navigation';
 import Logo from 'Assets/logo.png';
 import Image from 'Assets/Contact/ContactImage.jpg';
 import emailjs from 'emailjs-com';
-import ContactList from 'Variables/ContactList';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faMapMarkerAlt,
+  faPhoneAlt,
+  faEnvelopeOpenText,
+} from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+library.add(faMapMarkerAlt, faPhoneAlt, faEnvelopeOpenText);
 
 export default function Contact(): JSX.Element {
   const [name, setName] = useState('');
@@ -30,6 +37,16 @@ export default function Contact(): JSX.Element {
   const onChangeMessagehandler = (e: any) => {
     setMessage(e.target.value);
   };
+
+  const ContactList = [
+    {
+      key: 1,
+      icon: faMapMarkerAlt,
+      content: '서울시 강남구 선릉로 433 세방빌딩 6층',
+    },
+    { key: 2, icon: faPhoneAlt, content: '+82-10-9907-0180' },
+    { key: 3, icon: faEnvelopeOpenText, content: 'team3.plant.it@gmail.com' },
+  ];
 
   const Contact = [
     {
