@@ -15,16 +15,6 @@ function RegisterPage(): JSX.Element {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [msg, setMsg] = useState('');
 
-  const passwordFormMessage: JSX.Element = (
-    <div>
-      올바르지 않는 패스워드입니다<br></br>
-      올바른 패스워드 양식이란?<br></br>
-      8자 이상, 영문 숫자 특수기호<br></br>
-      9자 이하: 영문, 숫자, 특수기호<br></br>
-      10자 이상: 셋 중 두가지 포함
-    </div>
-  );
-
   const navigate = useNavigate();
 
   function onChangeInputHandler(event: {
@@ -55,60 +45,76 @@ function RegisterPage(): JSX.Element {
   function onClickSubmitHandler(event: { preventDefault: () => void }): void {
     event.preventDefault();
 
-    console.log('id :', id);
-    console.log('name : ', name);
-    console.log('password : ', password);
-    console.log('repeat password : ', repeatPassword);
-    // isValidateForm() ? :
-    authApi.requestDjango
-      .post('/user/register', {
-        email: id,
-        password1: password,
-        password2: repeatPassword,
-        nickname: name,
-      })
-      .then(response => {
-        console.log('성공', response);
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        response.data === 'Register Success'
-          ? (navigate('/login'),
-            toast.success('회원가입 성공!', {
-              position: toast.POSITION.TOP_CENTER,
-            }))
-          : alert('fail register');
-      })
-      .catch(error => {
-        console.log('실패', error);
-        console.log('error.response: ', error.response);
-        let errorMessage: string | JSX.Element = '';
-        switch (error.response.data) {
-          case 'Register Fail':
-            errorMessage = '회원가입 양식을 모두 적어주세요.';
+    let isEmail: (boolean | JSX.Element)[] = authApi.validateEmail(id);
+    let isPassword: (boolean | JSX.Element)[] =
+      authApi.validatePassword(password);
+    let isSamePassword: (boolean | JSX.Element)[] =
+      authApi.validateSamePassword(password, repeatPassword);
+    let isFilledForm: (boolean | JSX.Element)[] = authApi.validateFilledForm([
+      id,
+      name,
+      password,
+      repeatPassword,
+    ]);
 
-            break;
-          case 'Invalid Email':
-            errorMessage = '잘못된 이메일 형식입니다.';
-            break;
-          case 'Invalid Password':
-            errorMessage = passwordFormMessage;
-            break;
-          case 'Password Not Same':
-            errorMessage = '비밀번호가 일치하는지 확인해주세요.';
-            break;
-          case 'Already Exist':
-            errorMessage = '이미 등록된 이메일입니다.';
-            break;
-        }
-        toast.error(
-          <div>
-            {errorMessage}
-            <br />
-          </div>,
-          {
+    if (isEmail[0] && isPassword[0] && isSamePassword[0] && isFilledForm[0]) {
+      authApi.requestDjango
+        .post('/user/register', {
+          email: id,
+          password1: password,
+          password2: repeatPassword,
+          nickname: name,
+        })
+        .then(response => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          response.data === 'Register Success'
+            ? (navigate('/login'),
+              toast.success('회원가입 성공!', {
+                position: toast.POSITION.TOP_CENTER,
+              }))
+            : alert('fail register');
+        })
+        .catch(error => {
+          let serverErrorMessage: string | JSX.Element = '';
+          switch (error.response.data) {
+            case 'Register Fail':
+              serverErrorMessage = <div>회원가입 양식을 모두 적어주세요.</div>;
+              break;
+            case 'Invalid Email':
+              serverErrorMessage = <div>잘못된 이메일 형식입니다.</div>;
+              break;
+            case 'Invalid Password':
+              serverErrorMessage = authApi.passwordFormMessage;
+              break;
+            case 'Password Not Same':
+              serverErrorMessage = (
+                <div>비밀번호가 일치하는지 확인해주세요.</div>
+              );
+              break;
+            case 'Already Exist':
+              serverErrorMessage = <div>이미 등록된 이메일입니다.</div>;
+              break;
+          }
+          toast.error(serverErrorMessage, {
             position: toast.POSITION.TOP_CENTER,
-          },
-        );
-      });
+          });
+        });
+    } else {
+      [isEmail, isPassword, isSamePassword, isFilledForm]
+        .filter((value: (boolean | JSX.Element)[]) => {
+          return value[0] === false;
+        })
+        // eslint-disable-next-line array-callback-return
+        .map(falseValue => {
+          toast.error(falseValue[1], {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          setId('');
+          setName('');
+          setPassword('');
+          setRepeatPassword('');
+        });
+    }
   }
 
   const formContents = [

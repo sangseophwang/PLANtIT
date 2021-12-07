@@ -16,10 +16,6 @@ export default function MypageMain(): JSX.Element {
     authApi
       .authRequestGet('/user/mypage', 'application/json', '')
       .then(response => {
-        console.log('response: ', response);
-        console.log('response.data: ', response.data);
-        console.log('new_token', response.data.new_token);
-
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         response.data.message === 'success'
           ? (setNickname(response.data.nickname),
@@ -28,20 +24,10 @@ export default function MypageMain(): JSX.Element {
           : alert('message is not "success"');
 
         if (response.data.new_token !== null) {
-          console.log(
-            'new_token === old?',
-            sessionStorage.getItem('access_token') === response.data.new_token,
-          );
           sessionStorage.setItem('access_token', response.data.new_token);
-          console.log(
-            '일치?',
-            response.data.new_token === sessionStorage.getItem('access_token'),
-          );
         }
       })
-      .catch(error => {
-        console.log('error: ', error);
-      });
+      .catch(error => {});
   }, []);
 
   function onSubmitDeRegister(event: any): void {
@@ -49,8 +35,6 @@ export default function MypageMain(): JSX.Element {
     authApi
       .authRequestPost('/user/deregister', 'application/json', '')
       .then(response => {
-        console.log('response: ', response);
-        console.log('response.data: ', response.data);
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         response.data === 'Deregister Success'
           ? (sessionStorage.removeItem('access_token'),
@@ -61,7 +45,6 @@ export default function MypageMain(): JSX.Element {
           : alert('response.data is not "Deregister Success"');
       })
       .catch(error => {
-        console.log('error: ', error);
         alert('error');
       });
   }
@@ -93,9 +76,6 @@ export default function MypageMain(): JSX.Element {
     authApi
       .authRequestPost('/user/update', 'application/json', data)
       .then(response => {
-        console.log('response: ', response);
-        console.log('response.data: ', response.data);
-
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         response.data.message === 'success'
           ? (setNickname(response.data.nickname),
@@ -103,19 +83,10 @@ export default function MypageMain(): JSX.Element {
           : alert('message is not "success"');
 
         if (response.data.new_token !== null) {
-          console.log(
-            'new_token === old?',
-            sessionStorage.getItem('access_token') === response.data.new_token,
-          );
           sessionStorage.setItem('access_token', response.data.new_token);
-          console.log(
-            '일치?',
-            response.data.new_token === sessionStorage.getItem('access_token'),
-          );
         }
       })
       .catch(error => {
-        console.log('error', error);
         alert('error');
       });
 
@@ -127,20 +98,13 @@ export default function MypageMain(): JSX.Element {
 
     if (e.target.files) {
       const uploadFile = e.target.files[0];
-      console.log('uploadFile: ', uploadFile);
+
       const formData = new FormData();
       formData.append('image', uploadFile);
 
       authApi
         .authRequestPost('/user/image', 'multipart/form-data', formData)
         .then(response => {
-          console.log('img response: ', response);
-          console.log(response.data);
-          console.log(
-            'imageUrl === new Url?',
-            imageUrl === response.data.image_url,
-          );
-
           setImageUrl(response.data.image_url + '?t=' + new Date().getTime());
           // eslint-disable-next-line @typescript-eslint/no-unused-expressions
 
@@ -148,9 +112,7 @@ export default function MypageMain(): JSX.Element {
             sessionStorage.setItem('access_token', response.data.new_token);
           }
         })
-        .catch(error => {
-          console.log('error: ', error);
-        });
+        .catch(error => {});
     }
   }
 
@@ -198,12 +160,11 @@ export default function MypageMain(): JSX.Element {
                   name="logout"
                   onClick={() => {
                     sessionStorage.removeItem('access_token');
-                    console.log(
-                      '로그아웃 후 세션 스토리지 값: ',
-                      sessionStorage.getItem('access_token'),
-                    );
+
                     navigate('/');
-                    alert('로그아웃 되었습니다.');
+                    toast.success('로그아웃 되었습니다.', {
+                      position: toast.POSITION.TOP_CENTER,
+                    });
                   }}
                 >
                   로그아웃

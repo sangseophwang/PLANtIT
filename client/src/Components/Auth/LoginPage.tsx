@@ -19,17 +19,12 @@ export default function LoginPage(): JSX.Element {
   const [password, setPassword] = useState('');
   const { tokenParam } = useParams();
   const navigate = useNavigate();
-  const tokenState = sessionStorage.getItem('access_token');
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     sessionStorage.getItem('access_token') === null && tokenParam !== undefined
       ? (sessionStorage.setItem('access_token', tokenParam),
         navigate('/'),
-        console.log(
-          '네이버 로그인 후 토큰',
-          sessionStorage.getItem('access_token'),
-        ),
         toast.success('로그인 성공!', {
           position: toast.POSITION.TOP_CENTER,
         }))
@@ -56,17 +51,12 @@ export default function LoginPage(): JSX.Element {
 
   function onClickSubmitHandler(event: { preventDefault: () => void }): void {
     event.preventDefault();
-    console.log('id :', id);
-    console.log('password : ', password);
-
-    console.log('로그인 전 세션스토리지: ', tokenState);
     authApi.requestDjango
       .post('/user/login', {
         email: id,
         password: password,
       })
       .then(response => {
-        console.log('성공', response);
         const [accessToken, message] = [
           response.data.token,
           response.data.message,
@@ -78,16 +68,10 @@ export default function LoginPage(): JSX.Element {
             toast.success('로그인 성공!', {
               position: toast.POSITION.TOP_CENTER,
             }),
-            console.log(
-              '로그인 후 세션스토리지: ',
-              sessionStorage.getItem('access_token'),
-            ),
             navigate('/'))
           : alert('error');
       })
       .catch(error => {
-        console.log('error : ', error);
-        console.log('error.response: ', error.response);
         let errorMessage: string = '';
         switch (error.response.data) {
           case 'Wrong Password':
@@ -102,13 +86,11 @@ export default function LoginPage(): JSX.Element {
   }
 
   function onSucessGoogleHandler(res: any) {
-    console.log(res);
     authApi.requestDjango
       .post('/user/google_login', {
         id_token: res.tokenObj.id_token,
       })
       .then(response => {
-        console.log('성공', response);
         const [accessToken, message] = [
           response.data.token,
           response.data.message,
@@ -120,22 +102,15 @@ export default function LoginPage(): JSX.Element {
             toast.success('로그인 성공!', {
               position: toast.POSITION.TOP_CENTER,
             }),
-            console.log(
-              '로그인 후 세션스토리지: ',
-              sessionStorage.getItem('access_token'),
-            ),
             navigate('/'))
           : alert('error');
       })
       .catch(error => {
-        console.log('error : ', error);
         alert('error');
       });
   }
 
-  function onFailureGoogleHandler(error: any) {
-    console.log('onFailureGoogleHandler', error);
-  }
+  function onFailureGoogleHandler(error: any) {}
 
   return (
     <div className="LoginPage__Container">
@@ -192,7 +167,6 @@ export default function LoginPage(): JSX.Element {
               className="Register__Button"
               style={{ textDecoration: 'none' }}
               onClick={() => {
-                console.log('go to register');
                 navigate('/register');
               }}
             >

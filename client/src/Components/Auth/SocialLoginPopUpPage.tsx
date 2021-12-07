@@ -5,17 +5,16 @@ export default function SocialLoginPopUpPage(): JSX.Element {
   // const token = window.location.href.split('=');
   useEffect(() => {
     const responseUrl = window.location.href.split('&');
-    const [access_token, token_type] = authApi.parsingUrl(responseUrl);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [access_token, token_type, state, expires_in] =
+      authApi.parsingUrl(responseUrl);
     authApi.requestDjango
       .post('/user/naver_login', {
         access_token: access_token,
         token_type: token_type,
       })
       .then(response => {
-        console.log('naver login: ', response);
-        console.log('naver login token: ', response.data);
         sessionStorage.setItem('access_token', response.data);
-        console.log(sessionStorage.getItem('access_token'));
 
         const [accessToken, message] = [
           response.data.token,
@@ -33,7 +32,6 @@ export default function SocialLoginPopUpPage(): JSX.Element {
         window.close();
       })
       .catch(error => {
-        console.log(error);
         alert('error from Django');
         window.close();
       });
