@@ -1,0 +1,66 @@
+@import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
+
+// 검색창
+.Search__Container {
+  width: 758px;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 5rem;
+  @include responsive('tablet') {
+    width: 93%;
+  }
+}
+.Search__Input {
+  padding-left: 5px;
+  display: flex;
+  width: 98%;
+  > svg {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: gray;
+  }
+  > input {
+    font-size: 1rem;
+    color: #333;
+    width: 100%;
+    padding: 10px 10px;
+    border: none;
+    outline: none;
+    &::placeholder {
+      color: lightgray;
+      transition: 0.5s;
+    }
+    &:focus {
+      transition: 0.5s;
+      color: $LightGreen;
+      text-decoration: none;
+      &::placeholder {
+        color: white;
+      }
+    }
+  }
+
+  .Close__Icon {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+// 작물 리스트
+.CropsList__Container {
+  .CropsList__Error {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #659238;
+    text-align: center;
+    margin: 2rem 0;
+    @include responsive('tablet') {
+      width: 100%;
+      margin: 1.5rem 0;
+    }
+  }
+}

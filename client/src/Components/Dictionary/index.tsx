@@ -1,26 +1,30 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { DictionaryApi } from 'API/DictionaryApi';
 import Navigation from 'Components/Common/Navigation';
-import DictTopSection from 'Components/Dictionary/DictTopSection';
-import SearchBar from 'Components/Dictionary/SearchBar';
+import DictionaryContainer from 'Components/Dictionary/DictionaryContainer';
+import ProgressBar from 'Components/Common/ProgressBar';
+import DictionaryTitle from 'Components/Dictionary/DictionaryTitle';
 import 'Components/Dictionary/scss/index.scss';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 export default function Dictionary(): JSX.Element {
-  const [pathology, setPathology] = useState([] as any);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [loading, setLoading] = useState(false);
+  const [pathology, setPathology] = useState([] as any);
   // API로 부터 정보를 받아옴.
   const GetDictionaryAPI = async () => {
     // 요청이 시작 할 때 초기화
     setError(null);
     setPathology(null);
     setLoading(true);
-    const DictionaryResponse = await axios
-      .get(`http://localhost:8000/api/disease`)
+    const DictionaryResponse = await DictionaryApi.Get_Dictionary('disease')
       .then(response => {
         setPathology(response.data);
+        toast.success('질병도감에 오신 것을 환영합니다!', {
+          position: toast.POSITION.TOP_CENTER,
+        });
       })
       .catch(e => {
         setError(e);
@@ -33,7 +37,8 @@ export default function Dictionary(): JSX.Element {
     GetDictionaryAPI();
   }, []);
 
-  if (loading) return <div className="Notice__Container">잠시만 기다려 주세요</div>;
+  if (loading)
+    return <div className="Notice__Container">잠시만 기다려 주세요</div>;
   if (error)
     return (
       <>
@@ -46,10 +51,18 @@ export default function Dictionary(): JSX.Element {
   if (!pathology) return null as any;
 
   return (
-    <div>
+    <HelmetProvider>
+      <Helmet>
+        <title>질병도감</title>
+      </Helmet>
       <Navigation />
-      <DictTopSection />
-      <SearchBar data={pathology} />
-    </div>
+      <ProgressBar />
+      <div className="Dictionary__Container">
+        <div className="Dictionary__Wrapper">
+          <DictionaryTitle />
+          <DictionaryContainer data={pathology} />
+        </div>
+      </div>
+    </HelmetProvider>
   );
 }

@@ -1,0 +1,137 @@
+@import '/src/Components/Common/scss/mixins';
+
+.Search__Result {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+  @include responsive('tablet__large') {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  @include responsive('tablet') {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 95%;
+    margin-bottom: 10rem;
+  }
+  @include responsive('mobile') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 6rem;
+  }
+  @include responsive('mobile__small') {
+    gap: 0.5rem;
+  }
+  .CropsList__Wrapper {
+    position: relative;
+    transition: 0.5s;
+    &:hover {
+      .CropList__Hover-Text {
+        display: block;
+        transition: 0.8s;
+      }
+      .CropsList__Container-Box {
+        filter: brightness(0.3);
+        transition: 0.5s;
+        transform: scale(1.05);
+      }
+    }
+    .CropList__Hover-Text {
+      position: absolute;
+      display: none;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.3vw;
+      width: 100%;
+      text-align: center;
+      @include responsive('tablet__large') {
+        font-size: 2vw;
+      }
+      @include responsive('mobile') {
+        font-size: 4vw;
+      }
+    }
+  }
+  .CropsList__Container-Box {
+    background-color: #fafafa;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.5s;
+    box-shadow: rgba(9, 30, 66, 0.2) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.03) 0px 0px 0px 1px;
+    @include responsive('mobile') {
+      padding: 1rem;
+    }
+    @include responsive('mobile__small') {
+      padding: 0.5rem;
+      margin-top: 0rem;
+    }
+    .CropsList__Image {
+      width: 11rem;
+      height: 10rem;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      @include responsive('tablet') {
+        height: 9rem;
+      }
+      @include responsive('mobile__small') {
+        height: 7rem;
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+    }
+    .CropsList__Classification {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      .Classification__Name {
+        letter-spacing: 0.1em;
+        color: #659238;
+        font-size: 1rem;
+        font-weight: 700;
+        padding: 0.5rem;
+        @include responsive('mobile') {
+          font-size: 0.8rem;
+          padding: 0.3rem;
+        }
+      }
+    }
+    .CropsList__Name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: black;
+      @include responsive('mobile') {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      @include responsive('mobile__small') {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .CropsList__Content {
+      font-size: 0.8rem;
+      font-weight: 400;
+      @include responsive('tablet') {
+        font-size: 0.7rem;
+      }
+      @include responsive('mobile__small') {
+        font-size: 0.5rem;
+      }
+    }
+  }
+}

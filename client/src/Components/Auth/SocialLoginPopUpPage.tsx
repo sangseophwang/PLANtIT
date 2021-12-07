@@ -25,18 +25,17 @@ export default function SocialLoginPopUpPage(): JSX.Element {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         message === 'naver login success'
           ? // eslint-disable-next-line no-restricted-globals
-            (opener.location.replace(
+            opener.location.replace(
               `http://localhost:3000/login/${accessToken}`,
-            ),
-            window.close())
-          : alert('fail naver login');
+            )
+          : window.close();
 
         window.close();
       })
       .catch(error => {
         console.log(error);
-        alert('fail naver login');
-        // window.close();
+        alert('error from Django');
+        window.close();
       });
   }, []);
 

@@ -1,81 +1,50 @@
 @import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
 .Fifth__Container {
   @include Container__Form();
-  .Fifth__Wrapper {
-    width: 70%;
-    margin-left: -10px;
-
+  position: relative;
+  .Fifth__Background {
+    display: none;
     @include responsive('tablet') {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      display: inline;
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    @include responsive('mobile') {
-      margin-left: -40px;
+  }
+  .Fifth__Contents {
+    margin-top: -120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $LightGreen;
+    @include responsive('tablet') {
+      padding-top: 50px;
+      color: white;
     }
+    @include responsive('mobile__small') {
+      margin-left: 25px;
+      margin-top: -100px;
+    }
+
     .Fifth__Title {
-      font-weight: 600;
-      font-size: 3vw;
-      color: #292929;
+      font-weight: 700;
+      font-size: 6vw;
+      margin-bottom: 80px;
+      text-align: center;
       @include responsive('tablet') {
-        font-size: 4vw;
-        margin-left: 55px;
-      }
-      @include responsive('mobile') {
-        margin-left: 70px;
-        margin-bottom: -30px;
-        line-height: 1.3;
-        font-size: 5.5vw;
+        font-size: 9vw;
+        margin-bottom: 30px;
       }
     }
-    .Fifth__Contents {
-      display: flex;
+    .Fifth__Subtitle {
+      font-weight: 500;
+      font-size: 1.5vw;
+      margin-bottom: 70px;
       @include responsive('tablet') {
-        justify-content: center;
-        margin: 20px 0 0 100px;
-      }
-      .Fifth__Section {
-        display: flex;
-        .Fifth__Article {
-          transition: 0.5s;
-          width: 17vw;
-          margin: 30px 5vw 0 0;
-          text-decoration: none;
-          color: black;
-          &:hover {
-            transform: scale(1.05);
-            transition: 0.5s;
-          }
-          > h1 {
-            font-weight: 700;
-            font-size: 1.5vw;
-            margin-left: 5px;
-            margin-bottom: 2px;
-          }
-          > span {
-            font-size: 1vw;
-            color: gray;
-            margin-left: 5px;
-          }
-          > img {
-            width: 17vw;
-            height: 17vw;
-            margin-bottom: 20px;
-          }
-        }
-        @include responsive('tablet') {
-          flex-direction: column;
-          .Fifth__Article {
-            width: 25vw;
-            > h1 {
-              font-size: 2vw;
-            }
-            > img {
-              width: 24vw;
-              height: 24vw;
-            }
-          }
-        }
+        font-size: 2vw;
       }
     }
   }

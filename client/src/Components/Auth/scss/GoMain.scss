@@ -1,11 +1,27 @@
+@import 'Components/Common/scss/_mixins.scss';
+
 .GoMain {
-  position: fixed;
-  top: 20px;
-  left: 20px;
+  // position: fixed;
+  display: block;
+  // position: relative;
+  top: -100px;
+  left: -60px;
   font-size: 14px;
   border: none;
   background: none;
   font-weight: 700;
   color: gray;
   cursor: pointer;
+
+  @include responsive('tablet') {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+  }
+
+  @include responsive('mobile') {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+  }
 }

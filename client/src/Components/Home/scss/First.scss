@@ -1,59 +1,85 @@
 @import '/src/Components/Common/scss/mixins';
 @import '/src/Components/Common/scss/variables';
+
 .First__Container {
   @include Container__Form();
-  font-size: 8vw;
-  font-weight: 800;
-  position: relative;
-  .First__Wrapper {
+  > span {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 7vw;
+    font-weight: 900;
+    @include responsive('tablet') {
+      width: 70%;
+      text-align: center;
+      line-height: 1.7;
+      font-size: 12vw;
+    }
+    @include responsive('mobile__small') {
+      width: 50%;
+      text-align: center;
+      line-height: 1.7;
+      font-size: 12vw;
+    }
+    > div {
+      color: white;
+      font-size: 7vw;
+      font-weight: 900;
+      position: absolute;
+      top: -52%;
+      left: 65.7%;
+      @include responsive('tablet') {
+        top: 28%;
+        left: 61%;
+        font-size: 9vw;
+      }
+      @include responsive('mobile__small') {
+        top: 46%;
+        left: 65%;
+      }
+    }
+  }
+  > video {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  .First__SNS {
+    position: absolute;
+    right: 20px;
+    bottom: 80px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 90%;
-    height: 100vh;
-    right: 0;
-    position: absolute;
-    > span {
-      padding-left: 70px;
-      @include responsive('tablet') {
-        padding-left: 30px;
+    font-size: 25px;
+    height: 70px;
+    justify-content: space-around;
+    color: white;
+    transition: 1s;
+    > svg {
+      &:hover {
+        color: $Green;
+        cursor: pointer;
+        transition: 1s;
+      }
+      &:last-child {
+        margin-left: 1px;
       }
     }
-    .First__Logo-Mobile {
-      @include Logo__Mobile();
+    @include responsive('tablet') {
+      bottom: 120px;
     }
-    .First__SNS {
-      position: absolute;
-      right: 20px;
+    @include responsive('mobile__small') {
       bottom: 80px;
-      display: flex;
-      flex-direction: column;
-      font-size: 25px;
-      height: 70px;
-      justify-content: space-around;
-      color: gray;
-      transition: 1s;
-      > svg {
-        &:hover {
-          color: $Green;
-          cursor: pointer;
-          transition: 1s;
-        }
-        &:last-child {
-          margin-left: 1px;
-        }
-      }
-      @include responsive('tablet') {
-        bottom: 140px;
-      }
-      @include responsive('mobile') {
-        bottom: 80px;
-        font-size: 18px;
-      }
-    }
-    > span {
-      margin-left: 15px;
-      display: block;
+      font-size: 18px;
+      height: 50px;
     }
   }
 }

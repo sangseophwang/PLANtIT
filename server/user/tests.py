@@ -1,4 +1,5 @@
 import bcrypt
+import datetime
 
 from django.test import TestCase, Client
 from .models import User
@@ -21,7 +22,8 @@ class UserTest(TestCase):
         pw_hash = bcrypt.hashpw(password, pw_salt)
         decoded_pw_hash = pw_hash.decode()
         self.test_user = User.objects.create(email=self.email, password=decoded_pw_hash, nickname=self.nickname, user_type=0)
-        self.access_token = create_token(email=self.email, user_type=0, user_id=self.test_user.id)
+        iat = datetime.datetime.utcnow()
+        self.access_token = create_token(email=self.email, user_type=0, user_id=self.test_user.id, token_type='access', iat=iat)
     
     def test_회원가입하기(self):
         email = "test-register@plantit.com"

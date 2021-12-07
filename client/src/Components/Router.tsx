@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Member from 'Components/Member';
 import Home from 'Components/Home';
@@ -12,6 +11,8 @@ import Result from 'Components/Result';
 import Contact from 'Components/Contact';
 import * as Auth from 'Components/Auth';
 import Mypage from 'Components/Mypage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function AppRouter(): JSX.Element {
   return (
@@ -33,6 +34,7 @@ export default function AppRouter(): JSX.Element {
         <Route path="/contact" element={<Contact />} />
         <Route path="/result" element={<Result />} />
       </Routes>
+      <ToastContainer />
     </BrowserRouter>
   );
 }

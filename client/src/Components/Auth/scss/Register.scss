@@ -1,82 +1,172 @@
-@import '../../Common/scss/mixins';
+@import 'Components/Common/scss/_mixins.scss';
 
-.register__container {
-  @include Container__Form();
-  .register__contents {
-    width: 500px;
-    height: 700px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.Component__Container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 
-    @include responsive('mobile') {
-      width: 80%;
-      height: 70%;
+// 전체 컨테이너
+.RegisterPage__Container {
+  max-width: 55rem;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+
+  @include responsive('tablet') {
+    // box-shadow: none;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  }
+
+  @include responsive('mobile') {
+    width: 60%;
+    box-shadow: none;
+  }
+
+  @include responsive('mobile__small') {
+    width: 90%;
+  }
+}
+
+.Side__Image-Wrapper {
+  display: block;
+  width: 50%;
+  background-size: cover;
+  background-color: yellowgreen;
+
+  @include responsive('tablet') {
+    width: 80%;
+  }
+
+  @include responsive('mobile') {
+    display: none;
+  }
+}
+
+.Side__Image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Register__Container {
+  width: 50%;
+  padding: 2rem;
+  @include responsive('tablet') {
+    width: 100%;
+  }
+
+  @include responsive('mobile') {
+    width: 100%;
+  }
+}
+
+.Plaintit__logo-Image {
+  width: 60%;
+  margin-bottom: 1rem;
+  margin-left: 6rem;
+
+  @include responsive('tablet') {
+    margin-left: 3rem;
+  }
+
+  @include responsive('mobile') {
+    margin-left: 4rem;
+  }
+}
+
+.Form__Content-Wrapper {
+  margin-top: 1rem;
+}
+
+.Form__Label-Wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Form__Label {
+  display: block;
+  color: #4a5568;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.Register__Input {
+  width: 90%;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 0.9rem 2rem 0.9rem 0.8rem;
+  font-size: 16px;
+  appearance: none;
+  transition: 0.5s;
+  &::placeholder {
+    color: lightgray;
+  }
+  &:focus {
+    color: $Green;
+    transition: 0.5s;
+    border: 1px solid $LightGreen;
+    &::placeholder {
+      color: white;
+      transition: 0.5s;
     }
+  }
+}
 
-    .register__logo {
-      width: 70%;
-      margin-bottom: 20px;
-    }
+.Form__Inputs:focus {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px #9ae6b4;
+}
 
-    .register-form {
-      margin: 30px 0 -30px 0;
-      width: 70%;
-      height: 70%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
+.Password__Message {
+  display: flex;
+  padding: 0.5rem 1.5rem;
+  margin: 1rem 5rem;
+  position: fixed;
 
-      > div {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        > label {
-          line-height: 1.9;
-          margin-right: 20px;
-          color: #88bb61;
-        }
-        > input {
-          line-height: 2.5;
-          width: 100%;
-          color: #88bb61;
-          text-align: center;
-          outline: none;
-          border-top: none;
-          border-left: none;
-          border-right: none;
-          border-bottom: 0.3px solid #88bb61;
-          &::placeholder {
-            color: gray;
+  @include responsive('tablet') {
+    margin-left: 4rem;
+    font-size: 12px;
+  }
 
-            @include responsive('mobile') {
-              font-size: 10px;
-            }
-          }
-          &:focus {
-            border-bottom: 0.3px solid #88bb61;
-            transition: ease-in-out 0.5s;
-          }
-          &:focus::placeholder {
-            color: gray;
-            transition: ease-in-out 0.3s;
-          }
-        }
-      }
+  @include responsive('mobile') {
+    margin-left: 2.5rem;
+  }
+}
 
-      > button {
-        margin-top: 0px;
-        width: 50%;
-        height: 10%;
-        background-color: #88bb61;
-        border: none;
-        border-radius: 15px;
-        cursor: pointer;
-        font-weight: 700;
-        color: white;
-      }
-    }
+.Submit__Form-Wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 2rem;
+}
+
+.Plantit__Register-Button {
+  background-color: #bcdea1;
+  color: white;
+  font-weight: 600;
+  font-size: 17px;
+  border-radius: 0.5rem;
+  width: 7rem;
+  height: 3rem;
+  border: none;
+  transition: 0.5s;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  &:hover {
+    transition: 0.5s;
+    background-color: #92cd7b;
   }
 }

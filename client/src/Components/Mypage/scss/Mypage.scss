@@ -1,0 +1,289 @@
+@import 'Components/Common/scss/_mixins';
+
+.Mypage__Container {
+  @include Container__Form();
+  .Mypage__Wrapper {
+    width: 38%;
+    height: 31vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    @include responsive('tablet__large') {
+      width: 70%;
+      height: 60%;
+      border: none;
+    }
+    @include responsive('mobile') {
+      width: 80%;
+      height: 50%;
+    }
+    > section {
+      display: flex;
+      height: 65%;
+      width: 90%;
+      justify-content: space-around;
+      @include responsive('tablet__large') {
+        flex-direction: column;
+        width: 100%;
+      }
+      .Thumbnail__Area {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include responsive('mobile') {
+          align-items: center;
+          padding-right: 0px;
+          padding-bottom: 1.5rem;
+        }
+        > form {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          .Upload__button {
+            cursor: pointer;
+            > img {
+              justify-content: center;
+              align-items: center;
+              width: 9vw;
+              height: 9vw;
+              border-radius: 100%;
+              object-fit: cover;
+              overflow: hidden;
+              &:hover {
+                -webkit-animation: vibrate 0.3s linear infinite both;
+                animation: vibrate 0.3s linear infinite both;
+              }
+              @include responsive('tablet__large') {
+                width: 25vw;
+                height: 25vw;
+              }
+              @include responsive('mobile__small') {
+                width: 6rem;
+                height: 6rem;
+                margin-bottom: 1rem;
+              }
+            }
+            > span {
+              text-align: center;
+              vertical-align: middle;
+              position: absolute;
+              bottom: 5px;
+              right: 5px;
+              font-size: 30px;
+              font-weight: 700;
+              color: white;
+              width: 30px;
+              height: 30px;
+              background-color: #bcdea1;
+              border-radius: 100%;
+              transition: 0.7s;
+            }
+            &:hover {
+              > span {
+                transition: 0.7s;
+                background-color: tomato;
+              }
+            }
+          }
+          > input {
+            display: none;
+          }
+        }
+      }
+      .Info__Area {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        padding-left: 24px;
+        justify-content: space-around;
+        @include responsive('tablet__large') {
+          align-items: center;
+          padding: 0;
+        }
+        > h2 {
+          display: block;
+          font-size: 2.25rem;
+          line-height: 1.5;
+          font-weight: 700;
+          @include responsive('tablet__large') {
+            font-size: 5rem;
+          }
+          @include responsive('mobile__small') {
+            font-size: 2rem;
+          }
+        }
+        > p {
+          display: block;
+          color: gray;
+          @include responsive('tablet__large') {
+            font-size: 2rem;
+            font-weight: 700;
+          }
+          @include responsive('tablet') {
+            font-size: 2rem;
+            font-weight: 400;
+          }
+          @include responsive('mobile__small') {
+            font-size: 1rem;
+          }
+        }
+        .Button__Wrapper {
+          display: flex;
+          justify-content: space-between;
+          @include responsive('tablet__large') {
+            width: 100%;
+            margin-top: 8vh;
+            justify-content: space-between;
+          }
+          > button {
+            margin-right: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #bcdea1;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0px 1.25rem;
+            height: 2rem;
+            transition: 0.5s;
+            &:hover {
+              transition: 0.5s;
+              background-color: #92cd7b;
+            }
+            @include responsive('tablet__large') {
+              font-size: 2rem;
+              width: fit-content;
+              height: fit-content;
+              font-weight: 700;
+              padding: 1rem 2rem;
+              border-radius: 15px;
+            }
+            @include responsive('tablet') {
+              font-size: 1.5rem;
+            }
+            @include responsive('mobile__small') {
+              font-size: 0.7rem;
+              padding: 1rem 1.5rem;
+            }
+          }
+        }
+      }
+      .Change__Value {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        @include responsive('tablet__large') {
+          align-items: center;
+        }
+        .Change__Name {
+          padding: 1rem;
+          display: flex;
+          font-size: 2.25rem;
+          line-height: 1.5rem;
+          border: 1px solid rgb(222, 226, 230);
+          background: white;
+          color: rgb(73, 80, 87);
+          outline: none;
+          border-radius: 4px;
+          width: 100%;
+          @include responsive('mobile') {
+            font-size: 1.25rem;
+          }
+        }
+        .Change__Description {
+          padding: 1rem;
+          display: block;
+          border: 1px solid rgb(222, 226, 230);
+          background: white;
+          color: rgb(73, 80, 87);
+          font-size: 1rem;
+          line-height: 1rem;
+          outline: none;
+          border-radius: 4px;
+          width: 100%;
+          @include responsive('mobile') {
+            font-size: 0.5rem;
+            margin-top: 3vh;
+          }
+        }
+        .Change__Button-Wrapper {
+          display: flex;
+          justify-content: flex-start;
+          @include responsive('mobile') {
+            margin-top: 6vh;
+          }
+          > button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #bcdea1;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0px 1.25rem;
+            height: 2rem;
+            transition: 0.5s;
+            &:hover {
+              transition: 0.5s;
+              background-color: #92cd7b;
+            }
+            @include responsive('tablet__large') {
+              font-size: 2.5rem;
+              width: fit-content;
+              height: fit-content;
+              font-weight: 700;
+              padding: 1rem 2rem;
+              border-radius: 1rem;
+            }
+            @include responsive('tablet') {
+              font-size: 1.5rem;
+            }
+            @include responsive('mobile__small') {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes vibrate {
+  0% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 2px);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    -webkit-transform: translate(-2px, -2px);
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    -webkit-transform: translate(2px, 2px);
+    transform: translate(2px, 2px);
+  }
+  80% {
+    -webkit-transform: translate(2px, -2px);
+    transform: translate(2px, -2px);
+  }
+  100% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+}

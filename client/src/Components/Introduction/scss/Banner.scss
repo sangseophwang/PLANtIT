@@ -1,34 +1,45 @@
-@import "/src/Components/Common/scss/mixins";
+@import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
 
 .Banner__Container {
-    position: relative;
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  cursor: pointer;
+  &:hover {
+    .Banner__Text {
+      transition: 0.5s;
+      color: $LightGreen;
+    }
+  }
+  @include responsive('tablet') {
+    height: 50vh;
+  }
+  @include responsive('mobile') {
+    height: 40vh;
+  }
+  .Banner__Image {
     width: 100%;
-    .Banner__Image {
-        width: 100%;
-        position: relative;
+    height: 100%;
+    object-fit: cover;
+  }
+  .Banner__Text {
+    width: 100%;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    transition: 0.5s;
+    cursor: pointer;
+    @include responsive('tablet') {
+      font-size: 4rem;
     }
-
-    .Banner__text {
-        width: 100%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 5rem;
-        font-weight: 700;
-        color: white;
-        text-align: center;
-
-        @include responsive("tablet__large") {
-            font-size: 4rem;
-        }
-
-        @include responsive("mobile") {
-            font-size: 3rem;
-        }
-
-        @include responsive("mobile__small") {
-            font-size: 2rem;
-        }
+    @include responsive('mobile__small') {
+      font-size: 2rem;
     }
+  }
 }

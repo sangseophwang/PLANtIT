@@ -1,9 +1,9 @@
 //@ts-ignore
 import ImageResize from '@looop/quill-image-resize-module-react';
-import { useMemo, useEffect, useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
-import QuillImageDropAndPaste from 'quill-image-drop-and-paste';
 import 'react-quill/dist/quill.snow.css';
+import { CommunityApi } from 'API/CommunityApi';
 
 interface EditorProps {
   contents: string;
@@ -11,46 +11,70 @@ interface EditorProps {
 }
 
 Quill.register('modules/imageResize', ImageResize);
-Quill.register('modules/imageDropAndPaste', QuillImageDropAndPaste);
 
-export default function Editor({ contents, onChange }: EditorProps): JSX.Element {
-  const QuillRef = useRef<ReactQuill>(null);
+export default function Editor({
+  contents,
+  onChange,
+}: EditorProps): JSX.Element {
+  const QuillRef = useRef<ReactQuill>();
 
-  // const imageHandler = useCallback(() => {
-  //   const input = document.createElement('input');
+  const imageHandler = () => {
+    const input = document.createElement('input');
+    const formData = new FormData();
+    let url = '';
 
-  //   input.setAttribute('type', 'file');
-  //   input.setAttribute('accept', 'image/*');
-  //   input.click();
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+    input.click();
 
-  //   let quill = QuillRef.current.getEditor();
+    input.onchange = async () => {
+      const file = input.files;
+      if (file !== null) {
+        formData.append('image', file[0]);
 
-  //   input.onchange = async () => {
-  //     const file = input.files[0];
-  //     const formData = new FormData();
+        try {
+          const response = await CommunityApi.Upload_Image(
+            'blog/image',
+            formData,
+          );
+          url = response.data;
 
-  //     formData.append('image', file);
+          const range = QuillRef.current?.getEditor().getSelection()?.index;
+          if (range !== null && range !== undefined) {
+            let quill = QuillRef.current?.getEditor();
 
-  //     const range = quill.getSelection();
+            quill?.setSelection(range, 1);
 
-  //   }
-
-  // }, [])
+            quill?.clipboard.dangerouslyPasteHTML(
+              range,
+              `<img src=${url} alt="">`,
+            );
+          }
+          return { ...response, success: true };
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+  };
 
   const modules = useMemo(
     () => ({
       toolbar: {
         container: [
-          [{ size: ['small', false, 'large', 'huge'] }],
+          [{ size: [false] }],
           ['bold', 'underline', 'strike', 'blockquote'],
-          [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }, { align: [] }],
+          [
+            { list: 'ordered' },
+            { list: 'bullet' },
+            { indent: '-1' },
+            { indent: '+1' },
+            { align: [] },
+          ],
           ['image'],
         ],
-        // handlers: {
-        //   image: imageHandler,
-        // },
+        handlers: { image: imageHandler },
       },
-      imageDropAndPaste: true,
       clipboard: { matchVisual: false },
       imageResize: {
         parchment: Quill.import('parchment'),
@@ -60,11 +84,33 @@ export default function Editor({ contents, onChange }: EditorProps): JSX.Element
     [],
   );
 
-  const formats = ['size', 'bold', 'underline', 'strike', 'blockquote', 'list', 'bullet', 'indent', 'align', 'image'];
+  const formats = [
+    'size',
+    'bold',
+    'underline',
+    'strike',
+    'blockquote',
+    'list',
+    'bullet',
+    'indent',
+    'align',
+    'image',
+  ];
 
-  useEffect(() => {
-    QuillRef.current?.getEditor().root.setAttribute('spellcheck', 'false');
-  }, []);
-
-  return <ReactQuill className="Editor" ref={QuillRef} theme="snow" value={contents} onChange={onChange} modules={modules} formats={formats} placeholder={'내용을 입력해주세요.'} />;
+  return (
+    <ReactQuill
+      className="Editor"
+      ref={element => {
+        if (element !== null) {
+          QuillRef.current = element;
+        }
+      }}
+      theme="snow"
+      value={contents}
+      onChange={onChange}
+      modules={modules}
+      formats={formats}
+      placeholder={'내용을 입력해주세요.'}
+    />
+  );
 }

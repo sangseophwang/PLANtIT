@@ -1,11 +1,10 @@
-import React from 'react';
 import Navigation from 'Components/Common/Navigation';
 import First from 'Components/Home/First';
 import Second from 'Components/Home/Second';
 import Third from 'Components/Home/Third';
 import Fourth from 'Components/Home/Fourth';
 import Fifth from 'Components/Home/Fifth';
-import Sixth from 'Components/Home/Sixth';
+import SearchHome from 'Variables/SearchHome';
 import SwiperCore, { Pagination, Mousewheel } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
@@ -14,7 +13,13 @@ import 'swiper/components/pagination/pagination.scss';
 
 SwiperCore.use([Mousewheel, Pagination]);
 
-const bullet = ['- 소개', '- 영상', '- 비전', '- 인공지능', '- 커뮤니티', '- 메세지'];
+const bullet = [
+  '- 플래닛',
+  '- 질병도감',
+  '- 인공지능',
+  '- 커뮤니티',
+  '- 메세지',
+];
 
 export default function Home(): JSX.Element {
   return (
@@ -27,10 +32,17 @@ export default function Home(): JSX.Element {
         spaceBetween={30}
         mousewheel={true}
         speed={1000}
+        shortSwipes={false}
         pagination={{
           clickable: true,
           renderBullet: function (index, className) {
-            return '<div class="' + className + '"><span>' + bullet[index] + '</span></div>';
+            return (
+              '<div class="' +
+              className +
+              '"><span>' +
+              bullet[index] +
+              '</span></div>'
+            );
           },
         }}
         className="mySwiper"
@@ -39,7 +51,7 @@ export default function Home(): JSX.Element {
           <First />
         </SwiperSlide>
         <SwiperSlide>
-          <Second />
+          <Second data={SearchHome} />
         </SwiperSlide>
         <SwiperSlide>
           <Third />
@@ -49,9 +61,6 @@ export default function Home(): JSX.Element {
         </SwiperSlide>
         <SwiperSlide>
           <Fifth />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Sixth />
         </SwiperSlide>
       </Swiper>
     </div>

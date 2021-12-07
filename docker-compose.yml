@@ -3,15 +3,17 @@ version: "3"
 services:
   backend:
     container_name: backend
-    image: jhj967878/plantit:django
+    image: jhj967878/plantit:django_ai
     volumes:
       - ./server:/project/server
     working_dir: /project/server
-    command: gunicorn --bind 0:8000 server.wsgi:application
+    command: bash -c "service redis-server start && gunicorn --bind 0:8000 server.wsgi:application"
+
     expose:
       - 8000
 
   nginx:
+    container_name: nginx
     image: nginx
     ports:
       - 80:80

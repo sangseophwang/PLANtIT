@@ -24,24 +24,162 @@
       }
     }
   }
-  .Board__Contents {
-    height: 100vh;
-    width: 80%;
+  .Board__Contents-Wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
-    background-color: teal;
+    width: 80%;
+    .Board__Title {
+      height: 30vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 1.2;
+      color: darkslategrey;
+      font-weight: 700;
+      font-size: 50px;
+      @include responsive('tablet') {
+        height: 20vh;
+        margin-bottom: 25px;
+        font-size: 7vw;
+        text-align: center;
+      }
+      @include responsive('mobile__small') {
+        font-size: 8vw;
+        height: 15vh;
+        margin-bottom: 0px;
+      }
+    }
+    .Board__Contents {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 0;
+      @include responsive('mobile') {
+        width: 100%;
+      }
+      .ql-align-center {
+        text-align: center;
+      }
+      .ql-align-right {
+        text-align: right;
+      }
+      @for $i from 1 through 10 {
+        $margin-left: 20px * $i;
+        .ql-indent-#{$i} {
+          margin-left: $margin-left;
+        }
+      }
+      > ul {
+        list-style: circle;
+        line-height: 1.5;
+        margin-left: 20px;
+      }
+      > ol {
+        list-style: decimal;
+        line-height: 1.5;
+        margin-left: 20px;
+      }
+      > p {
+        color: darkslategrey;
+        line-height: 1.6;
+        font-size: 18px;
+        text-align: left;
+        @include responsive('mobile') {
+          font-size: 16px;
+          line-height: 1.4;
+        }
+        > strong {
+          font-weight: 700;
+        }
+        > u {
+          text-decoration: underline;
+        }
+        > s {
+          text-decoration: line-through;
+        }
+        > img {
+          display: block;
+          margin: 0 auto;
+          min-width: 60%;
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+      > blockquote {
+        border-left: 3px solid gray;
+        padding-left: 15px;
+        word-break: keep-all;
+        line-height: 1.4;
+        color: darkgray;
+        font-weight: 500;
+      }
+    }
+  }
+  .Board__Back {
+    border: none;
+    color: white;
+    background-color: #bcdea1;
+    width: 120px;
+    height: 50px;
+    font-size: 17px;
+    font-weight: 700;
+    margin-top: 30px;
+    border-radius: 8px;
+    transition: 0.5s;
+    cursor: pointer;
+    &:hover {
+      transition: 0.5s;
+      background-color: #92cd7b;
+    }
   }
   .Board__Profile {
     height: 20vh;
     width: 60%;
-    background-color: tomato;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Board__Modify__Delete {
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    > button {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      margin-left: 8px;
+      cursor: pointer;
+      transition: 0.5s;
+      font-size: 16px;
+      font-weight: 600;
+      @include responsive('mobile') {
+        font-size: 15px;
+        margin-left: 5px;
+      }
+    }
+    .Board__Modify {
+      color: darkseagreen;
+      &:hover {
+        transition: 0.5s;
+        transform: scale(1.07);
+      }
+    }
+    .Board__Delete {
+      color: tomato;
+      &:hover {
+        transition: 0.5s;
+        transform: scale(1.07);
+      }
+    }
   }
   .disqusFrame {
-    margin-top: 10px;
+    margin: 10px 0 100px 0;
     width: 70%;
     text-align: center;
+    @include responsive('tablet') {
+      margin-bottom: 150px;
+    }
   }
 }
