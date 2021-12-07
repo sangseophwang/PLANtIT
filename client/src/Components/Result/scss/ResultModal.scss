@@ -1,4 +1,4 @@
-@import "/src/Components/Common/scss/mixins";
+@import '/src/Components/Common/scss/mixins';
 
 // Modal__Background = Modal창의 외부 배경화면
 .Rmodal__Background {
@@ -10,7 +10,7 @@
   top: 70px;
   z-index: 50;
 
-  @include responsive("tablet") {
+  @include responsive('tablet') {
     top: 0px;
   }
 }
@@ -27,7 +27,7 @@
   align-items: center;
   z-index: 100;
 
-  @include responsive("tablet") {
+  @include responsive('tablet') {
     width: 90%;
     top: 30px;
     margin-left: 0 auto;
@@ -44,13 +44,13 @@
     padding: 1rem;
     z-index: 150;
 
-    @include responsive("tablet") {
+    @include responsive('tablet') {
       margin: 0 auto;
       height: 70vh;
       overflow-y: scroll;
     }
 
-    @include responsive("mobile__small") {
+    @include responsive('mobile__small') {
       padding: 0.5rem;
       height: 80vh;
     }
@@ -61,7 +61,7 @@
       flex-direction: row;
       align-items: center;
 
-      @include responsive("tablet") {
+      @include responsive('tablet') {
         flex-direction: column;
       }
 
@@ -71,7 +71,7 @@
         object-fit: contain;
         border-radius: 12px;
 
-        @include responsive("tablet") {
+        @include responsive('tablet') {
           width: 90%;
           margin: 0.5rem auto;
         }
@@ -85,7 +85,7 @@
         flex-direction: column;
         font-size: 0.8rem;
 
-        @include responsive("mobile") {
+        @include responsive('mobile') {
           padding: 1rem;
         }
 
@@ -96,7 +96,7 @@
           color: #659e38;
           margin-bottom: 0.5rem;
 
-          @include responsive("tablet") {
+          @include responsive('tablet') {
             font-size: 1.3rem;
             text-align: center;
           }
@@ -109,7 +109,7 @@
           display: inline-block;
           margin-bottom: 1rem;
 
-          @include responsive("tablet") {
+          @include responsive('tablet') {
             font-size: 1.7rem;
             text-align: center;
           }
@@ -119,7 +119,7 @@
           font-size: 0.8rem;
           line-height: 1.5;
 
-          @include responsive("tablet") {
+          @include responsive('tablet') {
             text-align: center;
           }
         }
@@ -133,9 +133,9 @@
           font-weight: 700;
           margin-top: 1rem;
           text-align: center;
-          background-image: linear-gradient(transparent 60%, #f8cd07 40%);
+          background-image: linear-gradient(transparent 60%, #b7e058 40%);
 
-          @include responsive("tablet") {
+          @include responsive('tablet') {
             margin: 1rem auto;
           }
         }
@@ -156,12 +156,12 @@
   justify-content: flex-end;
 
   .Rmodal__Icon {
-    background: #000;
-    border-radius: 5px;
-    opacity: 0.8;
+    font-size: 20px;
     cursor: pointer;
-    :hover {
-      opacity: 1;
+    transition: 0.5s;
+    &:hover {
+      color: tomato;
+      transition: 0.5s;
     }
   }
 }

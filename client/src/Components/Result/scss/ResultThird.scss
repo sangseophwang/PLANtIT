@@ -1,45 +1,47 @@
-@import "/src/Components/Common/scss/mixins";
+@import '/src/Components/Common/scss/mixins';
 
-.Rthird__Container {
+.ResultThird__Container {
   width: 100%;
-  margin: 20rem auto;
-
-  @include responsive("tablet") {
-    margin: 15rem auto;
+  height: 90vh;
+  @include responsive('tablet__large') {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60vh;
+  }
+  @include responsive('mobile__small') {
+    margin-top: 5rem;
+    height: 90vh;
+    font-size: 2.5rem;
   }
 }
 
-.Rthird__Text-Container {
+.ResultThird__Text-Container {
   width: 75%;
   margin-right: auto;
   margin-left: auto;
-
   margin-bottom: 5rem;
-
-  .Rthird__Title {
+  .ResultThird__Title {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 3rem;
-
-    @include responsive("tablet") {
+    @include responsive('tablet') {
       font-size: 3rem;
     }
-
-    @include responsive("mobile__small") {
+    @include responsive('mobile__small') {
       font-size: 2.5rem;
     }
   }
 
-  .Rthird__Content {
+  .ResultThird__Content {
     font-size: 1.2rem;
-    line-height: 1.3;
+    line-height: 1.7;
     margin-bottom: 2rem;
-
-    @include responsive("tablet") {
+    @include responsive('tablet') {
       font-size: 1rem;
     }
 
-    @include responsive("mobile__small") {
+    @include responsive('mobile__small') {
       font-size: 0.8rem;
     }
   }
@@ -53,7 +55,7 @@
   border-radius: 1.5rem;
   object-fit: contain;
 
-  @include responsive("tablet") {
+  @include responsive('tablet') {
     height: 15rem;
     margin-left: auto;
     margin-right: auto;
@@ -68,7 +70,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
   color: #ffffff;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,7 +110,7 @@
   font-size: 2rem;
   font-weight: bold;
 
-  @include responsive("tablet") {
+  @include responsive('tablet') {
     font-size: 1.5rem;
   }
 }
@@ -117,7 +119,7 @@
   font-size: 1.25rem;
   margin-top: 0.5rem;
 
-  @include responsive("tablet") {
+  @include responsive('tablet') {
     font-size: 1rem;
   }
 }
@@ -125,31 +127,53 @@
 // carousel 디자인
 
 // carousel 크기
-#root > div > div > section.Rthird__Container > div.rec.rec-carousel-wrapper {
+#root
+  > div
+  > div
+  > section.ResultThird__Container
+  > div.rec.rec-carousel-wrapper {
   width: 75%;
   margin: 0 auto;
 
-  @include responsive("mobile__small") {
+  @include responsive('mobile__small') {
     width: 85%;
   }
 }
 
 // 좌우버튼
 
-#root > div > div > section.Rthird__Container > div.rec-carousel-wrapper > div.rec.rec-carousel > button {
+#root
+  > div
+  > div
+  > section.ResultThird__Container
+  > div.rec-carousel-wrapper
+  > div.rec.rec-carousel
+  > button {
   background-color: white;
   color: #5d5d5d;
   font-size: 3rem;
   box-shadow: none;
 }
 
-#root > div > div > section.Rthird__Container > div.rec-carousel-wrapper > div.rec.rec-carousel > button:hover {
+#root
+  > div
+  > div
+  > section.ResultThird__Container
+  > div.rec-carousel-wrapper
+  > div.rec.rec-carousel
+  > button:hover {
   // background-color: #5d5d5d;
   font-size: 4rem;
   // color: white;
 }
 
-#root > div > div > section.Rthird__Container > div.rec-carousel-wrapper > div.rec.rec-carousel > button:disabled {
+#root
+  > div
+  > div
+  > section.ResultThird__Container
+  > div.rec-carousel-wrapper
+  > div.rec.rec-carousel
+  > button:disabled {
   visibility: hidden;
 }
 
@@ -158,18 +182,16 @@
 #root
   > div
   > div
-  > section.Rthird__Container
+  > section.ResultThird__Container
   > div.rec.rec-carousel-wrapper
-  > div.rec.rec-pagination
-  > button.rec.rec-dot.rec.rec-dot_active {
-  background-color: #5d5d5d;
-  box-shadow: 0 0 1px 3px #5d5d5d;
+  > div.rec.rec-pagination {
+  display: none;
 }
 
 #root
   > div
   > div
-  > section.Rthird__Container
+  > section.ResultThird__Container
   > div.rec.rec-carousel-wrapper
   > div.rec.rec-pagination
   > button.rec.rec-dot {

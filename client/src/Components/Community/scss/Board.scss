@@ -135,11 +135,66 @@
     }
   }
   .Board__Profile {
+    margin: 5vh 0;
     height: 20vh;
-    width: 60%;
+    width: 40%;
+    background-color: rgb(247, 247, 247);
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    @include responsive('tablet') {
+      width: 100%;
+    }
+    .Board__Profile-Wrapper {
+      width: 60%;
+      height: 70%;
+      display: flex;
+      @include responsive('tablet__large') {
+        width: 55%;
+      }
+      @include responsive('mobile__small') {
+        width: 70%;
+      }
+      .Board__Profile-Info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 30px;
+        > h1 {
+          display: flex;
+          align-items: center;
+          font-size: 2vw;
+          font-weight: 700;
+          @include responsive('tablet__large') {
+            font-size: 4vw;
+          }
+          @include responsive('mobile') {
+            font-size: 6vw;
+          }
+          > h3 {
+            color: #92cd7b;
+            font-weight: 500;
+            font-style: italic;
+            font-size: 1.3vw;
+            margin-right: 10px;
+            @include responsive('tablet__large') {
+              font-size: 2vw;
+            }
+            @include responsive('mobile') {
+              font-size: 3vw;
+            }
+          }
+        }
+        > span {
+          color: gray;
+          line-height: 1.3;
+          word-break: keep-all;
+          @include responsive('mobile__small') {
+            font-size: 10px;
+          }
+        }
+      }
+    }
   }
   .Board__Modify__Delete {
     width: 70%;

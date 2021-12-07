@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
-import Navigation from 'Components/Common/Navigation';
-import 'Components/Result/scss/Result.scss';
-import Rfirst from 'Components/Result/Rfirst';
-import Rsecond from 'Components/Result/Rsecond';
-import Rthird from 'Components/Result/Rthird';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import Rlast from './Rlast';
-import Exception from './Exception';
+import Navigation from 'Components/Common/Navigation';
+import ResultFirst from 'Components/Result/ResultFirst';
+import ResultSecond from 'Components/Result/ResultSecond';
+import ResultThird from 'Components/Result/ResultThird';
+import ResultLast from 'Components/Result/ResultLast';
+import Footer from 'Components/Common/Footer';
+import Exception from 'Components/Result/Exception';
 import Loading from 'Components/Common/Loading';
+import ProgressBar from 'Components/Common/ProgressBar';
+import 'Components/Result/scss/Result.scss';
 
 export default function Result(): JSX.Element {
   const { state } = useLocation();
@@ -33,10 +35,12 @@ export default function Result(): JSX.Element {
         state.data !== 'six-man' ? (
           <>
             <Navigation />
-            <Rfirst data={state} />
-            <Rsecond data={state} />
-            <Rthird data={state} />
-            <Rlast />
+            <ProgressBar />
+            <ResultFirst data={state} />
+            <ResultSecond data={state} />
+            <ResultThird data={state} />
+            <ResultLast />
+            <Footer />
           </>
         ) : (
           <Exception />

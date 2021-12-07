@@ -3,7 +3,7 @@
 .Mypage__Container {
   @include Container__Form();
   .Mypage__Wrapper {
-    width: 38%;
+    width: 40%;
     height: 31vh;
     display: flex;
     justify-content: space-around;
@@ -22,10 +22,11 @@
     > section {
       display: flex;
       height: 65%;
-      width: 90%;
-      justify-content: space-around;
+      width: 85%;
+      justify-content: space-between;
       @include responsive('tablet__large') {
         flex-direction: column;
+        justify-content: space-around;
         width: 100%;
       }
       .Thumbnail__Area {
@@ -44,6 +45,9 @@
           justify-content: center;
           align-items: center;
           position: relative;
+          @include responsive('tablet__large') {
+            margin-bottom: 3vh;
+          }
           .Upload__button {
             cursor: pointer;
             > img {
@@ -99,7 +103,7 @@
         display: flex;
         height: 100%;
         flex-direction: column;
-        padding-left: 24px;
+        padding-left: 30px;
         justify-content: space-around;
         @include responsive('tablet__large') {
           align-items: center;
@@ -110,6 +114,7 @@
           font-size: 2.25rem;
           line-height: 1.5;
           font-weight: 700;
+          margin-bottom: 10px;
           @include responsive('tablet__large') {
             font-size: 5rem;
           }
@@ -120,7 +125,12 @@
         > p {
           display: block;
           color: gray;
+          word-break: keep-all;
+          line-height: 1.5;
+          margin-bottom: 1rem;
           @include responsive('tablet__large') {
+            margin-bottom: -1rem;
+            text-align: center;
             font-size: 2rem;
             font-weight: 700;
           }
@@ -186,8 +196,9 @@
           align-items: center;
         }
         .Change__Name {
-          padding: 1rem;
+          width: 100%;
           display: flex;
+          padding: 0.5rem;
           font-size: 2.25rem;
           line-height: 1.5rem;
           border: 1px solid rgb(222, 226, 230);
@@ -201,7 +212,7 @@
           }
         }
         .Change__Description {
-          padding: 1rem;
+          padding: 0.5rem;
           display: block;
           border: 1px solid rgb(222, 226, 230);
           background: white;
