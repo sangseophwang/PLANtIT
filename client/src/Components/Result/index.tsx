@@ -40,7 +40,7 @@ export default function Result(): JSX.Element {
             <ResultSecond data={state} />
             <ResultThird data={state} />
             <ResultLast />
-            <Footer />
+            <Footer data={'relative'} />
           </>
         ) : (
           <Exception />
