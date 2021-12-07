@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navigation from 'Components/Common/Navigation';
 import Example from 'Components/Analysis/Example';
 import Upload from 'Components/Analysis/Upload';
