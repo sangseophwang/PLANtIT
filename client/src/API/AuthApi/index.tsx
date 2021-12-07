@@ -42,7 +42,7 @@ function authRequestPost(
   return axios.post(BASE_URL + _endpoint, data, {
     headers: {
       'Content-Type': _contentTypeValue,
-      Authorization: `${sessionStorage.getItem('access_token')}`,
+      Authorization: `${localStorage.getItem('access_token')}`,
     },
   });
 }
@@ -56,7 +56,7 @@ function authRequestGet(
   return axios.get(BASE_URL + _endpoint + _query, {
     headers: {
       'Content-Type': _contentTypeValue,
-      Authorization: `${sessionStorage.getItem('access_token')}`,
+      Authorization: `${localStorage.getItem('access_token')}`,
     },
   });
 }

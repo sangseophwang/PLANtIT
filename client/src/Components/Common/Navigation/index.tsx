@@ -37,12 +37,10 @@ export default function Navigation(): JSX.Element {
         <Link
           className="Navigation__Item-Web"
           to={
-            sessionStorage.getItem('access_token') === null
-              ? '/login'
-              : '/mypage'
+            localStorage.getItem('access_token') === null ? '/login' : '/mypage'
           }
         >
-          {sessionStorage.getItem('access_token') === null
+          {localStorage.getItem('access_token') === null
             ? '로그인'
             : '마이페이지'}
         </Link>
@@ -61,14 +59,12 @@ export default function Navigation(): JSX.Element {
         <Link
           className="Navigation__Item-Mobile"
           to={
-            sessionStorage.getItem('access_token') === null
-              ? '/login'
-              : '/mypage'
+            localStorage.getItem('access_token') === null ? '/login' : '/mypage'
           }
         >
           <FontAwesomeIcon icon={faUser} />
           <span>
-            {sessionStorage.getItem('access_token') === null
+            {localStorage.getItem('access_token') === null
               ? '로그인'
               : '마이페이지'}
           </span>

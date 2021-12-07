@@ -39,8 +39,8 @@ export default function Post(): JSX.Element {
           }).then(response => {
             if (response.data.new_token !== null) {
               console.log('새로운 토큰이 도착했습니다!');
-              sessionStorage.removeItem('access_token');
-              sessionStorage.setItem('access_token', response.data.new_token);
+              localStorage.removeItem('access_token');
+              localStorage.setItem('access_token', response.data.new_token);
               navigate('/community');
             } else {
               navigate('/community');
@@ -59,8 +59,8 @@ export default function Post(): JSX.Element {
           }).then(response => {
             if (response.data.new_token !== null) {
               console.log('새로운 토큰이 도착했습니다!');
-              sessionStorage.removeItem('access_token');
-              sessionStorage.setItem('access_token', response.data.new_token);
+              localStorage.removeItem('access_token');
+              localStorage.setItem('access_token', response.data.new_token);
               navigate('/community');
             } else {
               navigate('/community');

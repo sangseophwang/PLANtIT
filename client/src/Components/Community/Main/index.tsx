@@ -51,7 +51,7 @@ export default function Community(): JSX.Element {
 
   // 로그인 여부 확인하고 페이지 이동
   const handleCreatePost = async () => {
-    const isLoggedin = sessionStorage.getItem('access_token');
+    const isLoggedin = localStorage.getItem('access_token');
     if (!isLoggedin) {
       toast.error(CustomToastWithLink);
       return;

@@ -22,13 +22,13 @@ export default function LoginPage(): JSX.Element {
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    sessionStorage.getItem('access_token') === null && tokenParam !== undefined
-      ? (sessionStorage.setItem('access_token', tokenParam),
+    localStorage.getItem('access_token') === null && tokenParam !== undefined
+      ? (localStorage.setItem('access_token', tokenParam),
         navigate('/'),
         toast.success('로그인 성공!', {
           position: toast.POSITION.TOP_CENTER,
         }))
-      : sessionStorage.getItem('access_token') !== null
+      : localStorage.getItem('access_token') !== null
       ? navigate('/')
       : () => {};
   }, [navigate, tokenParam]);
@@ -64,7 +64,7 @@ export default function LoginPage(): JSX.Element {
 
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         message === 'login success'
-          ? (sessionStorage.setItem('access_token', accessToken),
+          ? (localStorage.setItem('access_token', accessToken),
             toast.success('로그인 성공!', {
               position: toast.POSITION.TOP_CENTER,
             }),
@@ -98,7 +98,7 @@ export default function LoginPage(): JSX.Element {
 
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         message === 'google login success'
-          ? (sessionStorage.setItem('access_token', accessToken),
+          ? (localStorage.setItem('access_token', accessToken),
             toast.success('로그인 성공!', {
               position: toast.POSITION.TOP_CENTER,
             }),

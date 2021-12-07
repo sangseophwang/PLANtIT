@@ -31,8 +31,8 @@ export default function Board(): JSX.Element {
       ).then(response => {
         if (response.data.new_token !== null) {
           console.log('새로운 토큰이 도착했습니다!');
-          sessionStorage.removeItem('access_token');
-          sessionStorage.setItem('access_token', response.data.new_token);
+          localStorage.removeItem('access_token');
+          localStorage.setItem('access_token', response.data.new_token);
           setData(response.data);
           setIsAuthor(response.data.is_author);
           setCookie('plant-blog', item);
@@ -54,8 +54,8 @@ export default function Board(): JSX.Element {
         response => {
           if (response.data.new_token !== null) {
             console.log('새로운 토큰이 도착했습니다!');
-            sessionStorage.removeItem('access_token');
-            sessionStorage.setItem('access_token', response.data.new_token);
+            localStorage.removeItem('access_token');
+            localStorage.setItem('access_token', response.data.new_token);
             navigate('/community');
           } else {
             console.log('뉴토큰이 없습니다.');

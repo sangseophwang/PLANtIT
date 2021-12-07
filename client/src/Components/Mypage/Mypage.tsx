@@ -24,7 +24,7 @@ export default function MypageMain(): JSX.Element {
           : alert('message is not "success"');
 
         if (response.data.new_token !== null) {
-          sessionStorage.setItem('access_token', response.data.new_token);
+          localStorage.setItem('access_token', response.data.new_token);
         }
       })
       .catch(error => {});
@@ -37,7 +37,7 @@ export default function MypageMain(): JSX.Element {
       .then(response => {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         response.data === 'Deregister Success'
-          ? (sessionStorage.removeItem('access_token'),
+          ? (localStorage.removeItem('access_token'),
             navigate('/'),
             toast.success('계정이 삭제되었습니다!', {
               position: toast.POSITION.TOP_CENTER,
@@ -83,7 +83,7 @@ export default function MypageMain(): JSX.Element {
           : alert('message is not "success"');
 
         if (response.data.new_token !== null) {
-          sessionStorage.setItem('access_token', response.data.new_token);
+          localStorage.setItem('access_token', response.data.new_token);
         }
       })
       .catch(error => {
@@ -109,7 +109,7 @@ export default function MypageMain(): JSX.Element {
           // eslint-disable-next-line @typescript-eslint/no-unused-expressions
 
           if (response.data.new_token !== null) {
-            sessionStorage.setItem('access_token', response.data.new_token);
+            localStorage.setItem('access_token', response.data.new_token);
           }
         })
         .catch(error => {});
@@ -159,7 +159,7 @@ export default function MypageMain(): JSX.Element {
                   type="button"
                   name="logout"
                   onClick={() => {
-                    sessionStorage.removeItem('access_token');
+                    localStorage.removeItem('access_token');
 
                     navigate('/');
                     toast.success('로그아웃 되었습니다.', {
