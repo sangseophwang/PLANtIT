@@ -155,7 +155,6 @@ function RegisterPage(): JSX.Element {
               />
             </div>
           ))}
-
           <span className="Password__Message">{msg}</span>
           <div className="Submit__Form-Wrapper">
             <div></div>
