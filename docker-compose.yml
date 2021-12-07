@@ -21,17 +21,6 @@ services:
     volumes:
       - ./server:/project/server
       - ./nginx/config:/etc/nginx/conf.d
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/data:/var/www/certbot
     restart: always
     depends_on:
       - backend
-
-  certbot:
-    image: certbot/certbot:latest
-    command: certonly --webroot --webroot-path=/var/www/certbot --email jhj967878@naver.com --agree-tos --no-eff-email -d elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com
-    volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/logs:/var/log/letsencrypt
-      - ./certbot/data:/var/www/certbot
-    
