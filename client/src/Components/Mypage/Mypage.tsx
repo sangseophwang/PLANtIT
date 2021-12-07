@@ -158,14 +158,17 @@ export default function MypageMain(): JSX.Element {
 
   return (
     <div className="Mypage__Container">
-      <main>
+      <main className="Mypage__Wrapper">
         <section>
           <div className="Thumbnail__Area">
-            <img className="Thumbnail__Area-img" src={imageUrl} alt=" "></img>
-
             <form>
               <label className="Upload__button" htmlFor="input-file">
-                이미지 업로드
+                <img
+                  className="Thumbnail__Area-img"
+                  src={imageUrl}
+                  alt=" "
+                ></img>
+                <span>+</span>
               </label>
               <input
                 type="file"
@@ -181,39 +184,41 @@ export default function MypageMain(): JSX.Element {
             <div className="Info__Area">
               <h2>{nickname !== null ? nickname : '닉네임'}</h2>
               <p>{description !== null ? description : '자기 소개'}</p>
-              <button
-                type="button"
-                name="Change"
-                onClick={event => {
-                  event.preventDefault();
-                  setChange(true);
-                }}
-              >
-                내용 수정
-              </button>
-              <button
-                type="button"
-                name="logout"
-                onClick={() => {
-                  sessionStorage.removeItem('access_token');
-                  console.log(
-                    '로그아웃 후 세션 스토리지 값: ',
-                    sessionStorage.getItem('access_token'),
-                  );
-                  navigate('/');
-                  alert('로그아웃 되었습니다.');
-                }}
-              >
-                로그아웃
-              </button>
+              <div className="Button__Wrapper">
+                <button
+                  type="button"
+                  name="Change"
+                  onClick={event => {
+                    event.preventDefault();
+                    setChange(true);
+                  }}
+                >
+                  내용 수정
+                </button>
+                <button
+                  type="button"
+                  name="logout"
+                  onClick={() => {
+                    sessionStorage.removeItem('access_token');
+                    console.log(
+                      '로그아웃 후 세션 스토리지 값: ',
+                      sessionStorage.getItem('access_token'),
+                    );
+                    navigate('/');
+                    alert('로그아웃 되었습니다.');
+                  }}
+                >
+                  로그아웃
+                </button>
 
-              <button
-                type="button"
-                name="DeRegister"
-                onClick={onSubmitDeRegister}
-              >
-                회원탈퇴
-              </button>
+                <button
+                  type="button"
+                  name="DeRegister"
+                  onClick={onSubmitDeRegister}
+                >
+                  회원탈퇴
+                </button>
+              </div>
             </div>
           ) : (
             <div className="Info__Area">
@@ -242,7 +247,7 @@ export default function MypageMain(): JSX.Element {
                     type="submit"
                     onClick={onSubmitChangeValue}
                   >
-                    저장
+                    저 장
                   </button>
                 </div>
               </form>
