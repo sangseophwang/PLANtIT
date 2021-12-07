@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { authApi } from 'API/AuthApi';
 
 import 'Components/Mypage/scss/Mypage.scss';
-import FirstImage from 'Assets/Mypage/FirstProfileImage.png';
 
 export default function MypageMain(): JSX.Element {
   const navigate = useNavigate();
@@ -24,9 +24,7 @@ export default function MypageMain(): JSX.Element {
         response.data.message === 'success'
           ? (setNickname(response.data.nickname),
             setDescription(response.data.description),
-            response.data.image === null
-              ? setImageUrl(FirstImage)
-              : setImageUrl(response.data.image))
+            setImageUrl(response.data.image + '?t=' + new Date().getTime()))
           : alert('message is not "success"');
 
         if (response.data.new_token !== null) {
@@ -57,7 +55,9 @@ export default function MypageMain(): JSX.Element {
         response.data === 'Deregister Success'
           ? (sessionStorage.removeItem('access_token'),
             navigate('/'),
-            alert('계정이 삭제되었습니다. 안녕히가십시오.'))
+            toast.success('계정이 삭제되었습니다!', {
+              position: toast.POSITION.TOP_CENTER,
+            }))
           : alert('response.data is not "Deregister Success"');
       })
       .catch(error => {
@@ -141,9 +141,7 @@ export default function MypageMain(): JSX.Element {
             imageUrl === response.data.image_url,
           );
 
-          setImageUrl(response.data.image_url);
-          setImageUrl('');
-          window.location.replace('/mypage');
+          setImageUrl(response.data.image_url + '?t=' + new Date().getTime());
           // eslint-disable-next-line @typescript-eslint/no-unused-expressions
 
           if (response.data.new_token !== null) {

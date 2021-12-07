@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CloseIcon from 'Assets/CloseIcon.svg';
 import FolderIcon from 'Assets/folder_icon_transparent.png';
@@ -7,6 +7,11 @@ import axios from 'axios';
 import { useRef } from 'react';
 import Loading from 'Components/Common/Loading';
 import Error from 'Components/Common/Error';
+import { faFileUpload, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(faFileUpload, faCheck);
 
 const Upload = (props: any) => {
   const [image, setImage] = useState('');
@@ -127,18 +132,19 @@ const Upload = (props: any) => {
           <div className="Upload__Image">
             {!isUploaded ? (
               <>
-                <label htmlFor="upload-input">
-                  <img
+                <label htmlFor="Upload__Input">
+                  <FontAwesomeIcon icon={faFileUpload} />
+                  {/* <img
                     src={FolderIcon}
                     draggable={'false'}
                     alt="placeholder"
                     style={{ width: 100, height: 100 }}
-                  />
-                  <p style={{ color: '#444' }}>작물이미지를 넣어보세요.</p>
+                  /> */}
                 </label>
               </>
             ) : (
               <div className="Image__Preview">
+                <FontAwesomeIcon icon={faCheck} />
                 <img
                   className="close-icon"
                   src={CloseIcon}
@@ -148,19 +154,19 @@ const Upload = (props: any) => {
                     setImage('');
                   }}
                 />
-                {
+                {/* {
                   <img
                     id="uploaded-image"
                     src={image}
                     draggable={false}
                     alt="uploaded-img"
                   />
-                }
+                } */}
               </div>
             )}
 
             <input
-              id="upload-input"
+              id="Upload__Input"
               type="file"
               accept=".jpg,.jpeg,.png,"
               onChange={ImageChangehandler}

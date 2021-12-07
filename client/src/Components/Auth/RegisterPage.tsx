@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Back from 'Components/Common/Back';
 import { authApi } from 'API/AuthApi/index';
 
@@ -13,6 +14,16 @@ function RegisterPage(): JSX.Element {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [msg, setMsg] = useState('');
+
+  const passwordFormMessage: JSX.Element = (
+    <div>
+      올바르지 않는 패스워드입니다<br></br>
+      올바른 패스워드 양식이란?<br></br>
+      8자 이상, 영문 숫자 특수기호<br></br>
+      9자 이하: 영문, 숫자, 특수기호<br></br>
+      10자 이상: 셋 중 두가지 포함
+    </div>
+  );
 
   const navigate = useNavigate();
 
@@ -30,13 +41,13 @@ function RegisterPage(): JSX.Element {
       case 'password':
         setPassword(value);
         value !== repeatPassword
-          ? setMsg('비밀번호를 확인해주세요.')
+          ? setMsg('"비밀번호 확인"과 일치하는지 확인해주세요.')
           : setMsg('');
         break;
       case 'repeatPassword':
         setRepeatPassword(value);
         password !== value
-          ? setMsg('비밀번호가 일치하지 않습니다')
+          ? setMsg('"비밀번호"와 일치하는지 확인해주세요.')
           : setMsg('');
     }
   }
@@ -60,12 +71,43 @@ function RegisterPage(): JSX.Element {
         console.log('성공', response);
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         response.data === 'Register Success'
-          ? (navigate('/login'), alert('회원가입 성공!'))
+          ? (navigate('/login'),
+            toast.success('회원가입 성공!', {
+              position: toast.POSITION.TOP_CENTER,
+            }))
           : alert('fail register');
       })
       .catch(error => {
         console.log('실패', error);
-        alert('회원가입 실패');
+        console.log('error.response: ', error.response);
+        let errorMessage: string | JSX.Element = '';
+        switch (error.response.data) {
+          case 'Register Fail':
+            errorMessage = '회원가입 양식을 모두 적어주세요.';
+
+            break;
+          case 'Invalid Email':
+            errorMessage = '잘못된 이메일 형식입니다.';
+            break;
+          case 'Invalid Password':
+            errorMessage = passwordFormMessage;
+            break;
+          case 'Password Not Same':
+            errorMessage = '비밀번호가 일치하는지 확인해주세요.';
+            break;
+          case 'Already Exist':
+            errorMessage = '이미 등록된 이메일입니다.';
+            break;
+        }
+        toast.error(
+          <div>
+            {errorMessage}
+            <br />
+          </div>,
+          {
+            position: toast.POSITION.TOP_CENTER,
+          },
+        );
       });
   }
 

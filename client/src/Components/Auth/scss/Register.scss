@@ -90,6 +90,7 @@
 .Form__Label-Wrapper {
   display: flex;
   justify-content: space-between;
+  
 }
 
 .Form__Label {
@@ -133,18 +134,14 @@
 
 .Password__Message {
   display: flex;
-  padding: 0.5rem 1.5rem;
-  margin: 1rem 5rem;
+  // padding: 0.5rem 1.5rem;
+  // margin: 1rem 5rem;
+  margin-top: 0.5rem;
   position: fixed;
+  color:orange;
+  font-size: 12px;
 
-  @include responsive('tablet') {
-    margin-left: 4rem;
-    font-size: 12px;
-  }
-
-  @include responsive('mobile') {
-    margin-left: 2.5rem;
-  }
+  
 }
 
 .Submit__Form-Wrapper {

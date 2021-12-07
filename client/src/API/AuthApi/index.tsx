@@ -15,7 +15,7 @@ const googleClientId =
 
 // const plantitServerUrl = 'http://localhost/api';
 
-const BASE_URL = `http://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api`;
+const BASE_URL = `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api`;
 
 const requestDjango = axios.create({
   baseURL: BASE_URL,
