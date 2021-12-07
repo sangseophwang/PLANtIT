@@ -32,7 +32,7 @@
   .swiper-pagination {
     text-align: left;
     width: 120px;
-    left: 60px;
+    left: 50px;
     @include responsive('tablet') {
       left: 30px;
     }

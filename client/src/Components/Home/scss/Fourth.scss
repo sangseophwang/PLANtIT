@@ -94,7 +94,7 @@
             height: 16vw;
             width: 16vw;
             margin-bottom: 15px;
-            object-fit: fill;
+            object-fit: cover;
             @include responsive('tablet') {
               height: 35vw;
               width: 35vw;

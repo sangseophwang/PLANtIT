@@ -1,5 +1,6 @@
 @import '/src/Components/Common/scss/mixins';
 @import '/src/Components/Common/scss/variables';
+
 .Second__Container {
   @include Container__Form();
   align-items: flex-start;
@@ -17,9 +18,9 @@
     .Tag-Container {
       position: absolute;
       top: 40%;
-      left: 20%;
+      left: 22%;
       width: 60%;
-      max-width: 900px;
+      max-width: 1000px;
       display: grid;
       grid-template-columns: repeat(10, minmax(0, 1fr));
       @include responsive('tablet') {
@@ -37,6 +38,8 @@
         font-size: 1rem;
         color: #a6a6a6;
         margin: 0 auto;
+        width: fit-content;
+        height: fit-content;
         cursor: pointer;
         background-color: white;
         border: none;
@@ -64,13 +67,16 @@
 .HSearch__Container {
   position: absolute;
   top: 45%;
-  left: 20%;
+  left: 22%;
   border: 3px solid #68d391;
   width: 60%;
-  max-width: 900px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 12px;
+  @include responsive('tablet__large') {
+    width: 70%;
+  }
   @include responsive('tablet') {
     left: 17%;
     padding-left: 10px;
