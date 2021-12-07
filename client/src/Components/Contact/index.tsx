@@ -6,13 +6,13 @@ import Image from 'Assets/ContactImage.jpg';
 import emailjs from 'emailjs-com';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faMapMarkerAlt,
   faPhoneAlt,
   faEnvelopeOpenText,
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 library.add(faMapMarkerAlt, faPhoneAlt, faEnvelopeOpenText);
 
@@ -38,7 +38,7 @@ export default function Contact(): JSX.Element {
     setMessage(e.target.value);
   };
 
-  const Information = [
+  const ContactList = [
     {
       key: 1,
       icon: faMapMarkerAlt,
@@ -51,26 +51,27 @@ export default function Contact(): JSX.Element {
   const Contact = [
     {
       key: 1,
-      id: 'name',
+      id: 'user_name',
       name: '성함',
       type: 'text',
       onChange: onChangeNamehandler,
     },
     {
       key: 2,
-      id: 'email',
+      id: 'user_email',
       name: '이메일',
       type: 'email',
       onChange: onChangeEmailhandler,
     },
     {
       key: 3,
-      id: 'tel',
+      id: 'user_tel',
       name: '연락처',
       type: 'tel',
       onChange: onChangePhonehandler,
     },
   ];
+
   // Email.js
   const form = useRef<HTMLFormElement>(null);
   const sendEmail = (e: any) => {
@@ -113,10 +114,10 @@ export default function Contact(): JSX.Element {
       <div className="Contact__Container">
         <div className="Contact__Card">
           <div className="Contact__Content-Container">
-            {Information.map(data => (
+            {ContactList.map(data => (
               <div className="Contact__Content" key={data.key}>
                 <FontAwesomeIcon icon={data.icon} />
-                <span>{data.content}</span>
+                <span style={{ wordBreak: 'keep-all' }}>{data.content}</span>
               </div>
             ))}
           </div>
@@ -131,6 +132,7 @@ export default function Contact(): JSX.Element {
                   </label>
                   <input
                     className="Email__Input"
+                    name={data.id}
                     type={data.type}
                     id={data.id}
                     onChange={data.onChange}

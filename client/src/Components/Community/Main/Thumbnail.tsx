@@ -41,6 +41,7 @@ export default function Thumbnail({
               className="Thumbnail__Post"
               key={post.blog_id}
               onClick={() => (
+                // eslint-disable-next-line no-sequences
                 window.scrollTo(0, 0),
                 navigate(`/community/${post.blog_id}`, { state: post.blog_id })
               )}

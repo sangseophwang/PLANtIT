@@ -1,149 +1,212 @@
-@import '../../Common/scss/mixins';
+@import 'Components/Common/scss/_mixins.scss';
 
-.login-container {
-  @include Container__Form();
-  .login-content {
-    width: 500px;
-    height: 700px;
+.Component__Container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  // 전체 컨테이너
+  .LoginPage__Container {
+    max-width: 56rem;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+
+    @include responsive('tablet') {
+      // max-width: 24rem;
+      box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+        rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    }
 
     @include responsive('mobile') {
-      width: 80%;
-      height: 70%;
+      width: 60%;
+      box-shadow: none;
     }
 
-    .login__logo {
-      width: 70%;
-      margin-bottom: 25px;
+    @include responsive('mobile__small') {
+      width: 90%;
     }
 
-    .login-form {
-      margin: 25px 0 25px 0;
-      width: 70%;
-      height: 70%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-
-      > div {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-
-        @include responsive('mobile') {
-          margin: 10px;
-        }
-
-        > label {
-          line-height: 1.9;
-          margin-right: 20px;
-          color: #88bb61;
-        }
-        > input {
-          line-height: 2.5;
-          width: 100%;
-          color: #88bb61;
-          text-align: center;
-          outline: none;
-          border-top: none;
-          border-left: none;
-          border-right: none;
-          border-bottom: 0.3px solid #88bb61;
-          &::placeholder {
-            color: gray;
-          }
-          &:focus {
-            border-bottom: 0.3px solid #88bb61;
-            transition: ease-in-out 0.5s;
-          }
-          &:focus::placeholder {
-            color: gray;
-            transition: ease-in-out 0.3s;
-          }
-        }
-      }
-
-      // 로그인 버튼
-      > button {
-        margin-top: 0px;
-        width: 60%;
-        height: 50px;
-        background-color: #88bb61;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        font-weight: 700;
-        color: white;
-
-        @include responsive('mobile') {
-          margin: 30px;
-          width: 50%;
-          height: 30px;
-        }
-      }
-    }
-
-    .login-form__register {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    // 이미지 컨테이너
+    .Side__Image-Wrapper {
+      display: block;
+      background-size: cover;
+      background-color: rgb(39, 43, 33);
+      width: 50%;
 
       @include responsive('mobile') {
-        margin-top: 30px;
-        font-size: 10px;
+        display: none;
       }
 
-      > span {
-        font-size: 14px;
-        margin-left: 20px;
-        @include responsive('mobile') {
-          font-size: 10px;
-          margin-left: 5px;
-        }
-      }
-
-      // 회원가입 버튼
-      > button {
-        margin-right: 20px;
-        width: 30%;
-        height: 200%;
-        background-color: #88bb61;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        font-weight: 700;
-        color: white;
-
-        @include responsive('mobile') {
-          margin-right: 5px;
-          width: 40%;
-          height: 30px;
-          font-size: 10px;
-        }
+      .Side__Image {
+        width: 100%;
+        height: 100%;
       }
     }
 
-    .login-social {
-      display: flex;
-      margin-top: 50px;
+    // 로그인 컨테이너
+    .Login__Container {
+      width: 50%;
+      padding: 2rem;
 
-      .login-social__google--img {
-        width: 50px;
-        cursor: pointer;
-        margin-right: 25px;
-        margin-left: 25px;
+      @include responsive('mobile') {
+        width: 100%;
       }
 
-      .login-social__naver--img {
-        width: 50px;
-        cursor: pointer;
-        margin-right: 25px;
-        margin-left: 25px;
+      // 로고 이미지
+      .Plaintit__logo-Image {
+        // position: relative;
+
+        width: 60%;
+        margin-bottom: 1rem;
+        margin-left: 6rem;
+
+        @include responsive('tablet') {
+          margin-left: 5rem;
+        }
+
+        @include responsive('mobile') {
+          margin-left: 4rem;
+        }
       }
     }
   }
+}
+
+// 소셜 로그인 버튼
+.Social__Login-Link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  color: white;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.Social__Login-Link:hover {
+  background-color: #f7fafc;
+}
+
+.Social__Login-Wrapper {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+
+  @include responsive('tablet') {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.Social__Login-image {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.Login__H1 {
+  width: 83.333333%;
+  text-align: center;
+  color: #718096;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+
+  padding-right: 1rem;
+
+  @include responsive('tablet') {
+    font-size: 0.8rem;
+  }
+}
+
+.Login__Divider-Wrapper {
+  display: flex;
+  margin-top: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Login__Divider-Span {
+  width: 30%;
+  border-bottom: 1px solid #a0aec0;
+}
+
+.Login__Divider-Text {
+  color: #a0aec0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-align: center;
+}
+
+.Form__Content-Wrapper {
+  margin-top: 1rem;
+}
+
+.Form__Label-Wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Form__Label {
+  display: block;
+  color: #4a5568;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.Form__Input {
+  width: 92%;
+  background-color: #edf2f7;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  appearance: none;
+
+  @include responsive('mobile') {
+    width: 90%;
+  }
+}
+
+.Form__Input:focus {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px #9ae6b4;
+}
+
+// 로그인, 회원가입 부분
+.Submit__Form-Wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 2rem;
+}
+
+.Plantit__Login-Button {
+  background-color: #88bb61;
+  border: none;
+  color: white;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.25rem;
+}
+
+.Plantit__Login-Button:hover {
+  background-color: darken($color: #88bb61, $amount: 10%);
+  cursor: pointer;
+}
+
+.Plantit__Register-Link {
+  color: #a0aec0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-align: end;
+  margin: auto 0;
+  cursor: pointer;
 }

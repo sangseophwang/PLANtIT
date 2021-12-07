@@ -6,9 +6,13 @@ import Rsecond from 'Components/Result/Rsecond';
 import Rthird from 'Components/Result/Rthird';
 import { useLocation } from 'react-router-dom';
 import Rlast from './Rlast';
+import Exception from './Exception';
+import Loading from 'Components/Common/Loading';
 
 export default function Result(): JSX.Element {
   const { state } = useLocation();
+
+  const ResultText = 'AI 분석중입니다.';
 
   // useNavigate 값 받는 함수
   const ReadResponse = () => {
@@ -26,20 +30,19 @@ export default function Result(): JSX.Element {
   return (
     <div className="Result__Container">
       {state ? (
-        <>
-          <Navigation />
-          <Rfirst data={state} />
-          <Rsecond data={state} />
-          <Rthird data={state} />
-          <Rlast />
-        </>
+        state.data !== 'six-man' ? (
+          <>
+            <Navigation />
+            <Rfirst data={state} />
+            <Rsecond data={state} />
+            <Rthird data={state} />
+            <Rlast />
+          </>
+        ) : (
+          <Exception />
+        )
       ) : (
-        <>
-          <div className="Result__Notice-Container">
-            <div className="loader" />
-            AI 분석중입니다.
-          </div>
-        </>
+        <Loading text={ResultText} />
       )}
     </div>
   );

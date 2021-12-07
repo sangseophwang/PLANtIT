@@ -1,31 +1,90 @@
 import 'Components/Home/scss/Second.scss';
-import SecondImage from 'Assets/Home/Background.jpg';
-export default function Second(): JSX.Element {
+import TagList from 'Variables/TagList';
+import SearchHome from 'Variables/SearchHome';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+export default function Second(props: any): JSX.Element {
+  const [filterData, setFilterData] = useState<any[]>([]);
+  const [clearWord, setClearWord] = useState('');
+
+  const FilterOnChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchWord = e.target.value;
+    setClearWord(searchWord);
+    const newFilter = props.data.filter((value: any) => {
+      return value.class.includes(searchWord);
+    });
+    setFilterData(newFilter);
+  };
+
+  const clearInput = () => {
+    setFilterData([]);
+    setClearWord('');
+  };
+
+  useEffect(() => {}, [props]);
+
   return (
     <section className="Second__Container">
-      <img
-        className="Second__Background"
-        src={SecondImage}
-        alt="테스트 이미지"
-      />
-      <div className="Second__Contents">
-        <div className="Second__Image">
-          <img src={SecondImage} alt="이미지" />
+      <div className="Second__Wrapper">
+        <div className="Tag-Container">
+          {TagList.map((value: any) => (
+            <button
+              key={value.id}
+              className="Crops__Tag"
+              onClick={() => {
+                const searchWord = value.class;
+                setClearWord(searchWord);
+                const newFilter = SearchHome.filter((value: any) => {
+                  return value.class.includes(searchWord);
+                });
+                setFilterData(newFilter);
+              }}
+            >
+              # {value.class}
+            </button>
+          ))}
         </div>
-        <div className="Second__Text">
-          <div className="Second__Title">
-            <h1>for your plant,</h1>
-            <h1>for our planet</h1>
+
+        <div className="HSearch__Container">
+          <div className="HSearch__Input">
+            <input
+              type="text"
+              value={clearWord}
+              placeholder="작물의 이름을 검색해주세요"
+              onChange={FilterOnChangeHandler}
+            />
+            {clearWord.length === 0 ? (
+              <FontAwesomeIcon icon={faSearch} className="HSearch__Icon" />
+            ) : (
+              <FontAwesomeIcon
+                icon={faTimes}
+                className="HClose__Icon"
+                onClick={clearInput}
+              />
+            )}
           </div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quos
-            tempora quia dolore, accusamus error necessitatibus repellendus eum
-            recusandae officiis assumenda aliquid maiores similique odit! Aut
-            excepturi quis quia fugiat? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Animi quos tempora quia dolore, accusamus error
-            necessitatibus repellendus eum recusandae officiis assumenda aliquid
-            maiores similique odit! Aut excepturi quis quia fugiat?
-          </p>
+          {filterData.length !== 0 && clearWord.length !== 0 && (
+            <div className="Data__Result">
+              {filterData.map(option => (
+                <Link
+                  key={option.id}
+                  to={`/Dictionary?name=${option.name}`}
+                  style={{ textDecoration: 'none', color: 'black' }}
+                >
+                  <div className="Data__Item">
+                    <FontAwesomeIcon
+                      icon={faSearch}
+                      className="Search__Sub-Icon"
+                    />
+                    {option.name}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -2,7 +2,6 @@ import json
 import random
 
 from django.core.paginator import Paginator
-from django.template import response
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -25,7 +24,7 @@ def get_blog(request, blog_id):
     if request.headers['views'] == 'undefined' or request.headers['views'] != str(blog_id):
         blog_detail.view += 1
         blog_detail.save()
-   
+
     is_author = False
     token_validation = None
     if 'HTTP_AUTHORIZATION' in request.META:

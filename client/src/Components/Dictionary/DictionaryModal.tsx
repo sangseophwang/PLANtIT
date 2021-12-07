@@ -1,8 +1,20 @@
+import { useEffect } from 'react';
 import 'Components/Dictionary/scss/DictionaryModal.scss';
-import CloseIcon from 'Assets/CloseIcon.svg';
 import { Link } from 'react-router-dom';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//@ts-ignore
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-function Modal({ setOpenModal, data }: any) {
+library.add(faTimes);
+
+export default function Modal({ setOpenModal, data }: any): JSX.Element {
+  useEffect(() => {
+    AOS.init();
+  });
+
   // 방제방법 렌더링 함수
   const rendering = () => {
     const result = [];
@@ -17,7 +29,7 @@ function Modal({ setOpenModal, data }: any) {
             wordBreak: 'keep-all',
           }}
         >
-          <div style={{ marginRight: '0.2rem' }}>✔</div>
+          <div style={{ marginRight: '0.2rem' }}>🌱</div>
           {data.prevention[i]}
           <br />
         </span>,
@@ -36,17 +48,20 @@ function Modal({ setOpenModal, data }: any) {
         }}
       />
       <div className="Modal__Container-Test">
-        <div className="Modal__Container">
+        <div
+          className="Modal__Container"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
           <div className="Modal__CloseBtn">
             <Link to="">
-              <img
+              <FontAwesomeIcon
                 className="Modal__Icon"
-                src={CloseIcon}
-                alt="CloseIcon"
                 onClick={() => {
                   setOpenModal(false);
                   document.body.style.overflow = 'scroll';
                 }}
+                icon={faTimes}
               />
             </Link>
           </div>
@@ -72,5 +87,3 @@ function Modal({ setOpenModal, data }: any) {
     </>
   );
 }
-
-export default Modal;

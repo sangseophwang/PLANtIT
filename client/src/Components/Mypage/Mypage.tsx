@@ -3,14 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { authApi } from 'API/AuthApi';
 
 import 'Components/Mypage/scss/Mypage.scss';
-
-const joy =
-  'https://raw.githubusercontent.com/baeharam/Redvelvet-Fansite/master/images/about-joy.jpg';
+import FirstImage from 'Assets/Mypage/FirstProfileImage.png';
 
 export default function MypageMain(): JSX.Element {
   const navigate = useNavigate();
   const [nickname, setNickname] = useState('');
   const [description, setDescription] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [change, setChange] = useState(false);
 
   useEffect(() => {
     authApi
@@ -23,7 +23,10 @@ export default function MypageMain(): JSX.Element {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         response.data.message === 'success'
           ? (setNickname(response.data.nickname),
-            setDescription(response.data.description))
+            setDescription(response.data.description),
+            response.data.image === null
+              ? setImageUrl(FirstImage)
+              : setImageUrl(response.data.image))
           : alert('message is not "success"');
 
         if (response.data.new_token !== null) {
@@ -63,31 +66,36 @@ export default function MypageMain(): JSX.Element {
       });
   }
 
-  function onSubmitChangeUser(event: any): void {
+  function onChangeInputHandler(event: {
+    preventDefault: () => void;
+    target: { name: any; value: any };
+  }): void {
     event.preventDefault();
-    console.log('event: ', event.target.name);
-    let updateNickname = 'test nickname';
-    let updateDescription = 'test description';
-
-    switch (event.target.name) {
-      case 'ChangeNickname':
-        updateDescription = description;
+    const [name, value] = [event.target.name, event.target.value];
+    switch (name) {
+      case 'displayName':
+        setNickname(value);
         break;
-      case 'ChangeDescription':
-        updateNickname = nickname;
+      case 'displayDescription':
+        setDescription(value);
         break;
     }
-    const testData = {
-      nickname: updateNickname,
-      description: updateDescription,
+  }
+
+  function onSubmitChangeValue(event: any): void {
+    event.preventDefault();
+
+    const data = {
+      nickname: nickname,
+      description: description,
     };
+
     authApi
-      .authRequestPost('/user/update', 'application/json', testData)
+      .authRequestPost('/user/update', 'application/json', data)
       .then(response => {
         console.log('response: ', response);
         console.log('response.data: ', response.data);
 
-        // if (response.data.new_token === null) {
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         response.data.message === 'success'
           ? (setNickname(response.data.nickname),
@@ -110,6 +118,42 @@ export default function MypageMain(): JSX.Element {
         console.log('error', error);
         alert('error');
       });
+
+    setChange(false);
+  }
+
+  function onChangeImageInput(e: React.ChangeEvent<HTMLInputElement>) {
+    e.preventDefault();
+
+    if (e.target.files) {
+      const uploadFile = e.target.files[0];
+      console.log('uploadFile: ', uploadFile);
+      const formData = new FormData();
+      formData.append('image', uploadFile);
+
+      authApi
+        .authRequestPost('/user/image', 'multipart/form-data', formData)
+        .then(response => {
+          console.log('img response: ', response);
+          console.log(response.data);
+          console.log(
+            'imageUrl === new Url?',
+            imageUrl === response.data.image_url,
+          );
+
+          setImageUrl(response.data.image_url);
+          setImageUrl('');
+          window.location.replace('/mypage');
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
+          if (response.data.new_token !== null) {
+            sessionStorage.setItem('access_token', response.data.new_token);
+          }
+        })
+        .catch(error => {
+          console.log('error: ', error);
+        });
+    }
   }
 
   return (
@@ -117,62 +161,95 @@ export default function MypageMain(): JSX.Element {
       <main>
         <section>
           <div className="Thumbnail__Area">
-            <img
-              className="Thumbnail__Area-img"
-              src={joy}
-              alt="profile-user-img"
-            ></img>
-            <button type="button" name="ChangeImg">
-              이미지 업로드
-            </button>
+            <img className="Thumbnail__Area-img" src={imageUrl} alt=" "></img>
+
+            <form>
+              <label className="Upload__button" htmlFor="input-file">
+                이미지 업로드
+              </label>
+              <input
+                type="file"
+                id="input-file"
+                accept="image/jpg, image/jpeg, image/png"
+                required
+                onChange={onChangeImageInput}
+              ></input>
+            </form>
           </div>
 
-          <div className="Info__Area">
-            <h2>{nickname !== null ? nickname : '닉네임'}</h2>
-            <p>{description !== null ? description : '자기 소개'}</p>
-          </div>
+          {change === false ? (
+            <div className="Info__Area">
+              <h2>{nickname !== null ? nickname : '닉네임'}</h2>
+              <p>{description !== null ? description : '자기 소개'}</p>
+              <button
+                type="button"
+                name="Change"
+                onClick={event => {
+                  event.preventDefault();
+                  setChange(true);
+                }}
+              >
+                내용 수정
+              </button>
+              <button
+                type="button"
+                name="logout"
+                onClick={() => {
+                  sessionStorage.removeItem('access_token');
+                  console.log(
+                    '로그아웃 후 세션 스토리지 값: ',
+                    sessionStorage.getItem('access_token'),
+                  );
+                  navigate('/');
+                  alert('로그아웃 되었습니다.');
+                }}
+              >
+                로그아웃
+              </button>
+
+              <button
+                type="button"
+                name="DeRegister"
+                onClick={onSubmitDeRegister}
+              >
+                회원탈퇴
+              </button>
+            </div>
+          ) : (
+            <div className="Info__Area">
+              <form className="Change__Value">
+                <input
+                  type="text"
+                  className="Change__Name"
+                  name="displayName"
+                  placeholder="닉네임"
+                  maxLength={10}
+                  value={nickname}
+                  onChange={onChangeInputHandler}
+                ></input>
+                <input
+                  type="text"
+                  className="Change__Description"
+                  name="displayDescription"
+                  placeholder="한 줄 소개 (50자 이내)"
+                  maxLength={50}
+                  value={description === null ? '' : description}
+                  onChange={onChangeInputHandler}
+                ></input>
+                <div className="Change__Button-Wrapper">
+                  <button
+                    className="Change__Button"
+                    type="submit"
+                    onClick={onSubmitChangeValue}
+                  >
+                    저장
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
         </section>
-
-        <section></section>
       </main>
-
-      <form className="UpdateUser__Form">
-        <button
-          type="submit"
-          name="logout"
-          onClick={() => {
-            sessionStorage.removeItem('access_token');
-            console.log(
-              '로그아웃 후 세션 스토리지 값: ',
-              sessionStorage.getItem('access_token'),
-            );
-            navigate('/');
-            alert('로그아웃 되었습니다.');
-          }}
-        >
-          로그아웃
-        </button>
-
-        <button type="submit" name="DeRegister" onClick={onSubmitDeRegister}>
-          회원탈퇴
-        </button>
-
-        <button
-          type="submit"
-          name="ChangeNickname"
-          onClick={onSubmitChangeUser}
-        >
-          닉네임 변경
-        </button>
-
-        <button
-          type="submit"
-          name="ChangeDescription"
-          onClick={onSubmitChangeUser}
-        >
-          내용 변경
-        </button>
-      </form>
     </div>
   );
 }

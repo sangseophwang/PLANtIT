@@ -30,11 +30,13 @@ function Upload_Image(endpoint: string, data: any) {
   });
 }
 
-function Get_Page(endpoint: string) {
+function Get_Page(endpoint: string, id?:any) {
+  axios.defaults.withCredentials = true;
   return axios.get(BASE_URL + endpoint, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `${sessionStorage.getItem('access_token')}`,
+      views : id
     },
   });
 }
