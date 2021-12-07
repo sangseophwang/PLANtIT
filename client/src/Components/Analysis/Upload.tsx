@@ -7,42 +7,18 @@ import axios from 'axios';
 import { useRef } from 'react';
 import Loading from 'Components/Common/Loading';
 import Error from 'Components/Common/Error';
-import { AnalysisCountApi } from 'API/CountApi';
-import { toast } from 'react-toastify';
 
-const Upload = () => {
+const Upload = (props: any) => {
   const [image, setImage] = useState('');
   const [isUploaded, setIsUploaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [count, setCount] = useState([] as any);
 
   const ImageInput = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   const UploadText = '잠시만 기다려 주세요';
   const ErrorText = 'API 에러가 발생했습니다';
-
-  // 서버에서 검사수  get으로 받아오는 코드
-  const GetCountAPI = async () => {
-    // 요청이 시작 할 때 초기화
-    setError(null);
-    setCount(null);
-    setLoading(true);
-    const CountResponse = await AnalysisCountApi.Get_Count('analysis/count')
-      .then(response => {
-        setCount(response.data as any);
-        toast.success('검사하기에 오신 것을 환영합니다!', {
-          position: toast.POSITION.TOP_CENTER,
-        });
-      })
-      .catch(e => {
-        setError(e);
-      });
-    setLoading(false);
-    console.log('횟수', count);
-    return CountResponse;
-  };
 
   // 이미지 업로더 코드
   function ImageChangehandler(e: any) {
@@ -96,7 +72,6 @@ const Upload = () => {
   };
 
   useEffect(() => {
-    GetCountAPI();
     return () => setLoading(false);
   }, []);
 
@@ -112,100 +87,93 @@ const Upload = () => {
     );
 
   return (
-    <>
-      {count && (
-        <div className="Upload__Layout">
-          <div className="Upload__Text-Container">
-            <div className="Main__Text">이미지를 넣어보세요</div>
-            <div className="Sub__Text">
-              동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세
-              (후렴)무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
-              남산위에 저 소나무 철갑을 두른듯 바람서리 불변함은 우리기상 일세
-              (후렴)무궁화 삼천리 화려강산 대한사람 대한으로 길이보전하세
-            </div>
+    <div className="Upload__Layout">
+      <div className="Upload__Text-Container">
+        <div className="Main__Text">이미지를 넣어보세요</div>
+        <div className="Sub__Text">
+          동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세
+          (후렴)무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세 남산위에
+          저 소나무 철갑을 두른듯 바람서리 불변함은 우리기상 일세 (후렴)무궁화
+          삼천리 화려강산 대한사람 대한으로 길이보전하세
+        </div>
 
-            <div className="Crops__Text">
-              가능 작물: 고추, 무, 배추, 애호박, 양배추, 오이, 콩, 토마토, 파,
-              호박
-            </div>
+        <div className="Crops__Text">
+          가능 작물: 고추, 무, 배추, 애호박, 양배추, 오이, 콩, 토마토, 파, 호박
+        </div>
 
-            <div className="Button-Continer">
-              {isUploaded ? (
-                <Link
-                  className="Upload__Button"
-                  style={{
-                    textDecoration: 'none',
-                    color: 'white',
-                    display: 'block',
-                    width: '100%',
+        <div className="Button-Continer">
+          {isUploaded ? (
+            <Link
+              className="Upload__Button"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                display: 'block',
+                width: '100%',
+              }}
+              to="/result"
+              onClick={PostAnalysisAPI}
+            >
+              검사시작
+            </Link>
+          ) : (
+            <div className="Fail__Button">검사시작</div>
+          )}
+        </div>
+      </div>
+      <div className="Upload__Container">
+        <div className="Upload-Information">누적 검사 횟수: {props.data}회</div>
+        <div className="Upload__Box">
+          <div className="Upload__Image">
+            {!isUploaded ? (
+              <>
+                <label htmlFor="upload-input">
+                  <img
+                    src={FolderIcon}
+                    draggable={'false'}
+                    alt="placeholder"
+                    style={{ width: 100, height: 100 }}
+                  />
+                  <p style={{ color: '#444' }}>작물이미지를 넣어보세요.</p>
+                </label>
+              </>
+            ) : (
+              <div className="Image__Preview">
+                <img
+                  className="close-icon"
+                  src={CloseIcon}
+                  alt="CloseIcon"
+                  onClick={() => {
+                    setIsUploaded(false);
+                    setImage('');
                   }}
-                  to="/result"
-                  onClick={PostAnalysisAPI}
-                >
-                  검사시작
-                </Link>
-              ) : (
-                <div className="Fail__Button">검사시작</div>
-              )}
-            </div>
-          </div>
-          <div className="Upload__Container">
-            <div className="Upload-Information">
-              누적 검사 횟수: {count.data}회
-            </div>
-            <div className="Upload__Box">
-              <div className="Upload__Image">
-                {!isUploaded ? (
-                  <>
-                    <label htmlFor="upload-input">
-                      <img
-                        src={FolderIcon}
-                        draggable={'false'}
-                        alt="placeholder"
-                        style={{ width: 100, height: 100 }}
-                      />
-                      <p style={{ color: '#444' }}>작물이미지를 넣어보세요.</p>
-                    </label>
-                  </>
-                ) : (
-                  <div className="Image__Preview">
-                    <img
-                      className="close-icon"
-                      src={CloseIcon}
-                      alt="CloseIcon"
-                      onClick={() => {
-                        setIsUploaded(false);
-                        setImage('');
-                      }}
-                    />
-                    {
-                      <img
-                        id="uploaded-image"
-                        src={image}
-                        draggable={false}
-                        alt="uploaded-img"
-                      />
-                    }
-                  </div>
-                )}
-
-                <input
-                  id="upload-input"
-                  type="file"
-                  accept=".jpg,.jpeg,.png,"
-                  onChange={ImageChangehandler}
-                  ref={ImageInput}
                 />
+                {
+                  <img
+                    id="uploaded-image"
+                    src={image}
+                    draggable={false}
+                    alt="uploaded-img"
+                  />
+                }
               </div>
-            </div>
+            )}
 
-            <div className="Upload-Information">
-              가능한 확장자: .jpg / .jpeg / .png
-            </div>
+            <input
+              id="upload-input"
+              type="file"
+              accept=".jpg,.jpeg,.png,"
+              onChange={ImageChangehandler}
+              ref={ImageInput}
+            />
           </div>
         </div>
-      )}
-    </>
+
+        <div className="Upload-Information">
+          가능한 확장자: .jpg / .jpeg / .png
+        </div>
+      </div>
+    </div>
   );
 };
 
