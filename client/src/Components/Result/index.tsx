@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navigation from 'Components/Common/Navigation';
 import Rfirst from 'Components/Result/ResultFirst';
-import Rsecond from 'Components/Result/Rsecond';
+import Rsecond from 'Components/Result/ResultSecond';
 import Rthird from 'Components/Result/Rthird';
 import Rlast from './Rlast';
 import Exception from './Exception';
