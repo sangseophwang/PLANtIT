@@ -22,20 +22,23 @@
     }
     .Login__Wrapper {
       width: 55%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       border-top-right-radius: 0.5rem;
       border-bottom-right-radius: 0.5rem;
       align-items: center;
-      padding: 2rem 1.6rem 3rem 3rem;
+      padding-left: 3rem;
       justify-content: space-around;
+      @include responsive('tablet') {
+        padding-left: 1rem;
+      }
       @include responsive('mobile__small') {
         width: 100%;
         height: 60%;
       }
       .LoginPage__Logo {
         width: 55%;
-        margin-bottom: 1rem;
         @include responsive('mobile__small') {
           width: 70%;
           margin-bottom: 3rem;
@@ -121,11 +124,10 @@
       .SocialLogin__Container {
         display: flex;
         width: 30%;
-        margin-left: 7px;
-        margin-top: 1rem;
         justify-content: space-around;
         @include responsive('mobile__small') {
           width: 50%;
+          margin-top: 4rem;
         }
         .SocialLogin__Link {
           width: 25%;
