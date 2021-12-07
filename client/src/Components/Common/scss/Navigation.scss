@@ -83,5 +83,13 @@
         }
       }
     }
+    @include responsive('mobile__small') {
+      font-size: 16px;
+      .Navigation__Item-Mobile {
+        > span {
+          font-size: 6px;
+        }
+      }
+    }
   }
 }

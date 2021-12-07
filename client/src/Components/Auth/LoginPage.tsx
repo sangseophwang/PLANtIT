@@ -1,15 +1,17 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { authApi } from 'API/AuthApi/index';
 import NaverLogin from 'react-login-by-naver';
 import GoogleLogin from 'react-google-login';
-import GoMain from 'Components/Auth/GoMain';
-import { authApi } from 'API/AuthApi/index';
-
-import 'Components/Auth/scss/Login.scss';
+import Back from 'Components/Common/Back';
 import Logo from 'Assets/logo.png';
-import NaverButtonImg from 'Assets/Auth/login_button_naver.png';
-import GoogleButtonImg from 'Assets/Auth/login_button_google.png';
-import LoginImage from 'Assets/Auth/login_side_image.jpeg';
+import Image from 'Assets/Auth/LoginPage__Image.jpg';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import 'Components/Auth/scss/LoginPage.scss';
+
+library.add(faGoogle);
 
 export default function LoginPage(): JSX.Element {
   const [id, setId] = useState('');
@@ -20,8 +22,6 @@ export default function LoginPage(): JSX.Element {
 
   const googleImgRef = useRef<HTMLImageElement>(null);
   const naverImgRef = useRef<HTMLImageElement>(null);
-  console.log('로그인 전 세션스토리지: ', tokenState);
-  console.log('네이버 로그인 plantit 액세스 토큰', tokenParam);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
@@ -124,51 +124,50 @@ export default function LoginPage(): JSX.Element {
   }
 
   return (
-    <div className="Component__Container">
-      <div className="LoginPage__Container">
-        <div className="Side__Image-Wrapper">
-          <img src={LoginImage} alt="" className="Side__Image" />
-        </div>
-        <div className="Login__Container">
-          <GoMain />
-          <img src={Logo} alt="" className="Plaintit__logo-Image" />
-
-          <div className="Form__Content-Wrapper">
-            <div className="Form__Label-Wrapper">
-              <label className="Form__Label" htmlFor="id">
-                아이디
-              </label>
+    <div className="LoginPage__Container">
+      <Back />
+      <div className="LoginPage__Wrapper">
+        <img className="LoginPage__Image" src={Image} alt="" />
+        <div className="Login__Wrapper">
+          <img src={Logo} alt="" className="LoginPage__Logo" />
+          <div className="Form__Container">
+            <div className="Form__Wrapper">
+              <div className="Form__Label-Wrapper">
+                <label className="Form__Label" htmlFor="id">
+                  이메일
+                </label>
+              </div>
+              <input
+                className="Form__Input"
+                type="email"
+                name="id"
+                autoComplete="off"
+                placeholder="이메일을 입력해주세요."
+                value={id}
+                onChange={onChangeInputHandler}
+                required
+              />
             </div>
-            <input
-              className="Form__Input"
-              type="email"
-              name="id"
-              placeholder="아이디를 입력해주세요."
-              value={id}
-              onChange={onChangeInputHandler}
-              required
-            />
-          </div>
-          <div className="Form__Content-Wrapper">
-            <div className="Form__Label-Wrapper">
-              <label className="Form__Label" htmlFor="password">
-                비밀번호
-              </label>
+            <div className="Form__Wrapper">
+              <div className="Form__Label-Wrapper">
+                <label className="Form__Label" htmlFor="password">
+                  비밀번호
+                </label>
+              </div>
+              <input
+                className="Form__Input"
+                type="password"
+                name="password"
+                placeholder="비밀번호를 입력해주세요."
+                value={password}
+                onChange={onChangeInputHandler}
+                required
+              />
             </div>
-            <input
-              className="Form__Input"
-              type="password"
-              name="password"
-              placeholder="비밀번호를 입력해주세요."
-              value={password}
-              onChange={onChangeInputHandler}
-              required
-            />
           </div>
-          <div className="Submit__Form-Wrapper">
-            <div></div>
+          <div className="Submit__Wrapper">
             <button
-              className="Plantit__Login-Button"
+              className="Login__Button"
               type="button"
               onClick={onClickSubmitHandler}
             >
@@ -176,71 +175,60 @@ export default function LoginPage(): JSX.Element {
             </button>
             <a
               href="###"
-              className="Plantit__Register-Link"
+              className="Register__Button"
               style={{ textDecoration: 'none' }}
               onClick={() => {
                 console.log('go to register');
                 navigate('/register');
               }}
             >
-              회원가입
+              회원이 아니신가요?
             </a>
           </div>
-
-          <div className="Login__Divider-Wrapper">
-            <span className="Login__Divider-Span"></span>
-            <div className="Login__Divider-Text">소셜 로그인</div>
-            <span className="Login__Divider-Span"></span>
-          </div>
-
-          <a
-            href="###"
-            className="Social__Login-Link"
-            onClick={() => {
-              googleImgRef.current?.click();
-            }}
-            style={{ textDecoration: 'none' }}
-          >
-            <div className="Social__Login-Wrapper">
+          <div className="SocialLogin__Container">
+            <a
+              href="###"
+              className="SocialLogin__Link"
+              onClick={() => {
+                googleImgRef.current?.click();
+              }}
+              style={{ textDecoration: 'none' }}
+            >
               <GoogleLogin
                 clientId={authApi.googleClientId}
                 render={renderProps => (
-                  <img
-                    className="Social__Login-image"
-                    src={GoogleButtonImg}
-                    alt="구글 로그인 버튼"
-                    ref={googleImgRef}
+                  <FontAwesomeIcon
+                    title="구글로 로그인하기"
+                    className="SocialLogin__Google"
                     onClick={renderProps.onClick}
-                  ></img>
+                    icon={faGoogle}
+                  />
                 )}
                 buttonText="Login"
                 onSuccess={onSucessGoogleHandler}
                 onFailure={onFailureGoogleHandler}
               />
-            </div>
-            <h1 className="Login__H1">구글 로그인</h1>
-          </a>
+            </a>
 
-          <a
-            href="###"
-            className="Social__Login-Link"
-            onClick={() => {
-              naverImgRef.current?.click();
-            }}
-            style={{ textDecoration: 'none' }}
-          >
-            <div className="Social__Login-Wrapper">
+            <a
+              href="###"
+              className="SocialLogin__Link"
+              onClick={() => {
+                naverImgRef.current?.click();
+              }}
+              style={{ textDecoration: 'none' }}
+            >
               <NaverLogin
                 clientId={authApi.naverClientId}
                 callbackUrl="http://127.0.0.1:3000/socialloginpopup"
                 render={props => (
-                  <img
-                    className="Social__Login-image"
-                    src={NaverButtonImg}
-                    alt="네이버 로그인 버튼"
-                    ref={naverImgRef}
+                  <button
+                    title="네이버로 로그인하기"
+                    className="SocialLogin__Naver"
                     onClick={props.onClick}
-                  ></img>
+                  >
+                    N
+                  </button>
                 )}
                 onSuccess={
                   () => {}
@@ -252,9 +240,8 @@ export default function LoginPage(): JSX.Element {
                 }
                 onFailure={() => {}}
               />
-            </div>
-            <h1 className="Login__H1">네이버 로그인</h1>
-          </a>
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import 'Components/Result/scss/Exception.scss';
 import { Link } from 'react-router-dom';
 
