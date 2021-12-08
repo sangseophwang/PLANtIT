@@ -77,6 +77,7 @@ export default function Board(): JSX.Element {
     } else {
       toast.info('삭제가 취소되었습니다.', {
         position: toast.POSITION.TOP_CENTER,
+        autoClose: 2500,
       });
     }
   }
