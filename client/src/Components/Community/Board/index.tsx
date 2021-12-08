@@ -50,33 +50,39 @@ export default function Board(): JSX.Element {
 
   // 게시글 삭제
   async function onDeleteHandler() {
-    let reconfirmMessage: string | null = prompt(
-      '"삭제"를 입력하시면 글이 삭제됩니다.',
-    );
+    if (isAuthor === true) {
+      let reconfirmMessage: string | null = prompt(
+        '"삭제"를 입력하시면 글이 삭제됩니다.',
+      );
 
-    if (reconfirmMessage === '삭제') {
-      try {
-        await CommunityApi.Community_Post(`blog/delete/${item}`, '').then(
-          response => {
-            if (response.data.new_token !== null) {
-              console.log('새로운 토큰이 도착했습니다!');
-              localStorage.removeItem('access_token');
-              localStorage.setItem('access_token', response.data.new_token);
-              navigate('/community');
-            } else {
-              console.log('뉴토큰이 없습니다.');
-              navigate('/community');
-            }
-          },
-        );
-      } catch (e) {
-        toast.error('본인만 삭제할 수 있습니다.', {
+      if (reconfirmMessage === '삭제') {
+        try {
+          await CommunityApi.Community_Post(`blog/delete/${item}`, '').then(
+            response => {
+              if (response.data.new_token !== null) {
+                console.log('새로운 토큰이 도착했습니다!');
+                localStorage.removeItem('access_token');
+                localStorage.setItem('access_token', response.data.new_token);
+                navigate('/community');
+              } else {
+                console.log('뉴토큰이 없습니다.');
+                navigate('/community');
+              }
+            },
+          );
+        } catch (e) {
+          toast.error('본인만 삭제할 수 있습니다.', {
+            autoClose: 2500,
+          });
+        }
+      } else {
+        toast.info('삭제가 취소되었습니다.', {
+          position: toast.POSITION.TOP_CENTER,
           autoClose: 2500,
         });
       }
     } else {
-      toast.info('삭제가 취소되었습니다.', {
-        position: toast.POSITION.TOP_CENTER,
+      toast.error('본인만 삭제할 수 있습니다.', {
         autoClose: 2500,
       });
     }
@@ -133,7 +139,10 @@ export default function Board(): JSX.Element {
         </button>
         <div className="Board__Profile">
           <div className="Board__Profile-Wrapper">
-            <img src={data && data.author_image  + '?t=' + new Date().getTime()} alt="" />
+            <img
+              src={data && data.author_image + '?t=' + new Date().getTime()}
+              alt=""
+            />
             <div className="Board__Profile-Info">
               <h1>
                 <h3>editor. </h3>
