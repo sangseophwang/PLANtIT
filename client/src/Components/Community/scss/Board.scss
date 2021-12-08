@@ -154,6 +154,7 @@
   .Board__Profile {
     margin: 5vh 0;
     height: 20vh;
+    max-height: 290px;
     width: 40%;
     background-color: rgb(247, 247, 247);
     display: flex;
@@ -166,11 +167,22 @@
       width: 60%;
       height: 70%;
       display: flex;
+      align-items: center;
       @include responsive('tablet__large') {
         width: 55%;
       }
       @include responsive('mobile__small') {
         width: 70%;
+      }
+      > img {
+        width: 7vw;
+        height: 7vw;
+        object-fit: cover;
+        border-radius: 100%;
+        @include responsive('tablet__large') {
+          width: 18vw;
+          height: 18vw;
+        }
       }
       .Board__Profile-Info {
         display: flex;
@@ -180,8 +192,9 @@
         > h1 {
           display: flex;
           align-items: center;
-          font-size: 2vw;
+          font-size: 1.5vw;
           font-weight: 700;
+          margin-bottom: 1rem;
           @include responsive('tablet__large') {
             font-size: 4vw;
           }
@@ -192,7 +205,7 @@
             color: #92cd7b;
             font-weight: 500;
             font-style: italic;
-            font-size: 1.3vw;
+            font-size: 1.2vw;
             margin-right: 10px;
             @include responsive('tablet__large') {
               font-size: 2vw;
