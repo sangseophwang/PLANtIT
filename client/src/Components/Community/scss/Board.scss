@@ -104,8 +104,7 @@
           font-weight: 700;
           > img {
             display: block;
-            margin: 0 auto;
-            min-width: 600px;
+            margin: 2rem auto;
             width: 100%;
             margin-bottom: 10px;
           }
@@ -118,10 +117,8 @@
         }
         > img {
           display: block;
-          margin: 0 auto;
+          margin: 3rem auto;
           width: 100%;
-          min-width: 600px;
-          margin-bottom: 10px;
         }
       }
       > blockquote {
@@ -196,12 +193,12 @@
           font-weight: 700;
           margin-bottom: 1rem;
           @include responsive('tablet__large') {
-            font-size: 4vw;
+            font-size: 3.6vw;
           }
-          @include responsive('mobile') {
-            font-size: 6vw;
+          @include responsive('mobile__small') {
+            font-size: 5vw;
           }
-          > h3 {
+          > span {
             color: #92cd7b;
             font-weight: 500;
             font-style: italic;
@@ -210,7 +207,7 @@
             @include responsive('tablet__large') {
               font-size: 2vw;
             }
-            @include responsive('mobile') {
+            @include responsive('mobile__small') {
               font-size: 3vw;
             }
           }
