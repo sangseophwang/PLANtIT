@@ -96,7 +96,7 @@ export default function Board(): JSX.Element {
   // DISQUS
   const disqusShortname = 'plantit';
   const disqusConfig = {
-    url: `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api/community/${item}`,
+    url: `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/community/${item}`,
     identifier: `${item}`,
     title: `댓글_${item}`,
   };
