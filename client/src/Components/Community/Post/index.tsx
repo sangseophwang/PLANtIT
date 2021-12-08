@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import 'Components/Community/scss/Post.scss';
-import Editor from 'Components/Community/Post/Editor';
-import Submit from 'Components/Community/Post/Submit';
 import { useNavigate } from 'react-router';
 import { CommunityApi } from 'API/CommunityApi';
 import { useLocation } from 'react-router';
+import { Helmet } from 'react-helmet-async';
+import Editor from 'Components/Community/Post/Editor';
+import Submit from 'Components/Community/Post/Submit';
+import 'Components/Community/scss/Post.scss';
 
 export default function Post(): JSX.Element {
   const [title, setTitle] = useState<string>('');
@@ -75,6 +76,9 @@ export default function Post(): JSX.Element {
 
   return (
     <section className="Post__Container">
+      <Helmet>
+        <title>글 작성</title>
+      </Helmet>
       <div className="Post__Title-Box">
         <input
           className="Post__Title"

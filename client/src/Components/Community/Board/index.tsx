@@ -6,6 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CommunityApi } from 'API/CommunityApi';
 import { useCookies } from 'react-cookie';
+import { Helmet } from 'react-helmet-async';
 import Disqus from 'disqus-react';
 import Navigation from 'Components/Common/Navigation';
 import ProgressBar from 'Components/Common/ProgressBar';
@@ -88,6 +89,9 @@ export default function Board(): JSX.Element {
   return (
     <>
       <section className="Board__Container">
+        <Helmet>
+          <title>{data && data.title}</title>
+        </Helmet>
         <Navigation />
         <ProgressBar />
         <div className="Board__Top">

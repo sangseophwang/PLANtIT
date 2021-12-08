@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { DictionaryApi } from 'API/DictionaryApi';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Navigation from 'Components/Common/Navigation';
 import DictionaryContainer from 'Components/Dictionary/DictionaryContainer';
 import ProgressBar from 'Components/Common/ProgressBar';
 import DictionaryTitle from 'Components/Dictionary/DictionaryTitle';
 import 'Components/Dictionary/scss/index.scss';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 export default function Dictionary(): JSX.Element {
   const [error, setError] = useState(null);

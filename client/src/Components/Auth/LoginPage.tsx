@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { authApi } from 'API/AuthApi/index';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { toast } from 'react-toastify';
 import NaverLogin from 'react-login-by-naver';
 import GoogleLogin from 'react-google-login';
 import Back from 'Components/Common/Back';
 import Logo from 'Assets/logo.png';
 import Image from 'Assets/Auth/LoginPage__Image.jpg';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'Components/Auth/scss/LoginPage.scss';
-import { toast } from 'react-toastify';
 
 library.add(faGoogle);
 

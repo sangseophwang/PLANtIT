@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Back from 'Components/Common/Back';
 import { authApi } from 'API/AuthApi/index';
-
-import 'Components/Auth/scss/Register.scss';
+import Back from 'Components/Common/Back';
 import Logo from 'Assets/logo.png';
 import SignImage from 'Assets/Auth/login_side_image.jpeg';
+import 'Components/Auth/scss/Register.scss';
 
 function RegisterPage(): JSX.Element {
   const [id, setId] = useState('');

@@ -5,7 +5,7 @@ import Logo from 'Assets/logo.png';
 import Image from 'Assets/Contact/ContactImage.jpg';
 import emailjs from 'emailjs-com';
 import { toast } from 'react-toastify';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faMapMarkerAlt,

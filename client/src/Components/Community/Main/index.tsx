@@ -2,6 +2,7 @@ import { useState, useEffect, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { CommunityApi } from 'API/CommunityApi';
+import { Helmet } from 'react-helmet-async';
 import Logo from 'Assets/logo.png';
 import Back from 'Components/Common/Back';
 import Pagination from './Pagination';
@@ -63,6 +64,9 @@ export default function Community(): JSX.Element {
 
   return (
     <section className="Main__Container">
+      <Helmet>
+        <title>커뮤니티</title>
+      </Helmet>
       <div className="Main__Title">
         <Back />
         <img className="Main__Logo-Mobile" src={Logo} alt="로고" />
