@@ -22,7 +22,7 @@ export default function Board(): JSX.Element {
   const [isAuthor, setIsAuthor] = useState<Boolean>(false);
   const modifyProps = [data, item];
   const [cookies, setCookie] = useCookies(['plant-blog']);
-
+  console.log(data && data.content);
   // 게시글 번호에 맞는 글 불러오기
   useEffect(() => {
     async function getPost() {

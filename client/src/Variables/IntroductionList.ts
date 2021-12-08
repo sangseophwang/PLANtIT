@@ -3,7 +3,7 @@ import Intro1 from 'Assets/Introduction/Intro1.jpg';
 import Intro2 from 'Assets/Introduction/Intro2.png';
 import Intro3 from 'Assets/Introduction/Intro3.jpg';
 import Intro4 from 'Assets/Introduction/Intro4.png';
-import Intro5 from 'Assets/Introduction/Intro5.jpg';
+import Intro5 from 'Assets/Introduction/Intro5.png';
 
 const IntroductionList = [
   {
