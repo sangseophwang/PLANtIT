@@ -73,7 +73,9 @@ export default function Editor({
           ],
           ['image'],
         ],
-        handlers: { image: imageHandler },
+        handlers: {
+          image: imageHandler,
+        },
       },
       clipboard: { matchVisual: false },
       imageResize: {
