@@ -33,11 +33,6 @@ export default function MypageMain(): JSX.Element {
   function onSubmitDeRegister(event: any): void {
     event.preventDefault();
 
-    // toast.info(, {
-    //   position: toast.POSITION.TOP_CENTER,
-    //   closeOnClick: false,
-    // });
-
     let reconfirmMessage: string | null = prompt(
       '"탈퇴"를 입력하시면 계정이 삭제됩니다.',
     );
@@ -179,6 +174,7 @@ export default function MypageMain(): JSX.Element {
                     navigate('/');
                     toast.success('로그아웃 되었습니다.', {
                       position: toast.POSITION.TOP_CENTER,
+                      autoClose: 2500,
                     });
                   }}
                 >

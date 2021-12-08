@@ -7,6 +7,7 @@ import Fifth from 'Components/Home/Fifth';
 import SearchHome from 'Variables/SearchHome';
 import SwiperCore, { Pagination, Mousewheel } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Helmet } from 'react-helmet-async';
 import 'swiper/swiper.scss';
 import 'Components/Home/scss/Home.scss';
 import 'swiper/components/pagination/pagination.scss';
@@ -24,6 +25,9 @@ const bullet = [
 export default function Home(): JSX.Element {
   return (
     <div className="Home__Container">
+      <Helmet>
+        <title>PLANtIT</title>
+      </Helmet>
       <Navigation />
       <Swiper
         style={{ height: '100vh' }}

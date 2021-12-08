@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Back from 'Components/Common/Back';
 import { authApi } from 'API/AuthApi/index';
-
-import 'Components/Auth/scss/Register.scss';
+import Back from 'Components/Common/Back';
 import Logo from 'Assets/logo.png';
 import SignImage from 'Assets/Auth/login_side_image.jpeg';
+import 'Components/Auth/scss/Register.scss';
 
 function RegisterPage(): JSX.Element {
   const [id, setId] = useState('');
@@ -77,6 +76,7 @@ function RegisterPage(): JSX.Element {
             ? (navigate('/login'),
               toast.success('회원가입 성공!', {
                 position: toast.POSITION.TOP_CENTER,
+                autoClose: 2500,
               }))
             : alert('fail register');
         })
@@ -103,6 +103,7 @@ function RegisterPage(): JSX.Element {
           }
           toast.error(serverErrorMessage, {
             position: toast.POSITION.TOP_CENTER,
+            autoClose: 2500,
           });
         });
     } else {
@@ -114,6 +115,7 @@ function RegisterPage(): JSX.Element {
         .map(falseValue => {
           toast.error(falseValue[1], {
             position: toast.POSITION.TOP_CENTER,
+            autoClose: 2500,
           });
         });
     }

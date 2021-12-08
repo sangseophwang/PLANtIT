@@ -2,6 +2,7 @@ import { useState, useEffect, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { CommunityApi } from 'API/CommunityApi';
+import { Helmet } from 'react-helmet-async';
 import Logo from 'Assets/logo.png';
 import Back from 'Components/Common/Back';
 import Pagination from './Pagination';
@@ -28,6 +29,7 @@ export default function Community(): JSX.Element {
   useEffect(() => {
     toast.success('커뮤니티에 오신 것을 환영합니다!', {
       position: toast.POSITION.TOP_CENTER,
+      autoClose: 2500,
     });
   }, []);
   // 페이지 번호 바뀔 때마다 업데이트
@@ -53,7 +55,9 @@ export default function Community(): JSX.Element {
   const handleCreatePost = async () => {
     const isLoggedin = localStorage.getItem('access_token');
     if (!isLoggedin) {
-      toast.error(CustomToastWithLink);
+      toast.error(CustomToastWithLink, {
+        autoClose: 2500,
+      });
       return;
     } else {
       window.location.replace('/community/post');
@@ -62,6 +66,9 @@ export default function Community(): JSX.Element {
 
   return (
     <section className="Main__Container">
+      <Helmet>
+        <title>커뮤니티</title>
+      </Helmet>
       <div className="Main__Title">
         <Back />
         <img className="Main__Logo-Mobile" src={Logo} alt="로고" />
