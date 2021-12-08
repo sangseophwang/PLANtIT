@@ -133,7 +133,7 @@ export default function Board(): JSX.Element {
         </button>
         <div className="Board__Profile">
           <div className="Board__Profile-Wrapper">
-            <img src={data && data.author_image} alt="" />
+            <img src={data && data.author_image  + '?t=' + new Date().getTime()} alt="" />
             <div className="Board__Profile-Info">
               <h1>
                 <h3>editor. </h3>
