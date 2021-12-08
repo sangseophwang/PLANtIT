@@ -32,21 +32,36 @@ export default function MypageMain(): JSX.Element {
 
   function onSubmitDeRegister(event: any): void {
     event.preventDefault();
-    authApi
-      .authRequestPost('/user/deregister', 'application/json', '')
-      .then(response => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        response.data === 'Deregister Success'
-          ? (localStorage.removeItem('access_token'),
-            navigate('/'),
-            toast.success('계정이 삭제되었습니다!', {
-              position: toast.POSITION.TOP_CENTER,
-            }))
-          : alert('response.data is not "Deregister Success"');
-      })
-      .catch(error => {
-        alert('error');
+
+    // toast.info(, {
+    //   position: toast.POSITION.TOP_CENTER,
+    //   closeOnClick: false,
+    // });
+
+    let reconfirmMessage: string | null = prompt(
+      '"탈퇴"를 입력하시면 계정이 삭제됩니다.',
+    );
+    if (reconfirmMessage === '탈퇴') {
+      authApi
+        .authRequestPost('/user/deregister', 'application/json', '')
+        .then(response => {
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          response.data === 'Deregister Success'
+            ? (localStorage.removeItem('access_token'),
+              navigate('/'),
+              toast.success('계정이 삭제되었습니다!', {
+                position: toast.POSITION.TOP_CENTER,
+              }))
+            : alert('response.data is not "Deregister Success"');
+        })
+        .catch(error => {
+          alert('error');
+        });
+    } else {
+      toast.info('탈퇴가 취소되었습니다.', {
+        position: toast.POSITION.TOP_CENTER,
       });
+    }
   }
 
   function onChangeInputHandler(event: {

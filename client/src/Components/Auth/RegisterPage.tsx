@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Back from 'Components/Common/Back';
@@ -16,6 +16,12 @@ function RegisterPage(): JSX.Element {
   const [msg, setMsg] = useState('');
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    toast.info(authApi.registerForm, {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }, []);
 
   function onChangeInputHandler(event: {
     target: { name: any; value: string };
@@ -109,10 +115,6 @@ function RegisterPage(): JSX.Element {
           toast.error(falseValue[1], {
             position: toast.POSITION.TOP_CENTER,
           });
-          setId('');
-          setName('');
-          setPassword('');
-          setRepeatPassword('');
         });
     }
   }

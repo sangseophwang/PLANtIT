@@ -8,7 +8,7 @@ const googleClientId =
 
 const BASE_URL = `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api`;
 
-// 패스워드 양식
+// 패스워드 잘못 입력할 경우 메세지 출력
 const passwordFormMessage: JSX.Element = (
   <div>
     올바르지 않는 패스워드입니다<br></br>
@@ -16,6 +16,24 @@ const passwordFormMessage: JSX.Element = (
     8자 이상, 영문 숫자 특수기호<br></br>
     9자 이하: 영문, 숫자, 특수기호<br></br>
     10자 이상: 셋 중 두가지 포함
+  </div>
+);
+
+// 회원가입 페이지 진입시 가입 양식 출력
+const registerForm = ({ closeToast }: any): JSX.Element => (
+  <div>
+    회원가입 양식<br></br>
+    <br></br>
+    아이디: 이메일 형식<br></br>
+    <br></br>
+    패스워드 양식:<br></br>
+    8자 이상, 영문 숫자 특수기호<br></br>
+    9자 이하: 영문, 숫자, 특수기호<br></br>
+    10자 이상: 셋 중 두가지 포함<br></br>
+    <br></br>
+    <button type="button" onClick={closeToast}>
+      확인
+    </button>
   </div>
 );
 
@@ -142,6 +160,7 @@ function parsingUrl(url: string[]): any[] {
 export const authApi = {
   requestDjango,
   createRequestAxios,
+  registerForm,
   passwordFormMessage,
   authRequestPost,
   authRequestGet,
