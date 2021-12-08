@@ -70,6 +70,7 @@ function RegisterPage(): JSX.Element {
             ? (navigate('/login'),
               toast.success('회원가입 성공!', {
                 position: toast.POSITION.TOP_CENTER,
+                autoClose: 2500,
               }))
             : alert('fail register');
         })
@@ -96,6 +97,7 @@ function RegisterPage(): JSX.Element {
           }
           toast.error(serverErrorMessage, {
             position: toast.POSITION.TOP_CENTER,
+            autoClose: 2500,
           });
         });
     } else {
@@ -107,6 +109,7 @@ function RegisterPage(): JSX.Element {
         .map(falseValue => {
           toast.error(falseValue[1], {
             position: toast.POSITION.TOP_CENTER,
+            autoClose: 2500,
           });
           setId('');
           setName('');

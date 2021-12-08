@@ -88,12 +88,14 @@ export default function Contact(): JSX.Element {
           console.log(result.text);
           toast.success('전송 완료했습니다.', {
             position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: 2500,
           });
         },
         error => {
           console.log(error.text);
           toast.error('전송 실패했습니다.', {
             position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: 2500,
           });
         },
       );

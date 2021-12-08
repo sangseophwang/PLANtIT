@@ -65,7 +65,9 @@ export default function Board(): JSX.Element {
         },
       );
     } catch (e) {
-      toast.error('본인만 삭제할 수 있습니다.');
+      toast.error('본인만 삭제할 수 있습니다.', {
+        autoClose: 2500,
+      });
     }
   }
 
@@ -75,7 +77,9 @@ export default function Board(): JSX.Element {
     if (isAuthor) {
       navigate('/community/post', { state: modifyProps });
     } else {
-      toast.error('본인만 수정할 수 있습니다.');
+      toast.error('본인만 수정할 수 있습니다.', {
+        autoClose: 2500,
+      });
     }
   }
 

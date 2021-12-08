@@ -26,10 +26,14 @@ export default function Post(): JSX.Element {
   const onSubmitHandler = () => {
     // 제목을 작성하지 않았을 때
     if (!title) {
-      toast.error('제목을 입력해주세요.');
+      toast.error('제목을 입력해주세요.', {
+        autoClose: 2500,
+      });
       // 글을 작성하지 않았을 때
     } else if (!contents) {
-      toast.error('글을 작성해주세요.');
+      toast.error('글을 작성해주세요.', {
+        autoClose: 2500,
+      });
     } else {
       // 일반적인 글 등록
       if (!location.state) {

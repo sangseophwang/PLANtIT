@@ -29,7 +29,7 @@ export default function Community(): JSX.Element {
   useEffect(() => {
     toast.success('커뮤니티에 오신 것을 환영합니다!', {
       position: toast.POSITION.TOP_CENTER,
-      autoClose: 3000,
+      autoClose: 2500,
     });
   }, []);
   // 페이지 번호 바뀔 때마다 업데이트
@@ -55,7 +55,9 @@ export default function Community(): JSX.Element {
   const handleCreatePost = async () => {
     const isLoggedin = localStorage.getItem('access_token');
     if (!isLoggedin) {
-      toast.error(CustomToastWithLink);
+      toast.error(CustomToastWithLink, {
+        autoClose: 2500,
+      });
       return;
     } else {
       window.location.replace('/community/post');

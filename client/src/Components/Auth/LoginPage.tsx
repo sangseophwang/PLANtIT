@@ -27,7 +27,7 @@ export default function LoginPage(): JSX.Element {
         navigate('/'),
         toast.success('로그인 성공!', {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 3000,
+          autoClose: 2500,
         }))
       : localStorage.getItem('access_token') !== null
       ? navigate('/')
@@ -68,6 +68,7 @@ export default function LoginPage(): JSX.Element {
           ? (localStorage.setItem('access_token', accessToken),
             toast.success('로그인 성공!', {
               position: toast.POSITION.TOP_CENTER,
+              autoClose: 2500,
             }),
             navigate('/'))
           : alert('error');
@@ -82,7 +83,9 @@ export default function LoginPage(): JSX.Element {
             errorMessage = '등록된 유저가 아닙니다!';
             break;
         }
-        toast.error(errorMessage);
+        toast.error(errorMessage, {
+          autoClose: 2500,
+        });
       });
   }
 
@@ -102,6 +105,7 @@ export default function LoginPage(): JSX.Element {
           ? (localStorage.setItem('access_token', accessToken),
             toast.success('로그인 성공!', {
               position: toast.POSITION.TOP_CENTER,
+              autoClose: 2500,
             }),
             navigate('/'))
           : alert('error');

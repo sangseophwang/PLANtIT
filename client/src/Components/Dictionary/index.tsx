@@ -24,7 +24,7 @@ export default function Dictionary(): JSX.Element {
         setPathology(response.data);
         toast.success('질병도감에 오신 것을 환영합니다!', {
           position: toast.POSITION.TOP_CENTER,
-          autoClose: 3000,
+          autoClose: 2500,
         });
       })
       .catch(e => {
