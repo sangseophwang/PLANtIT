@@ -59,6 +59,14 @@
       @include responsive('mobile') {
         width: 100%;
       }
+      .ql-size-huge {
+        font-size: 35px;
+        font-weight: 600;
+      }
+      .ql-size-large {
+        font-size: 20px;
+        font-weight: 500;
+      }
       .ql-align-center {
         text-align: center;
       }

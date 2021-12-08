@@ -12,7 +12,7 @@ export default function Post(): JSX.Element {
   const [contents, setContents] = useState<string>('');
   const navigate = useNavigate();
   const location: any = useLocation();
-
+  console.log(contents);
   // 수정됐을 때 제목과 글 업데이트
   useEffect(() => {
     if (location.state) {

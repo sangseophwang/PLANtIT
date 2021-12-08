@@ -27,6 +27,7 @@ export default function LoginPage(): JSX.Element {
         navigate('/'),
         toast.success('로그인 성공!', {
           position: toast.POSITION.TOP_CENTER,
+          autoClose: 3000,
         }))
       : localStorage.getItem('access_token') !== null
       ? navigate('/')

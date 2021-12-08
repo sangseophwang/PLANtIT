@@ -29,6 +29,7 @@ export default function Analysis(): JSX.Element {
         setCount(response.data as any);
         toast.success('검사하기에 오신 것을 환영합니다!', {
           position: toast.POSITION.TOP_CENTER,
+          autoClose: 3000,
         });
       })
       .catch(e => {
