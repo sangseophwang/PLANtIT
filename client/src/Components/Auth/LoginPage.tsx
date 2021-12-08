@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { authApi } from 'API/AuthApi/index';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { toast } from 'react-toastify';
 import NaverLogin from 'react-login-by-naver';
 import GoogleLogin from 'react-google-login';
 import Back from 'Components/Common/Back';
 import Logo from 'Assets/logo.png';
 import Image from 'Assets/Auth/LoginPage__Image.jpg';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'Components/Auth/scss/LoginPage.scss';
-import { toast } from 'react-toastify';
 
 library.add(faGoogle);
 
@@ -27,6 +27,7 @@ export default function LoginPage(): JSX.Element {
         navigate('/'),
         toast.success('로그인 성공!', {
           position: toast.POSITION.TOP_CENTER,
+          autoClose: 2500,
         }))
       : localStorage.getItem('access_token') !== null
       ? navigate('/')
@@ -67,6 +68,7 @@ export default function LoginPage(): JSX.Element {
           ? (localStorage.setItem('access_token', accessToken),
             toast.success('로그인 성공!', {
               position: toast.POSITION.TOP_CENTER,
+              autoClose: 2500,
             }),
             navigate('/'))
           : alert('error');
@@ -81,7 +83,9 @@ export default function LoginPage(): JSX.Element {
             errorMessage = '등록된 유저가 아닙니다!';
             break;
         }
-        toast.error(errorMessage);
+        toast.error(errorMessage, {
+          autoClose: 2500,
+        });
       });
   }
 
@@ -101,6 +105,7 @@ export default function LoginPage(): JSX.Element {
           ? (localStorage.setItem('access_token', accessToken),
             toast.success('로그인 성공!', {
               position: toast.POSITION.TOP_CENTER,
+              autoClose: 2500,
             }),
             navigate('/'))
           : alert('error');

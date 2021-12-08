@@ -24,7 +24,7 @@ export default function ResultThird(props: any) {
     for (let i = 0; i < ResultThirdData.prevention.length; i++) {
       result.push(
         <span key={i}>
-          🌳 {ResultThirdData.prevention[i]}
+          <div>🌳</div> {ResultThirdData.prevention[i]}
           <br />
         </span>,
       );

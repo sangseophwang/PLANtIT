@@ -122,7 +122,7 @@
         display: flex;
         width: 30%;
         justify-content: space-around;
-        margin-left: 1rem;
+        margin-left: 0.4rem;
         @include responsive('mobile__small') {
           width: 50%;
           margin-top: 4rem;
