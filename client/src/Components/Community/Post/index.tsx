@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import 'Components/Community/scss/Post.scss';
-import Editor from 'Components/Community/Post/Editor';
-import Submit from 'Components/Community/Post/Submit';
 import { useNavigate } from 'react-router';
 import { CommunityApi } from 'API/CommunityApi';
 import { useLocation } from 'react-router';
+import { Helmet } from 'react-helmet-async';
+import Editor from 'Components/Community/Post/Editor';
+import Submit from 'Components/Community/Post/Submit';
+import 'Components/Community/scss/Post.scss';
 
 export default function Post(): JSX.Element {
   const [title, setTitle] = useState<string>('');
   const [contents, setContents] = useState<string>('');
   const navigate = useNavigate();
   const location: any = useLocation();
-
+  console.log(contents);
   // 수정됐을 때 제목과 글 업데이트
   useEffect(() => {
     if (location.state) {
@@ -25,10 +26,14 @@ export default function Post(): JSX.Element {
   const onSubmitHandler = () => {
     // 제목을 작성하지 않았을 때
     if (!title) {
-      toast.error('제목을 입력해주세요.');
+      toast.error('제목을 입력해주세요.', {
+        autoClose: 2500,
+      });
       // 글을 작성하지 않았을 때
     } else if (!contents) {
-      toast.error('글을 작성해주세요.');
+      toast.error('글을 작성해주세요.', {
+        autoClose: 2500,
+      });
     } else {
       // 일반적인 글 등록
       if (!location.state) {
@@ -75,6 +80,9 @@ export default function Post(): JSX.Element {
 
   return (
     <section className="Post__Container">
+      <Helmet>
+        <title>글 작성</title>
+      </Helmet>
       <div className="Post__Title-Box">
         <input
           className="Post__Title"

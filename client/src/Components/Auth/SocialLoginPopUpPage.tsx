@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { authApi } from 'API/AuthApi/index';
 
 export default function SocialLoginPopUpPage(): JSX.Element {

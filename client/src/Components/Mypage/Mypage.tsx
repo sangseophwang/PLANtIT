@@ -41,6 +41,7 @@ export default function MypageMain(): JSX.Element {
             navigate('/'),
             toast.success('계정이 삭제되었습니다!', {
               position: toast.POSITION.TOP_CENTER,
+              autoClose: 2500,
             }))
           : alert('response.data is not "Deregister Success"');
       })
@@ -164,6 +165,7 @@ export default function MypageMain(): JSX.Element {
                     navigate('/');
                     toast.success('로그아웃 되었습니다.', {
                       position: toast.POSITION.TOP_CENTER,
+                      autoClose: 2500,
                     });
                   }}
                 >

@@ -6,6 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CommunityApi } from 'API/CommunityApi';
 import { useCookies } from 'react-cookie';
+import { Helmet } from 'react-helmet-async';
 import Disqus from 'disqus-react';
 import Navigation from 'Components/Common/Navigation';
 import ProgressBar from 'Components/Common/ProgressBar';
@@ -64,7 +65,9 @@ export default function Board(): JSX.Element {
         },
       );
     } catch (e) {
-      toast.error('본인만 삭제할 수 있습니다.');
+      toast.error('본인만 삭제할 수 있습니다.', {
+        autoClose: 2500,
+      });
     }
   }
 
@@ -74,7 +77,9 @@ export default function Board(): JSX.Element {
     if (isAuthor) {
       navigate('/community/post', { state: modifyProps });
     } else {
-      toast.error('본인만 수정할 수 있습니다.');
+      toast.error('본인만 수정할 수 있습니다.', {
+        autoClose: 2500,
+      });
     }
   }
 
@@ -88,6 +93,9 @@ export default function Board(): JSX.Element {
   return (
     <>
       <section className="Board__Container">
+        <Helmet>
+          <title>{data && data.title}</title>
+        </Helmet>
         <Navigation />
         <ProgressBar />
         <div className="Board__Top">

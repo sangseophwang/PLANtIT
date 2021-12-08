@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { AnalysisApi } from 'API/AnalysisApi';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import Navigation from 'Components/Common/Navigation';
 import Example from 'Components/Analysis/Example';
 import Upload from 'Components/Analysis/Upload';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { AnalysisApi } from 'API/AnalysisApi';
-import { toast } from 'react-toastify';
 import Loading from 'Components/Common/Loading';
 import Error from 'Components/Common/Error';
-import { Link } from 'react-router-dom';
 import ProgressBar from 'Components/Common/ProgressBar';
 
 export default function Analysis(): JSX.Element {
@@ -29,6 +29,7 @@ export default function Analysis(): JSX.Element {
         setCount(response.data as any);
         toast.success('검사하기에 오신 것을 환영합니다!', {
           position: toast.POSITION.TOP_CENTER,
+          autoClose: 2500,
         });
       })
       .catch(e => {
@@ -58,7 +59,7 @@ export default function Analysis(): JSX.Element {
   return (
     <>
       {count && (
-        <HelmetProvider>
+        <>
           <Helmet>
             <title>검사하기</title>
           </Helmet>
@@ -68,7 +69,7 @@ export default function Analysis(): JSX.Element {
             <Upload data={count.data} />
             <Example />
           </div>
-        </HelmetProvider>
+        </>
       )}
     </>
   );

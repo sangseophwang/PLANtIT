@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Navigation from 'Components/Common/Navigation';
 import ResultFirst from 'Components/Result/ResultFirst';
 import ResultSecond from 'Components/Result/ResultSecond';
@@ -34,6 +35,9 @@ export default function Result(): JSX.Element {
       {state ? (
         state.data !== 'six-man' ? (
           <>
+            <Helmet>
+              <title>결과 보기</title>
+            </Helmet>
             <Navigation />
             <ProgressBar />
             <ResultFirst data={state} />

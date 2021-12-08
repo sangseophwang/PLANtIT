@@ -59,6 +59,14 @@
       @include responsive('mobile') {
         width: 100%;
       }
+      .ql-size-huge {
+        font-size: 35px;
+        font-weight: 600;
+      }
+      .ql-size-large {
+        font-size: 20px;
+        font-weight: 500;
+      }
       .ql-align-center {
         text-align: center;
       }
@@ -102,7 +110,7 @@
         > img {
           display: block;
           margin: 0 auto;
-          min-width: 60%;
+          max-width: 1000px;
           width: 100%;
           margin-bottom: 10px;
         }
