@@ -16,7 +16,7 @@ def pesticide_each(request, name):
     '''
     try:
 
-        pesticide = cache.get_or_set(f'pesticide_{name}',Pesticide.objects.filter(name = name).values(), timeout=None)
+        pesticide = cache.get_or_set(f'pesticide_{name}',Pesticide.objects.filter(name = name).values(), timeout=604800)
         result = {"data" : pesticide[0]}
 
         return JsonResponse(result, json_dumps_params={'ensure_ascii': False}, safe=False)

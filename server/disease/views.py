@@ -17,7 +17,7 @@ def disease_all(request):
     '''
     try:
 
-        diseases = cache.get_or_set('diseases', Disease.objects.all().values(),timeout=None)
+        diseases = cache.get_or_set('diseases', Disease.objects.all().values(),timeout=604800)
         # diseases = Disease.objects.all().values()
         diseases = list(diseases)
 
