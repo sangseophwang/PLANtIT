@@ -94,12 +94,21 @@
         line-height: 1.6;
         font-size: 18px;
         text-align: left;
+        width: 100%;
+        word-break: break-all;
         @include responsive('mobile') {
           font-size: 16px;
           line-height: 1.4;
         }
         > strong {
           font-weight: 700;
+          > img {
+            display: block;
+            margin: 0 auto;
+            min-width: 600px;
+            width: 100%;
+            margin-bottom: 10px;
+          }
         }
         > u {
           text-decoration: underline;
@@ -110,8 +119,8 @@
         > img {
           display: block;
           margin: 0 auto;
-          max-width: 1000px;
           width: 100%;
+          min-width: 600px;
           margin-bottom: 10px;
         }
       }
