@@ -1,5 +1,5 @@
-@import '/src/Components/Common/scss/mixins';
-@import '/src/Components/Common/scss/variables';
+@import "/src/Components/Common/scss/mixins";
+@import "/src/Components/Common/scss/variables";
 
 .Upload__Layout {
   margin-top: 9rem;
@@ -12,10 +12,10 @@
   place-items: center;
   align-items: space-around;
   justify-content: center;
-  @include responsive('tablet__large') {
+  @include responsive("tablet__large") {
     width: 90%;
   }
-  @include responsive('tablet') {
+  @include responsive("tablet") {
     margin-top: 1rem;
   }
   .Upload__Text-Container {
@@ -24,29 +24,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include responsive('tablet__large') {
+    @include responsive("tablet__large") {
       width: 80%;
       padding-right: 1rem;
     }
-    @include responsive('mobile') {
+    @include responsive("mobile") {
       width: 90%;
       padding-right: 0;
       margin-top: 2rem;
     }
-    @include responsive('mobile__small') {
+    @include responsive("mobile__small") {
       padding-right: 0;
     }
     .Main__Text {
       font-size: 5vw;
       font-weight: 800;
       text-align: center;
-      @include responsive('tablet__large') {
+      @include responsive("tablet__large") {
         font-size: 4rem;
       }
-      @include responsive('tablet') {
+      @include responsive("tablet") {
         margin-top: 3rem;
       }
-      @include responsive('mobile__small') {
+      @include responsive("mobile__small") {
         font-size: 2.1rem;
         margin-top: 1rem;
       }
@@ -59,7 +59,7 @@
       text-align: center;
       word-break: break-word;
       color: gray;
-      @include responsive('mobile') {
+      @include responsive("mobile") {
         width: 100%;
         font-size: 1rem;
       }
@@ -71,7 +71,7 @@
       line-height: 1.3;
       word-break: keep-all;
       color: #bdbdbd;
-      @include responsive('tablet') {
+      @include responsive("tablet") {
         margin-top: 3rem;
       }
     }
@@ -86,17 +86,17 @@
     border: 1.7px dotted lightgray;
     border-radius: 12px;
     text-align: center;
-    @include responsive('tablet') {
+    @include responsive("tablet") {
       margin-bottom: 1rem;
       margin-left: 0;
       padding: 1.5rem;
     }
-    @include responsive('mobile') {
+    @include responsive("mobile") {
       margin-top: 0;
       padding-left: 0.5rem;
       padding-right: 0.5rem;
     }
-    @include responsive('mobile__small') {
+    @include responsive("mobile__small") {
       width: 70%;
     }
     .Upload-Information {
@@ -111,7 +111,7 @@
       place-items: center;
       position: relative;
       border-radius: 12px;
-      @include responsive('mobile__small') {
+      @include responsive("mobile__small") {
         width: 90%;
         margin: 0 auto;
       }
@@ -129,7 +129,7 @@
               transform: scale(1.1);
               color: #92cd7b;
             }
-            @include responsive('mobile__small') {
+            @include responsive("mobile__small") {
               font-size: 5rem;
             }
           }
@@ -149,11 +149,11 @@
           &:hover {
             color: tomato;
           }
-          @include responsive('tablet') {
+          @include responsive("tablet") {
             right: 5px;
             top: -20px;
           }
-          @include responsive('mobile__small') {
+          @include responsive("mobile__small") {
             top: -10px;
             right: -5px;
           }
@@ -163,7 +163,7 @@
             font-size: 7rem;
             color: #bcdea1;
             transition: 0.5s;
-            @include responsive('mobile__small') {
+            @include responsive("mobile__small") {
               font-size: 5rem;
             }
           }
@@ -175,7 +175,10 @@
     margin: 2rem 0;
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+
     .Upload__Button {
       text-align: center;
       font-size: 1.3rem;
@@ -187,7 +190,7 @@
       transition: 0.5s;
       cursor: pointer;
       text-decoration: none;
-      @include responsive('mobile') {
+      @include responsive("mobile") {
         font-size: 1rem;
       }
       &:hover {
@@ -196,6 +199,7 @@
       }
     }
     .Fail__Button {
+      width: fit-content;
       user-select: none;
       background-color: #8c8c8c;
       text-align: center;
@@ -204,8 +208,19 @@
       padding: 1rem 1.3rem;
       border-radius: 0.5rem;
       color: white;
-      @include responsive('mobile') {
+      @include responsive("mobile") {
         font-size: 1rem;
+      }
+    }
+
+    .Upload__Count {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #8c8c8c;
+      text-align: center;
+      @include responsive("mobile") {
+        font-size: 0.6rem;
       }
     }
   }
