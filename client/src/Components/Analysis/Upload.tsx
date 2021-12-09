@@ -152,15 +152,20 @@ const Upload = (props: any) => {
       </div>
       <div className="Button-Continer">
         {isUploaded ? (
-          <Link
-            className="Upload__Button"
-            to="/result"
-            onClick={PostAnalysisAPI}
-          >
-            검사시작
-          </Link>
+          <>
+            <Link
+              className="Upload__Button"
+              to="/result"
+              onClick={PostAnalysisAPI}
+            >
+              검사시작
+            </Link>
+          </>
         ) : (
-          <div className="Fail__Button">검사시작</div>
+          <>
+            <div className="Fail__Button">검사시작</div>
+            <div className="Upload__Count">누적 검사 건수: {props.data}회</div>
+          </>
         )}
       </div>
     </div>
