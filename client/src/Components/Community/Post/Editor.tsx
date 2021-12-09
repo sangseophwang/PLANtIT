@@ -51,9 +51,7 @@ export default function Editor({
             );
           }
           return { ...response, success: true };
-        } catch (error) {
-          console.log(error);
-        }
+        } catch (error) {}
       }
     };
   };

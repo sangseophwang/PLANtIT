@@ -79,7 +79,6 @@ export default function CenterMap(props: any): JSX.Element {
 
       // GeoLocation을 이용해서 접속 위치를 얻어올 수 없는 경우(선릉역 위치).
     } else {
-      console.log('geolocation을 사용 X');
       const options = {
         center: new window.kakao.maps.LatLng(37.5043, 127.04925),
         level: 12,

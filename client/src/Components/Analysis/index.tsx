@@ -36,7 +36,6 @@ export default function Analysis(): JSX.Element {
         setError(e);
       });
     setLoading(false);
-    console.log('횟수', count);
     return CountResponse;
   };
 

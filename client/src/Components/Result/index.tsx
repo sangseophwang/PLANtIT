@@ -20,7 +20,6 @@ export default function Result(): JSX.Element {
   // useNavigate 값 받는 함수
   const ReadResponse = () => {
     if (state) {
-      console.log('결과 페이지', state);
       return state;
     }
   };

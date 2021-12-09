@@ -43,7 +43,6 @@ export default function Post(): JSX.Element {
             content: contents,
           }).then(response => {
             if (response.data.new_token !== null) {
-              console.log('새로운 토큰이 도착했습니다!');
               localStorage.removeItem('access_token');
               localStorage.setItem('access_token', response.data.new_token);
               navigate('/community');
@@ -51,9 +50,7 @@ export default function Post(): JSX.Element {
               navigate('/community');
             }
           });
-        } catch (error) {
-          console.log(error);
-        }
+        } catch (error) {}
 
         //수정할 때 글 등록
       } else {
@@ -63,7 +60,6 @@ export default function Post(): JSX.Element {
             content: contents,
           }).then(response => {
             if (response.data.new_token !== null) {
-              console.log('새로운 토큰이 도착했습니다!');
               localStorage.removeItem('access_token');
               localStorage.setItem('access_token', response.data.new_token);
               navigate('/community');
@@ -71,9 +67,7 @@ export default function Post(): JSX.Element {
               navigate('/community');
             }
           });
-        } catch (error) {
-          console.log(error);
-        }
+        } catch (error) {}
       }
     }
   };

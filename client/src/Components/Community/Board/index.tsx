@@ -23,7 +23,6 @@ export default function Board(): JSX.Element {
   const modifyProps = [data, item];
   const [cookies, setCookie] = useCookies(['plant-blog']);
 
-  console.log(data && data.content);
   // 게시글 번호에 맞는 글 불러오기
   useEffect(() => {
     async function getPost() {
@@ -32,14 +31,12 @@ export default function Board(): JSX.Element {
         `${cookies['plant-blog']}`,
       ).then(response => {
         if (response.data.new_token !== null) {
-          console.log('새로운 토큰이 도착했습니다!');
           localStorage.removeItem('access_token');
           localStorage.setItem('access_token', response.data.new_token);
           setData(response.data);
           setIsAuthor(response.data.is_author);
           setCookie('plant-blog', item);
         } else {
-          console.log('뉴토큰이 없습니다.');
           setData(response.data);
           setIsAuthor(response.data.is_author);
           setCookie('plant-blog', item);
@@ -61,12 +58,10 @@ export default function Board(): JSX.Element {
           await CommunityApi.Community_Post(`blog/delete/${item}`, '').then(
             response => {
               if (response.data.new_token !== null) {
-                console.log('새로운 토큰이 도착했습니다!');
                 localStorage.removeItem('access_token');
                 localStorage.setItem('access_token', response.data.new_token);
                 navigate('/community');
               } else {
-                console.log('뉴토큰이 없습니다.');
                 navigate('/community');
               }
             },
@@ -91,7 +86,7 @@ export default function Board(): JSX.Element {
 
   // 게시글 수정 페이지 이동
   async function onModifyHandler() {
-    console.log(isAuthor);
+    
     if (isAuthor) {
       navigate('/community/post', { state: modifyProps });
     } else {
