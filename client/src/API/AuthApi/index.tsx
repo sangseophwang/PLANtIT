@@ -8,10 +8,12 @@ const googleClientId =
 
 const naverCallbackUrlLocal = 'http://127.0.0.1:3000/socialloginpopup';
 const naverCallbackUrlAzure =
-  'https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/login';
+  'https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/socialloginpopup';
 
 // const plantitServerUrl = 'http://localhost/api';
-
+const LOCALHOST_CLIENT_URL = 'http://localhost';
+const AZURE_CLIENT_URL =
+  'https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com';
 const BASE_URL = `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api`;
 
 // 패스워드 잘못 입력할 경우 메세지 출력
@@ -196,4 +198,7 @@ export const authApi = {
   googleClientId,
   naverCallbackUrlLocal,
   naverCallbackUrlAzure,
+  BASE_URL,
+  AZURE_CLIENT_URL,
+  LOCALHOST_CLIENT_URL,
 };

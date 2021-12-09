@@ -20,6 +20,7 @@ services:
       - 443:443
     volumes:
       - ./server:/project/server
+      - /home/team3/project/project-template/client/build:/etc/react/build
       - ./nginx/config:/etc/nginx/conf.d
       - /etc/letsencrypt/live/elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/fullchain.pem:/etc/letsencrypt/live/elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/fullchain.pem:ro
       - /etc/letsencrypt/live/elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/privkey.pem:/etc/letsencrypt/live/elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/privkey.pem:ro
