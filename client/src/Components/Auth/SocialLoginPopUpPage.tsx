@@ -9,20 +9,12 @@ export default function SocialLoginPopUpPage(): JSX.Element {
     const [access_token, token_type, state, expires_in] =
       authApi.parsingUrl(responseUrl);
 
-    console.log('access_token: ', access_token);
-    console.log('token_type: ', token_type);
-    console.log('state: ', state);
-    console.log('expires_in: ', expires_in);
-
     authApi.requestDjango
       .post('/user/naver_login', {
         access_token: access_token,
         token_type: token_type,
       })
       .then(response => {
-        console.log('response.data: ', response.data);
-        localStorage.setItem('access_token', response.data);
-
         const [accessToken, message] = [
           response.data.token,
           response.data.message,
@@ -36,7 +28,7 @@ export default function SocialLoginPopUpPage(): JSX.Element {
             )
           : window.close();
 
-        // window.close();
+        window.close();
       })
       .catch(error => {
         alert('error from Django');

@@ -21,7 +21,6 @@ export default function LoginPage(): JSX.Element {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("tokenParam: ", tokenParam);
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     localStorage.getItem('access_token') === null && tokenParam !== undefined
       ? (localStorage.setItem('access_token', tokenParam),
