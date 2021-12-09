@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from django.http import JsonResponse
 from disease.models import Disease
 from pesticide.models import Pesticide
-from time_log import logging_time
+from common.time_log import logging_time
 from common.s3 import s3
 from django.conf import settings
 

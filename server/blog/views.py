@@ -9,8 +9,6 @@ from .queryset import find_blog_by_id, create_blog, update_blog, remove_blog, ge
 from user.queryset import find_user_by_id
 from common.token import validate_token
 from common.s3 import get_thumbnail_url, upload_blog_image
-import requests
-from django.http import HttpResponse
 
 # Create your views here.
 

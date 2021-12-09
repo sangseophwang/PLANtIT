@@ -3,15 +3,13 @@ import bcrypt
 import requests
 import datetime
 
-from re import compile
-from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from common.token import validate_token, create_token
 from common.s3 import upload_user_image
 from common.regex import validate_email, validate_password
-from .queryset import find_user_by_email_usertype, find_user_by_id, create_user, update_user, update_user_profile_image, update_user_refresh_token
+from .queryset import find_user_by_email_usertype, find_user_by_id, create_user, update_user, update_user_profile_image
 
 # Create your views here.
 
