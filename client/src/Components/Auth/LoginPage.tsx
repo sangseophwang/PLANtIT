@@ -207,7 +207,7 @@ export default function LoginPage(): JSX.Element {
             >
               <NaverLogin
                 clientId={authApi.naverClientId}
-                callbackUrl="http://127.0.0.1:3000/socialloginpopup"
+                callbackUrl={authApi.naverCallbackUrlAzure}
                 render={props => (
                   <button
                     title="네이버로 로그인하기"
