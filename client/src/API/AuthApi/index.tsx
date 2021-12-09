@@ -4,6 +4,10 @@ const naverClientId = 'ioHK_g45Ha9ZWdoNfune';
 const googleClientId =
   '981453120514-lh9cf035sa3pbhan5qa8fjr9eg85idot.apps.googleusercontent.com';
 
+const naverCallbackUrlLocal = 'http://127.0.0.1:3000/socialloginpopup';
+const naverCallbackUrlAzure =
+  'https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/login';
+
 // const plantitServerUrl = 'http://localhost/api';
 
 const BASE_URL = `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/api`;
@@ -171,4 +175,6 @@ export const authApi = {
   parsingUrl,
   naverClientId,
   googleClientId,
+  naverCallbackUrlLocal,
+  naverCallbackUrlAzure,
 };

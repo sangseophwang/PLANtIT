@@ -25,7 +25,7 @@ export default function SocialLoginPopUpPage(): JSX.Element {
         message === 'naver login success'
           ? // eslint-disable-next-line no-restricted-globals
             opener.location.replace(
-              `http://localhost:3000/login/${accessToken}`,
+              `${authApi.naverCallbackUrlAzure}/${accessToken}`,
             )
           : window.close();
 
