@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 
 const naverClientId = 'ioHK_g45Ha9ZWdoNfune';
 const googleClientId =
@@ -156,22 +154,6 @@ function validateFilledForm(
     : [true, <div>폼이 모두 입력되었습니다.</div>];
 }
 
-function securityWarningProcess(_message: string): void {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const navigate = useNavigate();
-  if (_message === 'Security Warning') {
-    localStorage.removeItem('access_token');
-    navigate('/');
-    toast.error('해킹이 감지되었습니다.', {
-      position: toast.POSITION.TOP_CENTER,
-    });
-  } else {
-    toast.error('error', {
-      position: toast.POSITION.TOP_CENTER,
-    });
-  }
-}
-
 // 네이버 로그인 팝업창 url 파싱
 function parsingUrl(url: string[]): any[] {
   const [access_token, state, token_type, expires_in] = url.map((data: any) => {
@@ -192,7 +174,6 @@ export const authApi = {
   validatePassword,
   validateSamePassword,
   validateFilledForm,
-  securityWarningProcess,
   parsingUrl,
   naverClientId,
   googleClientId,

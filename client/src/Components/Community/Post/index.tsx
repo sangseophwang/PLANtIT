@@ -7,7 +7,6 @@ import { Helmet } from 'react-helmet-async';
 import Editor from 'Components/Community/Post/Editor';
 import Submit from 'Components/Community/Post/Submit';
 import 'Components/Community/scss/Post.scss';
-import { authApi } from 'API/AuthApi';
 
 export default function Post(): JSX.Element {
   const [title, setTitle] = useState<string>('');
@@ -53,7 +52,13 @@ export default function Post(): JSX.Element {
               }
             })
             .catch(error => {
-              authApi.securityWarningProcess(error.response.data);
+              if (error.response.data === 'Security Warning') {
+                localStorage.removeItem('access_token');
+                navigate('/');
+                toast.error('해킹이 감지되었습니다.', {
+                  position: toast.POSITION.TOP_CENTER,
+                });
+              }
             });
         } catch (error) {}
 
@@ -74,7 +79,13 @@ export default function Post(): JSX.Element {
               }
             })
             .catch(error => {
-              authApi.securityWarningProcess(error.response.data);
+              if (error.response.data === 'Security Warning') {
+                localStorage.removeItem('access_token');
+                navigate('/');
+                toast.error('해킹이 감지되었습니다.', {
+                  position: toast.POSITION.TOP_CENTER,
+                });
+              }
             });
         } catch (error) {}
       }

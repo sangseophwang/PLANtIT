@@ -28,7 +28,13 @@ export default function MypageMain(): JSX.Element {
         }
       })
       .catch(error => {
-        authApi.securityWarningProcess(error.response.data);
+        if (error.response.data === 'Security Warning') {
+          localStorage.removeItem('access_token');
+          navigate('/');
+          toast.error('해킹이 감지되었습니다.', {
+            position: toast.POSITION.TOP_CENTER,
+          });
+        }
       });
   }, []);
 
@@ -99,13 +105,13 @@ export default function MypageMain(): JSX.Element {
         }
       })
       .catch(error => {
-	 if (error.response.data === 'Security Warning') {
-           localStorage.removeItem('access_token');
-           navigate('/');
-           toast.error('해킹이 감지되었습니다.', {
-             position: toast.POSITION.TOP_CENTER,
-           });
-         }
+        if (error.response.data === 'Security Warning') {
+          localStorage.removeItem('access_token');
+          navigate('/');
+          toast.error('해킹이 감지되었습니다.', {
+            position: toast.POSITION.TOP_CENTER,
+          });
+        }
       });
 
     setChange(false);
@@ -131,7 +137,13 @@ export default function MypageMain(): JSX.Element {
           }
         })
         .catch(error => {
-          authApi.securityWarningProcess(error.response.data);
+          if (error.response.data === 'Security Warning') {
+            localStorage.removeItem('access_token');
+            navigate('/');
+            toast.error('해킹이 감지되었습니다.', {
+              position: toast.POSITION.TOP_CENTER,
+            });
+          }
         });
     }
   }
