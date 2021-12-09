@@ -14,8 +14,6 @@ export default function SocialLoginPopUpPage(): JSX.Element {
         token_type: token_type,
       })
       .then(response => {
-        localStorage.setItem('access_token', response.data);
-
         const [accessToken, message] = [
           response.data.token,
           response.data.message,
