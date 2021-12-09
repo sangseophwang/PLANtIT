@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
 from .models import Pesticide
-from time_log import logging_time
+from common.time_log import logging_time
 from django.core.cache import cache
 
 # Create your views here.
