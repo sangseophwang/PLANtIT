@@ -11,6 +11,7 @@ import Disqus from 'disqus-react';
 import Navigation from 'Components/Common/Navigation';
 import ProgressBar from 'Components/Common/ProgressBar';
 import 'Components/Community/scss/Board.scss';
+import { authApi } from 'API/AuthApi';
 
 library.add(faEye);
 
@@ -26,22 +27,23 @@ export default function Board(): JSX.Element {
   // 게시글 번호에 맞는 글 불러오기
   useEffect(() => {
     async function getPost() {
-      await CommunityApi.Get_Page(
-        `blog/${item}`,
-        `${cookies['plant-blog']}`,
-      ).then(response => {
-        if (response.data.new_token !== null) {
-          localStorage.removeItem('access_token');
-          localStorage.setItem('access_token', response.data.new_token);
-          setData(response.data);
-          setIsAuthor(response.data.is_author);
-          setCookie('plant-blog', item);
-        } else {
-          setData(response.data);
-          setIsAuthor(response.data.is_author);
-          setCookie('plant-blog', item);
-        }
-      });
+      await CommunityApi.Get_Page(`blog/${item}`, `${cookies['plant-blog']}`)
+        .then(response => {
+          if (response.data.new_token !== null) {
+            localStorage.removeItem('access_token');
+            localStorage.setItem('access_token', response.data.new_token);
+            setData(response.data);
+            setIsAuthor(response.data.is_author);
+            setCookie('plant-blog', item);
+          } else {
+            setData(response.data);
+            setIsAuthor(response.data.is_author);
+            setCookie('plant-blog', item);
+          }
+        })
+        .catch(error => {
+          authApi.securityWarningProcess(error.response.data);
+        });
     }
     getPost();
   }, [item]);
@@ -55,8 +57,8 @@ export default function Board(): JSX.Element {
 
       if (reconfirmMessage === '삭제') {
         try {
-          await CommunityApi.Community_Post(`blog/delete/${item}`, '').then(
-            response => {
+          await CommunityApi.Community_Post(`blog/delete/${item}`, '')
+            .then(response => {
               if (response.data.new_token !== null) {
                 localStorage.removeItem('access_token');
                 localStorage.setItem('access_token', response.data.new_token);
@@ -64,8 +66,10 @@ export default function Board(): JSX.Element {
               } else {
                 navigate('/community');
               }
-            },
-          );
+            })
+            .catch(error => {
+              authApi.securityWarningProcess(error.response.data);
+            });
         } catch (e) {
           toast.error('본인만 삭제할 수 있습니다.', {
             autoClose: 2500,
@@ -86,7 +90,6 @@ export default function Board(): JSX.Element {
 
   // 게시글 수정 페이지 이동
   async function onModifyHandler() {
-    
     if (isAuthor) {
       navigate('/community/post', { state: modifyProps });
     } else {

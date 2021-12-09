@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet-async';
 import Editor from 'Components/Community/Post/Editor';
 import Submit from 'Components/Community/Post/Submit';
 import 'Components/Community/scss/Post.scss';
+import { authApi } from 'API/AuthApi';
 
 export default function Post(): JSX.Element {
   const [title, setTitle] = useState<string>('');
@@ -41,15 +42,19 @@ export default function Post(): JSX.Element {
           CommunityApi.Community_Post('blog/post', {
             title: title,
             content: contents,
-          }).then(response => {
-            if (response.data.new_token !== null) {
-              localStorage.removeItem('access_token');
-              localStorage.setItem('access_token', response.data.new_token);
-              navigate('/community');
-            } else {
-              navigate('/community');
-            }
-          });
+          })
+            .then(response => {
+              if (response.data.new_token !== null) {
+                localStorage.removeItem('access_token');
+                localStorage.setItem('access_token', response.data.new_token);
+                navigate('/community');
+              } else {
+                navigate('/community');
+              }
+            })
+            .catch(error => {
+              authApi.securityWarningProcess(error.response.data);
+            });
         } catch (error) {}
 
         //수정할 때 글 등록
@@ -58,15 +63,19 @@ export default function Post(): JSX.Element {
           CommunityApi.Modify_Post(`blog/update/${location.state[1]}`, {
             title: title,
             content: contents,
-          }).then(response => {
-            if (response.data.new_token !== null) {
-              localStorage.removeItem('access_token');
-              localStorage.setItem('access_token', response.data.new_token);
-              navigate('/community');
-            } else {
-              navigate('/community');
-            }
-          });
+          })
+            .then(response => {
+              if (response.data.new_token !== null) {
+                localStorage.removeItem('access_token');
+                localStorage.setItem('access_token', response.data.new_token);
+                navigate('/community');
+              } else {
+                navigate('/community');
+              }
+            })
+            .catch(error => {
+              authApi.securityWarningProcess(error.response.data);
+            });
         } catch (error) {}
       }
     }
