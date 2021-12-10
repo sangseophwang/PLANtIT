@@ -68,7 +68,8 @@
       .Modal__Image {
         width: 50%;
         height: 60%;
-        object-fit: cover;
+        // object-fit: cover;
+        object-fit: contain;
         border-radius: 12px;
         margin-bottom: 30px;
         @include responsive('tablet') {
