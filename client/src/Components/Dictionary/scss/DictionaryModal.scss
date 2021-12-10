@@ -1,5 +1,5 @@
-@import '/src/Components/Common/scss/mixins';
-@import '/src/Components/Common/scss/variables';
+@import "/src/Components/Common/scss/mixins";
+@import "/src/Components/Common/scss/variables";
 
 .Modal__Background {
   width: 100%;
@@ -20,7 +20,7 @@
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-  @include responsive('tablet') {
+  @include responsive("tablet") {
     width: 90%;
     top: 45%;
   }
@@ -29,7 +29,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 9rem;
     padding: 2rem;
     z-index: 99;
     overflow-y: scroll;
@@ -43,16 +43,16 @@
       border-radius: 10px;
       background-color: $LightGreen;
     }
-    @include responsive('mobile__small') {
+    @include responsive("mobile__small") {
       padding: 0.5rem;
-      margin-top: 40px;
+      margin-top: 3rem;
     }
     .Modal__CloseBtn {
       display: flex;
       justify-content: flex-end;
       .Modal__Icon {
         color: $LightGreen;
-        font-size: 25px;
+        font-size: 1.8rem;
         cursor: pointer;
         transition: 0.3s;
         &:hover {
@@ -68,15 +68,14 @@
       .Modal__Image {
         width: 50%;
         height: 60%;
-        // object-fit: cover;
         object-fit: contain;
         border-radius: 12px;
         margin-bottom: 30px;
-        @include responsive('tablet') {
+        @include responsive("tablet") {
           width: 80%;
           height: 80%;
         }
-        @include responsive('mobile') {
+        @include responsive("mobile") {
           width: 90%;
           margin: 0.5rem auto;
         }
@@ -96,13 +95,13 @@
           text-align: center;
           margin-bottom: 1rem;
           color: $Green;
-          @include responsive('tablet__large') {
+          @include responsive("tablet__large") {
             font-size: 6vw;
           }
-          @include responsive('mobile') {
-            margin-top: 0px;
+          @include responsive("mobile") {
+            margin-top: 0;
           }
-          @include responsive('mobile__small') {
+          @include responsive("mobile__small") {
             padding: 0.5rem;
             font-size: 1.5rem;
           }
@@ -114,13 +113,13 @@
           text-align: center;
           margin-top: 0.5rem;
           color: $LightGreen;
-          @include responsive('tablet__large') {
+          @include responsive("tablet__large") {
             font-size: 3vw;
           }
-          @include responsive('mobile') {
+          @include responsive("mobile") {
             margin-top: 0px;
           }
-          @include responsive('mobile__small') {
+          @include responsive("mobile__small") {
             font-size: 0.8rem;
           }
         }
@@ -130,10 +129,10 @@
           color: darkslategray;
           margin: 1rem 0 0.5rem 0.4rem;
           width: 60%;
-          @include responsive('tablet__large') {
+          @include responsive("tablet__large") {
             width: 90%;
           }
-          @include responsive('mobile__small') {
+          @include responsive("mobile__small") {
             font-size: 0.8rem;
             margin-left: 0;
           }
@@ -144,10 +143,10 @@
           line-height: 1.5;
           margin: 1rem 0 2rem 0;
           color: darkslategray;
-          @include responsive('tablet__large') {
+          @include responsive("tablet__large") {
             width: 90%;
           }
-          @include responsive('mobile__small') {
+          @include responsive("mobile__small") {
             font-size: 0.8rem;
             margin-bottom: 1rem;
           }
@@ -159,11 +158,21 @@
           margin-top: 1rem;
           text-align: center;
           color: $Green;
-          @include responsive('tablet__large') {
+          @include responsive("tablet__large") {
             font-size: 3vw;
           }
-          @include responsive('mobile__small') {
+          @include responsive("mobile__small") {
             font-size: 6vw;
+          }
+        }
+
+        .Kakao__Share {
+          width: 3rem;
+          background-color: white;
+          border: none;
+
+          .KakaoLogo {
+            width: 100%;
           }
         }
       }
