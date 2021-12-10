@@ -1,4 +1,4 @@
-@import '/src/Components/Common/scss/mixins';
+@import "/src/Components/Common/scss/mixins";
 
 .ResultLast__Container {
   width: 90%;
@@ -13,13 +13,25 @@
     font-weight: 700;
     text-align: center;
     color: #5d5d5d;
-    @include responsive('tablet__large') {
+    @include responsive("tablet__large") {
       font-size: 3rem;
     }
-    @include responsive('mobile__small') {
+    @include responsive("mobile__small") {
       font-size: 1.5rem;
       width: 90%;
       margin: 2rem auto;
+    }
+
+    .ResultLast__Notice {
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+      color: #bdbdbd;
+
+      @include responsive("mobile__small") {
+        font-size: 0.8rem;
+      }
     }
   }
 }

@@ -81,16 +81,35 @@ export default function CenterMap(props: any): JSX.Element {
     } else {
       const options = {
         center: new window.kakao.maps.LatLng(37.5043, 127.04925),
-        level: 12,
+        level: 8,
       };
+
       const map = new window.kakao.maps.Map(container, options);
 
       props.data.forEach((el: { lat: any; lng: any; name: any }) => {
-        new window.kakao.maps.Marker({
+        let marker = new window.kakao.maps.Marker({
           map: map,
           position: new window.kakao.maps.LatLng(el.lat, el.lng),
           title: el.name,
           image: markerImage,
+          clickable: true, // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정.
+        });
+
+        // 인포윈도우를 생성.
+        let infowindow = new window.kakao.maps.InfoWindow({
+          removable: true,
+          zIndex: 1,
+        });
+
+        // 마커에 클릭이벤트를 등록
+        window.kakao.maps.event.addListener(marker, 'click', function () {
+          // 마커 위에 인포윈도우를 표시
+          infowindow.setContent(
+            '<div style="padding:0.2rem;font-size:1rem;text-align:center;margin:1rem auto; display:block; width:150px;">' +
+              el.name +
+              `</div><a target='_blank' href="https://map.kakao.com/link/to/${el.name},${el.lat},${el.lng}" style="text-decoration:none;text-align:center;display:block;margin:1rem auto;color: #5085BB;">길 찾기</a>`,
+          );
+          infowindow.open(map, marker);
         });
       });
     }
