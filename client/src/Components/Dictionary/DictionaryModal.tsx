@@ -26,7 +26,7 @@ export default function Modal({ setOpenModal, data }: any): JSX.Element {
   });
 
   const kakaoBtnHandler = () => {
-    const jsKey = process.env.REACT_APP_KAKAOSHARE_API_KEY // Kakao JavaScript Key
+    const jsKey = process.env.REACT_APP_KAKAOSHARE_API_KEY; // Kakao JavaScript Key
     if (!window.Kakao.isInitialized()) {
       window.Kakao.init(jsKey);
     }
@@ -34,23 +34,23 @@ export default function Modal({ setOpenModal, data }: any): JSX.Element {
       objectType: 'feed',
       content: {
         title: '질병도감',
-        description: '콩불마름병에 대해 알아봐요',
-        imageUrl: 'https://team3-plantit.s3.ap-northeast-2.amazonaws.com/Disease/Bean/bean1.jpg',
+        description: `${data.name}에 대해 알아보세요`,
+        imageUrl: `https://team3-plantit.s3.ap-northeast-2.amazonaws.com/${data.image}`,
         link: {
-          mobileWebUrl: `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/dictionary?name=콩불마름병`,
-          webUrl: `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/dictionary?name=콩불마름병`,
+          mobileWebUrl: `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/dictionary?name=${data.name}`,
+          webUrl: `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/dictionary?name=${data.name}`,
         },
       },
       buttons: [
         {
           title: '웹으로 보기',
           link: {
-          mobileWebUrl: `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/dictionary?name=콩불마름병`,
-          webUrl: `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/dictionary?name=콩불마름병`,
+            mobileWebUrl: `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/dictionary?name=${data.name}`,
+            webUrl: `https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com/dictionary?name=${data.name}`,
           },
         },
       ],
-    })
+    });
   };
 
   // 방제방법 렌더링 함수
@@ -76,6 +76,7 @@ export default function Modal({ setOpenModal, data }: any): JSX.Element {
     return result;
   };
 
+  console.log('modal data', data);
   return (
     <>
       <div
@@ -120,7 +121,12 @@ export default function Modal({ setOpenModal, data }: any): JSX.Element {
               <div className="Pathology__Subexplain">{rendering()}</div>
 
               <button className="Kakao__Share">
-                <img src={KakaoLogo} alt="" className="KakaoLogo" onClick={kakaoBtnHandler}/>
+                <img
+                  src={KakaoLogo}
+                  alt=""
+                  className="KakaoLogo"
+                  onClick={kakaoBtnHandler}
+                />
               </button>
             </div>
           </div>
