@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import 'Components/Dictionary/scss/DictionaryModal.scss';
 import { Link } from 'react-router-dom';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faShare } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import KakaoLogo from 'Assets/kakaotalk.svg';
 //@ts-ignore
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -80,6 +81,10 @@ export default function Modal({ setOpenModal, data }: any): JSX.Element {
               <div className="Modal__Subtitle">방제방법</div>
 
               <div className="Pathology__Subexplain">{rendering()}</div>
+
+              <button className="Kakao__Share">
+                <img src={KakaoLogo} alt="" className="KakaoLogo" />
+              </button>
             </div>
           </div>
         </div>
