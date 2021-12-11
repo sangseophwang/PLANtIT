@@ -2,9 +2,10 @@
 @import '/src/Components/Common/scss/variables';
 
 .ResultSecond__Container {
-  width: 70%;
-  height: 80vh;
+  width: 80%;
+  height: 60vh;
   display: flex;
+  align-items: center;
   flex-direction: column;
   @include responsive('tablet') {
     height: 40vh;

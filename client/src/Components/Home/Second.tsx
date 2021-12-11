@@ -54,7 +54,7 @@ export default function Second(props: any): JSX.Element {
               className="Hsearch__Bar"
               type="text"
               value={clearWord}
-              placeholder="작물의 이름을 검색해주세요"
+              placeholder="작물의 이름을 검색해보세요.   해시태그를 눌러도 가능합니다!"
               onChange={FilterOnChangeHandler}
             />
             {clearWord.length === 0 ? (

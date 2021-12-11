@@ -3,10 +3,10 @@
   user-select: none;
   .Main__Title {
     @include Container__Form();
-    height: 90vh;
+    height: 60vh;
     flex-direction: column;
     @include responsive('tablet') {
-      height: 80vh;
+      height: 70vh;
     }
     @include responsive('mobile') {
       height: 60vh;
@@ -19,7 +19,7 @@
     }
     > h1 {
       font-weight: 800;
-      font-size: 5.5vw;
+      font-size: 5vw;
       margin: 80px 0 60px 0;
       @include responsive('tablet') {
         font-size: 7.5vw;
@@ -40,14 +40,14 @@
     }
     > button {
       border: none;
-      width: 9vw;
-      height: 3.6vw;
+      width: 8vw;
+      height: 3.4vw;
       border-radius: 10px;
       font-size: 1.3vw;
       font-weight: 600;
       color: white;
       background-color: #bcdea1;
-      margin-top: 80px;
+      margin-top: 60px;
       cursor: pointer;
       transition: 0.5s;
       &:hover {
@@ -55,7 +55,7 @@
         transition: 0.5s;
       }
       @include responsive('tablet') {
-        width: 22vw;
+        width: 20vw;
         height: 8vw;
         font-size: 3vw;
         letter-spacing: 2px;

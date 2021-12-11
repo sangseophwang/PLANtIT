@@ -45,72 +45,132 @@
       }
     }
   }
-  .Thumbnail__Post {
+  .Thumbnail__Wrapper {
+    display: grid;
     width: 80%;
-    height: 60vh;
-    position: relative;
-    margin-bottom: 5px;
-    cursor: pointer;
-    @include responsive('tablet') {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 55vh);
+    gap: 5px;
+    @include responsive('tablet__large') {
       width: 100%;
-      height: 40vh;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(1, 40vh);
     }
-    @include responsive('mobile') {
-      height: 35vh;
-    }
-    .Thumbnail__Image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: 0.5s;
-    }
-    .Thumbnail__Title-Wrapper {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      width: 95%;
-      align-items: center;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+    .Thumbnail__Post {
+      &:first-child {
+        grid-column: span 2;
+        height: 55vh;
+      }
+      &:nth-child(2) {
+        height: 55vh;
+      }
+      &:nth-child(3) {
+        height: 55vh;
+      }
+      &:last-child {
+        grid-column: span 2;
+        height: 55vh;
+      }
+      position: relative;
+      cursor: pointer;
+      @include responsive('tablet__large') {
+        &:first-child {
+          grid-column: span 1;
+          height: 40vh;
+        }
+        &:nth-child(2) {
+          height: 40vh;
+        }
+        &:nth-child(3) {
+          height: 40vh;
+        }
+        &:last-child {
+          grid-column: span 1;
+          height: 40vh;
+        }
+      }
       @include responsive('tablet') {
-        width: 85%;
+        width: 100%;
+        height: 40vh;
       }
       @include responsive('mobile') {
-        width: 80%;
+        height: 35vh;
       }
-      .Thumbnail__Title {
-        color: white;
-        font-size: 4vw;
-        font-weight: 700;
-        margin-bottom: 40px;
-        transition: 0.5s;
-        line-height: 1.3;
-        text-align: center;
-        @include responsive('tablet') {
-          font-size: 7vw;
-          margin-bottom: 20px;
-        }
-      }
-      .Thumbnail__Subtitle {
-        color: white;
-        @include responsive('mobile') {
-          font-size: 2vw;
-        }
-        > em {
-          font-style: italic;
-          margin-right: 3px;
-        }
-      }
-    }
-    &:hover {
       .Thumbnail__Image {
-        filter: brightness(50%);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         transition: 0.5s;
       }
-      .Thumbnail__Title {
-        color: tomato;
-        transition: 0.5s;
+      .Thumbnail__Title-Wrapper {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        align-items: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        @include responsive('tablet') {
+          width: 85%;
+        }
+        @include responsive('mobile') {
+          width: 80%;
+        }
+        .Thumbnail__Title {
+          color: white;
+          font-size: 4vw;
+          word-break: keep-all;
+          font-weight: 700;
+          margin-bottom: 40px;
+          transition: 0.5s;
+          line-height: 1.3;
+          text-align: center;
+          @include responsive('tablet') {
+            font-size: 7vw;
+            margin-bottom: 20px;
+          }
+        }
+        .Thumbnail__Subtitle {
+          color: white;
+          @include responsive('mobile') {
+            font-size: 2vw;
+          }
+          > em {
+            font-style: italic;
+            margin-right: 3px;
+          }
+        }
+      }
+      &:hover {
+        .Thumbnail__Image {
+          filter: brightness(50%);
+          transition: 0.5s;
+        }
+        .Thumbnail__Title {
+          color: tomato;
+          transition: 0.5s;
+        }
+      }
+      &:nth-child(2) {
+        .Thumbnail__Title-Wrapper {
+          .Thumbnail__Title {
+            font-size: 3vw;
+            @include responsive('tablet__large') {
+              font-size: 7vw;
+            }
+          }
+        }
+      }
+      &:nth-child(3) {
+        .Thumbnail__Title-Wrapper {
+          .Thumbnail__Title {
+            font-size: 3vw;
+            @include responsive('tablet__large') {
+              font-size: 7vw;
+            }
+          }
+        }
       }
     }
   }

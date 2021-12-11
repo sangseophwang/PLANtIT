@@ -5,6 +5,15 @@
   width: 100%;
   flex-direction: column;
   align-items: center;
+  .Result__Wrapper {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include responsive('tablet__large') {
+      width: 100%;
+    }
+  }
 }
 .Result__Notice-Container {
   display: flex;

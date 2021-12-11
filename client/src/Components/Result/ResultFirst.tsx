@@ -5,14 +5,14 @@ export default function ResultFirst(props: any): JSX.Element {
 
   return (
     <section className="ResultFirst__Container">
-      <div className="ResultFirst__Image-Continer">
+      <div className="ResultFirst__Image-Container">
         <img
           src={RfirstData.image}
           alt="Analysis__Image"
           className="ResultFirst__Image"
         />
       </div>
-      <div className="ResultFirst__Text-continer">
+      <div className="ResultFirst__Text-container">
         <div className="Text__Result">Result</div>
         {props.data && (
           <>

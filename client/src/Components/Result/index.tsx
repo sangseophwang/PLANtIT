@@ -39,10 +39,12 @@ export default function Result(): JSX.Element {
             </Helmet>
             <Navigation />
             <ProgressBar />
-            <ResultFirst data={state} />
-            <ResultSecond data={state} />
-            <ResultThird data={state} />
-            <ResultLast />
+            <div className="Result__Wrapper">
+              <ResultFirst data={state} />
+              <ResultSecond data={state} />
+              <ResultThird data={state} />
+              <ResultLast />
+            </div>
             <Footer data={'relative'} />
           </>
         ) : (
