@@ -1,4 +1,4 @@
-@import '/src/Components/Common/scss/mixins';
+@import "/src/Components/Common/scss/mixins";
 
 .ResultFirst__Container {
   width: 100%;
@@ -6,11 +6,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  @include responsive('tablet__large') {
+  @include responsive("tablet__large") {
     flex-direction: column;
     width: 80%;
   }
-  @include responsive('mobile__small') {
+  @include responsive("mobile__small") {
     width: 90%;
     height: 100vh;
   }
@@ -20,11 +20,11 @@
   height: 40%;
   width: 30%;
   display: flex;
-  @include responsive('tablet') {
+  @include responsive("tablet") {
     width: 90%;
     margin: 0 auto;
   }
-  @include responsive('mobile__small') {
+  @include responsive("mobile__small") {
     height: 30%;
   }
   .ResultFirst__Image {
@@ -33,7 +33,7 @@
     margin: 0 auto;
     object-fit: cover;
     border-radius: 12px;
-    @include responsive('tablet__large') {
+    @include responsive("tablet__large") {
       margin-top: -5rem;
     }
   }
@@ -46,13 +46,13 @@
   height: 40%;
   width: 45%;
   padding: 0 3rem;
-  @include responsive('tablet__large') {
+  @include responsive("tablet__large") {
     width: 100%;
     padding: 0;
     height: 20%;
     align-items: center;
   }
-  @include responsive('mobile') {
+  @include responsive("mobile") {
     height: 30%;
   }
   .Text__Result {
@@ -62,21 +62,21 @@
     color: #659e38;
     margin-bottom: 0.5rem;
     font-weight: 700;
-    @include responsive('tablet') {
+    @include responsive("tablet") {
       text-align: center;
       margin-top: 2rem;
     }
-    @include responsive('mobile__small') {
+    @include responsive("mobile__small") {
       font-size: 1rem;
     }
   }
   .Disease__Name {
     font-size: 3rem;
     font-weight: 700;
-    @include responsive('tablet') {
+    @include responsive("tablet") {
       text-align: center;
     }
-    @include responsive('mobile__small') {
+    @include responsive("mobile__small") {
       font-weight: 800;
       font-size: 2.5rem;
     }
@@ -90,7 +90,7 @@
     height: fit-content;
     border-radius: 10px;
     cursor: pointer;
-    @include responsive('mobile__small') {
+    @include responsive("mobile__small") {
       font-size: 12px;
     }
   }
@@ -113,15 +113,15 @@
     > span {
       margin-right: 5px;
       height: 100%;
-      @include responsive('tablet__large') {
+      @include responsive("tablet__large") {
         margin-right: 10px;
       }
     }
-    @include responsive('tablet__large') {
+    @include responsive("tablet__large") {
       font-size: 1.2rem;
       width: 80%;
     }
-    @include responsive('mobile__small') {
+    @include responsive("mobile__small") {
       font-size: 0.8rem;
     }
   }
