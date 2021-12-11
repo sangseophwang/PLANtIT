@@ -12,11 +12,13 @@ import {
   faFileUpload,
   faCheck,
   faTimes,
+  faQuestionCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import AnalysisModal from './AnalysisModal';
 
-library.add(faFileUpload, faCheck, faTimes);
+library.add(faFileUpload, faCheck, faTimes, faQuestionCircle);
 
 const Upload = (props: any) => {
   const [image, setImage] = useState('');
@@ -24,6 +26,7 @@ const Upload = (props: any) => {
   const [uploadFileValue, setUploadFileValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const ImageInput = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
@@ -168,6 +171,16 @@ const Upload = (props: any) => {
         )}
         <div className="Upload__Count">누적 검사 건수: {props.data}회</div>
       </div>
+
+      <FontAwesomeIcon
+        icon={faQuestionCircle}
+        className="Information__Button"
+        onClick={() => {
+          setModalOpen(true);
+          document.body.style.overflow = 'hidden';
+        }}
+      />
+      {modalOpen && <AnalysisModal setOpenModal={setModalOpen} />}
     </div>
   );
 };

@@ -1,5 +1,5 @@
-@import '/src/Components/Common/scss/mixins';
-@import '/src/Components/Common/scss/variables';
+@import "/src/Components/Common/scss/mixins";
+@import "/src/Components/Common/scss/variables";
 
 .Upload__Layout {
   margin-top: 4rem;
@@ -10,11 +10,11 @@
   place-items: center;
   align-items: space-around;
   justify-content: space-around;
-  @include responsive('tablet__large') {
+  @include responsive("tablet__large") {
     width: 100%;
     height: 70vh;
   }
-  @include responsive('mobile__small') {
+  @include responsive("mobile__small") {
     width: 100%;
     margin-top: 0;
   }
@@ -25,17 +25,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    @include responsive('tablet__large') {
+    @include responsive("tablet__large") {
       width: 100%;
     }
     .Main__Text {
       font-size: 5vw;
       font-weight: 800;
       text-align: center;
-      @include responsive('tablet__large') {
+      @include responsive("tablet__large") {
         font-size: 10vw;
       }
-      @include responsive('mobile__small') {
+      @include responsive("mobile__small") {
         font-size: 2.1rem;
       }
     }
@@ -46,10 +46,10 @@
       text-align: center;
       word-break: break-word;
       color: gray;
-      @include responsive('tablet__large') {
+      @include responsive("tablet__large") {
         font-size: 3vw;
       }
-      @include responsive('mobile__small') {
+      @include responsive("mobile__small") {
         font-size: 0.8rem;
       }
     }
@@ -59,7 +59,7 @@
       line-height: 1.3;
       word-break: keep-all;
       color: #bdbdbd;
-      @include responsive('mobile__small') {
+      @include responsive("mobile__small") {
         width: 80%;
         font-size: 0.5rem;
       }
@@ -77,11 +77,11 @@
     border: 1.7px dotted lightgray;
     border-radius: 12px;
     text-align: center;
-    @include responsive('tablet__large') {
+    @include responsive("tablet__large") {
       width: 70%;
       padding: 1.5rem;
     }
-    @include responsive('mobile') {
+    @include responsive("mobile") {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
     }
@@ -93,7 +93,7 @@
     }
     .Upload__Box {
       border-radius: 12px;
-      @include responsive('mobile__small') {
+      @include responsive("mobile__small") {
         width: 90%;
         margin: 0 auto;
       }
@@ -112,7 +112,7 @@
               transform: scale(1.1);
               color: #92cd7b;
             }
-            @include responsive('mobile__small') {
+            @include responsive("mobile__small") {
               font-size: 4rem;
             }
           }
@@ -138,7 +138,7 @@
             font-size: 7rem;
             color: #bcdea1;
             transition: 0.5s;
-            @include responsive('mobile__small') {
+            @include responsive("mobile__small") {
               font-size: 5rem;
             }
           }
@@ -165,7 +165,7 @@
       transition: 0.5s;
       cursor: pointer;
       text-decoration: none;
-      @include responsive('mobile') {
+      @include responsive("mobile") {
         font-size: 1rem;
       }
       &:hover {
@@ -183,7 +183,7 @@
       padding: 1rem 1.3rem;
       border-radius: 0.5rem;
       color: white;
-      @include responsive('mobile') {
+      @include responsive("mobile") {
         font-size: 1rem;
       }
     }
@@ -194,6 +194,48 @@
       font-weight: 500;
       color: #8c8c8c;
       text-align: center;
+    }
+  }
+
+  .Information__Button {
+    color: #bcdea1;
+    font-size: 3rem;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 99;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 1rem;
+
+    animation: bounce_frames 0.5s;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+    animation-iteration-count: infinite;
+
+    @keyframes bounce_frames {
+      from {
+        transform: translate3d(0, 1rem, 0);
+      }
+      to {
+        transform: translate3d(0, 2rem, 0);
+      }
+    }
+
+    @include responsive("tablet") {
+      bottom: 7rem;
+      right: 1rem;
+      padding: 1rem;
+      animation: none;
+    }
+
+    @include responsive("mobile") {
+      font-size: 2rem;
+      bottom: 5rem;
+      right: 0.5rem;
+      padding: 0.5rem;
+      animation: none;
     }
   }
 }

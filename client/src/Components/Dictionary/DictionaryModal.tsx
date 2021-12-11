@@ -79,13 +79,15 @@ export default function Modal({ setOpenModal, data }: any): JSX.Element {
   console.log('modal data', data);
   return (
     <>
-      <div
-        className="Modal__Background"
-        onClick={() => {
-          setOpenModal(false);
-          document.body.style.overflow = 'scroll';
-        }}
-      />
+      <Link to="">
+        <div
+          className="Modal__Background"
+          onClick={() => {
+            setOpenModal(false);
+            document.body.style.overflow = 'scroll';
+          }}
+        />
+      </Link>
       <div className="Modal__Container-Test">
         <div
           className="Modal__Container"
