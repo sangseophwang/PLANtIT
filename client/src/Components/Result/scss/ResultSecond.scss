@@ -1,18 +1,17 @@
-@import '/src/Components/Common/scss/mixins';
+@import "/src/Components/Common/scss/mixins";
 
 .ResultSecond__Container {
   width: 100%;
   height: 80vh;
   margin-bottom: 3rem;
-  @include responsive('tablet__large') {
+  @include responsive("tablet__large") {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 60vh;
     margin-bottom: 7rem;
   }
-  @include responsive('mobile__small') {
-    margin: 5rem 0;
+  @include responsive("mobile__small") {
     height: 90vh;
     font-size: 2.5rem;
   }
@@ -27,10 +26,10 @@
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 3rem;
-    @include responsive('tablet') {
+    @include responsive("tablet") {
       font-size: 3rem;
     }
-    @include responsive('mobile__small') {
+    @include responsive("mobile__small") {
       font-size: 2.5rem;
     }
   }
@@ -47,11 +46,11 @@
         margin-right: 5px;
       }
     }
-    @include responsive('tablet') {
+    @include responsive("tablet") {
       font-size: 1rem;
     }
 
-    @include responsive('mobile__small') {
+    @include responsive("mobile__small") {
       font-size: 0.8rem;
     }
   }
@@ -59,13 +58,13 @@
 
 .Pesticides__Image {
   display: block;
-  width: 100%;
-
+  width: 70%;
+  margin: 0 auto;
   height: 20rem;
   border-radius: 1.5rem;
   object-fit: contain;
 
-  @include responsive('tablet') {
+  @include responsive("tablet") {
     height: 15rem;
     margin-left: auto;
     margin-right: auto;
@@ -80,7 +79,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
   color: #ffffff;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,7 +119,7 @@
   font-size: 2rem;
   font-weight: bold;
 
-  @include responsive('tablet') {
+  @include responsive("tablet") {
     font-size: 1.5rem;
   }
 }
@@ -129,7 +128,7 @@
   font-size: 1.25rem;
   margin-top: 0.5rem;
 
-  @include responsive('tablet') {
+  @include responsive("tablet") {
     font-size: 1rem;
   }
 }
@@ -137,15 +136,11 @@
 // carousel 디자인
 
 // carousel 크기
-#root
-  > div
-  > div
-  > section.ResultSecond__Container
-  > div.rec.rec-carousel-wrapper {
+#root > div > div > section.ResultSecond__Container > div.rec.rec-carousel-wrapper {
   width: 75%;
   margin: 0 auto;
 
-  @include responsive('mobile__small') {
+  @include responsive("mobile__small") {
     width: 85%;
   }
 }
@@ -154,9 +149,10 @@
 
 #root
   > div
-  > div
+  > div.Result__Container
+  > div.Result__Wrapper
   > section.ResultSecond__Container
-  > div.rec-carousel-wrapper
+  > div.rec.rec-carousel-wrapper
   > div.rec.rec-carousel
   > button {
   background-color: white;
@@ -167,21 +163,21 @@
 
 #root
   > div
-  > div
+  > div.Result__Container
+  > div.Result__Wrapper
   > section.ResultSecond__Container
-  > div.rec-carousel-wrapper
+  > div.rec.rec-carousel-wrapper
   > div.rec.rec-carousel
   > button:hover {
-  // background-color: #5d5d5d;
   font-size: 4rem;
-  // color: white;
 }
 
 #root
   > div
-  > div
+  > div.Result__Container
+  > div.Result__Wrapper
   > section.ResultSecond__Container
-  > div.rec-carousel-wrapper
+  > div.rec.rec-carousel-wrapper
   > div.rec.rec-carousel
   > button:disabled {
   visibility: hidden;
@@ -191,21 +187,12 @@
 
 #root
   > div
-  > div
+  > div.Result__Container
+  > div.Result__Wrapper
   > section.ResultSecond__Container
   > div.rec.rec-carousel-wrapper
   > div.rec.rec-pagination {
   display: none;
-}
-
-#root
-  > div
-  > div
-  > section.ResultSecond__Container
-  > div.rec.rec-carousel-wrapper
-  > div.rec.rec-pagination
-  > button.rec.rec-dot {
-  box-shadow: 0 0 1px 3px #5d5d5d;
 }
 
 .rec.rec-arrow:disabled {
