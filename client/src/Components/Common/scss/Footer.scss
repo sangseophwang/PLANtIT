@@ -43,12 +43,13 @@
         color: white;
         font-weight: 500;
         margin-bottom: 10px;
-        transition: 0.5s;
+        transition: 0.2s;
         width: fit-content;
+        background-color: #292929;
         height: fit-content;
         &:hover {
           color: $Green;
-          transition: 0.5s;
+          transition: 0.2s;
         }
         @include responsive('mobile__small') {
           font-size: 5px;
@@ -59,13 +60,13 @@
         color: white;
         font-weight: 500;
         margin-bottom: 10px;
-        transition: 0.5s;
+        transition: 0.3s;
         width: fit-content;
         height: fit-content;
         cursor: pointer;
         &:hover {
           color: $Green;
-          transition: 0.5s;
+          transition: 0.3s;
         }
         @include responsive('mobile__small') {
           font-size: 5px;

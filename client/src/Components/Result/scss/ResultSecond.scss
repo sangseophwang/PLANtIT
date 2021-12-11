@@ -3,6 +3,7 @@
 .ResultSecond__Container {
   width: 100%;
   height: 80vh;
+  margin-bottom: 3rem;
   @include responsive('tablet__large') {
     display: flex;
     flex-direction: column;

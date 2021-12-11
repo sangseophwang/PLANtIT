@@ -43,7 +43,7 @@
         cursor: pointer;
         background-color: white;
         border: none;
-        transition: 0.5s;
+        transition: 0.3s;
         @include responsive('tablet') {
           font-size: 1.3rem;
         }
@@ -55,7 +55,7 @@
         }
         &:hover {
           color: tomato;
-          transition: 0.5s;
+          transition: 0.3s;
           font-weight: 700;
         }
       }

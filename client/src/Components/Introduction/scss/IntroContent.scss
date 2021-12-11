@@ -2,7 +2,7 @@
 @import '/src/Components/Common/scss/variables';
 
 .IntroContent__Container {
-  width: 50%;
+  width: 60%;
   margin: 5rem auto 5rem auto;
   @include responsive('tablet__large') {
     width: 80%;
@@ -12,9 +12,9 @@
   }
   .IntroContent__Image-Container {
     display: grid;
-    gap: 5px;
+    gap: 6px;
     cursor: pointer;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     margin-top: 7rem;
     @include responsive('tablet') {
       margin-top: 4rem;
@@ -38,6 +38,8 @@
     font-size: 1.5rem;
     font-weight: 500;
     color: darkgray;
+    word-break: keep-all;
+    line-height: 1.3;
     > span {
       color: $LightGreen;
       font-weight: 700;

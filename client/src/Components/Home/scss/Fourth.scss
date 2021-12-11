@@ -53,12 +53,12 @@
         .Fourth__Article {
           text-decoration: none;
           color: black;
-          transition: 0.5s;
+          transition: 0.3s;
           cursor: pointer;
           margin-bottom: 30px;
           &:hover {
             transform: scale(1.05);
-            transition: 0.5s;
+            transition: 0.3s;
           }
 
           > h1 {
