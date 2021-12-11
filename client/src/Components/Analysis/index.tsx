@@ -6,7 +6,6 @@ import Navigation from 'Components/Common/Navigation';
 import Upload from 'Components/Analysis/Upload';
 import Loading from 'Components/Common/Loading';
 import Error from 'Components/Common/Error';
-import ProgressBar from 'Components/Common/ProgressBar';
 import 'Components/Analysis/scss/index.scss';
 
 export default function Analysis(): JSX.Element {
@@ -59,7 +58,6 @@ export default function Analysis(): JSX.Element {
           </Helmet>
           <div className="Analysis__Container">
             <Navigation />
-            <ProgressBar />
             <Upload data={count.data} />
           </div>
         </>
