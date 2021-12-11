@@ -164,9 +164,9 @@ const Upload = (props: any) => {
         ) : (
           <>
             <div className="Fail__Button">검사시작</div>
-            <div className="Upload__Count">누적 검사 건수: {props.data}회</div>
           </>
         )}
+        <div className="Upload__Count">누적 검사 건수: {props.data}회</div>
       </div>
     </div>
   );

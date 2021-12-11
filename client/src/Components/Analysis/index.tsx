@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { AnalysisApi } from 'API/AnalysisApi';
-import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import Navigation from 'Components/Common/Navigation';
-import Example from 'Components/Analysis/Example';
 import Upload from 'Components/Analysis/Upload';
 import Loading from 'Components/Common/Loading';
 import Error from 'Components/Common/Error';
 import ProgressBar from 'Components/Common/ProgressBar';
+import 'Components/Analysis/scss/index.scss';
 
 export default function Analysis(): JSX.Element {
   const [loading, setLoading] = useState(false);
@@ -58,11 +57,10 @@ export default function Analysis(): JSX.Element {
           <Helmet>
             <title>검사하기</title>
           </Helmet>
-          <div>
+          <div className="Analysis__Container">
             <Navigation />
             <ProgressBar />
             <Upload data={count.data} />
-            <Example />
           </div>
         </>
       )}

@@ -31,6 +31,7 @@ export default function Footer(props: any): JSX.Element {
       <span className="Footer__Copyright">
         © 2021 PLANtIT. all rights reserved.
       </span>
+      <span className="Bottom">bottom</span>
     </footer>
   );
 }

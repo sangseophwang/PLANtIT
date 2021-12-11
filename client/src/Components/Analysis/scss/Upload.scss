@@ -1,123 +1,106 @@
-@import "/src/Components/Common/scss/mixins";
-@import "/src/Components/Common/scss/variables";
+@import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
 
 .Upload__Layout {
-  margin-top: 9rem;
-  height: 100%;
+  margin-top: 4rem;
   width: 70%;
-  margin-left: auto;
-  margin-right: auto;
+  height: 75vh;
   display: flex;
   flex-direction: column;
   place-items: center;
   align-items: space-around;
-  justify-content: center;
-  @include responsive("tablet__large") {
-    width: 90%;
+  justify-content: space-around;
+  @include responsive('tablet__large') {
+    width: 100%;
+    height: 70vh;
   }
-  @include responsive("tablet") {
-    margin-top: 1rem;
+  @include responsive('mobile__small') {
+    width: 100%;
+    margin-top: 0;
   }
   .Upload__Text-Container {
     width: 70%;
-    margin-top: 1rem;
+    height: 40vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include responsive("tablet__large") {
-      width: 80%;
-      padding-right: 1rem;
-    }
-    @include responsive("mobile") {
-      width: 90%;
-      padding-right: 0;
-      margin-top: 2rem;
-    }
-    @include responsive("mobile__small") {
-      padding-right: 0;
+    justify-content: space-between;
+    @include responsive('tablet__large') {
+      width: 100%;
     }
     .Main__Text {
       font-size: 5vw;
       font-weight: 800;
       text-align: center;
-      @include responsive("tablet__large") {
-        font-size: 4rem;
+      @include responsive('tablet__large') {
+        font-size: 10vw;
       }
-      @include responsive("tablet") {
-        margin-top: 3rem;
-      }
-      @include responsive("mobile__small") {
+      @include responsive('mobile__small') {
         font-size: 2.1rem;
-        margin-top: 1rem;
       }
     }
     .Sub__Text {
-      margin-top: 4rem;
       font-weight: 400;
       line-height: 1.5;
-      font-size: 1.5vw;
+      font-size: 1.3vw;
       text-align: center;
       word-break: break-word;
       color: gray;
-      @include responsive("mobile") {
-        width: 100%;
-        font-size: 1rem;
+      @include responsive('tablet__large') {
+        font-size: 3vw;
+      }
+      @include responsive('mobile__small') {
+        font-size: 0.8rem;
       }
     }
     .Crops__Text {
-      margin-top: 4rem;
       margin-bottom: 2rem;
       text-align: center;
       line-height: 1.3;
       word-break: keep-all;
       color: #bdbdbd;
-      @include responsive("tablet") {
-        margin-top: 3rem;
+      @include responsive('mobile__small') {
+        width: 80%;
+        font-size: 0.5rem;
       }
     }
   }
   .Upload__Container {
+    position: relative;
     display: flex;
     flex-direction: column;
-    position: relative;
-    background: #fff;
-    padding: 2rem;
+    justify-content: center;
+    align-items: center;
     width: 40%;
+    height: 35vh;
+    background: #fff;
     border: 1.7px dotted lightgray;
     border-radius: 12px;
     text-align: center;
-    @include responsive("tablet") {
-      margin-bottom: 1rem;
-      margin-left: 0;
+    @include responsive('tablet__large') {
+      width: 70%;
       padding: 1.5rem;
     }
-    @include responsive("mobile") {
-      margin-top: 0;
+    @include responsive('mobile') {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
     }
-    @include responsive("mobile__small") {
-      width: 70%;
-    }
     .Upload-Information {
-      margin: 2rem 0 1rem 0;
+      margin-top: 2rem;
       font-size: 1rem;
       font-weight: 500;
       color: $Green;
     }
     .Upload__Box {
-      display: grid;
-      margin-top: 1rem;
-      place-items: center;
-      position: relative;
       border-radius: 12px;
-      @include responsive("mobile__small") {
+      @include responsive('mobile__small') {
         width: 90%;
         margin: 0 auto;
       }
       .Upload__Image {
         display: flex;
-        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
         > label {
           cursor: pointer;
           > svg {
@@ -129,8 +112,8 @@
               transform: scale(1.1);
               color: #92cd7b;
             }
-            @include responsive("mobile__small") {
-              font-size: 5rem;
+            @include responsive('mobile__small') {
+              font-size: 4rem;
             }
           }
         }
@@ -141,21 +124,13 @@
           color: $Green;
           font-size: 20px;
           position: absolute;
-          z-index: 10;
-          right: -10px;
-          top: -30px;
+          z-index: 999;
+          right: 10px;
+          top: 10px;
           cursor: pointer;
           transition: 0.5s;
           &:hover {
             color: tomato;
-          }
-          @include responsive("tablet") {
-            right: 5px;
-            top: -20px;
-          }
-          @include responsive("mobile__small") {
-            top: -10px;
-            right: -5px;
           }
         }
         .Image__Preview {
@@ -163,7 +138,7 @@
             font-size: 7rem;
             color: #bcdea1;
             transition: 0.5s;
-            @include responsive("mobile__small") {
+            @include responsive('mobile__small') {
               font-size: 5rem;
             }
           }
@@ -190,7 +165,7 @@
       transition: 0.5s;
       cursor: pointer;
       text-decoration: none;
-      @include responsive("mobile") {
+      @include responsive('mobile') {
         font-size: 1rem;
       }
       &:hover {
@@ -208,7 +183,7 @@
       padding: 1rem 1.3rem;
       border-radius: 0.5rem;
       color: white;
-      @include responsive("mobile") {
+      @include responsive('mobile') {
         font-size: 1rem;
       }
     }
@@ -219,9 +194,6 @@
       font-weight: 500;
       color: #8c8c8c;
       text-align: center;
-      @include responsive("mobile") {
-        font-size: 0.6rem;
-      }
     }
   }
 }

@@ -19,7 +19,7 @@ export default function Thumbnail({
   return (
     <section className="Thumbnail__Container">
       <div className="Thumbnail__SelectButton__Wrapper">
-        <span>총 {length} 페이지</span>
+        <span>총 {length} 게시글</span>
         <select
           className="Thumbnail__SelectButton"
           name="게시 순서"
