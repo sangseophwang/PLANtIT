@@ -1,4 +1,5 @@
-@import '/src/Components/Common/scss/mixins';
+@import "/src/Components/Common/scss/mixins";
+@import "/src/Components/Common/scss/variables";
 
 .Result__Container {
   display: flex;
@@ -10,7 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include responsive('tablet__large') {
+    @include responsive("tablet__large") {
       width: 100%;
     }
   }
@@ -25,11 +26,11 @@
   font-weight: 700;
   color: #68d391;
 
-  @include responsive('tablet') {
+  @include responsive("tablet") {
     font-size: 1.6rem;
   }
 
-  @include responsive('mobile') {
+  @include responsive("mobile") {
     font-size: 1.3rem;
   }
 
@@ -48,6 +49,88 @@
       }
       100% {
         transform: rotate(360deg);
+      }
+    }
+  }
+}
+
+.Map__Button-Container {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+  background-color: #bcdea1;
+  color: white;
+  font-size: 3rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem;
+  animation: bounce_frames 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+  animation-iteration-count: infinite;
+
+  @keyframes bounce_frames {
+    from {
+      transform: translate3d(0, 1rem, 0);
+    }
+    to {
+      transform: translate3d(0, 2rem, 0);
+    }
+  }
+
+  @include responsive("tablet") {
+    bottom: 10rem;
+  }
+
+  @include responsive("mobile") {
+    animation: none;
+    right: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    bottom: 6rem;
+  }
+
+  @include responsive("mobile__small") {
+    animation: none;
+    right: 0.5rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    bottom: 6rem;
+  }
+
+  .Map__Button-Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .Map__Button-text {
+      font-size: 1rem;
+      background-color: #bcdea1;
+      color: white;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.5rem;
+
+      @include responsive("mobile") {
+        display: none;
+      }
+    }
+
+    .Map__Button {
+      font-size: 2.2rem;
+      background-color: #bcdea1;
+      color: white;
+
+      @include responsive("mobile") {
+        font-size: 2.5rem;
+      }
+
+      @include responsive("mobile__small") {
+        font-size: 2rem;
       }
     }
   }
