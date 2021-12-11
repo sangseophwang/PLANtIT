@@ -1,5 +1,5 @@
-@import "/src/Components/Common/scss/mixins";
-@import "/src/Components/Common/scss/variables";
+@import '/src/Components/Common/scss/mixins';
+@import '/src/Components/Common/scss/variables';
 
 .Modal__Background {
   width: 100%;
@@ -20,7 +20,7 @@
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-  @include responsive("tablet") {
+  @include responsive('tablet') {
     width: 90%;
     top: 45%;
   }
@@ -43,7 +43,7 @@
       border-radius: 10px;
       background-color: $LightGreen;
     }
-    @include responsive("mobile__small") {
+    @include responsive('mobile__small') {
       padding: 0.5rem;
       margin-top: 3rem;
     }
@@ -71,11 +71,11 @@
         object-fit: contain;
         border-radius: 12px;
         margin-bottom: 30px;
-        @include responsive("tablet") {
+        @include responsive('tablet') {
           width: 80%;
           height: 80%;
         }
-        @include responsive("mobile") {
+        @include responsive('mobile') {
           width: 90%;
           margin: 0.5rem auto;
         }
@@ -95,13 +95,13 @@
           text-align: center;
           margin-bottom: 1rem;
           color: $Green;
-          @include responsive("tablet__large") {
+          @include responsive('tablet__large') {
             font-size: 6vw;
           }
-          @include responsive("mobile") {
+          @include responsive('mobile') {
             margin-top: 0;
           }
-          @include responsive("mobile__small") {
+          @include responsive('mobile__small') {
             padding: 0.5rem;
             font-size: 1.5rem;
           }
@@ -113,13 +113,13 @@
           text-align: center;
           margin-top: 0.5rem;
           color: $LightGreen;
-          @include responsive("tablet__large") {
+          @include responsive('tablet__large') {
             font-size: 3vw;
           }
-          @include responsive("mobile") {
+          @include responsive('mobile') {
             margin-top: 0px;
           }
-          @include responsive("mobile__small") {
+          @include responsive('mobile__small') {
             font-size: 0.8rem;
           }
         }
@@ -129,10 +129,10 @@
           color: darkslategray;
           margin: 1rem 0 0.5rem 0.4rem;
           width: 60%;
-          @include responsive("tablet__large") {
+          @include responsive('tablet__large') {
             width: 90%;
           }
-          @include responsive("mobile__small") {
+          @include responsive('mobile__small') {
             font-size: 0.8rem;
             margin-left: 0;
           }
@@ -143,10 +143,10 @@
           line-height: 1.5;
           margin: 1rem 0 2rem 0;
           color: darkslategray;
-          @include responsive("tablet__large") {
+          @include responsive('tablet__large') {
             width: 90%;
           }
-          @include responsive("mobile__small") {
+          @include responsive('mobile__small') {
             font-size: 0.8rem;
             margin-bottom: 1rem;
           }
@@ -158,21 +158,33 @@
           margin-top: 1rem;
           text-align: center;
           color: $Green;
-          @include responsive("tablet__large") {
+          @include responsive('tablet__large') {
             font-size: 3vw;
           }
-          @include responsive("mobile__small") {
+          @include responsive('mobile__small') {
             font-size: 6vw;
           }
         }
 
         .Kakao__Share {
-          width: 3rem;
-          background-color: white;
+          margin: 2rem 0 1rem 0;
+          width: 13rem;
+          background-color: #fbe812;
           border: none;
-
+          outline: none;
+          cursor: pointer;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding: 0.7rem 1rem;
+          > span {
+            font-weight: 700;
+            font-size: 14px;
+            margin-right: 7px;
+          }
           .KakaoLogo {
-            width: 100%;
+            width: 20%;
           }
         }
       }

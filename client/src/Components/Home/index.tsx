@@ -5,14 +5,14 @@ import Third from 'Components/Home/Third';
 import Fourth from 'Components/Home/Fourth';
 import Fifth from 'Components/Home/Fifth';
 import SearchHome from 'Variables/SearchHome';
-import SwiperCore, { Pagination, Mousewheel } from 'swiper';
+import SwiperCore, { Pagination, Mousewheel, Keyboard } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Helmet } from 'react-helmet-async';
 import 'swiper/swiper.scss';
 import 'Components/Home/scss/Home.scss';
 import 'swiper/components/pagination/pagination.scss';
 
-SwiperCore.use([Mousewheel, Pagination]);
+SwiperCore.use([Mousewheel, Pagination, Keyboard]);
 
 const bullet = [
   '- 플래닛',
@@ -33,10 +33,10 @@ export default function Home(): JSX.Element {
         style={{ height: '100vh' }}
         direction={'vertical'}
         slidesPerView={1}
+        keyboard={{ enabled: true }}
         spaceBetween={30}
         mousewheel={true}
-        speed={1000}
-        shortSwipes={false}
+        speed={800}
         pagination={{
           clickable: true,
           renderBullet: function (index, className) {

@@ -26,12 +26,7 @@ export default function Community(): JSX.Element {
     }
     getLength();
   }, [page, order]);
-  useEffect(() => {
-    toast.success('커뮤니티에 오신 것을 환영합니다!', {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 2500,
-    });
-  }, []);
+
   // 페이지 번호 바뀔 때마다 업데이트
   const handlePage = (number: SetStateAction<number>) => {
     setPage(number);

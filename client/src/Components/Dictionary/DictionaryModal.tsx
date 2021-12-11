@@ -121,6 +121,7 @@ export default function Modal({ setOpenModal, data }: any): JSX.Element {
               <div className="Pathology__Subexplain">{rendering()}</div>
 
               <button className="Kakao__Share">
+                <span>카카오톡으로 공유하기</span>
                 <img
                   src={KakaoLogo}
                   alt=""
