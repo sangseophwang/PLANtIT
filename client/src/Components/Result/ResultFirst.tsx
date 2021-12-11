@@ -1,9 +1,9 @@
 import 'Components/Result/scss/ResultFirst.scss';
 
 export default function ResultFirst(props: any): JSX.Element {
-  const RfirstData = props.data.data;
+  const Data = props.data.data;
   const Level = () => {
-    if (RfirstData.level === 1)
+    if (Data.level === 1)
       return (
         <div
           className="Result__Level Yellow"
@@ -12,7 +12,7 @@ export default function ResultFirst(props: any): JSX.Element {
           초기
         </div>
       );
-    else if (RfirstData.level === 2)
+    else if (Data.level === 2)
       return (
         <div
           className="Result__Level Orange"
@@ -35,7 +35,7 @@ export default function ResultFirst(props: any): JSX.Element {
     <section className="ResultFirst__Container">
       <div className="ResultFirst__Image-Container">
         <img
-          src={RfirstData.image}
+          src={Data.image}
           alt="Analysis__Image"
           className="ResultFirst__Image"
         />
@@ -46,11 +46,11 @@ export default function ResultFirst(props: any): JSX.Element {
         </div>
         {props.data && (
           <>
-            <div className="Disease__Name">{RfirstData.name}</div>
+            <div className="Disease__Name">{Data.name}</div>
             {Level()}
             <div className="Disease__Symptom">
               <span>🌳</span>
-              <div>{RfirstData.symptom}</div>
+              <div>{Data.symptom}</div>
             </div>
           </>
         )}

@@ -1,95 +1,229 @@
 @import '/src/Components/Common/scss/mixins';
-@import '/src/Components/Common/scss/variables';
 
 .ResultSecond__Container {
-  width: 80%;
-  height: 60vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  @include responsive('tablet') {
-    height: 40vh;
+  width: 100%;
+  height: 80vh;
+  @include responsive('tablet__large') {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    height: 60vh;
+    margin-bottom: 7rem;
   }
   @include responsive('mobile__small') {
-    margin: 0;
-    width: 100%;
-    height: 50vh;
-    align-items: center;
+    margin: 5rem 0;
+    height: 90vh;
+    font-size: 2.5rem;
   }
+}
+
+.ResultSecond__Text-Container {
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 5rem;
   .ResultSecond__Title {
     font-size: 3.5rem;
     font-weight: 700;
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
     @include responsive('tablet') {
       font-size: 3rem;
     }
     @include responsive('mobile__small') {
-      font-size: 2rem;
-      margin: 0 0 1rem 1rem;
+      font-size: 2.5rem;
     }
   }
-  .Certificate__Image {
-    width: 90%;
-    margin-bottom: 3rem;
-    @include responsive('tablet__large') {
-      width: 100%;
+
+  .ResultSecond__Content {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    > span {
+      display: flex;
+      word-break: keep-all;
+      > div {
+        height: 100%;
+        margin-right: 5px;
+      }
     }
+    @include responsive('tablet') {
+      font-size: 1rem;
+    }
+
     @include responsive('mobile__small') {
-      display: none;
-    }
-  }
-  .Certificate__Content {
-    display: none;
-    @include responsive('mobile__small') {
-      display: block;
-      text-align: center;
-      line-height: 1.5;
-      font-size: 1.4rem;
-      > span {
-        font-size: 5rem;
-        font-weight: 800;
-      }
+      font-size: 0.8rem;
     }
   }
 }
-.Level0 {
-  @include responsive('mobile__small') {
-    background-color: #b7e058;
-    .Certificate__Content {
-      > span {
-        color: $Green;
-      }
-    }
+
+.Pesticides__Image {
+  display: block;
+  width: 100%;
+
+  height: 20rem;
+  border-radius: 1.5rem;
+  object-fit: contain;
+
+  @include responsive('tablet') {
+    height: 15rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
-.Level1 {
-  @include responsive('mobile__small') {
-    background-color: #d2c155;
-    .Certificate__Content {
-      > span {
-        color: rgb(207, 126, 32);
-      }
-    }
+
+.Image__Overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.Image {
+  position: relative;
+  width: 400px;
+}
+
+.Image__Overlay--Blur {
+  backdrop-filter: blur(5px);
+}
+
+.Image__Overlay--Primary {
+  background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.Image__Overlay > * {
+  transform: translateY(20px);
+  transition: transform 0.25s;
+}
+
+.Image__Overlay:hover {
+  opacity: 1;
+}
+
+.Image__Overlay:hover > * {
+  transform: translateY(0);
+}
+
+.Image__Title {
+  font-size: 2rem;
+  font-weight: bold;
+
+  @include responsive('tablet') {
+    font-size: 1.5rem;
   }
 }
-.Level2 {
-  @include responsive('mobile__small') {
-    background-color: #f5834d;
-    .Certificate__Content {
-      > span {
-        color: rgb(250, 78, 48);
-      }
-    }
+
+.Image__Description {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+
+  @include responsive('tablet') {
+    font-size: 1rem;
   }
 }
-.Level3 {
+
+// carousel 디자인
+
+// carousel 크기
+#root
+  > div
+  > div
+  > section.ResultSecond__Container
+  > div.rec.rec-carousel-wrapper {
+  width: 75%;
+  margin: 0 auto;
+
   @include responsive('mobile__small') {
-    background-color: #fc4544;
-    .Certificate__Content {
-      > span {
-        color: black;
-      }
-    }
+    width: 85%;
   }
+}
+
+// 좌우버튼
+
+#root
+  > div
+  > div
+  > section.ResultSecond__Container
+  > div.rec-carousel-wrapper
+  > div.rec.rec-carousel
+  > button {
+  background-color: white;
+  color: #5d5d5d;
+  font-size: 3rem;
+  box-shadow: none;
+}
+
+#root
+  > div
+  > div
+  > section.ResultSecond__Container
+  > div.rec-carousel-wrapper
+  > div.rec.rec-carousel
+  > button:hover {
+  // background-color: #5d5d5d;
+  font-size: 4rem;
+  // color: white;
+}
+
+#root
+  > div
+  > div
+  > section.ResultSecond__Container
+  > div.rec-carousel-wrapper
+  > div.rec.rec-carousel
+  > button:disabled {
+  visibility: hidden;
+}
+
+// carousel dot button: 밑에 동그라미
+
+#root
+  > div
+  > div
+  > section.ResultSecond__Container
+  > div.rec.rec-carousel-wrapper
+  > div.rec.rec-pagination {
+  display: none;
+}
+
+#root
+  > div
+  > div
+  > section.ResultSecond__Container
+  > div.rec.rec-carousel-wrapper
+  > div.rec.rec-pagination
+  > button.rec.rec-dot {
+  box-shadow: 0 0 1px 3px #5d5d5d;
+}
+
+.rec.rec-arrow:disabled {
+  visibility: hidden;
+}
+
+.rec-carousel-item:focus {
+  outline: none;
+  box-shadow: inset 0 0 1px 1px lightgrey;
+}
+
+// 농약 정보가 없는 경우
+.No__Result_Text {
+  text-align: center;
+  font-size: 1.5rem;
+  color: darkgray;
+  margin: 2rem 0;
+}
+
+.No__Result_Text:hover {
+  color: tomato;
 }

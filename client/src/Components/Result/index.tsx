@@ -6,8 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Navigation from 'Components/Common/Navigation';
 import ResultFirst from 'Components/Result/ResultFirst';
-import ResultThird from 'Components/Result/ResultThird';
-import ResultLast from 'Components/Result/ResultLast';
+import ResultSecond from 'Components/Result/ResultSecond';
 import Exception from 'Components/Result/Exception';
 import Loading from 'Components/Common/Loading';
 import ProgressBar from 'Components/Common/ProgressBar';
@@ -46,8 +45,7 @@ export default function Result(): JSX.Element {
             <ProgressBar />
             <div className="Result__Wrapper">
               <ResultFirst data={state} />
-              <ResultThird data={state} />
-              {/* <ResultLast /> */}
+              <ResultSecond data={state} />
               {!modalOpen && (
                 <div className="Map__Button-Container">
                   <div

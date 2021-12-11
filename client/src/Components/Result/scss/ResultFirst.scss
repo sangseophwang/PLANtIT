@@ -49,8 +49,11 @@
   @include responsive('tablet__large') {
     width: 100%;
     padding: 0;
-    height: 30%;
+    height: 20%;
     align-items: center;
+  }
+  @include responsive('mobile') {
+    height: 30%;
   }
   .Text__Result {
     display: flex;
@@ -98,7 +101,7 @@
     background-color: orange;
   }
   .Yellow {
-    background-color: rgba(247, 243, 10, 0.801);
+    background-color: rgba(233, 230, 27, 0.801);
   }
   .Disease__Symptom {
     font-size: 1rem;
