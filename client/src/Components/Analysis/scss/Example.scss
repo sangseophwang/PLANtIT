@@ -1,28 +1,21 @@
-@import '/src/Components/Common/scss/mixins';
-@import '/src/Components/Common/scss/variables';
+@import "/src/Components/Common/scss/mixins";
+@import "/src/Components/Common/scss/variables";
 
 .Example__Container {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 5rem;
-  .Line {
-    width: 80%;
-    margin-top: 4rem;
-    border-top: 1px dotted lightgray;
-    @include responsive('mobile') {
-      margin-bottom: 3rem;
-    }
-  }
+  margin-bottom: 2rem;
+
   .Example__Wrapper {
-    width: 60%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 2rem;
-    @include responsive('tablet') {
-      width: 80%;
+    @include responsive("mobile") {
+      width: 100%;
       margin-bottom: 3rem;
     }
     .SubExample__Container {
@@ -31,36 +24,45 @@
       align-items: center;
       margin-top: 3rem;
       margin-bottom: 1rem;
-      width: 80%;
-      @include responsive('mobile') {
+      width: 100%;
+      @include responsive("mobile") {
+        width: 90%;
         margin-top: 2rem;
         margin-bottom: 3rem;
       }
       .Example__Title {
         font-size: 3.5rem;
         font-weight: 800;
-        margin: 3rem 0;
-        @include responsive('tablet') {
+        margin: 2rem 0;
+        @include responsive("tablet") {
           text-align: center;
         }
-        @include responsive('mobile__small') {
-          font-size: 2rem;
+        @include responsive("mobile__small") {
+          font-size: 1.8rem;
           margin-top: 0;
         }
       }
-      .Example__Text {
+
+      .Example__Text-Container {
         background-color: rgb(248, 248, 248);
-        font-size: 1.1rem;
-        line-height: 1.5;
-        margin: 2rem 2rem 4rem 2rem;
-        padding: 2.5rem;
-        color: $Green;
-        @include responsive('tablet') {
-          font-size: 1rem;
-        }
-        @include responsive('mobile') {
-          font-size: 1rem;
-          width: 100%;
+        margin: 2rem auto;
+        width: 100%;
+
+        .Example__Text {
+          font-size: 1.1rem;
+          line-height: 1.5;
+          margin: 3rem 0 3rem 4rem;
+          word-break: keep-all;
+          color: $Green;
+          display: flex;
+          flex-direction: row;
+          @include responsive("tablet") {
+            font-size: 1rem;
+          }
+          @include responsive("mobile") {
+            font-size: 0.9rem;
+            margin: 2rem 0.5rem;
+          }
         }
       }
       .Example__Content {
@@ -68,7 +70,7 @@
         grid-template-columns: repeat(3, 0.5fr);
         grid-template-rows: repeat(2, 0.5fr);
         gap: 1rem;
-        @include responsive('mobile__small') {
+        @include responsive("mobile__small") {
           grid-template-columns: repeat(1, minmax(0, 1fr));
         }
         .Example__Subtitle {
@@ -80,7 +82,7 @@
           margin-bottom: 2rem;
           color: $Green;
           grid-column: 1 / -1;
-          @include responsive('mobile__small') {
+          @include responsive("mobile__small") {
             height: 100px;
             width: 100%;
             margin: 0 auto;
@@ -91,7 +93,7 @@
           height: 100%;
           object-fit: cover;
           border-radius: 12px;
-          @include responsive('mobile') {
+          @include responsive("mobile") {
             width: 100%;
             margin: 0 auto;
           }

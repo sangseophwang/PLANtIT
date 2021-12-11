@@ -1,0 +1,99 @@
+@import "/src/Components/Common/scss/mixins";
+@import "/src/Components/Common/scss/variables";
+
+// Modal__Background = Modal창의 외부 배경화면
+.Amodal__Background {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  position: fixed;
+  top: 70px;
+  z-index: 50;
+
+  @include responsive("tablet") {
+    top: 0px;
+  }
+}
+
+.Amodal__Container-Test {
+  position: fixed;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 150px;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 70vh;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+
+  @include responsive("tablet") {
+    width: 90%;
+    top: 30px;
+    margin-left: 0 auto;
+  }
+
+  // Modal__Container  = Modal창 그 자체
+  .Amodal__Container {
+    max-height: 70vh;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding: 1rem;
+    z-index: 150;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: $LightGreen;
+    }
+
+    @include responsive("tablet") {
+      margin: 0 auto;
+      height: 70vh;
+      overflow-y: scroll;
+    }
+
+    @include responsive("mobile__small") {
+      padding: 0.5rem;
+      height: 80vh;
+    }
+
+    // Modal__Content = Modal의 내용 (이미지, 글)이 들어가는 공간
+    .Amodal__Content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      @include responsive("tablet") {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.Amodal__CloseBtn {
+  display: flex;
+  justify-content: flex-end;
+
+  .Amodal__Icon {
+    display: flex;
+    justify-content: flex-end;
+    color: $LightGreen;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      color: $Green;
+      transition: 0.3s;
+    }
+  }
+}
