@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 /*global kakao*/
 import { useEffect } from 'react';
 import 'Components/Dictionary/scss/DictionaryModal.scss';
@@ -18,7 +19,6 @@ declare global {
     Kakao: any;
   }
 }
-const { Kakao } = window;
 
 export default function Modal({ setOpenModal, data }: any): JSX.Element {
   useEffect(() => {

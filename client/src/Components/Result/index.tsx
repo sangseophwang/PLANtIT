@@ -3,10 +3,8 @@ import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Navigation from 'Components/Common/Navigation';
 import ResultFirst from 'Components/Result/ResultFirst';
-import ResultSecond from 'Components/Result/ResultSecond';
 import ResultThird from 'Components/Result/ResultThird';
 import ResultLast from 'Components/Result/ResultLast';
-import Footer from 'Components/Common/Footer';
 import Exception from 'Components/Result/Exception';
 import Loading from 'Components/Common/Loading';
 import ProgressBar from 'Components/Common/ProgressBar';
@@ -41,11 +39,9 @@ export default function Result(): JSX.Element {
             <ProgressBar />
             <div className="Result__Wrapper">
               <ResultFirst data={state} />
-              <ResultSecond data={state} />
               <ResultThird data={state} />
               <ResultLast />
             </div>
-            <Footer data={'relative'} />
           </>
         ) : (
           <Exception />

@@ -21,7 +21,6 @@ import AnalysisModal from './AnalysisModal';
 library.add(faFileUpload, faCheck, faTimes, faQuestionCircle);
 
 const Upload = (props: any) => {
-  const [image, setImage] = useState('');
   const [isUploaded, setIsUploaded] = useState(false);
   const [uploadFileValue, setUploadFileValue] = useState('');
   const [loading, setLoading] = useState(false);
@@ -47,7 +46,6 @@ const Upload = (props: any) => {
 
       reader.onload = function (e) {
         if (e.target) {
-          setImage(e.target.result as string);
           setIsUploaded(true);
         }
       };
@@ -131,7 +129,6 @@ const Upload = (props: any) => {
                   icon={faTimes}
                   onClick={() => {
                     setIsUploaded(false);
-                    setImage('');
                     setUploadFileValue('');
                   }}
                 />
