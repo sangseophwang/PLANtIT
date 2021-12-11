@@ -34,7 +34,7 @@ export default function ResultSecond(props: any) {
   return (
     <section className="ResultSecond__Container">
       <div className="ResultSecond__Text-Container">
-        <div className="ResultSecond__Title">예방법 🧑🏻‍🔬</div>
+        <div className="ResultSecond__Title">예방법 🔬</div>
         <div className="ResultSecond__Content">{rendering()}</div>
       </div>
 
