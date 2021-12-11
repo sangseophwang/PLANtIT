@@ -96,11 +96,12 @@
   }
 
   @include responsive("mobile__small") {
+    top: 1rem;
+    right: 2rem;
     animation: none;
     right: 0.5rem;
-    width: 1.8rem;
-    height: 1.8rem;
-    bottom: 6rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   .Map__Button-Wrapper {
@@ -130,7 +131,7 @@
       }
 
       @include responsive("mobile__small") {
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
     }
   }
