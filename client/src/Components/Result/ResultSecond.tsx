@@ -8,7 +8,6 @@ const breakPoints = [
   { width: 400, itemsToShow: 2 },
   { width: 768, itemsToShow: 3 },
   { width: 1200, itemsToShow: 4 },
-  { width: 1300, itemsToShow: 5 },
 ];
 
 // 결과 페이지의 3번째 화면(예방법 & 농약)
