@@ -1,26 +1,28 @@
 import React from 'react';
-import 'Components/Analysis/scss/AnalysisModal.scss';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Example from './Example';
+import CenterMap from 'Components/Common/Map';
+import Location from 'Variables/Location';
+import 'Components/Result/scss/MapModal.scss';
 
 library.add(faTimes);
-export default function AnalysisModal({ setOpenModal }: any): JSX.Element {
+
+export default function MapModal({ setOpenModal }: any): JSX.Element {
   return (
     <>
       <div
-        className="Amodal__Background"
+        className="Mapmodal__Background"
         onClick={() => {
           setOpenModal(false);
           document.body.style.overflow = 'scroll';
         }}
       />
-      <div className="Amodal__Container-Test">
-        <div className="Amodal__Container">
-          <div className="Amodal__CloseBtn">
+      <div className="Mapmodal__Container-Test">
+        <div className="Mapmodal__Container">
+          <div className="Mapmodal__CloseBtn">
             <FontAwesomeIcon
-              className="Amodal__Icon"
+              className="Mapmodal__Icon"
               onClick={() => {
                 setOpenModal(false);
                 document.body.style.overflow = 'scroll';
@@ -28,10 +30,12 @@ export default function AnalysisModal({ setOpenModal }: any): JSX.Element {
               icon={faTimes}
             />
           </div>
-
-          <div className="Amodal__Content">
-            <Example />
+          <div className="Mapmodal__Content">
+            치료시설을 찾아보세요 🏥
+            <div className="Mapmodal__Notice">위치 엑세스를 허용해 주세요</div>
           </div>
+
+          <CenterMap data={Location} />
         </div>
       </div>
     </>

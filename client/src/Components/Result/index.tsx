@@ -1,6 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { faMapMarkedAlt } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Navigation from 'Components/Common/Navigation';
 import ResultFirst from 'Components/Result/ResultFirst';
 import ResultSecond from 'Components/Result/ResultSecond';
@@ -11,8 +14,12 @@ import Exception from 'Components/Result/Exception';
 import Loading from 'Components/Common/Loading';
 import ProgressBar from 'Components/Common/ProgressBar';
 import 'Components/Result/scss/Result.scss';
+import MapModal from './MapModal';
+
+library.add(faMapMarkedAlt);
 
 export default function Result(): JSX.Element {
+  const [modalOpen, setModalOpen] = useState(false);
   const { state } = useLocation();
 
   const ResultText = 'AI 분석중입니다.';
@@ -43,7 +50,25 @@ export default function Result(): JSX.Element {
               <ResultFirst data={state} />
               <ResultSecond data={state} />
               <ResultThird data={state} />
-              <ResultLast />
+              {/* <ResultLast /> */}
+              {!modalOpen && (
+                <div className="Map__Button-Container">
+                  <div
+                    className="Map__Button-Wrapper"
+                    onClick={() => {
+                      setModalOpen(true);
+                      document.body.style.overflow = 'hidden';
+                    }}
+                  >
+                    <div className="Map__Button-text">치료소</div>
+                    <FontAwesomeIcon
+                      icon={faMapMarkedAlt}
+                      className="Map__Button"
+                    />
+                  </div>
+                </div>
+              )}
+              {modalOpen && <MapModal setOpenModal={setModalOpen} />}
             </div>
             <Footer data={'relative'} />
           </>

@@ -1,4 +1,4 @@
-@import '/src/Components/Common/scss/mixins';
+@import "/src/Components/Common/scss/mixins";
 
 #map {
   width: 80%;
@@ -8,7 +8,7 @@
   border: 2px solid #8c9d3d;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-  @include responsive('tablet') {
-    width: 100%;
+  @include responsive("tablet") {
+    width: 90%;
   }
 }
