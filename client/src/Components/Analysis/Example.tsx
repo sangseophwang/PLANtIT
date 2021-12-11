@@ -9,26 +9,32 @@ import Bad3 from 'Assets/Analysis_Result/Bad/bad3.jpg';
 const Example = () => {
   return (
     <div className="Example__Container">
-      <div className="Line"></div>
       <div className="Example__Wrapper">
         <div className="SubExample__Container">
           <div className="Example__Title">촬영 가이드라인 📸</div>
-          <div className="Example__Text">
-            🌳 작물의 촬영 부위는 '열매, 잎, 가지, 줄기, 뿌리'에 한정되어
-            있습니다.
-            <br />
-            <br />
-            🌳 촬영 부위가 잘려서는 안됩니다.
-            <br />
-            <br />
-            🌳 가급적 사진에 꽉 채우도록 찍어주세요.
-            <br />
-            <br />
-            🌳 그림자, 손 등 외부요인에 의해 일부가 가려져선 안됩니다.
-            <br />
-            <br />
-            🌳 잎의 경우, 되도록 접히거나 말림이 없어야 합니다.
+          <div className="Example__Text-Container">
+            <div className="Example__Text">
+              <span style={{ marginRight: '0.5rem' }}>🌳</span> 작물의 촬영
+              부위는 '열매, 잎, 가지, 줄기, 뿌리'에 한정되어 있습니다.
+            </div>
+            <div className="Example__Text">
+              <span style={{ marginRight: '0.5rem' }}>🌳</span> 촬영 부위가
+              잘려서는 안됩니다.
+            </div>
+            <div className="Example__Text">
+              <span style={{ marginRight: '0.5rem' }}>🌳</span> 가급적 사진에 꽉
+              채우도록 찍어주세요.
+            </div>
+            <div className="Example__Text">
+              <span style={{ marginRight: '0.5rem' }}>🌳</span> 그림자, 손 등
+              외부요인에 의해 일부가 가려져선 안됩니다.
+            </div>
+            <div className="Example__Text">
+              <span style={{ marginRight: '0.5rem' }}>🌳</span> 잎의 경우,
+              되도록 접히거나 말림이 없어야 합니다.
+            </div>
           </div>
+
           <div className="Example__Content">
             <div className="Example__Subtitle">좋은 예</div>
             <img src={Good1} alt="" className="Example__Image" />
