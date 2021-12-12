@@ -3,7 +3,7 @@
 .Mypage__Container {
   @include Container__Form();
   .Mypage__Wrapper {
-    width: 40%;
+    width: 36%;
     height: 31vh;
     display: flex;
     justify-content: space-around;
@@ -32,6 +32,7 @@
       .Thumbnail__Area {
         display: flex;
         height: 100%;
+        margin-right: 20px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -103,7 +104,7 @@
         display: flex;
         height: 100%;
         flex-direction: column;
-        padding-left: 30px;
+        padding: 0 20px;
         justify-content: space-around;
         @include responsive('tablet__large') {
           align-items: center;
