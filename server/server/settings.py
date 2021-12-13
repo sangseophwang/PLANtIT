@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
+ALLOWED_HOSTS = ['https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com']
 
 
 # Application definition
@@ -82,9 +82,6 @@ CORS_ALLOW_HEADERS = [
     "set-cookie",
     "views"
 ]
-
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'server.urls'
 
