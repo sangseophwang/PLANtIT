@@ -26,7 +26,7 @@ load_dotenv('/project/server/.env')
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['backend']
 
@@ -61,9 +61,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = [
 	# 허용할 Origin 추가
-    "http://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com",
+    "https://elice-kdt-2nd-team3.koreacentral.cloudapp.azure.com",
 ]
 
 CORS_ALLOW_HEADERS = [
