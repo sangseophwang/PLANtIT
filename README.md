@@ -1,6 +1,8 @@
 # PLANtIT 🌱
 
 [🎥 시연 영상](https://youtu.be/toRqQOW0pUw)
+<br/>
+
 [✏️ 노션](https://onyx-limburger-373.notion.site/PLANtIT-3fdd5e5372fe4152bbe402b00872efde)
 
 
