@@ -1,5 +1,10 @@
 # PLANtIT 🌱
 
+[🎥 시연 영상](https://youtu.be/toRqQOW0pUw)
+[✏️ 노션](https://onyx-limburger-373.notion.site/PLANtIT-3fdd5e5372fe4152bbe402b00872efde)
+
+
+
 - 베란다 농부(팜린이)를 위한 종합 가드닝 솔루션 서비스
   - [메인] 질병이 발생한 작물의 사진을 업로드 하면, AI가 학습한 데이터를 이용하여 진단을 내려주는 서비스
   - [서브] 가드닝과 질병에 관한 다양한 정보 공유 제공
