@@ -82,7 +82,7 @@ export default function Board(): JSX.Element {
               }
             });
         } catch (e) {
-          toast.error('본인만 삭제할 수 있습니다.', {
+          toast.error('잠시 후 다시 시도해주세요.', {
             autoClose: 2500,
           });
         }
